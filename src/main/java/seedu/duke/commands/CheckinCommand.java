@@ -1,12 +1,12 @@
 package seedu.duke.commands;
 
 /**
- * Checkin a person.
+ * Check-in a person.
  */
 public class CheckinCommand extends Command {
 
     public static final String COMMAND = "checkin";
-    public static final String SUCCESS_MESSAGE = "%s has been successfully checked-in!";
+    public static final String CHECKIN_MESSAGE = "%s has been successfully checked-in!";
     private Person toCheckin;
 
     /**
@@ -32,7 +32,7 @@ public class CheckinCommand extends Command {
     @Override
     public CommandOutput execute() {
         trackingList.add(toCheckin);
-        return new CommandOutput(String.format(SUCCESS_MESSAGE, toCheckin));
+        return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin));
     }
 
 }

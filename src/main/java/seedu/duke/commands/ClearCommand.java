@@ -1,5 +1,8 @@
 package seedu.duke.commands;
 
+/**
+ * Clears all the entries in tracking list.
+ */
 public class ClearCommand extends Command {
 
     public static final String COMMAND = "clear";
