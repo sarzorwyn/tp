@@ -6,18 +6,21 @@ package seedu.duke.commands;
 public class CheckinCommand extends Command {
 
     public static final String COMMAND = "checkin";
-    private static final Person toCheckin;
+    public static final String SUCCESS_MESSAGE = "%s has been successfully checked-in!";
+    private Person toCheckin;
 
     /**
      * Checkin using raw values (first time).
+     * If already checkin, update the location list.
      */
-    public CheckinCommand(int id,
+    public CheckinCommand(String id,
                           String name,
                           String phone,
-                          Locations visitedPlaces) { // array class of visited places
-        // search in the list if the person exist. if exist, use the
-        // the id to get the rest of the information. else, fill up
-        // everything manually.
+                          String location) {
+        if (trackingList.findPerson(id)) {
+            toCheckin = trackinglist.findPerson(id);
+            toCheckin.addLocation(location);
+        }
         toCheckin = new Person(
                 new Id(id),
                 new Name(name),
@@ -26,17 +29,10 @@ public class CheckinCommand extends Command {
         );
     }
 
-    /**
-     * Checkin using id (subsequent checkins).
-     */
-    public CheckinCommand(int id, String location) {
-        toCheckin =  FindCommand.getPersonUsingId(id); // search for the person using id
-        toCheckin.addLocation(location);
-    }
-
     @Override
-    public void execute() {
-        trackingList.checkinPerson(toCheckin);
+    public CommandOutput execute() {
+        trackingList.add(toCheckin);
+        return new CommandOutput(String.format(SUCCESS_MESSAGE, toCheckin));
     }
 
 }

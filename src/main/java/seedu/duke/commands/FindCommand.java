@@ -1,32 +1,20 @@
 package seedu.duke.commands;
 
 /**
- * Finds the person in tracking list using id or location.
+ * Finds the person in tracking list using id.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND = "find";
-    private final String locationKeyword;
+    private final String idKeyword;
 
-    public FindCommand(String locationKeyword) {
-        this.locationKeyword = locationKeyword;
+    public FindCommand(String idKeyword) {
+        this.idKeyword = idKeyword;
     }
-
-    public static Person getPersonUsingId(int idKeyword) {
-        Person matchedPerson = null;
-        for (Person person : trackingList.getList()) {
-            if (person.getId() == idKeyword) {
-                matchedPerson = person;
-            }
-            break;
-        }
-        return matchedPerson;
-    }
-
-    private
 
     @Override
-    public void execute() {
+    public CommandOutput execute() {
+        return trackingList.getPersonsUsingLocation(idKeyword);
     }
 
 }

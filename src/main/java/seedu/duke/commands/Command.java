@@ -11,7 +11,8 @@ public abstract class Command {
     /**
      * Executes the command.
      */
-    protected void execute() {
+    protected CommandOutput execute() {
+        return null;
     }
 
 }
