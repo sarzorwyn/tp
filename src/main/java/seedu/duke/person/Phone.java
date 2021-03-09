@@ -5,12 +5,12 @@ package seedu.duke.person;
  * If a person does not have a phone, isAvailable will be false.
  */
 public class Phone {
-    public String phone;
+    public String phoneNo;
     public boolean isAvailable;
 
-    public Phone(String phone) {
+    public Phone(String phoneNo) {
         // Validate phone using regex first.
-        this.phone = phone;
+        this.phoneNo = phoneNo;
         this.isAvailable = true;
     }
 
@@ -18,17 +18,17 @@ public class Phone {
      * Constructor if phone is not available.
      */
     public Phone() {
-        this.phone = null;
+        this.phoneNo = null;
         this.isAvailable = false;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhone(String phone) {
+    public void setPhoneNo(String phoneNo) {
         // Validate phone using regex first.
-        this.phone = phone;
+        this.phoneNo = phoneNo;
     }
 
     public boolean isAvailable() {

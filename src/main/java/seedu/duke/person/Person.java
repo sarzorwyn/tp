@@ -8,6 +8,7 @@ public class Person {
     private Id id;
     private Name name;
     private Phone phone;
+    private Boolean isCheckedIn;
 
     public Person(Id id, Name name, Phone phone) {
         this.id = id;
@@ -20,7 +21,7 @@ public class Person {
         if (other == this) {
             return true;
         } else if (other instanceof Person) {
-            return this.id.equals(other);
+            return id.equals(((Person) other).id);
         }
         return false;
     }
@@ -47,5 +48,13 @@ public class Person {
 
     public void setPhone(Phone phone) {
         this.phone = phone;
+    }
+
+    public Boolean getCheckedIn() {
+        return isCheckedIn;
+    }
+
+    public void setCheckedIn(Boolean checkedIn) {
+        isCheckedIn = checkedIn;
     }
 }
