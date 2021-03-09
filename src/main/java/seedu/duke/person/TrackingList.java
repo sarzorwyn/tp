@@ -1,9 +1,4 @@
-package seedu.duke;
-
-import seedu.duke.person.Id;
-import seedu.duke.person.Name;
-import seedu.duke.person.Person;
-import seedu.duke.person.Phone;
+package seedu.duke.person;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +24,11 @@ public class TrackingList {
         personList.addAll(initialPersons);
     }
 
+    /**
+     * Checks if a list contains the person in given argument.
+     * @param personToCheck Person to check if contained in personList
+     * @return True if personList contains Person, False if personList does not contains Person
+     */
     public boolean contains(Person personToCheck) {
         for (Person p : personList) {
             if (p.equals(personToCheck)) {
@@ -66,7 +66,7 @@ public class TrackingList {
     public List<Person> findPerson(Id id) {
         final List<Person> matchingPersons = new ArrayList<>();
         for (Person p : personList) {
-            if (p.getId().getId().contains(id.getId())) {
+            if (p.getId().getIdString().contains(id.getIdString())) {
                 matchingPersons.add(p);
             }
         }
@@ -81,7 +81,7 @@ public class TrackingList {
     public List<Person> findPerson(Phone phone) {
         final List<Person> matchingPersons = new ArrayList<>();
         for (Person p : personList) {
-            if (p.getPhone().getPhone().contains(phone.getPhone())) {
+            if (p.getPhone().getPhoneNo().contains(phone.getPhoneNo())) {
                 matchingPersons.add(p);
             }
         }
@@ -96,7 +96,7 @@ public class TrackingList {
     public List<Person> findPerson(Name name) {
         final List<Person> matchingPersons = new ArrayList<>();
         for (Person p : personList) {
-            if (p.getName().getName().contains(name.getName())) {
+            if (p.getName().getNameString().contains(name.getNameString())) {
                 matchingPersons.add(p);
             }
         }
