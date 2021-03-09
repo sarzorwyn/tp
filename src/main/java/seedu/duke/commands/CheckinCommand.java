@@ -25,7 +25,7 @@ public class CheckinCommand extends Command {
                 new Id(id),
                 new Name(name),
                 new Phone(phone),
-                new Locations(visitedPlaces) // array class of visited places
+                new Locations(visitedPlaces)
         );
     }
 
