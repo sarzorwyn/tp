@@ -1,20 +1,20 @@
 package seedu.duke.person;
 
 public class Id {
-    public final String id;
+    public final String idString;
 
-    public Id(String id) {
+    public Id(String idString) {
         // Check if id is valid by using regex first.
-        this.id = id.trim();
+        this.idString = idString.trim();
     }
 
-    public String getId() {
-        return id;
+    public String getIdString() {
+        return idString;
     }
 
     @Override
     public String toString() {
-        return id;
+        return idString;
     }
 
     @Override
@@ -22,7 +22,7 @@ public class Id {
         if (other == this) {
             return true;
         } else if (other instanceof Id) {
-            return this.id.equals(((Id) other).id);
+            return this.idString.equals(((Id) other).idString);
         }
         return false;
     }
