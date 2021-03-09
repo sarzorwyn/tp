@@ -6,15 +6,15 @@ package seedu.duke.commands;
 public class FindCommand extends Command {
 
     public static final String COMMAND = "find";
-    private final String idKeyword;
+    private final Id idKeyword;
 
     public FindCommand(String idKeyword) {
-        this.idKeyword = idKeyword;
+        this.idKeyword = new Id(idKeyword);
     }
 
     @Override
     public CommandOutput execute() {
-        return trackingList.getPersonsUsingLocation(idKeyword);
+        return trackingList.findPerson(idKeyword);
     }
 
 }
