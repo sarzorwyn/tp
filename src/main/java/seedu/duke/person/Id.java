@@ -22,7 +22,7 @@ public class Id {
         if (other == this) {
             return true;
         } else if (other instanceof Id) {
-            return this.idString.equals(((Id) other).idString);
+            return idString.equals(((Id) other).getIdString());
         }
         return false;
     }

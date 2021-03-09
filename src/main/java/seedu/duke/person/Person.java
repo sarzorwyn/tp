@@ -21,7 +21,7 @@ public class Person {
         if (other == this) {
             return true;
         } else if (other instanceof Person) {
-            return this.id.equals(other);
+            return id.equals(((Person) other).id);
         }
         return false;
     }
