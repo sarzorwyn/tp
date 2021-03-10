@@ -1,6 +1,6 @@
 package seedu.duke.parser;
 
-import seedu.duke.commands.CheckinCommand;
+import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CheckoutCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.DeleteCommand;
@@ -38,10 +38,10 @@ public class Parser {
             System.out.println(":)");
         }
         switch (command) {
-        case CheckinCommand.COMMAND:
-            return parseCheckin(argument);
+        case CheckInCommand.COMMAND:
+            return parseCheckIn(argument);
         case CheckoutCommand.COMMAND:
-            return parseCheckout(argument);
+            return parseCheckOut(argument);
         case FindCommand.COMMAND:
             return parseFind(argument);
         case ListCommand.COMMAND:
@@ -70,12 +70,12 @@ public class Parser {
     private Command parseFind(String argument) {
         String[] findDetails = argument.split("i/",2);
         String id = findDetails[1];
-        String name = findDetails[0].substring(1); //starts from index 1 due to inclusion of "/n" flag
+        String name = findDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
 
         return new FindCommand(id);
     }
 
-    private Command parseCheckout(String argument) {
+    private Command parseCheckOut(String argument) {
         String[] checkoutDetails = argument.split("i/",2);
         String id = checkoutDetails[1];
         String name = checkoutDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
@@ -83,12 +83,12 @@ public class Parser {
         return new CheckoutCommand(id);
     }
 
-    private Command parseCheckin(String argument) {
-        String[] checkinDetails = argument.split("i/",2);
-        String id = checkinDetails[1];
-        String name = checkinDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
+    private Command parseCheckIn(String argument) {
+        String[] checkInDetails = argument.split("i/",2);
+        String id = checkInDetails[1];
+        String name = checkInDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
 
-        return new CheckinCommand(id, name, null);
+        return new CheckInCommand(id, name, null);
     }
 
     //    private String parseId(String argument) {

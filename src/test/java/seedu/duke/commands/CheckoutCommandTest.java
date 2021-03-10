@@ -12,9 +12,9 @@ public class CheckoutCommandTest {
         CheckoutCommand checkout2 = new CheckoutCommand("456B");
         CheckoutCommand checkout3 = new CheckoutCommand("789C");
 
-        assertFalse(checkout1.getToCheckout().getCheckin());
-        assertFalse(checkout2.getToCheckout().getCheckin());
-        assertFalse(checkout3.getToCheckout().getCheckin());
+        assertFalse(checkout1.getToCheckout().getCheckedIn());
+        assertFalse(checkout2.getToCheckout().getCheckedIn());
+        assertFalse(checkout3.getToCheckout().getCheckedIn());
     }
 
 }
