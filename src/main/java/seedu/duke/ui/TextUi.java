@@ -38,7 +38,7 @@ public class TextUi {
     private void printList(List<Person> persons) {
         for (Person person : persons) {
             if (person.getCheckedIn()) {
-                System.out.println("Name: " + person.getName());
+                out.println("Name: " + person.getName());
             }
         }
     }
@@ -68,8 +68,9 @@ public class TextUi {
         return rawInput;
     }
 
-    private void echoInput(String rawInput) {
+    public String echoInput(String rawInput) {
         out.println("Command Entered: " + rawInput);
+        return rawInput;
     }
 
 }
