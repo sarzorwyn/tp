@@ -58,6 +58,11 @@ public class TrackingList {
         return personList.size();
     }
 
+    public List<Person> listPerson() {
+        final List<Person> returnedList = new ArrayList<>(personList);
+        return returnedList;
+    }
+
     /**
      * Finds Person with partial match as id queried
      * @param id id being queried
