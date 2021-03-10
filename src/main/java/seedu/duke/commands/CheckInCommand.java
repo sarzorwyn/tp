@@ -5,7 +5,7 @@ import seedu.duke.person.*;
 /**
  * Check-in a person.
  */
-public class CheckinCommand extends Command {
+public class CheckInCommand extends Command {
 
     public static final String COMMAND = "checkin";
     public static final String CHECKIN_MESSAGE = "%s has been successfully checked-in!";
@@ -29,9 +29,9 @@ public class CheckinCommand extends Command {
 //                new Name(name),
 //                new Phone(phone),
 //                new Locations(visitedPlaces));
-//    }
+//  }
 
-    public CheckinCommand(String id,
+    public CheckInCommand(String id,
                           String name,
                           String phone) {
         toCheckin = new Person(
