@@ -1,6 +1,13 @@
 package seedu.duke.parser;
 
-import java.util.Locale;
+import seedu.duke.commands.CheckinCommand;
+import seedu.duke.commands.CheckoutCommand;
+import seedu.duke.commands.Command;
+import seedu.duke.commands.DeleteCommand;
+import seedu.duke.commands.ExitCommand;
+import seedu.duke.commands.FindCommand;
+import seedu.duke.commands.ListCommand;
+
 
 public class Parser {
 
@@ -14,36 +21,50 @@ public class Parser {
      */
     public static String[] splitTextIntoTwoFields(String text) {
 
-        String[] textArray = text.toLowerCase().split(" ", 2);
+        String[] textArray = text.split(" ", 2);
+        textArray[0] = textArray[0].toLowerCase();
         return textArray;
     }
-    public Command parseCommand(String[] userInput) {
-        String command = userInput[0];
-        String argument = userInput[1];
-        switch (command) {
-        case "checkin":
-            return parseCheckin(argument);
 
-        case "checkout":
-            return parseCheckout(argument);
-        case "find":
-            return parseFind(argument);
-        case"list":
-            return parseList(argument);
-        case "delete":
-            return parseDelete(argument);
-        case "exit":
-            System.exit(0);
+    public Command parseCommand(String userInput) {
+        String[] inputArray = null;
+        String command = null;
+        String argument = null;
+        try {
+            inputArray = splitTextIntoTwoFields(userInput);
+            command = inputArray[0];
+            argument = inputArray[1];
+        } catch (Exception e) {
+            System.out.println(":)");
         }
-
+        switch (command) {
+        case CheckinCommand.COMMAND:
+            return parseCheckin(argument);
+        case CheckoutCommand.COMMAND:
+            return parseCheckout(argument);
+        case FindCommand.COMMAND:
+            return parseFind(argument);
+        case ListCommand.COMMAND:
+            return parseList();
+        case DeleteCommand.COMMAND:
+            return parseDelete();
+        case ExitCommand.COMMAND:
+            return parseExit();
+        default:
+            return null;
+        }
     }
 
-    private void parseDelete(String argument) {
-        Arraylist.clear(); //deletes entire list based on our UG.
+    private ExitCommand parseExit() {
+        return new ExitCommand();
     }
 
-    private void parseList(String argument) {
-        Arraylist.list; //To be edited based on syntax of Arraylist
+    private Command parseDelete() {
+        return new DeleteCommand();
+    }
+
+    private Command parseList() {
+        return new ListCommand();
     }
 
     private Command parseFind(String argument) {
@@ -51,23 +72,28 @@ public class Parser {
         String id = findDetails[1];
         String name = findDetails[0].substring(1); //starts from index 1 due to inclusion of "/n" flag
 
-        return find(name,id);
+        return new FindCommand(id);
     }
 
     private Command parseCheckout(String argument) {
         String[] checkoutDetails = argument.split("i/",2);
         String id = checkoutDetails[1];
-        String name = checkoutDetails[0].substring(1); //starts from index 1 due to inclusion of "/n" flag
+        String name = checkoutDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
 
-        return checkOut(name,id);
+        return new CheckoutCommand(id);
     }
 
     private Command parseCheckin(String argument) {
         String[] checkinDetails = argument.split("i/",2);
         String id = checkinDetails[1];
-        String name = checkinDetails[0].substring(1); //starts from index 1 due to inclusion of "/n" flag
+        String name = checkinDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
 
-        return checkIn(name,id);
+        return new CheckinCommand(id, name, null);
     }
+
+    //    private String parseId(String argument) {
+    //        String[] details = argument.split("i/",2);
+    //        return details[0];
+    //    }
 
 }

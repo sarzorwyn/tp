@@ -12,9 +12,9 @@ public class CheckinCommandTest {
         CheckinCommand checkin2 = new CheckinCommand("456B", "Rogers", null);
         CheckinCommand checkin3 = new CheckinCommand("789C", "Odinson", "87654321");
 
-        assertTrue(checkin1.getToCheckin().getCheckin());
-        assertTrue(checkin2.getToCheckin().getCheckin());
-        assertTrue(checkin3.getToCheckin().getCheckin());
+        assertTrue(checkin1.getToCheckIn().getCheckin());
+        assertTrue(checkin2.getToCheckIn().getCheckin());
+        assertTrue(checkin3.getToCheckIn().getCheckin());
     }
 
 }
