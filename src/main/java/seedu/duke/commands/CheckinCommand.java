@@ -1,5 +1,7 @@
 package seedu.duke.commands;
 
+import seedu.duke.person.*;
+
 /**
  * Check-in a person.
  */
@@ -38,15 +40,15 @@ public class CheckinCommand extends Command {
                 new Phone(phone));
     }
 
-    public Person getToCheckin() {
+    public Person getToCheckIn() {
         return toCheckin;
     }
 
     @Override
-    public CommandOutput execute() {
-        toCheckin.setCheckedin(true);
+    public CommandOutput execute(TrackingList trackingList) {
+        toCheckin.setCheckedIn(true);
         trackingList.add(toCheckin);
-        return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin));
+        return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin), COMMAND);
     }
 
 }
