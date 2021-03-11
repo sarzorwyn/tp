@@ -13,6 +13,6 @@ public class UiTest {
     public void testEchoEqual() {
         this.ui = new TextUi();
         String input = "checkin n/John i/123a";
-         assertTrue(input.equals(ui.echoInput(input)));
+        assertTrue(input.equals(ui.echoInput(input)));
     }
 }
