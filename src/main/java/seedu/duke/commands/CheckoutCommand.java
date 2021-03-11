@@ -4,8 +4,6 @@ import seedu.duke.person.Id;
 import seedu.duke.person.Person;
 import seedu.duke.person.TrackingList;
 
-import javax.sound.midi.Track;
-
 /**
  * Check-out a person.
  */
@@ -23,6 +21,10 @@ public class CheckoutCommand extends Command {
 
     public Person getToCheckout() {
         return toCheckout;
+    }
+
+    public void setToCheckout(Person person) {
+        toCheckout = person;
     }
 
     @Override
