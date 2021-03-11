@@ -29,7 +29,7 @@ public class CheckoutCommand extends Command {
 
     @Override
     public CommandOutput execute(TrackingList trackingList) {
-        toCheckout = trackingList.findPerson(id);
+        toCheckout = trackingList.findExactPerson(id);
         toCheckout.setCheckedIn(false);
         return new CommandOutput(String.format(CHECKOUT_MESSAGE, toCheckout), COMMAND);
     }

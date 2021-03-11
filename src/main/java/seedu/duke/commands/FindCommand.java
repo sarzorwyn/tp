@@ -19,7 +19,7 @@ public class FindCommand extends Command {
 
     @Override
     public CommandOutput execute(TrackingList trackingList) {
-        Person person = trackingList.findPerson(idKeyword);
+        Person person = trackingList.findExactPerson(idKeyword);
         return new CommandOutput(person, String.format(FIND_MESSAGE,person.getName()), COMMAND);
     }
 

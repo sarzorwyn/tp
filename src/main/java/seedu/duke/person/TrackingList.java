@@ -63,12 +63,16 @@ public class TrackingList {
         return returnedList;
     }
 
+    public void clear() {
+        personList.clear();
+    }
+
     /**
      * Finds Person with exact match as id queried.
      * @param id id being queried
-     * @return Person that partially matches id
+     * @return Person that exactly matches id
      */
-    public Person findPerson(Id id) {
+    public Person findExactPerson(Id id) {
         Person matchingPerson = null;
         for (Person p : personList) {
             if (p.getId().equals(id)) {
