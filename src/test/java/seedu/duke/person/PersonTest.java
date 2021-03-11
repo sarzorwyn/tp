@@ -8,7 +8,7 @@ import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SamplePersons.JOHN_DIFF_ID;
 import static seedu.duke.testutil.SamplePersons.JOHN_NO_PHONE;
 
-class PersonTest {
+public class PersonTest {
 
     @Test
     void testEquals() {
