@@ -1,5 +1,6 @@
 package seedu.duke.ui;
 
+import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
 
@@ -25,14 +26,10 @@ public class TextUi {
     }
 
     public void printReaction(CommandOutput commandOutput) {
-        switch (commandOutput.command) {
-        case "list":
+        if (commandOutput.command.equals("list")) {
             printList(commandOutput.persons);
-            break;
-        case "exit":
-            showGoodbyeMessage();
-            break;
         }
+        showGoodbyeMessage();
     }
 
     private void printList(List<Person> persons) {
