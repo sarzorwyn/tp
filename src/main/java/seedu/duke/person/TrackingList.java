@@ -11,7 +11,7 @@ public class TrackingList {
     private final List<Person> personList = new ArrayList<>();
 
     /**
-     * Constructs a empty Person List
+     * Constructs a empty Person List.
      */
     public TrackingList() {
     }
@@ -62,24 +62,24 @@ public class TrackingList {
         final List<Person> returnedList = new ArrayList<>(personList);
         return returnedList;
     }
-
+    
     /**
-     * Finds Person with partial match as id queried
+     * Finds Person with exact match as id queried.
      * @param id id being queried
      * @return Person that partially matches id
      */
-    public List<Person> findPerson(Id id) {
-        final List<Person> matchingPersons = new ArrayList<>();
+    public Person findExactPerson(Id id) {
+        Person matchingPerson = null;
         for (Person p : personList) {
-            if (p.getId().getIdString().contains(id.getIdString())) {
-                matchingPersons.add(p);
+            if (p.getId().equals(id)) {
+                matchingPerson = p;
             }
         }
-        return matchingPersons;
+        return matchingPerson;
     }
 
     /**
-     * Finds Person with partial match as phone queried
+     * Finds Person with partial match as phone queried.
      * @param phone Phone being queried
      * @return Person that partially matches phone
      */
@@ -94,7 +94,7 @@ public class TrackingList {
     }
 
     /**
-     * Finds Person with partial match as name queried
+     * Finds Person with partial match as name queried.
      * @param name Name being queried
      * @return Person that partially matches name
      */
