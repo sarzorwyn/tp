@@ -26,10 +26,17 @@ public class TextUi {
     }
 
     public void printReaction(CommandOutput commandOutput) {
-        if (commandOutput.command.equals("list")) {
+        String command = commandOutput.command;
+        switch (command) {
+        case "list":
             printList(commandOutput.persons);
+            break;
+        default:
+            System.out.println(commandOutput.messageToUser);
         }
-        showGoodbyeMessage();
+
+
+
     }
 
     private void printList(List<Person> persons) {
