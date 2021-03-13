@@ -52,7 +52,7 @@ public class CheckInCommand extends Command {
     public CommandOutput execute(TrackingList trackingList) {
         toCheckin.setCheckedIn(true);
         trackingList.add(toCheckin);
-        return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin), COMMAND);
+        return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin.getName()), COMMAND);
     }
 
 }

@@ -9,7 +9,7 @@ public class CheckoutCommandTest {
 
     @Test
     public void testCheckoutCommand() {
-        CheckoutCommand checkout1 = new CheckoutCommand("123A");
+        CheckoutCommand checkout1 = new CheckoutCommand("123A","JOHN");
 
         checkout1.setToCheckout(JOHN);
 

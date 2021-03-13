@@ -7,6 +7,9 @@ import seedu.duke.commands.DeleteCommand;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCommand;
+import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.WrongFlagException;
 
 
 public class Parser {
@@ -22,37 +25,49 @@ public class Parser {
     public static String[] splitTextIntoTwoFields(String text) {
 
         String[] textArray = text.split(" ", 2);
-        textArray[0] = textArray[0].toLowerCase();
+        textArray[0] = textArray[0].toLowerCase().trim();
+        if (textArray.length != 1) {
+            textArray[1].trim();
+        }
         return textArray;
     }
 
-    public Command parseCommand(String userInput) {
+    public Command parseCommand(String userInput) throws InvalidCommandException {
         String[] inputArray = null;
         String command = null;
         String argument = null;
-        try {
-            inputArray = splitTextIntoTwoFields(userInput);
-            command = inputArray[0];
+        userInput.trim();
+
+        inputArray = splitTextIntoTwoFields(userInput);
+        command = inputArray[0];
+        if (inputArray.length != 1) {
             argument = inputArray[1];
-        } catch (Exception e) {
-            System.out.println(":)");
+        } else if (!command.equals("list") && !command.equals("exit")) {
+            throw new InvalidCommandException();
         }
-        switch (command) {
-        case CheckInCommand.COMMAND:
-            return parseCheckIn(argument);
-        case CheckoutCommand.COMMAND:
-            return parseCheckOut(argument);
-        case FindCommand.COMMAND:
-            return parseFind(argument);
-        case ListCommand.COMMAND:
-            return parseList();
-        case DeleteCommand.COMMAND:
-            return parseDelete();
-        case ExitCommand.COMMAND:
-            return parseExit();
-        default:
-            return null;
+        try {
+            switch (command) {
+            case CheckInCommand.COMMAND:
+                return parseCheckIn(argument);
+            case CheckoutCommand.COMMAND:
+                return parseCheckOut(argument);
+            case FindCommand.COMMAND:
+                return parseFind(argument);
+            case ListCommand.COMMAND:
+                return parseList();
+            case DeleteCommand.COMMAND:
+                return parseDelete();
+            case ExitCommand.COMMAND:
+                return parseExit();
+            default:
+                throw new InvalidCommandException();
+            }
+        } catch (NoArgumentPassedException e) {
+            System.out.print("No argument passed! Try again!");
+        } catch (WrongFlagException e) {
+            System.out.println("Wrong flags used!");
         }
+        return null;
     }
 
     private ExitCommand parseExit() {
@@ -75,16 +90,28 @@ public class Parser {
         return new FindCommand(id);
     }
 
-    private Command parseCheckOut(String argument) {
+    private Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
+        if (argument == null) {
+            throw new NoArgumentPassedException();
+        }
         String[] checkoutDetails = argument.split("i/",2);
+        if (checkoutDetails.length != 2) {
+            throw new WrongFlagException();
+        }
         String id = checkoutDetails[1];
         String name = checkoutDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
 
-        return new CheckoutCommand(id);
+        return new CheckoutCommand(id,name);
     }
 
-    private Command parseCheckIn(String argument) {
+    private Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
+        if (argument == null) {
+            throw new NoArgumentPassedException();
+        }
         String[] checkInDetails = argument.split("i/",2);
+        if (checkInDetails.length != 2) {
+            throw new WrongFlagException();
+        }
         String id = checkInDetails[1];
         String name = checkInDetails[0].substring(2); //starts from index 1 due to inclusion of "/n" flag
 

@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.person.TrackingList;
 
 /**
@@ -13,7 +14,7 @@ public abstract class Command {
     /**
      * Executes the command.
      */
-    public CommandOutput execute(TrackingList trackingList) {
+    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException {
         return null;
     }
 

@@ -3,6 +3,9 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
+import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.PersonNotFoundException;
+import seedu.duke.exceptions.WrongFlagException;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.TrackingList;
 import seedu.duke.ui.TextUi;
@@ -16,7 +19,7 @@ public class Duke {
      * Main entry-point for the java.duke.Duke application.
      */
 
-    public static void main(String[] args) {
+    public static void runUntilExit() throws InvalidCommandException, WrongFlagException, PersonNotFoundException {
         TextUi ui = new TextUi();
         Parser parser = new Parser();
         TrackingList trackingList = new TrackingList();
@@ -26,9 +29,30 @@ public class Duke {
         do {
             userInput = ui.getUserInput();
             command = parser.parseCommand(userInput);
+            if (command == null) {
+                throw new WrongFlagException();
+            }
             CommandOutput commandOutput = command.execute(trackingList);
             ui.printReaction(commandOutput);
 
         } while (!(command instanceof ExitCommand));
+
+    }
+
+    public static void main(String[] args) throws InvalidCommandException {
+        Command command = null;
+        do {
+            try {
+                runUntilExit();
+            } catch (InvalidCommandException e) {
+                System.out.println("Invalid command detected. Try again!");
+            } catch (WrongFlagException e) {
+                System.out.println("Refer to user guide!");
+            } catch (PersonNotFoundException e) {
+                System.out.println("Person not found!");
+            }
+        } while (!(command instanceof ExitCommand));
+
+
     }
 }

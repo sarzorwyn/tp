@@ -1,8 +1,11 @@
 package seedu.duke.commands;
 
+
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.person.Id;
 import seedu.duke.person.Person;
 import seedu.duke.person.TrackingList;
+
 
 /**
  * Check-out a person.
@@ -15,8 +18,9 @@ public class CheckoutCommand extends Command {
     private Id id;
     private Person toCheckout;
 
-    public CheckoutCommand(String idString) {
+    public CheckoutCommand(String idString,String name) {
         id = new Id(idString);
+
     }
 
     public Person getToCheckout() {
@@ -28,10 +32,14 @@ public class CheckoutCommand extends Command {
     }
 
     @Override
-    public CommandOutput execute(TrackingList trackingList) {
+    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException {
         toCheckout = trackingList.findExactPerson(id);
-        toCheckout.setCheckedIn(false);
-        return new CommandOutput(String.format(CHECKOUT_MESSAGE, toCheckout), COMMAND);
+        if (toCheckout == null) {
+            throw new PersonNotFoundException();
+        } else {
+            toCheckout.setCheckedIn(false);
+        }
+        return new CommandOutput(String.format(CHECKOUT_MESSAGE, toCheckout.getName()), COMMAND);
     }
 
 }
