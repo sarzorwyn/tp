@@ -65,6 +65,7 @@ public class Parser {
         } catch (NoArgumentPassedException e) {
             System.out.print("No argument passed! Try again!");
         } catch (WrongFlagException e) {
+            System.out.println("Wrong flags used!");
         }
         return null;
     }

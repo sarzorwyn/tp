@@ -38,15 +38,16 @@ public class Duke {
         } while (!(command instanceof ExitCommand));
 
     }
+
     public static void main(String[] args) throws InvalidCommandException {
         Command command = null;
         do {
             try {
                 runUntilExit();
-            } catch (InvalidCommandException e ) {
+            } catch (InvalidCommandException e) {
                 System.out.println("Invalid command detected. Try again!");
             } catch (WrongFlagException e) {
-                System.out.println("Wrong flags used! Refer to user guide!");
+                System.out.println("Refer to user guide!");
             } catch (PersonNotFoundException e) {
                 System.out.println("Person not found!");
             }
