@@ -32,11 +32,10 @@ public class TextUi {
             printList(commandOutput.persons);
             break;
         default:
+            printDivider();
             System.out.println(commandOutput.messageToUser);
+            printDivider();
         }
-
-
-
     }
 
     private void printList(List<Person> persons) {
@@ -49,7 +48,7 @@ public class TextUi {
 
     public void showWelcomeMessage(String version) {
         printDivider();
-        out.println("Welcome to Safest Entry Tracker - Version" + version + "1");
+        out.println("Welcome to Safest Entry Tracker - Version " + version);
         // for next patch update - Storage class - dataStorageSuccessful()
         out.println("Data successfully loaded from storage file path.");
         printDivider();
