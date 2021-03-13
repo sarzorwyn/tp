@@ -25,7 +25,7 @@ public class Parser {
     public static String[] splitTextIntoTwoFields(String text) {
 
         String[] textArray = text.split(" ", 2);
-        textArray[0].toLowerCase().trim();
+        textArray[0] = textArray[0].toLowerCase().trim();
         if (textArray.length != 1) {
             textArray[1].trim();
         }
