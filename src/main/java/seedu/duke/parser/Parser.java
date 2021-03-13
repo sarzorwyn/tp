@@ -32,7 +32,8 @@ public class Parser {
         return textArray;
     }
 
-    public Command parseCommand(String userInput) throws InvalidCommandException {
+    public Command parseCommand(String userInput) throws
+            InvalidCommandException, NoArgumentPassedException, WrongFlagException {
         String[] inputArray = null;
         String command = null;
         String argument = null;
@@ -45,29 +46,23 @@ public class Parser {
         } else if (!command.equals("list") && !command.equals("exit")) {
             throw new InvalidCommandException();
         }
-        try {
-            switch (command) {
-            case CheckInCommand.COMMAND:
-                return parseCheckIn(argument);
-            case CheckoutCommand.COMMAND:
-                return parseCheckOut(argument);
-            case FindCommand.COMMAND:
-                return parseFind(argument);
-            case ListCommand.COMMAND:
-                return parseList();
-            case DeleteCommand.COMMAND:
-                return parseDelete();
-            case ExitCommand.COMMAND:
-                return parseExit();
-            default:
-                throw new InvalidCommandException();
-            }
-        } catch (NoArgumentPassedException e) {
-            System.out.print("No argument passed! Try again!");
-        } catch (WrongFlagException e) {
-            System.out.println("Wrong flags used!");
+
+        switch (command) {
+        case CheckInCommand.COMMAND:
+            return parseCheckIn(argument);
+        case CheckoutCommand.COMMAND:
+            return parseCheckOut(argument);
+        case FindCommand.COMMAND:
+            return parseFind(argument);
+        case ListCommand.COMMAND:
+            return parseList();
+        case DeleteCommand.COMMAND:
+            return parseDelete();
+        case ExitCommand.COMMAND:
+            return parseExit();
+        default:
+            throw new InvalidCommandException();
         }
-        return null;
     }
 
     private ExitCommand parseExit() {
@@ -91,7 +86,7 @@ public class Parser {
     }
 
     private Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
-        if (argument == null) {
+        if (argument.isBlank()) {
             throw new NoArgumentPassedException();
         }
         String[] checkoutDetails = argument.split("i/",2);
@@ -105,7 +100,7 @@ public class Parser {
     }
 
     private Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
-        if (argument == null) {
+        if (argument.isBlank()) {
             throw new NoArgumentPassedException();
         }
         String[] checkInDetails = argument.split("i/",2);
@@ -117,10 +112,5 @@ public class Parser {
 
         return new CheckInCommand(id, name, null);
     }
-
-    //    private String parseId(String argument) {
-    //        String[] details = argument.split("i/",2);
-    //        return details[0];
-    //    }
 
 }

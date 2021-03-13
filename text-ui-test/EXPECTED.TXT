@@ -1,9 +1,8 @@
 ===================================================
-Welcome to Safest Entry Tracker - Versionv1.01
+Welcome to Safest Entry Tracker - Version v1.0
 Data successfully loaded from storage file path.
 ===================================================
 Command Entered: exit
-:)
 ===================================================
 Exiting Safest Entry Tracker...
 ===================================================
