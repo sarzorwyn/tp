@@ -42,10 +42,12 @@ public class TrackingList {
 
     public void add(Person person) {
         personList.add(person);
+        assert personList.contains(person) : "Person not added to list";
     }
 
     public void delete(Person person) {
         personList.remove(person);
+        assert !personList.contains(person) : "Person not removed from list";
     }
 
     public void delete(int index) {
@@ -86,6 +88,8 @@ public class TrackingList {
         if (matchingPerson == null) {
             throw new PersonNotFoundException();
         }
+
+        assert matchingPerson.getId().equals(id) : "Result id does not match return id";
         return matchingPerson;
     }
 
