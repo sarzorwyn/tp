@@ -2,8 +2,8 @@ package seedu.duke.person;
 
 public class Id {
     public final String idString;
-    public static final String ID_REGEX = "\\d{4}[A-Z]";
-    public static final String ID_ERROR = "ID should be 4 digits followed by a uppercase letter";
+    public static final String ID_REGEX = "\\d{3}[A-Z]";
+    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
 
     public Id(String idString) {
         assert isValidId(idString) : ID_ERROR;
