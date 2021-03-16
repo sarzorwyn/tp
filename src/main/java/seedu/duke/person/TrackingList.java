@@ -80,11 +80,10 @@ public class TrackingList {
     public Person findExactPerson(Id id) throws PersonNotFoundException {
         Person matchingPerson = null;
         for (Person p : personList) {
-            if (p.getId().equals(id)) {
+            if (p.getId().getIdString().equals(id.getIdString())) {
                 matchingPerson = p;
             }
         }
-
         if (matchingPerson == null) {
             throw new PersonNotFoundException();
         }
