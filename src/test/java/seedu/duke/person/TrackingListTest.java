@@ -39,7 +39,7 @@ public class TrackingListTest {
         trackingList.add(BOB);
         assertTrue(trackingList.contains(ALICE));
         assertFalse(trackingList.contains(JOHN));
-        assertFalse(trackingList.contains(BOB));
+        assertTrue(trackingList.contains(BOB));
     }
 
     @Test
