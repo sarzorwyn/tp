@@ -27,17 +27,17 @@ public class Parser {
         String[] textArray = text.split(" ", 2);
         textArray[0] = textArray[0].toLowerCase().trim();
         if (textArray.length != 1) {
-            textArray[1].trim();
+            textArray[1] = textArray[1].trim();
         }
         return textArray;
     }
 
     public Command parseCommand(String userInput) throws
             InvalidCommandException, NoArgumentPassedException, WrongFlagException {
-        String[] inputArray = null;
-        String command = null;
+        String[] inputArray;
+        String command;
         String argument = null;
-        userInput.trim();
+        userInput = userInput.trim();
 
         inputArray = splitTextIntoTwoFields(userInput);
         command = inputArray[0];
