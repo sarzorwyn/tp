@@ -48,6 +48,7 @@ public class Duke {
                 commandOutput = command.execute(trackingList);
             } catch (PersonNotFoundException e) {
                 System.out.println("Person not found!");
+                continue;
             }
             ui.printReaction(commandOutput);
 
