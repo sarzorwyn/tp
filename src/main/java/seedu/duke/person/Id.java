@@ -2,9 +2,11 @@ package seedu.duke.person;
 
 public class Id {
     public final String idString;
+    public static final String ID_REGEX = "\\d{4}[A-Z]";
+    public static final String ID_ERROR = "ID should be 4 digits followed by a uppercase letter";
 
     public Id(String idString) {
-        // Check if id is valid by using regex first.
+        assert isValidId(idString) : ID_ERROR;
         this.idString = idString.trim();
     }
 
@@ -15,6 +17,10 @@ public class Id {
     @Override
     public String toString() {
         return idString;
+    }
+
+    public static boolean isValidId(String idString) {
+        return idString.matches(ID_REGEX);
     }
 
     @Override

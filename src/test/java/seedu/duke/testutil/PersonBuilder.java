@@ -22,11 +22,7 @@ public class PersonBuilder {
     }
 
     public PersonBuilder withPhone(String phone) {
-        if (phone == null) {
-            this.phone = new Phone();
-        } else {
-            this.phone = new Phone(phone);
-        }
+        this.phone = new Phone(phone);
         return this;
     }
 
