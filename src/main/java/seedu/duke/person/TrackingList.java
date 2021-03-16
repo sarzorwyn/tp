@@ -64,11 +64,13 @@ public class TrackingList {
 
     public List<Person> listPerson() {
         final List<Person> returnedList = new ArrayList<>(personList);
+        assert returnedList.size() == personList.size(): "returnedList does not match listPerson size";
         return returnedList;
     }
 
     public void clear() {
         personList.clear();
+        assert personList.isEmpty(): "List not empty after clear";
     }
 
     /**

@@ -3,11 +3,13 @@ package seedu.duke.person;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import seedu.duke.exceptions.PersonNotFoundException;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SamplePersons.ALICE;
@@ -104,6 +106,22 @@ public class TrackingListTest {
 
         int expectedSize = 0;
         assertEquals(trackingList.getSize(), expectedSize);
+    }
+
+    @Test
+    public void findExactPerson_idInTrackingList_success() throws PersonNotFoundException {
+        trackingList.add(ALICE);
+        trackingList.add(BOB);
+
+        assertEquals(trackingList.findExactPerson(BOB.getId()), BOB);
+    }
+
+    @Test
+    public void findExactPerson_idNotInTrackingList_exceptionThrown() {
+        trackingList.add(ALICE);
+        trackingList.add(BOB);
+
+        assertThrows(PersonNotFoundException.class, () -> trackingList.findExactPerson(MARY.getId()));
     }
 
     @AfterEach
