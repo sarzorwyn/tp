@@ -35,11 +35,12 @@ public class Parser {
     public Command parseCommand(String userInput) throws
             InvalidCommandException, NoArgumentPassedException, WrongFlagException {
         String[] inputArray;
-        String command;
-        String argument = null;
-        userInput = userInput.trim();
 
+        String argument = null;
+        assert userInput != null : "User input cannot be null";
+        userInput = userInput.trim();
         inputArray = splitTextIntoTwoFields(userInput);
+        String command;
         command = inputArray[0];
         if (inputArray.length != 1) {
             argument = inputArray[1];
