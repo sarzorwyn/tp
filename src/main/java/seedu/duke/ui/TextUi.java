@@ -85,7 +85,16 @@ public class TextUi {
         return rawInput;
     }
 
-    public void printInvalidCommandError() {out.println(INVALID_COMMAND_ERROR);}
-    public void printNoArgumentError() {out.println(NO_ARGUMENT_ERROR);}
-    public void printWrongFlagError() {out.println(WRONG_FLAG_ERROR);}
+    public void printInvalidCommandError() {
+        out.println(INVALID_COMMAND_ERROR);
+    }
+
+    public void printNoArgumentError() {
+        out.println(NO_ARGUMENT_ERROR);
+    }
+
+    public void printWrongFlagError() {
+        out.println(WRONG_FLAG_ERROR);
+    }
+
 }
