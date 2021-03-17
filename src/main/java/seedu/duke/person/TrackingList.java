@@ -42,10 +42,12 @@ public class TrackingList {
 
     public void add(Person person) {
         personList.add(person);
+        assert personList.contains(person) : "Person not added to list";
     }
 
     public void delete(Person person) {
         personList.remove(person);
+        assert !personList.contains(person) : "Person not removed from list";
     }
 
     public void delete(int index) {
@@ -62,11 +64,13 @@ public class TrackingList {
 
     public List<Person> listPerson() {
         final List<Person> returnedList = new ArrayList<>(personList);
+        assert returnedList.size() == personList.size() : "returnedList does not match listPerson size";
         return returnedList;
     }
 
     public void clear() {
         personList.clear();
+        assert personList.isEmpty() : "List not empty after clear";
     }
 
     /**
@@ -85,6 +89,8 @@ public class TrackingList {
         if (matchingPerson == null) {
             throw new PersonNotFoundException();
         }
+
+        assert matchingPerson.getId().equals(id) : "Result id does not match return id";
         return matchingPerson;
     }
 
