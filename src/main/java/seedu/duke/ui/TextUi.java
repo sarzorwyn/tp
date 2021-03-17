@@ -3,6 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
+import java.util.logging.Logger;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -13,6 +14,7 @@ public class TextUi {
 
     private PrintStream out;
     private Scanner in;
+    private static Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
     private static final String DIVIDER = "===================================================";
 
@@ -32,14 +34,14 @@ public class TextUi {
             printList(commandOutput.persons);
             break;
         default:
-            System.out.println(commandOutput.messageToUser);
+            printDivider();
+            out.println(commandOutput.messageToUser);
+            printDivider();
         }
-
-
-
     }
 
     private void printList(List<Person> persons) {
+        assert persons instanceof List : "Only can print list";
         for (Person person : persons) {
             if (person.getCheckedIn()) {
                 out.println("Name: " + person.getName());
@@ -49,7 +51,8 @@ public class TextUi {
 
     public void showWelcomeMessage(String version) {
         printDivider();
-        out.println("Welcome to Safest Entry Tracker - Version" + version + "1");
+        assert version instanceof String : "Version has to be a string";
+        out.println("Welcome to Safest Entry Tracker - Version " + version);
         // for next patch update - Storage class - dataStorageSuccessful()
         out.println("Data successfully loaded from storage file path.");
         printDivider();
@@ -68,6 +71,7 @@ public class TextUi {
     public String getUserInput() {
         String rawInput = in.nextLine();
         echoInput(rawInput);
+        logger.info("Processed user input in textui.");
         return rawInput;
     }
 

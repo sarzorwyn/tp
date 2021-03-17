@@ -19,6 +19,6 @@ public class SamplePersons {
             .withName("John").withPhone("12345678")
             .withCheckedInStatus(true).build();
     public static final Person MARY = new PersonBuilder().withId("230C")
-            .withName("Mary").withPhone("9500150")
+            .withName("Mary").withPhone("95001501")
             .withCheckedInStatus(true).build();
 }

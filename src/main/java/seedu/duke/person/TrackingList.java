@@ -1,5 +1,7 @@
 package seedu.duke.person;
 
+import seedu.duke.exceptions.PersonNotFoundException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -40,10 +42,12 @@ public class TrackingList {
 
     public void add(Person person) {
         personList.add(person);
+        assert personList.contains(person) : "Person not added to list";
     }
 
     public void delete(Person person) {
         personList.remove(person);
+        assert !personList.contains(person) : "Person not removed from list";
     }
 
     public void delete(int index) {
@@ -60,25 +64,33 @@ public class TrackingList {
 
     public List<Person> listPerson() {
         final List<Person> returnedList = new ArrayList<>(personList);
+        assert returnedList.size() == personList.size() : "returnedList does not match listPerson size";
         return returnedList;
     }
 
     public void clear() {
         personList.clear();
+        assert personList.isEmpty() : "List not empty after clear";
     }
 
     /**
      * Finds Person with exact match as id queried.
      * @param id id being queried
      * @return Person that exactly matches id
+     * @throws PersonNotFoundException if no person has queried id
      */
-    public Person findExactPerson(Id id) {
+    public Person findExactPerson(Id id) throws PersonNotFoundException {
         Person matchingPerson = null;
         for (Person p : personList) {
-            if (p.getId().equals(id)) {
+            if (p.getId().getIdString().equals(id.getIdString())) {
                 matchingPerson = p;
             }
         }
+        if (matchingPerson == null) {
+            throw new PersonNotFoundException();
+        }
+
+        assert matchingPerson.getId().equals(id) : "Result id does not match return id";
         return matchingPerson;
     }
 
@@ -86,13 +98,18 @@ public class TrackingList {
      * Finds Person with partial match as phone queried.
      * @param phone Phone being queried
      * @return Person that partially matches phone
+     * @throws PersonNotFoundException if no person has queried id
      */
-    public List<Person> findPerson(Phone phone) {
+    public List<Person> findPerson(Phone phone) throws PersonNotFoundException {
         final List<Person> matchingPersons = new ArrayList<>();
         for (Person p : personList) {
             if (p.getPhone().getPhoneNo().contains(phone.getPhoneNo())) {
                 matchingPersons.add(p);
             }
+        }
+
+        if (matchingPersons.isEmpty()) {
+            throw new PersonNotFoundException();
         }
         return matchingPersons;
     }
@@ -101,13 +118,18 @@ public class TrackingList {
      * Finds Person with partial match as name queried.
      * @param name Name being queried
      * @return Person that partially matches name
+     * @throws PersonNotFoundException if no person has queried id
      */
-    public List<Person> findPerson(Name name) {
+    public List<Person> findPerson(Name name) throws PersonNotFoundException {
         final List<Person> matchingPersons = new ArrayList<>();
         for (Person p : personList) {
             if (p.getName().getNameString().contains(name.getNameString())) {
                 matchingPersons.add(p);
             }
+        }
+
+        if (matchingPersons.isEmpty()) {
+            throw new PersonNotFoundException();
         }
         return matchingPersons;
     }

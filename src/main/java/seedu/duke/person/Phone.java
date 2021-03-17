@@ -7,28 +7,30 @@ package seedu.duke.person;
 public class Phone {
     public String phoneNo;
     public boolean isAvailable;
-
-    public Phone(String phoneNo) {
-        // Validate phone using regex first.
-        this.phoneNo = phoneNo;
-        this.isAvailable = true;
-    }
+    public static final String PHONE_REGEX = "\\d{8}";
+    public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
 
     /**
-     * Constructor if phone is not available.
+     * Constructs a phone object.
+     *
+     * @param phoneNo Phone number string. Null if Person has no phone.
      */
-    public Phone() {
-        this.phoneNo = null;
-        this.isAvailable = false;
+    public Phone(String phoneNo) {
+        assert phoneNo == null || isValidPhone(phoneNo) : PHONE_ERROR;
+        this.isAvailable = phoneNo != null;
+        this.phoneNo = phoneNo;
     }
 
+    public static boolean isValidPhone(String phoneNo) {
+        return phoneNo.matches(PHONE_REGEX);
+    }
 
     public String getPhoneNo() {
         return phoneNo;
     }
 
     public void setPhoneNo(String phoneNo) {
-        // Validate phone using regex first.
+        assert isValidPhone(phoneNo) : PHONE_ERROR;
         this.phoneNo = phoneNo;
     }
 
@@ -38,5 +40,10 @@ public class Phone {
 
     public void setAvailable(boolean available) {
         isAvailable = available;
+    }
+
+    @Override
+    public String toString() {
+        return phoneNo;
     }
 }

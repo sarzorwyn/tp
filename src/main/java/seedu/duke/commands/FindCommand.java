@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.person.Id;
 import seedu.duke.person.Person;
 import seedu.duke.person.TrackingList;
@@ -18,7 +19,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public CommandOutput execute(TrackingList trackingList) {
+    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException {
         Person person = trackingList.findExactPerson(idKeyword);
         return new CommandOutput(person, String.format(FIND_MESSAGE,person.getName()), COMMAND);
     }
