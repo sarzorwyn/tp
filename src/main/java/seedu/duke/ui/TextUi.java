@@ -67,7 +67,6 @@ public class TextUi {
 
     public String getUserInput() {
         String rawInput = in.nextLine();
-
         echoInput(rawInput);
         return rawInput;
     }

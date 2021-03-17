@@ -29,9 +29,6 @@ public class Duke {
         do {
             userInput = ui.getUserInput();
             command = parser.parseCommand(userInput);
-            if (command == null) {
-                throw new WrongFlagException();
-            }
             CommandOutput commandOutput = command.execute(trackingList);
             ui.printReaction(commandOutput);
 
@@ -46,9 +43,7 @@ public class Duke {
                 runUntilExit();
             } catch (InvalidCommandException e) {
                 System.out.println("Invalid command detected. Try again!");
-            } catch (WrongFlagException e) {
-                System.out.println("Refer to user guide!");
-            } catch (PersonNotFoundException e) {
+            } catch (PersonNotFoundException | WrongFlagException e) {
                 System.out.println("Person not found!");
             }
         } while (!(command instanceof ExitCommand));
