@@ -12,9 +12,9 @@ import java.util.Scanner;
 
 public class TextUi {
 
-    private PrintStream out;
-    private Scanner in;
-    private static Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
+    private final PrintStream out;
+    private final Scanner in;
+    private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
     private static final String DIVIDER = "===================================================";
 
