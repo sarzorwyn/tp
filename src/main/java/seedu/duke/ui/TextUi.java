@@ -71,7 +71,7 @@ public class TextUi {
     public String getUserInput() {
         String rawInput = in.nextLine();
         echoInput(rawInput);
-        // logger.info("Processed user input in textui.");
+        logger.info("Processed user input in textui.");
         return rawInput;
     }
 
