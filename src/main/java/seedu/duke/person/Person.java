@@ -11,6 +11,10 @@ public class Person {
     private Boolean isCheckedIn;
 
     public Person(Id id, Name name, Phone phone) {
+        assert id != null : "ID cannot be null";
+        assert phone != null : "Phone cannot be null";
+        assert name != null : "Name cannot be null";
+
         this.id = id;
         this.name = name;
         this.phone = phone;
