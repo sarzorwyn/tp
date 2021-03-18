@@ -12,11 +12,16 @@ import java.util.Scanner;
 
 public class TextUi {
 
-    private PrintStream out;
-    private Scanner in;
-    private static Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
+    private final PrintStream out;
+    private final Scanner in;
+    private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
     private static final String DIVIDER = "===================================================";
+
+    //Input errors messages
+    private static final String INVALID_COMMAND_ERROR = "Invalid command detected. Try again!";
+    private static final String NO_ARGUMENT_ERROR = "No argument passed! Try again!";
+    private static final String WRONG_FLAG_ERROR = "Wrong flags used!";
 
     public TextUi() {
         this(System.in, System.out);
@@ -78,6 +83,18 @@ public class TextUi {
     public String echoInput(String rawInput) {
         out.println("Command Entered: " + rawInput);
         return rawInput;
+    }
+
+    public void printInvalidCommandError() {
+        out.println(INVALID_COMMAND_ERROR);
+    }
+
+    public void printNoArgumentError() {
+        out.println(NO_ARGUMENT_ERROR);
+    }
+
+    public void printWrongFlagError() {
+        out.println(WRONG_FLAG_ERROR);
     }
 
 }
