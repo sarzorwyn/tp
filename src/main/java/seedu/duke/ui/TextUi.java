@@ -1,6 +1,5 @@
 package seedu.duke.ui;
 
-import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
 import java.util.logging.Logger;
@@ -51,9 +50,7 @@ public class TextUi {
     private void printList(List<Person> persons) {
         assert persons instanceof List : "Only can print list";
         for (Person person : persons) {
-            //if (person.getCheckedIn()) {
-                out.println("Name: " + person.getName());
-           // }
+            out.println("Name: " + person.getName());
         }
     }
 

@@ -1,11 +1,19 @@
 package seedu.duke.parser;
 
-import seedu.duke.commands.*;
+
+
+
+import seedu.duke.commands.CheckInCommand;
+import seedu.duke.commands.CheckoutCommand;
+import seedu.duke.commands.Command;
+import seedu.duke.commands.DeleteCommand;
+import seedu.duke.commands.ExitCommand;
+import seedu.duke.commands.FindCommand;
+import seedu.duke.commands.ListCheckedInCommand;
+import seedu.duke.commands.ListCommand;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.WrongFlagException;
-
-import java.util.Locale;
 
 
 public class Parser {
@@ -71,15 +79,15 @@ public class Parser {
     }
 
     private Command parseList() {
-            return new ListCommand();
+        return new ListCommand();
     }
 
-    private Command parseCheckedInList() throws InvalidCommandException {
-            return new ListCheckedInCommand();
+    private Command parseCheckedInList() {
+        return new ListCheckedInCommand();
     }
 
     private Command parseFind(String argument) throws WrongFlagException {
-        String id = null;
+        String id;
         if (argument.startsWith("i/")) {
             id = argument.substring(2);
         } else {
@@ -115,7 +123,7 @@ public class Parser {
             throw new WrongFlagException();
         }
         String id = checkInDetails[1].trim();
-        String name = null;
+        String name;
         if (checkInDetails[0].isBlank()) {     //checks if n/ is provided
             throw new NoArgumentPassedException();
         } else {
