@@ -35,8 +35,11 @@ public class TextUi {
     public void printReaction(CommandOutput commandOutput) {
         String command = commandOutput.command;
         switch (command) {
-        case "list":
+        case "listall":
             printList(commandOutput.persons);
+            break;
+        case "list":
+            printCheckedInList(commandOutput.persons);
             break;
         default:
             printDivider();
@@ -48,8 +51,17 @@ public class TextUi {
     private void printList(List<Person> persons) {
         assert persons instanceof List : "Only can print list";
         for (Person person : persons) {
-            if (person.getCheckedIn()) {
+            //if (person.getCheckedIn()) {
                 out.println("Name: " + person.getName());
+           // }
+        }
+    }
+
+    private void printCheckedInList(List<Person> persons) {
+        assert persons instanceof List : "Only prints list";
+        for (int i = 0; i < persons.size(); ++i) {
+            if (persons.get(i).getCheckedIn()) {
+                out.println(i + ". Name: " + persons.get(i).getName());
             }
         }
     }
