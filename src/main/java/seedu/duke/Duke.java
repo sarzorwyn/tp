@@ -33,13 +33,13 @@ public class Duke {
             try {
                 command = parser.parseCommand(userInput);
             } catch (InvalidCommandException e) {
-                System.out.println("Invalid command detected. Try again!");
+                ui.printInvalidCommandError();
                 continue;
             } catch (NoArgumentPassedException e) {
-                System.out.println("No argument passed! Try again!");
+                ui.printNoArgumentError();
                 continue;
             } catch (WrongFlagException e) {
-                System.out.println("Wrong flags used!");
+                ui.printWrongFlagError();
                 continue;
             }
 

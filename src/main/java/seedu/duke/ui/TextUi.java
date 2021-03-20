@@ -1,6 +1,5 @@
 package seedu.duke.ui;
 
-import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
 import java.util.logging.Logger;
@@ -12,11 +11,16 @@ import java.util.Scanner;
 
 public class TextUi {
 
-    private PrintStream out;
-    private Scanner in;
-    private static Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
+    private final PrintStream out;
+    private final Scanner in;
+    private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
     private static final String DIVIDER = "===================================================";
+
+    //Input errors messages
+    private static final String INVALID_COMMAND_ERROR = "Invalid command detected. Try again!";
+    private static final String NO_ARGUMENT_ERROR = "No argument passed! Try again!";
+    private static final String WRONG_FLAG_ERROR = "Wrong flags used!";
 
     public TextUi() {
         this(System.in, System.out);
@@ -30,8 +34,11 @@ public class TextUi {
     public void printReaction(CommandOutput commandOutput) {
         String command = commandOutput.command;
         switch (command) {
-        case "list":
+        case "listall":
             printList(commandOutput.persons);
+            break;
+        case "list":
+            printCheckedInList(commandOutput.persons);
             break;
         default:
             printDivider();
@@ -43,8 +50,15 @@ public class TextUi {
     private void printList(List<Person> persons) {
         assert persons instanceof List : "Only can print list";
         for (Person person : persons) {
-            if (person.getCheckedIn()) {
-                out.println("Name: " + person.getName());
+            out.println("Name: " + person.getName());
+        }
+    }
+
+    private void printCheckedInList(List<Person> persons) {
+        assert persons instanceof List : "Only prints list";
+        for (int i = 0; i < persons.size(); ++i) {
+            if (persons.get(i).getCheckedIn()) {
+                out.println(i + ". Name: " + persons.get(i).getName());
             }
         }
     }
@@ -78,6 +92,18 @@ public class TextUi {
     public String echoInput(String rawInput) {
         out.println("Command Entered: " + rawInput);
         return rawInput;
+    }
+
+    public void printInvalidCommandError() {
+        out.println(INVALID_COMMAND_ERROR);
+    }
+
+    public void printNoArgumentError() {
+        out.println(NO_ARGUMENT_ERROR);
+    }
+
+    public void printWrongFlagError() {
+        out.println(WRONG_FLAG_ERROR);
     }
 
 }
