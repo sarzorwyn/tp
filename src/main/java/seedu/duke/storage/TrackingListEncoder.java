@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static seedu.duke.storage.StorageFile.CHECKED_IN_ENCODED_MARKER;
-import static seedu.duke.storage.StorageFile.ID_ENCODED_MARKER;
+import static seedu.duke.storage.StorageFile.ID_DELIMITER;
 import static seedu.duke.storage.StorageFile.PHONE_ENCODED_MARKER;
 
 /**
@@ -32,7 +32,7 @@ public class TrackingListEncoder {
     private static String encodePersonToString(Person person) {
 
         String encodedPerson = person.getName() +
-                ID_ENCODED_MARKER +
+                ID_DELIMITER +
                 person.getId() +
                 PHONE_ENCODED_MARKER +
                 person.getPhone() +

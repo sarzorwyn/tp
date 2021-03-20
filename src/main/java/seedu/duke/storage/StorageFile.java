@@ -9,16 +9,25 @@ import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.regex.Pattern;
 
+/**
+ * Manages the storing of tracking list data into a file.
+ */
 public class StorageFile {
 
     public static final String DEFAULT_STORAGE_FILEPATH = "TrackingList";
     public static final String TXT_FILE_FORMAT = ".txt";
 
-    public static final String ID_ENCODED_MARKER = "\\|i";
-    public static final String PHONE_ENCODED_MARKER = "\\|p";
-    public static final String CHECKED_IN_ENCODED_MARKER = "\\|c";
+    public static final String ID_DELIMITER = "i/";
+    public static final String PHONE_ENCODED_MARKER = "p/";
+    public static final String CHECKED_IN_ENCODED_MARKER = "c/";
 
+    public static final Pattern PERSON_ENCODED_FORMAT =
+            Pattern.compile("(?<name>[^/])+"
+                    + ID_DELIMITER +"(?<id>[^/])"
+                    + PHONE_ENCODED_MARKER + "(?<email>[^/]+)"
+                    + CHECKED_IN_ENCODED_MARKER + "(?<checkedIn>[^/])");
 
     public Path path;
 
@@ -51,10 +60,10 @@ public class StorageFile {
 
         try {
             return TrackingListDecoder.decodeTrackingList(Files.readAllLines(path));
+        } catch (FileNotFoundException fnfe) {
+                throw new AssertionError("A file non found scenario should have been handled before this");
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
-        } catch (FileNotFoundException fnfe) {
-            throw new AssertionError("A file non found scenario should have been handled before this");
         }
     }
 
@@ -76,7 +85,7 @@ public class StorageFile {
      * Indicates that there has been an error when converting data or read/write between the application
      * and the storage file.
      */
-    private static class StorageOperationException extends Exception {
+    public static class StorageOperationException extends Exception {
         public StorageOperationException(String message) {
             super(message);
         }
