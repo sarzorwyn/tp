@@ -106,7 +106,7 @@ public class Parser {
             throw new WrongFlagException();
         }
         String id = checkoutDetails[1].trim();
-        String name = "NULL";    //dummy string value since name class cannot accept null.
+        String name = null;
         if (!checkoutDetails[0].isBlank()) {
             name = checkoutDetails[0].trim().substring(2); //starts from index 1 due to inclusion of "/n" flag
         }
