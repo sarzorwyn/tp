@@ -40,6 +40,7 @@ public class TrackingListDecoder {
         if (!matcher.matches()) {
             throw new StorageOperationException("Failed to decode encoded file!");
         }
+
         Person decodedPerson = new Person(
                 new Id(matcher.group("id")),
                 new Name(matcher.group("name")),

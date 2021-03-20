@@ -24,9 +24,9 @@ public class StorageFile {
     public static final String CHECKED_IN_ENCODED_MARKER = "c/";
 
     public static final Pattern PERSON_ENCODED_FORMAT =
-            Pattern.compile("(?<name>[^/])+"
-                    + ID_DELIMITER + "(?<id>[^/])"
-                    + PHONE_ENCODED_MARKER + "(?<email>[^/]+)"
+            Pattern.compile("(?<name>[^/]+)"
+                    + ID_DELIMITER + "(?<id>[^/]+)"
+                    + PHONE_ENCODED_MARKER + "(?<phone>[^/]+)"
                     + CHECKED_IN_ENCODED_MARKER + "(?<checkedIn>[^/])");
 
     public Path path;
