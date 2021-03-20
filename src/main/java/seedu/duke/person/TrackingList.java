@@ -4,6 +4,7 @@ import seedu.duke.exceptions.PersonNotFoundException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -24,6 +25,14 @@ public class TrackingList {
     public TrackingList(Person... persons) {
         final List<Person> initialPersons = Arrays.asList(persons);
         personList.addAll(initialPersons);
+    }
+
+    /**
+     * Constructs a person list with given persons in a collection.
+     * @param persons a collection of persons
+     */
+    public TrackingList(Collection<Person> persons) {
+        personList.addAll(persons);
     }
 
     /**
