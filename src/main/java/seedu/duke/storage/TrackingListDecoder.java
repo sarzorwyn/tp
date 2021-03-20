@@ -49,7 +49,7 @@ public class TrackingListDecoder {
         // Parse the check in status of the file which is stored as int
         try {
             decodedPerson.setCheckedIn(Integer.parseInt(matcher.group("checkedIn")) == 1);
-        } catch(NumberFormatException nfe) {
+        } catch (NumberFormatException nfe) {
             throw new StorageOperationException("Failed to parse check in status in file!");
         }
         return decodedPerson;

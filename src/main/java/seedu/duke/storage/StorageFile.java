@@ -25,21 +25,21 @@ public class StorageFile {
 
     public static final Pattern PERSON_ENCODED_FORMAT =
             Pattern.compile("(?<name>[^/])+"
-                    + ID_DELIMITER +"(?<id>[^/])"
+                    + ID_DELIMITER + "(?<id>[^/])"
                     + PHONE_ENCODED_MARKER + "(?<email>[^/]+)"
                     + CHECKED_IN_ENCODED_MARKER + "(?<checkedIn>[^/])");
 
     public Path path;
 
     /**
-     * Creates Storage file with default path
+     * Creates Storage file with default path.
      */
     public StorageFile() throws InvalidPathException {
         this(DEFAULT_STORAGE_FILEPATH);
     }
 
     /**
-     * Creates Storage file with given file path
+     * Creates Storage file with given file path.
      * @param path The path that will be used for storage
      * @throws InvalidPathException If the path specified is invalid
      */
@@ -61,7 +61,7 @@ public class StorageFile {
         try {
             return TrackingListDecoder.decodeTrackingList(Files.readAllLines(path));
         } catch (FileNotFoundException fnfe) {
-                throw new AssertionError("A file non found scenario should have been handled before this");
+            throw new AssertionError("A file non found scenario should have been handled before this");
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
         }

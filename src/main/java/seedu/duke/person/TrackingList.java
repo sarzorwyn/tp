@@ -28,7 +28,7 @@ public class TrackingList {
     }
 
     /**
-     * Constructs a person list with given persons in a collection
+     * Constructs a person list with given persons in a collection.
      * @param persons a collection of persons
      */
     public TrackingList(Collection<Person> persons) {
