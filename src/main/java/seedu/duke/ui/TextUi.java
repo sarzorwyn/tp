@@ -85,7 +85,6 @@ public class TextUi {
     public String getUserInput() {
         String rawInput = in.nextLine();
         echoInput(rawInput);
-        logger.info("Processed user input in textui.");
         return rawInput;
     }
 
@@ -105,5 +104,10 @@ public class TextUi {
     public void printWrongFlagError() {
         out.println(WRONG_FLAG_ERROR);
     }
+
+    public void notifyErrorToUser(Exception error) {
+        out.println(error.getMessage());
+    }
+
 
 }

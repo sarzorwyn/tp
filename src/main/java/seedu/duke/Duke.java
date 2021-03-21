@@ -60,14 +60,8 @@ public class Duke {
             userInput = ui.getUserInput();
             try {
                 command = parser.parseCommand(userInput);
-            } catch (InvalidCommandException e) {
-                ui.printInvalidCommandError();
-                continue;
-            } catch (NoArgumentPassedException e) {
-                ui.printNoArgumentError();
-                continue;
-            } catch (WrongFlagException e) {
-                ui.printWrongFlagError();
+            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException e) {
+                ui.notifyErrorToUser(e);
                 continue;
             }
 
