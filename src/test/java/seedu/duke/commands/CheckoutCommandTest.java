@@ -6,6 +6,7 @@ import seedu.duke.exceptions.PersonNotFoundException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
 
 public class CheckoutCommandTest {
