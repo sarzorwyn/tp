@@ -8,6 +8,7 @@ import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
+import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.WrongFlagException;
@@ -43,7 +44,7 @@ public class Parser {
                 && !command.equals("exit")
                 && !command.equals("listall")
                 && !command.equals("clear")) {
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
         switch (command) {
         case CheckInCommand.COMMAND:
@@ -61,7 +62,7 @@ public class Parser {
         case ClearCommand.COMMAND:
             return parseClear();
         default:
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
     }
 
