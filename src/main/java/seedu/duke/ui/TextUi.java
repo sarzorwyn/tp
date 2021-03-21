@@ -93,8 +93,9 @@ public class TextUi {
         return rawInput;
     }
 
-    public void notifyErrorToUser(Exception error) {
+    public String notifyErrorToUser(Exception error) {
         out.println(error.getMessage());
+        return error.getMessage();
     }
 
 
