@@ -1,10 +1,8 @@
 package seedu.duke.parser;
 
-
-
-
 import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CheckoutCommand;
+import seedu.duke.commands.ClearCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.DeleteCommand;
 import seedu.duke.commands.ExitCommand;
@@ -14,7 +12,6 @@ import seedu.duke.commands.ListCommand;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.WrongFlagException;
-
 
 public class Parser {
 
@@ -27,7 +24,6 @@ public class Parser {
      * @return String[] This returns an array, containing 2 fields
      */
     public static String[] splitTextIntoTwoFields(String text) {
-
         String[] textArray = text.split(" ", 2);
         textArray[0] = textArray[0].toLowerCase();
         return textArray;
@@ -36,7 +32,6 @@ public class Parser {
     public Command parseCommand(String userInput) throws
             InvalidCommandException, NoArgumentPassedException, WrongFlagException {
         String[] inputArray;
-
         String argument = null;
         assert userInput != null : "User input cannot be null";
         userInput = userInput.trim();
@@ -45,7 +40,10 @@ public class Parser {
         command = inputArray[0];
         if (inputArray.length != 1) {
             argument = inputArray[1].trim();
-        } else if (!command.equals("list") && !command.equals("exit") && !command.equals("listall")) {
+        } else if (!command.equals("list")
+                && !command.equals("exit")
+                && !command.equals("listall")
+                && !command.equals("clear")) {
             throw new InvalidCommandException();
         }
         switch (command) {
@@ -59,23 +57,21 @@ public class Parser {
             return parseList();
         case ListCheckedInCommand.COMMAND:
             return parseCheckedInList();
-        case DeleteCommand.COMMAND:
-            return parseDelete();
         case ExitCommand.COMMAND:
             return parseExit();
+        case ClearCommand.COMMAND:
+            return parseClear();
         default:
             throw new InvalidCommandException();
         }
     }
 
-
-
-    private ExitCommand parseExit() {
-        return new ExitCommand();
+    private Command parseClear() {
+        return new ClearCommand();
     }
 
-    private Command parseDelete() {
-        return new DeleteCommand();
+    private Command parseExit() {
+        return new ExitCommand();
     }
 
     private Command parseList() {
@@ -93,7 +89,6 @@ public class Parser {
         } else {
             throw new WrongFlagException();
         }
-
         return new FindCommand(id);
     }
 
