@@ -4,7 +4,6 @@ import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CheckoutCommand;
 import seedu.duke.commands.ClearCommand;
 import seedu.duke.commands.Command;
-import seedu.duke.commands.DeleteCommand;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCheckedInCommand;
