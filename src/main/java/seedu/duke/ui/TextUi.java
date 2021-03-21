@@ -94,6 +94,7 @@ public class TextUi {
     }
 
     public void notifyErrorToUser(Exception error) {
+        assert error instanceof Exception : "error has to be exception type.";
         out.println(error.getMessage());
     }
 
