@@ -2,7 +2,6 @@ package seedu.duke.ui;
 
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
-import java.util.logging.Logger;
 
 import java.io.InputStream;
 import java.io.PrintStream;
@@ -13,14 +12,7 @@ public class TextUi {
 
     private final PrintStream out;
     private final Scanner in;
-    private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
-
     private static final String DIVIDER = "===================================================";
-
-    //Input errors messages
-    private static final String INVALID_COMMAND_ERROR = "Invalid command detected. Try again!";
-    private static final String NO_ARGUMENT_ERROR = "No argument passed! Try again!";
-    private static final String WRONG_FLAG_ERROR = "Wrong flags used!";
 
     public TextUi() {
         this(System.in, System.out);
