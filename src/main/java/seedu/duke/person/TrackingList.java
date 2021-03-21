@@ -1,5 +1,6 @@
 package seedu.duke.person;
 
+import seedu.duke.common.Messages;
 import seedu.duke.exceptions.PersonNotFoundException;
 
 import java.util.ArrayList;
@@ -96,7 +97,7 @@ public class TrackingList {
             }
         }
         if (matchingPerson == null) {
-            throw new PersonNotFoundException();
+            throw new PersonNotFoundException(Messages.PERSON_NOT_FOUND);
         }
 
         assert matchingPerson.getId().equals(id) : "Result id does not match return id";
@@ -118,7 +119,7 @@ public class TrackingList {
         }
 
         if (matchingPersons.isEmpty()) {
-            throw new PersonNotFoundException();
+            throw new PersonNotFoundException(Messages.PERSON_NOT_FOUND);
         }
         return matchingPersons;
     }
@@ -138,7 +139,7 @@ public class TrackingList {
         }
 
         if (matchingPersons.isEmpty()) {
-            throw new PersonNotFoundException();
+            throw new PersonNotFoundException(Messages.PERSON_NOT_FOUND);
         }
         return matchingPersons;
     }
