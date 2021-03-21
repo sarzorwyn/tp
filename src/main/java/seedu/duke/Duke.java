@@ -34,7 +34,6 @@ public class Duke {
 
     /** Prints Goodbye message then exists. */
     private void exit() {
-        ui.showGoodbyeMessage();
         System.exit(0);
     }
 
