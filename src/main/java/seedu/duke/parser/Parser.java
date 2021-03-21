@@ -87,7 +87,7 @@ public class Parser {
         if (argument.startsWith("i/")) {
             id = argument.substring(2);
         } else {
-            throw new WrongFlagException();
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         }
         return new FindCommand(id);
     }
@@ -98,7 +98,7 @@ public class Parser {
         }
         String[] checkoutDetails = argument.split("i/",2);
         if (checkoutDetails.length != 2) {    //checks if i/ is provided
-            throw new WrongFlagException();
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         }
         String id = checkoutDetails[1].trim();
         String name = null;
@@ -115,7 +115,7 @@ public class Parser {
         assert !argument.isBlank() : "Argument cannot be blank.";
         String[] checkInDetails = argument.split("i/",2);
         if (checkInDetails.length != 2) {       //checks if i/ is provided
-            throw new WrongFlagException();
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         }
         String id = checkInDetails[1].trim();
         String name;
