@@ -94,7 +94,7 @@ public class Parser {
 
     private Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
         if (argument.isBlank()) {
-            throw new NoArgumentPassedException();
+            throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         String[] checkoutDetails = argument.split("i/",2);
         if (checkoutDetails.length != 2) {    //checks if i/ is provided
@@ -110,7 +110,7 @@ public class Parser {
 
     private Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
         if (argument.isBlank()) {
-            throw new NoArgumentPassedException();
+            throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         assert !argument.isBlank() : "Argument cannot be blank.";
         String[] checkInDetails = argument.split("i/",2);
@@ -120,7 +120,7 @@ public class Parser {
         String id = checkInDetails[1].trim();
         String name;
         if (checkInDetails[0].isBlank()) {     //checks if n/ is provided
-            throw new NoArgumentPassedException();
+            throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
             name = checkInDetails[0].trim().substring(2); //starts from index 1 due to inclusion of "/n" flag
         }
