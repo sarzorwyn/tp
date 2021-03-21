@@ -1,6 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.common.Messages;
 import seedu.duke.exceptions.PersonNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,7 +31,7 @@ public class CheckoutCommandTest {
         CheckoutCommand checkout = new CheckoutCommand("230C", "Mary");
         Throwable exception = assertThrows(PersonNotFoundException.class, () ->
                 checkout.execute(SAMPLE_TRACKING_LIST));
-        assertEquals("Person not found!", exception.getMessage());
+        assertEquals(Messages.PERSON_NOT_FOUND, exception.getMessage());
     }
 
 }
