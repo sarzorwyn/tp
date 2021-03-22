@@ -4,6 +4,14 @@
 
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
+### Logic component
+1. Logic uses the `Parser` class the user input obtained from the `TextUi` class.
+2. This results in a specific `Command` object to be returned from the `Parser'.   
+3. Depending on the type of the `Command` object, its corresponding command execution will be called.
+4. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
+5. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as formatting the list to the user.
+
+Given below is the Sequence Diagram for interactions within the `Logic` component for {to be inserted when doing sequence diagram}.
 
 ## Product scope
 ### Target user profile
