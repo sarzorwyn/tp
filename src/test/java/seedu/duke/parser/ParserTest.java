@@ -3,6 +3,7 @@ package seedu.duke.parser;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.duke.commands.CheckInCommand;
+import seedu.duke.commands.CheckoutCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
@@ -16,7 +17,9 @@ import seedu.duke.person.Phone;
 import java.util.Locale;
 
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SamplePersons.JOHN_DIFF_ID;
 import static seedu.duke.testutil.SamplePersons.JOHN_NO_PHONE;
@@ -62,6 +65,13 @@ public class ParserTest {
         Throwable exception = assertThrows(NoArgumentPassedException.class, () ->
                 Parser.parseCheckOut(""));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
+    }
+
+    @Test
+    public void parseCheckOut_testCommand() throws NoArgumentPassedException,
+            WrongFlagException, InvalidCommandException {
+        CheckoutCommand checkoutCommand = (CheckoutCommand) Parser.parseCommand("checkout n/John i/123A");
+        assertEquals("checkout", checkoutCommand.COMMAND);
     }
 
 
