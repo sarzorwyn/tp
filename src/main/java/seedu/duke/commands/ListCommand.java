@@ -9,7 +9,6 @@ public class ListCommand extends Command {
 
     public static final String COMMAND = "listall";
 
-
     @Override
     public CommandOutput execute(TrackingList trackingList) {
         return new CommandOutput(trackingList.listPerson(), COMMAND);
