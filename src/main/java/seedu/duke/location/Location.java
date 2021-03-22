@@ -6,6 +6,11 @@ public class Location {
     private String locationName;
     private int maxCapacity;
 
+    public Location(String locationName, int maxCapacity) {
+        this.locationName = locationName;
+        this.maxCapacity = maxCapacity;
+    }
+
     public String getLocationName() {
         return locationName;
     }
