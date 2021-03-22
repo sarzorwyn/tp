@@ -52,9 +52,7 @@ public class TextUi {
     private void printCheckedInList(List<Person> persons) {
         assert persons instanceof List : "Only prints list";
         for (int i = 0; i < persons.size(); ++i) {
-            if (persons.get(i).getCheckedIn()) {
-                out.println(i + ". Name: " + persons.get(i).getName());
-            }
+            out.println(i + ". Name: " + persons.get(i).getName());
         }
     }
 

@@ -8,6 +8,13 @@ public class ListCheckedInCommand extends Command {
 
     @Override
     public CommandOutput execute(TrackingList trackingList) {
-        return new CommandOutput(trackingList.listPerson(), COMMAND);
+        TrackingList checkedInList = new TrackingList();
+        for (int i = 0; i < trackingList.getSize(); i++) {
+            if (trackingList.getPerson(i).getCheckedIn()) {
+                checkedInList.add(trackingList.getPerson(i));
+            }
+        }
+        return new CommandOutput(checkedInList.listPerson(), COMMAND);
     }
+
 }

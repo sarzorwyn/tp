@@ -15,6 +15,9 @@ public class SamplePersons {
     public static final Person JOHN_NO_PHONE = new PersonBuilder().withId("123A")
             .withName("John").withPhone(null)
             .withCheckedInStatus(true).build();
+    public static final Person JACK_NO_PHONE = new PersonBuilder().withId("375F")
+            .withName("Jack").withPhone(null)
+            .withCheckedInStatus(true).build();
     public static final Person JOHN_DIFF_ID = new PersonBuilder().withId("456B")
             .withName("John").withPhone("12345678")
             .withCheckedInStatus(true).build();

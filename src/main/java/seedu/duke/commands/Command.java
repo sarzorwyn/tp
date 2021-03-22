@@ -14,8 +14,6 @@ public abstract class Command {
     /**
      * Executes the command.
      */
-    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException {
-        return null;
-    }
+    public abstract CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException;
 
 }
