@@ -5,17 +5,25 @@ import seedu.duke.common.Messages;
 import seedu.duke.exceptions.PersonNotFoundException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
 
 public class FindCommandTest {
 
     @Test
-    public void testFind() throws PersonNotFoundException {
+    public void testFindNotCheckedIn() throws PersonNotFoundException {
         FindCommand find = new FindCommand("665B");
-        String foundPersonName = find.execute(SAMPLE_TRACKING_LIST).person.getName().nameString;
-        assertEquals("Alice", foundPersonName);
+        boolean foundPersonCheckedInStatus = find.execute(SAMPLE_TRACKING_LIST).person.getCheckedIn();
+        assertFalse(foundPersonCheckedInStatus);
+    }
+
+    @Test
+    public void testFindCheckedIn() throws PersonNotFoundException {
+        FindCommand find = new FindCommand("123A");
+        boolean foundPersonCheckedInStatus = find.execute(SAMPLE_TRACKING_LIST).person.getCheckedIn();
+        assertTrue(foundPersonCheckedInStatus);
     }
 
     @Test
