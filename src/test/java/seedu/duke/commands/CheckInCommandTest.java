@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SamplePersons.JOHN_DIFF_ID;
-import static seedu.duke.testutil.SamplePersons.JOHN_NO_PHONE;
+import static seedu.duke.testutil.SamplePersons.JACK_NO_PHONE;
 import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
 
 public class CheckInCommandTest {
@@ -20,8 +20,8 @@ public class CheckInCommandTest {
 
     @Test
     public void testCheckInWithNoPhone() {
-        CheckInCommand checkin = new CheckInCommand(JOHN_NO_PHONE.getId().toString(),
-                JOHN_NO_PHONE.getName().toString(), JOHN_NO_PHONE.getPhone().toString());
+        CheckInCommand checkin = new CheckInCommand(JACK_NO_PHONE.getId().toString(),
+                JACK_NO_PHONE.getName().toString(), JACK_NO_PHONE.getPhone().toString());
         checkin.execute(SAMPLE_TRACKING_LIST);
         assertTrue(checkin.getToCheckIn().getCheckedIn());
     }
