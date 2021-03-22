@@ -1,20 +1,17 @@
 package seedu.duke.parser;
 
-
-
-
 import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CheckoutCommand;
+import seedu.duke.commands.ClearCommand;
 import seedu.duke.commands.Command;
-import seedu.duke.commands.DeleteCommand;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
+import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.WrongFlagException;
-
 
 public class Parser {
 
@@ -27,7 +24,6 @@ public class Parser {
      * @return String[] This returns an array, containing 2 fields
      */
     public static String[] splitTextIntoTwoFields(String text) {
-
         String[] textArray = text.split(" ", 2);
         textArray[0] = textArray[0].toLowerCase();
         return textArray;
@@ -36,7 +32,6 @@ public class Parser {
     public Command parseCommand(String userInput) throws
             InvalidCommandException, NoArgumentPassedException, WrongFlagException {
         String[] inputArray;
-
         String argument = null;
         assert userInput != null : "User input cannot be null";
         userInput = userInput.trim();
@@ -45,8 +40,11 @@ public class Parser {
         command = inputArray[0];
         if (inputArray.length != 1) {
             argument = inputArray[1].trim();
-        } else if (!command.equals("list") && !command.equals("exit") && !command.equals("listall")) {
-            throw new InvalidCommandException();
+        } else if (!command.equals("list")
+                && !command.equals("exit")
+                && !command.equals("listall")
+                && !command.equals("clear")) {
+            throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
         switch (command) {
         case CheckInCommand.COMMAND:
@@ -59,23 +57,21 @@ public class Parser {
             return parseList();
         case ListCheckedInCommand.COMMAND:
             return parseCheckedInList();
-        case DeleteCommand.COMMAND:
-            return parseDelete();
         case ExitCommand.COMMAND:
             return parseExit();
+        case ClearCommand.COMMAND:
+            return parseClear();
         default:
-            throw new InvalidCommandException();
+            throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
     }
 
-
-
-    private ExitCommand parseExit() {
-        return new ExitCommand();
+    private Command parseClear() {
+        return new ClearCommand();
     }
 
-    private Command parseDelete() {
-        return new DeleteCommand();
+    private Command parseExit() {
+        return new ExitCommand();
     }
 
     private Command parseList() {
@@ -91,19 +87,18 @@ public class Parser {
         if (argument.startsWith("i/")) {
             id = argument.substring(2);
         } else {
-            throw new WrongFlagException();
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         }
-
         return new FindCommand(id);
     }
 
     private Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
         if (argument.isBlank()) {
-            throw new NoArgumentPassedException();
+            throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         String[] checkoutDetails = argument.split("i/",2);
         if (checkoutDetails.length != 2) {    //checks if i/ is provided
-            throw new WrongFlagException();
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         }
         String id = checkoutDetails[1].trim();
         String name = null;
@@ -115,17 +110,17 @@ public class Parser {
 
     private Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
         if (argument.isBlank()) {
-            throw new NoArgumentPassedException();
+            throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         assert !argument.isBlank() : "Argument cannot be blank.";
         String[] checkInDetails = argument.split("i/",2);
         if (checkInDetails.length != 2) {       //checks if i/ is provided
-            throw new WrongFlagException();
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         }
         String id = checkInDetails[1].trim();
         String name;
         if (checkInDetails[0].isBlank()) {     //checks if n/ is provided
-            throw new NoArgumentPassedException();
+            throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
             name = checkInDetails[0].trim().substring(2); //starts from index 1 due to inclusion of "/n" flag
         }

@@ -12,7 +12,9 @@ public class ClearCommand extends Command {
 
     @Override
     public CommandOutput execute(TrackingList trackingList) {
-        return new CommandOutput(String.format(CLEAR_MESSAGE, trackingList.getSize()), COMMAND);
+        int entriesCleared = trackingList.getSize();
+        trackingList.clear();
+        return new CommandOutput(String.format(CLEAR_MESSAGE, entriesCleared), COMMAND);
     }
 
 }
