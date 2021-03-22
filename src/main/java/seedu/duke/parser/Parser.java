@@ -29,7 +29,7 @@ public class Parser {
         return textArray;
     }
 
-    public Command parseCommand(String userInput) throws
+    public static Command parseCommand(String userInput) throws
             InvalidCommandException, NoArgumentPassedException, WrongFlagException {
         String[] inputArray;
         String argument = null;
@@ -66,23 +66,23 @@ public class Parser {
         }
     }
 
-    private Command parseClear() {
+    private static Command parseClear() {
         return new ClearCommand();
     }
 
-    private Command parseExit() {
+    private static Command parseExit() {
         return new ExitCommand();
     }
 
-    private Command parseList() {
+    private static Command parseList() {
         return new ListCommand();
     }
 
-    private Command parseCheckedInList() {
+    private static Command parseCheckedInList() {
         return new ListCheckedInCommand();
     }
 
-    private Command parseFind(String argument) throws WrongFlagException {
+    private static Command parseFind(String argument) throws WrongFlagException {
         String id;
         if (argument.startsWith("i/")) {
             id = argument.substring(2);
@@ -92,36 +92,48 @@ public class Parser {
         return new FindCommand(id);
     }
 
-    private Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
+    public static Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
+        String [] checkoutDetails;
+        String id;
+        String name = null;
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
-        }
-        String[] checkoutDetails = argument.split("i/",2);
-        if (checkoutDetails.length != 2) {    //checks if i/ is provided
+        } else if (idChecker(argument) == -1) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
-        String id = checkoutDetails[1].trim();
-        String name = null;
-        if (!checkoutDetails[0].isBlank()) {
-            name = checkoutDetails[0].trim().substring(2); //starts from index 1 due to inclusion of "/n" flag
+
+        if (nameChecker(argument) == -1) {
+            checkoutDetails = argument.split("i/",2);
+        } else {
+            checkoutDetails = argument.split("i/|n/",3);
+        }
+
+        if (checkoutDetails[1].isBlank()) {
+            throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
+        } else {
+            id = checkoutDetails[1].trim();
+        }
+        if (checkoutDetails.length == 3) {
+            name = checkoutDetails[1].trim();
+            id = checkoutDetails[2].trim();
         }
         return new CheckoutCommand(id,name);
     }
 
-    private int idChecker(String argument) {
+    public static int idChecker(String argument) {
         return argument.indexOf("i/");
     }
     
-    private int nameChecker(String argument) {
+    private static int nameChecker(String argument) {
         return argument.indexOf("n/");
     }
     
-    private int phoneChecker(String argument) {
+    private static int phoneChecker(String argument) {
         return argument.indexOf("p/");
     }
     
-    private Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
-        String[] checkInDetails = {null, null, null, null};
+    static Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
+        String[] checkInDetails;
                 
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
