@@ -33,19 +33,28 @@ Classes used by multiple components are in the `seedu.Duke.commons` package.
 
 ## Product scope [WIP]
 ### Target user profile
+* User that requires more control over crowd level management in a building.
+* Can type fast
+* Prefers a simple desktop application over the more complicated systems
+* Is reasonably comfortable with CLI apps
+* Requires real time monitoring and tracking capability of people in the building
+* Wants a cheaper alternative to crowd tracking systems
 
 {Describe the target user profile}
 
 ### Value proposition
 
-{Describe the value proposition: what problem does it solve?}
+A fast and versatile software solution that enables mall management to crowd control 
+in the most efficient way possible.
 
 ## User Stories [WIP]
 
-|Version| As a ... | I want to ... | So that I can ...|
+|Priority| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|v1.0|new user|see usage instructions|refer to them when I forget how to use the application|
-|v2.0|user|find a to-do item by name|locate a to-do without having to go through the entire list|
+|*****|mall staff|be able to review the personal particulars of the customer|be aware of who he is|
+|*****|new user|be able to use the program without much training| use the program as soon as possible and easily implement it|
+|****|mall staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
+|****|mall staff|be able to easily key in a unique personal identifier| check in and find a visitor|
 
 ## Non-Functional Requirements [WIP]
 
