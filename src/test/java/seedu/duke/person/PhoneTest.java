@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.duke.person.Phone.isValidPhone;
 import static seedu.duke.testutil.SamplePersons.JOHN;
@@ -37,17 +38,19 @@ class PhoneTest {
     void setPhoneNo() {
         NO_PHONE_JOHN_PHONE.setPhoneNo(CORRECT_PHONE);
         assertEquals(NO_PHONE_JOHN_PHONE.getPhoneNo(), CORRECT_PHONE);
+
+        NO_PHONE_JOHN_PHONE.setPhoneNo(null);
+        assertNull(NO_PHONE_JOHN_PHONE.getPhoneNo());
     }
 
     @Test
     void isAvailable() {
-    }
-
-    @Test
-    void setAvailable() {
+        assertFalse(NO_PHONE_JOHN_PHONE.isAvailable());
+        assertTrue(JOHN_PHONE.isAvailable());
     }
 
     @Test
     void testToString() {
+        assertEquals(JOHN_PHONE.getPhoneNo(), JOHN_PHONE.toString());
     }
 }

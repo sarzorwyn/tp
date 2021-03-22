@@ -30,16 +30,13 @@ public class Phone {
     }
 
     public void setPhoneNo(String phoneNo) {
-        assert isValidPhone(phoneNo) : PHONE_ERROR;
+        assert phoneNo == null || isValidPhone(phoneNo) : PHONE_ERROR;
+        this.isAvailable = phoneNo != null;
         this.phoneNo = phoneNo;
     }
 
     public boolean isAvailable() {
         return isAvailable;
-    }
-
-    public void setAvailable(boolean available) {
-        isAvailable = available;
     }
 
     @Override
