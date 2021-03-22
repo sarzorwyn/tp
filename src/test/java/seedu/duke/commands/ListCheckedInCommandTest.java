@@ -14,7 +14,13 @@ public class ListCheckedInCommandTest {
     public void testListCheckedIn() {
         ListCheckedInCommand listCheckedIn = new ListCheckedInCommand();
         List<Person> checkedInList = listCheckedIn.execute(SAMPLE_TRACKING_LIST).persons;
-        assertEquals(3, checkedInList.size());
+        int checkedInCount = 0;
+        for (Person person : SAMPLE_TRACKING_LIST.listPerson()) {
+            if (person.getCheckedIn()) {
+                checkedInCount++;
+            }
+        }
+        assertEquals(checkedInCount, checkedInList.size());
     }
 
 }

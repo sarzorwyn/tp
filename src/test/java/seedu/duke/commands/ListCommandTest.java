@@ -13,7 +13,7 @@ public class ListCommandTest {
     public void testList() {
         ListCommand listCommand = new ListCommand();
         List<Person> list = listCommand.execute(SAMPLE_TRACKING_LIST).persons;
-        assertEquals(5, list.size());
+        assertEquals(SAMPLE_TRACKING_LIST.getSize(), list.size());
     }
 
 }
