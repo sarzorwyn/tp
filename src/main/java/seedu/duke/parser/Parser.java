@@ -108,23 +108,47 @@ public class Parser {
         return new CheckoutCommand(id,name);
     }
 
+    private int idChecker(String argument) {
+        return argument.indexOf("i/");
+    }
+    
+    private int nameChecker(String argument) {
+        return argument.indexOf("n/");
+    }
+    
+    private int phoneChecker(String argument) {
+        return argument.indexOf("p/");
+    }
+    
     private Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
+        String[] checkInDetails = {null, null, null, null};
+                
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         assert !argument.isBlank() : "Argument cannot be blank.";
-        String[] checkInDetails = argument.split("i/",2);
-        if (checkInDetails.length != 2) {       //checks if i/ is provided
+        if (idChecker(argument) == -1 || nameChecker(argument) == -1) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
-        String id = checkInDetails[1].trim();
+        if (phoneChecker(argument) == -1) {
+            checkInDetails = argument.split("n/|i/",3);
+        } else {
+            checkInDetails = argument.split("n/|i/|p/",4);
+        }
+
+        String id;
         String name;
-        if (checkInDetails[0].isBlank()) {     //checks if n/ is provided
+        String phoneNumber = null;
+        if (checkInDetails[1].isBlank() || checkInDetails[2].isBlank()) {     //checks if n/ and i/ is provided
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
-            name = checkInDetails[0].trim().substring(2); //starts from index 1 due to inclusion of "/n" flag
+            name = checkInDetails[1].trim();
+            id = checkInDetails[2].trim();
         }
-        return new CheckInCommand(id, name, null);
+        if (checkInDetails.length == 4) {
+            phoneNumber = checkInDetails[3].trim();
+        }
+        return new CheckInCommand(id, name, phoneNumber);
     }
 
 }
