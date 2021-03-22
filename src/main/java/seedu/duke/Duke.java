@@ -6,15 +6,16 @@ import seedu.duke.commands.ExitCommand;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.TrackingList;
 import seedu.duke.storage.StorageFile;
-import seedu.duke.storage.StorageFile.StorageOperationException;
 import seedu.duke.ui.TextUi;
 
 
 public class Duke {
+
     private static final String VERSION_NO = "v1.0";
 
     private TextUi ui;
@@ -44,11 +45,10 @@ public class Duke {
         storage = new StorageFile();
         try {
             trackingList = storage.load();
-        } catch (StorageFile.StorageOperationException e) {
+        } catch (StorageOperationException e) {
             // Shut the program down as it can not be recovered
             throw new RuntimeException();
         }
-
         ui.showWelcomeMessage(VERSION_NO);
     }
 
@@ -60,14 +60,8 @@ public class Duke {
             userInput = ui.getUserInput();
             try {
                 command = parser.parseCommand(userInput);
-            } catch (InvalidCommandException e) {
-                ui.printInvalidCommandError();
-                continue;
-            } catch (NoArgumentPassedException e) {
-                ui.printNoArgumentError();
-                continue;
-            } catch (WrongFlagException e) {
-                ui.printWrongFlagError();
+            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException e) {
+                ui.notifyErrorToUser(e);
                 continue;
             }
 
@@ -84,6 +78,6 @@ public class Duke {
             }
 
         } while (!(command instanceof ExitCommand));
-
     }
+
 }

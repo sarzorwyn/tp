@@ -1,5 +1,6 @@
 package seedu.duke.storage;
 
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.TrackingList;
 
 import java.io.FileNotFoundException;
@@ -78,16 +79,6 @@ public class StorageFile {
             Files.write(path, encodedTrackingList);
         } catch (IOException ioe) {
             throw new StorageOperationException("Error writing to file: " + path);
-        }
-    }
-
-    /**
-     * Indicates that there has been an error when converting data or read/write between the application
-     * and the storage file.
-     */
-    public static class StorageOperationException extends Exception {
-        public StorageOperationException(String message) {
-            super(message);
         }
     }
 }

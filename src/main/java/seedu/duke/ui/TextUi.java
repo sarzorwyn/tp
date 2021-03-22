@@ -17,11 +17,6 @@ public class TextUi {
 
     private static final String DIVIDER = "===================================================";
 
-    //Input errors messages
-    private static final String INVALID_COMMAND_ERROR = "Invalid command detected. Try again!";
-    private static final String NO_ARGUMENT_ERROR = "No argument passed! Try again!";
-    private static final String WRONG_FLAG_ERROR = "Wrong flags used!";
-
     public TextUi() {
         this(System.in, System.out);
     }
@@ -57,9 +52,7 @@ public class TextUi {
     private void printCheckedInList(List<Person> persons) {
         assert persons instanceof List : "Only prints list";
         for (int i = 0; i < persons.size(); ++i) {
-            if (persons.get(i).getCheckedIn()) {
-                out.println(i + ". Name: " + persons.get(i).getName());
-            }
+            out.println(i + ". Name: " + persons.get(i).getName());
         }
     }
 
@@ -72,11 +65,6 @@ public class TextUi {
         printDivider();
     }
 
-    public void showGoodbyeMessage() {
-        printDivider();
-        out.println("Exiting Safest Entry Tracker...");
-        printDivider();
-    }
 
     private void printDivider() {
         out.println(DIVIDER);
@@ -85,7 +73,6 @@ public class TextUi {
     public String getUserInput() {
         String rawInput = in.nextLine();
         echoInput(rawInput);
-        // logger.info("Processed user input in textui.");
         return rawInput;
     }
 
@@ -94,16 +81,10 @@ public class TextUi {
         return rawInput;
     }
 
-    public void printInvalidCommandError() {
-        out.println(INVALID_COMMAND_ERROR);
+    public String notifyErrorToUser(Exception error) {
+        out.println(error.getMessage());
+        return error.getMessage();
     }
 
-    public void printNoArgumentError() {
-        out.println(NO_ARGUMENT_ERROR);
-    }
-
-    public void printWrongFlagError() {
-        out.println(WRONG_FLAG_ERROR);
-    }
 
 }
