@@ -11,15 +11,15 @@ import java.util.Scanner;
 
 public class TextUi {
 
-    public static final String PRINT_LISTALL_FORMAT = "|%-15s||%-8s||%-10s||%-8s|";
-    public static final String PRINT_LIST_FORMAT =  "|%-16s||%-12s||%-14s|";
+    public static final String PRINT_LISTALL_FORMAT = "|%-3s||%-15s||%-8s||%-10s||%-10s|";
+    public static final String PRINT_LIST_FORMAT =  "|%-3s||%-16s||%-12s||%-17s|";
 
     private final PrintStream out;
     private final Scanner in;
     private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
-    private static final String DIVIDER = "=".repeat(50);
-    private static final String SINGLE_DIVIDER = "-".repeat(50);
+    private static final String DIVIDER = "=".repeat(57);
+    private static final String SINGLE_DIVIDER = "-".repeat(57);
 
     public TextUi() {
         this(System.in, System.out);
@@ -50,28 +50,28 @@ public class TextUi {
     }
 
     private void printList(List<Person> persons) {
-        assert persons instanceof List : "Only can print list";
-        out.println(String.format(PRINT_LISTALL_FORMAT, "Name", "Id", "Phone", "Checked In"));
+        assert persons != null : "Does not print null";
+        out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
         printDivider();
         for (int i = 0; i < persons.size(); ++i) {
             String name = persons.get(i).getName().getNameString();
             String Id = persons.get(i).getId().getIdString();
             String Phone = (persons.get(i).getPhone().getPhoneNo() != "null") ? "--" : persons.get(i).getPhone().getPhoneNo();
             String Status = (persons.get(i).getCheckedIn()) ? "Yes" : "No";
-            out.println(String.format(PRINT_LISTALL_FORMAT, name, Id, Phone, Status));
+            out.printf((PRINT_LISTALL_FORMAT) + "%n", i, name, Id, Phone, Status);
             printSingleDivider();
         }
     }
 
     private void printCheckedInList(List<Person> persons) {
-        assert persons instanceof List : "Only prints list";
-        out.println(String.format(PRINT_LIST_FORMAT, "Name", "Id", "Phone"));
+        assert persons != null : "Does not print null";
+        out.printf((PRINT_LIST_FORMAT) + "%n", " ", "Name", "Id", "Phone");
         printDivider();
         for (int i = 0; i < persons.size(); ++i) {
             String name = persons.get(i).getName().getNameString();
             String Id = persons.get(i).getId().getIdString();
             String Phone = (persons.get(i).getPhone().getPhoneNo() != "null") ? "--" : persons.get(i).getPhone().getPhoneNo();
-            out.println(String.format(PRINT_LIST_FORMAT, name, Id, Phone));
+            out.printf((PRINT_LIST_FORMAT) + "%n", i, name, Id, Phone);
             printSingleDivider();
         }
     }
