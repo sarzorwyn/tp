@@ -28,8 +28,8 @@ public class CommandOutput {
         this.command = command;
     }
 
-    public CommandOutput(Person person, String messageToUser, String command) {
-        this.messageToUser = messageToUser;
+    public CommandOutput(Person person, String command) {
+        this.messageToUser = null;
         persons = null;
         this.person = person;
         this.command = command;
