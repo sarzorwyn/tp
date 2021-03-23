@@ -37,7 +37,10 @@ The Model component,
 
 * contains a `TrackingList` class to keep track of all the `Person` objects.
 * contains a `Person` class which represents a person who checks in or out.
-* 
+A `Person` object contains:
+* an `Id` object
+* a `Name` object
+* a `Phone` object
 
 ### Storage component
 
