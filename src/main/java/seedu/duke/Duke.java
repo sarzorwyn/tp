@@ -8,6 +8,7 @@ import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
+import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.TrackingList;
 import seedu.duke.storage.StorageFile;
@@ -18,12 +19,17 @@ public class Duke {
 
     private static final String VERSION_NO = "v1.0";
 
+    public static Location location;
+
     private TextUi ui;
     private Parser parser;
     private StorageFile storage;
     private TrackingList trackingList;
 
     public static void main(String[] args) {
+        String locationName = args[0];
+        int maxCapacity = Integer.parseInt(args[1]);
+        location = new Location(locationName, maxCapacity);
         new Duke().run();
     }
 
