@@ -25,7 +25,7 @@ public class StorageFileTest {
 
     @Test
     public void constructor_invalidFilePath_InvalidPathExceptionThrown() {
-        String invalidPath = ":-?;//\\";
+        String invalidPath = ":-?;\0";
         assertThrows(InvalidPathException.class, () -> new StorageFile(invalidPath));
     }
 
