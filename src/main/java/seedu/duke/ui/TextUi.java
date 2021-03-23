@@ -11,11 +11,15 @@ import java.util.Scanner;
 
 public class TextUi {
 
+    public static final String PRINT_LISTALL_FORMAT = "|%-3s||%-15s||%-8s||%-10s||%-10s|";
+    public static final String PRINT_LIST_FORMAT =  "|%-3s||%-16s||%-12s||%-17s|";
+
     private final PrintStream out;
     private final Scanner in;
     private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
-    private static final String DIVIDER = "===================================================";
+    private static final String DIVIDER = "=".repeat(57);
+    private static final String SINGLE_DIVIDER = "-".repeat(57);
 
     public TextUi() {
         this(System.in, System.out);
@@ -35,6 +39,9 @@ public class TextUi {
         case "list":
             printCheckedInList(commandOutput.persons);
             break;
+        case "find":
+            printFindList(commandOutput.persons);
+            break;
         default:
             printDivider();
             out.println(commandOutput.messageToUser);
@@ -43,17 +50,39 @@ public class TextUi {
     }
 
     private void printList(List<Person> persons) {
-        assert persons instanceof List : "Only can print list";
-        for (Person person : persons) {
-            out.println("Name: " + person.getName());
+        assert persons != null : "Does not print null";
+        out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
+        printDivider();
+        for (int i = 0; i < persons.size(); ++i) {
+            Person personSelected = persons.get(i);
+            String name = personSelected.getName().getNameString();
+            String idString = personSelected.getId().getIdString();
+            String phoneString = (personSelected.getPhone().getPhoneNo() != "null")
+                    ? "--" : personSelected.getPhone().getPhoneNo();
+            String statusString = (personSelected.getCheckedIn()) ? "Yes" : "No";
+            out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, name, idString, phoneString, statusString);
+            printSingleDivider();
         }
     }
 
     private void printCheckedInList(List<Person> persons) {
-        assert persons instanceof List : "Only prints list";
+        assert persons != null : "Does not print null";
+        out.printf((PRINT_LIST_FORMAT) + "%n", " ", "Name", "Id", "Phone");
+        printDivider();
         for (int i = 0; i < persons.size(); ++i) {
-            out.println(i + ". Name: " + persons.get(i).getName());
+            Person peronSelected = persons.get(i);
+            String name = peronSelected.getName().getNameString();
+            String idString = peronSelected.getId().getIdString();
+            String phoneString = (peronSelected.getPhone().getPhoneNo() != "null")
+                    ? "--" : peronSelected.getPhone().getPhoneNo();
+            out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, name, idString, phoneString);
+            printSingleDivider();
         }
+    }
+
+    private void printFindList(List<Person> persons) {
+        assert persons instanceof List : "Only prints list";
+        out.println("Work in progress");
     }
 
     public void showWelcomeMessage(String version) {
@@ -65,9 +94,12 @@ public class TextUi {
         printDivider();
     }
 
-
     private void printDivider() {
         out.println(DIVIDER);
+    }
+
+    private void printSingleDivider() {
+        out.println(SINGLE_DIVIDER);
     }
 
     public String getUserInput() {

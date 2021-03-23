@@ -7,11 +7,11 @@ import seedu.duke.person.TrackingList;
 
 /**
  * Finds the person in tracking list using id.
+ * Returns if the person has checked-in or not.
  */
 public class FindCommand extends Command {
 
     public static final String COMMAND = "find";
-    public static final String FIND_MESSAGE = "%s found.";
     private final Id idKeyword;
 
     public FindCommand(String idKeyword) {
@@ -21,7 +21,7 @@ public class FindCommand extends Command {
     @Override
     public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException {
         Person person = trackingList.findExactPerson(idKeyword);
-        return new CommandOutput(person, String.format(FIND_MESSAGE,person.getName()), COMMAND);
+        return new CommandOutput(person, COMMAND);
     }
 
 }
