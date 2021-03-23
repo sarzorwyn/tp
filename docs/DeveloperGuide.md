@@ -25,6 +25,14 @@ The `ui` component,
 * Pass raw user commands into `Parser` class under **Logic Component**.
 * After the **Logic Component** has executed the function, it will then return `CommandOutput` object
 which contains the outcome of the execution, fail or succeed. 
+
+### Storage component
+**API** : [`Storage.java`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage)
+The `Storage` component,
+* saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
+* reads a `.txt` file of valid encoding and populates a `TrackingList`.
+* defaults to `TrackingList.txt` but can be saved at a custom specified location.
+* loads on program startup automatically saves after each command.
   
 ### Common classes
 
