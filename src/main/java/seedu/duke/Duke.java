@@ -48,8 +48,8 @@ public class Duke {
     private void start() {
         ui = new TextUi();
         parser = new Parser();
-        storage = new StorageFile();
         try {
+            storage = new StorageFile();
             trackingList = storage.load();
         } catch (StorageOperationException e) {
             // Shut the program down as it can not be recovered

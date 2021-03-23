@@ -19,6 +19,7 @@ public class StorageFile {
 
     public static final String DEFAULT_STORAGE_FILEPATH = "TrackingList";
     public static final String TXT_FILE_FORMAT = ".txt";
+    public static final String DIRECTORY_HOME = System.getProperty("user.dir");
 
     public static final String ID_DELIMITER = "i/";
     public static final String PHONE_ENCODED_MARKER = "p/";
@@ -45,7 +46,7 @@ public class StorageFile {
      * @throws InvalidPathException If the path specified is invalid
      */
     public StorageFile(String path) throws InvalidPathException {
-        this.path = Paths.get(path + TXT_FILE_FORMAT);
+        this.path = Paths.get(DIRECTORY_HOME,path + TXT_FILE_FORMAT);
     }
 
     /**
