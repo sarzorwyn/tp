@@ -43,6 +43,12 @@ A `Person` object contains:
 * a `Phone` object
 
 ### Storage component
+**API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
+The `Storage` component,
+* saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
+* reads a `.txt` file of valid encoding and populates a `TrackingList`.
+* defaults to `TrackingList.txt` but can be saved at a custom specified location.
+* loads on program startup automatically saves after each command.
 
 ### Common classes
 
