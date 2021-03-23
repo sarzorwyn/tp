@@ -109,7 +109,7 @@ public class TrackingListTest {
     }
 
     @Test
-    public void findExactPerson_idInTrackingList_success() throws PersonNotFoundException {
+    public void findExactPerson_idInTrackingList_success() throws Exception {
         trackingList.add(ALICE);
         trackingList.add(BOB);
 
@@ -122,6 +122,38 @@ public class TrackingListTest {
         trackingList.add(BOB);
 
         assertThrows(PersonNotFoundException.class, () -> trackingList.findExactPerson(MARY.getId()));
+    }
+
+    @Test
+    public void findExactPerson_phoneInTrackingList_success() throws Exception {
+        trackingList.add(ALICE);
+        trackingList.add(BOB);
+
+        assertTrue(trackingList.findPerson(BOB.getPhone()).contains(BOB));
+    }
+
+    @Test
+    public void findPerson_phoneNotInTrackingList_exceptionThrown() {
+        trackingList.add(ALICE);
+        trackingList.add(BOB);
+
+        assertThrows(PersonNotFoundException.class, () -> trackingList.findPerson(MARY.getPhone()));
+    }
+
+    @Test
+    public void findExactPerson_nameInTrackingList_success() throws Exception {
+        trackingList.add(ALICE);
+        trackingList.add(BOB);
+
+        assertTrue(trackingList.findPerson(BOB.getName()).contains(BOB));
+    }
+
+    @Test
+    public void findPerson_nameNotInTrackingList_exceptionThrown() {
+        trackingList.add(ALICE);
+        trackingList.add(BOB);
+
+        assertThrows(PersonNotFoundException.class, () -> trackingList.findPerson(MARY.getName()));
     }
 
     @AfterEach
