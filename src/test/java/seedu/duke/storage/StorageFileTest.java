@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 import static seedu.duke.storage.StorageFile.TXT_FILE_FORMAT;
-import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
+import static seedu.duke.testutil.SampleTrackingList.SAMPLE_STORAGE_TRACKING_LIST;
 
 public class StorageFileTest {
     private static final String TEST_DATA_PATH = "src/test/data/StorageFileTest/";
@@ -49,7 +49,7 @@ public class StorageFileTest {
         StorageFile storage = new StorageFile(TEST_DATA_PATH + VALID_DATA_FILE);
         TrackingList actualTrackingList = storage.load();
 
-        TrackingList expectedTrackingList = SAMPLE_TRACKING_LIST;
+        TrackingList expectedTrackingList = SAMPLE_STORAGE_TRACKING_LIST;
         assertEquals(actualTrackingList.listPerson(), expectedTrackingList.listPerson());
     }
 
@@ -65,10 +65,7 @@ public class StorageFileTest {
     @Test
     public void testSave() throws Exception {
         StorageFile storage = new StorageFile(TEST_DATA_PATH + NEW_FILE);
-        // Loads to create the file first, expected to be empty but contents will not affect test
-        storage.load();
-
-        TrackingList savedTrackingList = SAMPLE_TRACKING_LIST;
+        TrackingList savedTrackingList = SAMPLE_STORAGE_TRACKING_LIST;
         storage.save(savedTrackingList);
 
         Path savedFilePath = Paths.get(TEST_DATA_PATH + NEW_FILE + TXT_FILE_FORMAT);
