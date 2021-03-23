@@ -60,7 +60,7 @@ public class TextUi {
             String phoneString = (personSelected.getPhone().getPhoneNo() != "null")
                     ? "--" : personSelected.getPhone().getPhoneNo();
             String statusString = (personSelected.getCheckedIn()) ? "Yes" : "No";
-            out.printf((PRINT_LISTALL_FORMAT) + "%n", i, name, idString, phoneString, statusString);
+            out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, name, idString, phoneString, statusString);
             printSingleDivider();
         }
     }
@@ -75,7 +75,7 @@ public class TextUi {
             String idString = peronSelected.getId().getIdString();
             String phoneString = (peronSelected.getPhone().getPhoneNo() != "null")
                     ? "--" : peronSelected.getPhone().getPhoneNo();
-            out.printf((PRINT_LIST_FORMAT) + "%n", i, name, idString, phoneString);
+            out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, name, idString, phoneString);
             printSingleDivider();
         }
     }
