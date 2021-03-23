@@ -15,7 +15,7 @@ public class EditMaxCommandTest {
     @Test
     public void testEditMax() {
         int currentMaxCapacity = THEME_PARK.getMaxCapacity();
-        EditMaxCommand editMax = new EditMaxCommand(1000, THEME_PARK);
+        EditMaxCommand editMax = new EditMaxCommand("1000", THEME_PARK);
         editMax.execute(SAMPLE_TRACKING_LIST);
         int newMaxCapacity = THEME_PARK.getMaxCapacity();
         assertNotEquals(currentMaxCapacity, newMaxCapacity);

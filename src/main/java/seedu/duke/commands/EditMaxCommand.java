@@ -14,8 +14,8 @@ public class EditMaxCommand extends Command {
     private final int newMaxCapacity;
     private final Location location;
 
-    public EditMaxCommand(int newMaxCapacity, Location location) {
-        this.newMaxCapacity = newMaxCapacity;
+    public EditMaxCommand(String newMaxCapacity, Location location) {
+        this.newMaxCapacity = Integer.parseInt(newMaxCapacity);
         this.location = location;
     }
 
