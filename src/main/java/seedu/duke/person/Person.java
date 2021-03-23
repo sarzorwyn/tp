@@ -34,24 +34,12 @@ public class Person {
         return id;
     }
 
-    public void setId(Id id) {
-        this.id = id;
-    }
-
     public Name getName() {
         return name;
     }
 
-    public void setName(Name name) {
-        this.name = name;
-    }
-
     public Phone getPhone() {
         return phone;
-    }
-
-    public void setPhone(Phone phone) {
-        this.phone = phone;
     }
 
     public Boolean getCheckedIn() {
