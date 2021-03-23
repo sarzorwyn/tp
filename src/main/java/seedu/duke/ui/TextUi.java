@@ -54,11 +54,13 @@ public class TextUi {
         out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
         printDivider();
         for (int i = 0; i < persons.size(); ++i) {
-            String name = persons.get(i).getName().getNameString();
-            String Id = persons.get(i).getId().getIdString();
-            String Phone = (persons.get(i).getPhone().getPhoneNo() != "null") ? "--" : persons.get(i).getPhone().getPhoneNo();
-            String Status = (persons.get(i).getCheckedIn()) ? "Yes" : "No";
-            out.printf((PRINT_LISTALL_FORMAT) + "%n", i, name, Id, Phone, Status);
+            Person personSelected = persons.get(i);
+            String name = personSelected.getName().getNameString();
+            String idString = personSelected.getId().getIdString();
+            String phoneString = (personSelected.getPhone().getPhoneNo() != "null")
+                    ? "--" : personSelected.getPhone().getPhoneNo();
+            String statusString = (personSelected.getCheckedIn()) ? "Yes" : "No";
+            out.printf((PRINT_LISTALL_FORMAT) + "%n", i, name, idString, phoneString, statusString);
             printSingleDivider();
         }
     }
@@ -68,10 +70,12 @@ public class TextUi {
         out.printf((PRINT_LIST_FORMAT) + "%n", " ", "Name", "Id", "Phone");
         printDivider();
         for (int i = 0; i < persons.size(); ++i) {
-            String name = persons.get(i).getName().getNameString();
-            String Id = persons.get(i).getId().getIdString();
-            String Phone = (persons.get(i).getPhone().getPhoneNo() != "null") ? "--" : persons.get(i).getPhone().getPhoneNo();
-            out.printf((PRINT_LIST_FORMAT) + "%n", i, name, Id, Phone);
+            Person peronSelected = persons.get(i);
+            String name = peronSelected.getName().getNameString();
+            String idString = peronSelected.getId().getIdString();
+            String phoneString = (peronSelected.getPhone().getPhoneNo() != "null")
+                    ? "--" : peronSelected.getPhone().getPhoneNo();
+            out.printf((PRINT_LIST_FORMAT) + "%n", i, name, idString, phoneString);
             printSingleDivider();
         }
     }
@@ -90,12 +94,13 @@ public class TextUi {
         printDivider();
     }
 
-
     private void printDivider() {
         out.println(DIVIDER);
     }
 
-    private void printSingleDivider() {out.println(SINGLE_DIVIDER); }
+    private void printSingleDivider() {
+        out.println(SINGLE_DIVIDER);
+    }
 
     public String getUserInput() {
         String rawInput = in.nextLine();
