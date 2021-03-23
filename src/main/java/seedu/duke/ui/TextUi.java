@@ -30,13 +30,24 @@ public class TextUi {
         this.out = out;
     }
 
+    /**
+     * Does not return any object.
+     * Output text to UI based on the type of commandOutput object passed in.
+     * listall command and list command prints out a list of persons object.
+     * find command prints out a person object.
+     *
+     * @param commandOutput command object containing data queried by user
+     *                      and feedback to user.
+     */
     public void printReaction(CommandOutput commandOutput) {
         String command = commandOutput.command;
         switch (command) {
         case "listall":
+            assert commandOutput.persons != null : "Expect NoPersonFound Exception,";
             printList(commandOutput.persons);
             break;
         case "list":
+            assert commandOutput.persons != null : "Expect NoPersonFound Exception.";
             printCheckedInList(commandOutput.persons);
             break;
         case "find":
@@ -49,6 +60,12 @@ public class TextUi {
         }
     }
 
+    /**
+     * Prints out a list of person objects with respective attributes such as
+     * Name, Id, Phone and Checked In status.
+     *
+     * @param persons person object encapsulated in CommandOutput object.
+     */
     private void printList(List<Person> persons) {
         assert persons != null : "Does not print null";
         out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
@@ -65,6 +82,12 @@ public class TextUi {
         }
     }
 
+    /**
+     * Prints out a list of person objects with respective attributes such as
+     * Name, Id and Phone.
+     *
+     * @param persons person object encapsulated in CommandOutput object.
+     */
     private void printCheckedInList(List<Person> persons) {
         assert persons != null : "Does not print null";
         out.printf((PRINT_LIST_FORMAT) + "%n", " ", "Name", "Id", "Phone");
@@ -102,20 +125,35 @@ public class TextUi {
         out.println(SINGLE_DIVIDER);
     }
 
+    /**
+     * Takes in user input from Scanner Object.
+     *
+     * @return String type of user input.
+     */
     public String getUserInput() {
         String rawInput = in.nextLine();
         echoInput(rawInput);
         return rawInput;
     }
 
+    /**
+     * Allow users to verify input or commands.
+     *
+     * @param rawInput Input from user.
+     * @return Input from user.
+     */
     public String echoInput(String rawInput) {
         out.println("Command Entered: " + rawInput);
         return rawInput;
     }
 
-    public String notifyErrorToUser(Exception error) {
+    /**
+     * Takes in exception and print error message on UI.
+     *
+     * @param error Exception thrown from respective command.
+     */
+    public void notifyErrorToUser(Exception error) {
         out.println(error.getMessage());
-        return error.getMessage();
     }
 
 
