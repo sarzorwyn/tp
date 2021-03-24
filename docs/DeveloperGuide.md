@@ -37,6 +37,7 @@ The Model component,
 
 * contains a `TrackingList` class to keep track of all the `Person` objects.
 * contains a `Person` class which represents a person who checks in or out.
+
 A `Person` object contains:
 * an `Id` object
 * a `Name` object
@@ -44,6 +45,7 @@ A `Person` object contains:
 
 ### Storage component
 **API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
+
 The `Storage` component,
 * saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
 * reads a `.txt` file of valid encoding and populates a `TrackingList`.
