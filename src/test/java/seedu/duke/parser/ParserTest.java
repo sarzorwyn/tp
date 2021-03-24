@@ -63,30 +63,40 @@ public class ParserTest {
     }
 
     @Test
-    public void parseCheckIn_missingFlags() {
+    public void parseCheckIn_Exceptions() {
         Throwable exception = assertThrows(WrongFlagException.class, () ->
                 Parser.parseCheckIn("n/Jon 123"));
         assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
+
+        exception = assertThrows(NoArgumentPassedException.class, () ->
+                Parser.parseCheckIn(""));
+        assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
     }
 
     @Test
     public void parseCheckIn_testCommand() throws NoArgumentPassedException,
             WrongFlagException, InvalidCommandException {
-        CheckInCommand checkInCommand = (CheckInCommand) Parser.parseCommand("checkin n/John i/123A");
+        CheckInCommand checkInCommand = (CheckInCommand) Parser.parseCommand("checkin n/ John i/ 123A");
+        assertEquals("checkin", checkInCommand.COMMAND);
+
+        checkInCommand = (CheckInCommand) Parser.parseCommand("checkin n/John i/123A p/12345678");
         assertEquals("checkin", checkInCommand.COMMAND);
     }
 
     @Test
-    public void parseCheckOut_missingFlags() {
+    public void parseCheckOut_Exceptions() {
         Throwable exception = assertThrows(NoArgumentPassedException.class, () ->
                 Parser.parseCheckOut(""));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
+
     }
 
     @Test
     public void parseCheckOut_testCommand() throws NoArgumentPassedException,
             WrongFlagException, InvalidCommandException {
         CheckoutCommand checkoutCommand = (CheckoutCommand) Parser.parseCommand("checkout n/John i/123A");
+        assertEquals("checkout", checkoutCommand.COMMAND);
+        checkoutCommand = (CheckoutCommand) Parser.parseCommand("checkout i/123A");
         assertEquals("checkout", checkoutCommand.COMMAND);
     }
 
