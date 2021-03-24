@@ -8,12 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.duke.testutil.SamplePersons.ALICE;
+import static seedu.duke.testutil.SamplePersons.BOB;
 import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
 
 public class FindCommandTest {
 
     @Test
     public void testFindNotCheckedIn() throws PersonNotFoundException {
+        ALICE.setCheckedIn(false);
         FindCommand find = new FindCommand("665B");
         boolean foundPersonCheckedInStatus = find.execute(SAMPLE_TRACKING_LIST).person.getCheckedIn();
         assertFalse(foundPersonCheckedInStatus);
@@ -21,7 +24,8 @@ public class FindCommandTest {
 
     @Test
     public void testFindCheckedIn() throws PersonNotFoundException {
-        FindCommand find = new FindCommand("123A");
+        BOB.setCheckedIn(true);
+        FindCommand find = new FindCommand("126C");
         boolean foundPersonCheckedInStatus = find.execute(SAMPLE_TRACKING_LIST).person.getCheckedIn();
         assertTrue(foundPersonCheckedInStatus);
     }

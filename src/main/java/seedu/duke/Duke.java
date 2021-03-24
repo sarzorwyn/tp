@@ -19,22 +19,31 @@ public class Duke {
 
     private static final String VERSION_NO = "v1.0";
 
-    public static Location location;
-
     private TextUi ui;
     private Parser parser;
     private StorageFile storage;
     private TrackingList trackingList;
+    private Location location;
+    private static Duke theOnlyDuke = null;
+
+    private Duke() {
+    }
+
+    public static Duke getInstance() {
+        if (theOnlyDuke == null) {
+            theOnlyDuke = new Duke();
+        }
+        return theOnlyDuke;
+    }
 
     public static void main(String[] args) {
         String locationName = args[0];
         int maxCapacity = Integer.parseInt(args[1]);
-        location = new Location(locationName, maxCapacity);
-        new Duke().run();
+        getInstance().run(locationName, maxCapacity);
     }
 
-    public void run() {
-        start();
+    public void run(String locationName, int maxCapacity) {
+        start(locationName, maxCapacity);
         runUntilExit();
         exit();
     }
@@ -45,7 +54,8 @@ public class Duke {
     }
 
     /** Main entry-point for the java.duke.Duke application. */
-    private void start() {
+    private void start(String locationName, int maxCapacity) {
+        location = new Location(locationName, maxCapacity);
         ui = new TextUi();
         parser = new Parser();
         try {
@@ -84,6 +94,10 @@ public class Duke {
             }
 
         } while (!(command instanceof ExitCommand));
+    }
+
+    public Location getLocation() {
+        return location;
     }
 
 }
