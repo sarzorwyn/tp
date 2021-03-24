@@ -5,9 +5,10 @@
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
 
-### UI component
+
 
 ### Logic component
+
 1. Logic uses the `Parser` class the user input obtained from the `TextUi` class.
 2. This results in a specific `Command` object to be returned from the `Parser'.   
 3. Depending on the type of the `Command` object, its corresponding command execution will be called.
@@ -15,6 +16,8 @@
 5. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as formatting the list to the user.
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for {to be inserted when doing sequence diagram}.
+
+### UI component
 
 The UI consists of `TextUi` class. It acts as a middleware between users' input 
 and `Parser` class under **Logic Component**. 
@@ -25,7 +28,28 @@ The `ui` component,
 * Pass raw user commands into `Parser` class under **Logic Component**.
 * After the **Logic Component** has executed the function, it will then return `CommandOutput` object
 which contains the outcome of the execution, fail or succeed. 
-  
+
+### Model component
+
+**API** : [`seedu.duke.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/person) package
+
+The Model component,
+
+* contains a `TrackingList` class to keep track of all the `Person` objects.
+* contains a `Person` class which represents a person who checks in or out.
+A `Person` object contains:
+* an `Id` object
+* a `Name` object
+* a `Phone` object
+
+### Storage component
+**API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
+The `Storage` component,
+* saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
+* reads a `.txt` file of valid encoding and populates a `TrackingList`.
+* defaults to `TrackingList.txt` but can be saved at a custom specified location.
+* loads on program startup automatically saves after each command.
+
 ### Common classes
 
 Classes used by multiple components are in the `seedu.Duke.commons` package. 
