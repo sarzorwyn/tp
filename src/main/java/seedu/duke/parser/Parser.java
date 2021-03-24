@@ -82,7 +82,7 @@ public class Parser {
         return new ListCheckedInCommand();
     }
 
-    private static Command parseFind(String argument) throws WrongFlagException {
+    static Command parseFind(String argument) throws WrongFlagException {
         String id;
         if (argument.startsWith("i/")) {
             id = argument.substring(2);
