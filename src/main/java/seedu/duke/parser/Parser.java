@@ -23,13 +23,13 @@ public class Parser {
      * @param text This is the user input. It is a string
      * @return String[] This returns an array, containing 2 fields
      */
-    public static String[] splitTextIntoTwoFields(String text) {
+    public String[] splitTextIntoTwoFields(String text) {
         String[] textArray = text.split(" ", 2);
         textArray[0] = textArray[0].toLowerCase();
         return textArray;
     }
 
-    public static Command parseCommand(String userInput) throws
+    public Command parseCommand(String userInput) throws
             InvalidCommandException, NoArgumentPassedException, WrongFlagException {
         String[] inputArray;
         String argument = null;
@@ -66,23 +66,23 @@ public class Parser {
         }
     }
 
-    private static Command parseClear() {
+    private Command parseClear() {
         return new ClearCommand();
     }
 
-    private static Command parseExit() {
+    private Command parseExit() {
         return new ExitCommand();
     }
 
-    private static Command parseList() {
+    private Command parseList() {
         return new ListCommand();
     }
 
-    private static Command parseCheckedInList() {
+    private Command parseCheckedInList() {
         return new ListCheckedInCommand();
     }
 
-    static Command parseFind(String argument) throws WrongFlagException {
+    Command parseFind(String argument) throws WrongFlagException {
         String id;
         if (argument.startsWith("i/")) {
             id = argument.substring(2);
@@ -92,7 +92,7 @@ public class Parser {
         return new FindCommand(id);
     }
 
-    public static Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
+    public Command parseCheckOut(String argument) throws NoArgumentPassedException, WrongFlagException {
         String [] checkoutDetails;
         String id;
         String name = null;
@@ -120,19 +120,19 @@ public class Parser {
         return new CheckoutCommand(id,name);
     }
 
-    public static int idChecker(String argument) {
+    public int idChecker(String argument) {
         return argument.indexOf("i/");
     }
     
-    private static int nameChecker(String argument) {
+    private int nameChecker(String argument) {
         return argument.indexOf("n/");
     }
     
-    private static int phoneChecker(String argument) {
+    private int phoneChecker(String argument) {
         return argument.indexOf("p/");
     }
     
-    static Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
+    Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
         String[] checkInDetails;
                 
         if (argument.isBlank()) {
