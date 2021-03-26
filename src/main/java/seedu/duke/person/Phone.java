@@ -7,7 +7,7 @@ import java.io.Serializable;
  * If a person does not have a phone, isAvailable will be false.
  */
 public class Phone implements Serializable {
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 4L;
     public String phoneNo;
     public boolean isAvailable;
     public static final String PHONE_REGEX = "\\d{8}";
