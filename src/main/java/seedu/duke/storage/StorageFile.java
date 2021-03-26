@@ -65,7 +65,7 @@ public class StorageFile {
         } catch (FileNotFoundException fnfe) {
             throw new AssertionError("A file non found scenario should have been handled before this");
         } catch (IOException ioe) {
-            throw new StorageOperationException("Error writing to file: " + path);
+            throw new StorageOperationException("Error loading from file: " + path);
         }
     }
 

@@ -1,11 +1,11 @@
 package seedu.duke.storage;
 
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.Person;
 import seedu.duke.person.PersonLog;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -40,35 +40,44 @@ public class LogFile {
         this.personLog = new File(this.path.toString());
     }
 
-    public void savePerson(Person person) throws FileNotFoundException, IOException {
-        FileOutputStream fileOut = new FileOutputStream(personLog);
-        ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+    public void savePerson(Person person, boolean append) throws StorageOperationException {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(personLog, append);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 
-        objectOut.writeObject(person);
+            objectOut.writeObject(person);
 
-        fileOut.close();
-        objectOut.close();
-    }
-
-    public void saveAllPersons(ArrayList<Person> persons) throws IOException {
-        for (Person person : persons) {
-            this.savePerson(person);
+            fileOut.close();
+            objectOut.close();
+        } catch (IOException e) {
+            throw new StorageOperationException("Error writing to file: " + path);
         }
     }
 
-    public void loadAllPersons() throws FileNotFoundException, IOException, ClassNotFoundException {
-        FileInputStream fileIn = new FileInputStream(personLog);
-        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+    public void saveAllPersons(ArrayList<Person> persons) throws StorageOperationException {
+        for (Person person : persons) {
+            this.savePerson(person, false);
+        }
+    }
 
-        Object inputObject;
-        PersonLog personLog = PersonLog.getInstance();
+    public void loadAllPersons() throws StorageOperationException {
+        try {
+            FileInputStream fileIn = new FileInputStream(personLog);
+            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
+            Object inputObject;
+            PersonLog personLog = PersonLog.getInstance();
 
-        while (objectIn.available() != 0) {
-            inputObject = objectIn.readObject();
-            if (inputObject instanceof Person) {
-                personLog.addPerson((Person) inputObject);
+            while (objectIn.available() != 0) {
+                inputObject = objectIn.readObject();
+                if (inputObject instanceof Person) {
+                    personLog.addPerson((Person) inputObject);
+                }
             }
+        } catch (IOException e) {
+            throw new StorageOperationException("Error loading from file: " + path);
+        } catch (ClassNotFoundException e) {
+            throw new StorageOperationException("Corrupted file: " + path);
         }
     }
 }

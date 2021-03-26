@@ -10,6 +10,7 @@ import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
+import seedu.duke.person.PersonLog;
 import seedu.duke.person.TrackingList;
 import seedu.duke.storage.StorageFile;
 import seedu.duke.ui.TextUi;
@@ -24,6 +25,7 @@ public class Duke {
     private StorageFile storage;
     private TrackingList trackingList;
     private Location location;
+    private PersonLog personLog;
     private static Duke theOnlyDuke = null;
 
     private Duke() {
@@ -58,9 +60,11 @@ public class Duke {
         location = new Location(locationName, maxCapacity);
         ui = new TextUi();
         parser = new Parser();
+        personLog = PersonLog.getInstance();
         try {
             storage = new StorageFile();
             trackingList = storage.load();
+            personLog.loadAllPersons();
         } catch (StorageOperationException e) {
             // Shut the program down as it can not be recovered
             throw new RuntimeException();
