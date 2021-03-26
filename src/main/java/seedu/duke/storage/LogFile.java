@@ -14,8 +14,8 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
-public class PersonLog {
-    private static final String DEFAULT_STORAGE_FILEPATH = "PersonLog";
+public class LogFile {
+    private static final String DEFAULT_STORAGE_FILEPATH = "LogFile";
     private static final String TXT_FILE_FORMAT = ".txt";
     private static final String DIRECTORY_HOME = System.getProperty("user.dir");
 
@@ -23,18 +23,18 @@ public class PersonLog {
     private final File personLog;
 
     /**
-     * Creates PersonLog file with default path.
+     * Creates LogFile file with default path.
      */
-    public PersonLog() throws InvalidPathException {
+    public LogFile() throws InvalidPathException {
         this(DEFAULT_STORAGE_FILEPATH);
     }
 
     /**
-     * Creates PersonLog file with given file path.
+     * Creates LogFile file with given file path.
      * @param path The path that will be used for storage
      * @throws InvalidPathException If the path specified is invalid
      */
-    public PersonLog(String path) throws InvalidPathException {
+    public LogFile(String path) throws InvalidPathException {
         this.path = Paths.get(DIRECTORY_HOME,path + TXT_FILE_FORMAT);
         this.personLog = new File(this.path.toString());
     }

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 import static seedu.duke.testutil.SamplePersons.JOHN;
 
-class PersonLogTest {
-    PersonLog logfile = new PersonLog();
+class LogFileTest {
+    LogFile logfile = new LogFile();
 
     @Test
     void savePerson() {
