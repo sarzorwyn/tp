@@ -9,7 +9,7 @@ import seedu.duke.person.TrackingList;
 public class EditMaxCommand extends Command {
 
     public static final String COMMAND = "editmax";
-    public static final String EDIT_MAX_MESSAGE = "Max capacity: %d";
+    public static final String EDIT_MAX_MESSAGE = "New max capacity: %d";
 
     private final int newMaxCapacity;
     private final Location location;
