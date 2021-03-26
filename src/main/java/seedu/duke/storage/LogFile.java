@@ -1,6 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.duke.person.Person;
+import seedu.duke.person.PersonLog;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -55,19 +56,19 @@ public class LogFile {
         }
     }
 
-    public ArrayList<Person> loadAllPersons() throws FileNotFoundException, IOException, ClassNotFoundException {
+    public void loadAllPersons() throws FileNotFoundException, IOException, ClassNotFoundException {
         FileInputStream fileIn = new FileInputStream(personLog);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
-        ArrayList<Person> persons = new ArrayList<>();
         Object inputObject;
+        PersonLog personLog = PersonLog.getInstance();
+
 
         while (objectIn.available() != 0) {
             inputObject = objectIn.readObject();
             if (inputObject instanceof Person) {
-                persons.add((Person) inputObject);
+                personLog.addPerson((Person) inputObject);
             }
         }
-        return persons;
     }
 }
