@@ -82,23 +82,22 @@ Example Input: `checkin n/John i/123A p/91231112`
 
 Example Output:
 ```
-=====================================================================
+=========================================================
 John has been successfully checked in!
 Current capacity: 50
 Maximum capacity: 500
-=====================================================================
+=========================================================
 ```
 However, expect the following output when the maximum capacity is reached.
 ```
-=====================================================================
-Unable to check in! Maximum capacity of 500 has been reached.
-=====================================================================
+=========================================================
+Unable to check in! Maximum capacity of 500 reached.
+=========================================================
 ```
 
 ### Listing all persons: listall
 
-Shows a list of all persons currently in the venue with the total number of people currently in the venue. 
-Also shows the number of people left to reach the maximum capacity for the venue.
+Shows a list of all persons who have checked-in and checked out.
 
 Format: `listall`
 
@@ -106,20 +105,20 @@ Example Input: `listall`
 
 Example Output:
 ```
-=====================================================================
-|   ||Name           ||Id      ||Phone     ||Checked In|
+=========================================================
+|   ||Name           ||Id      ||Phone     ||Checked In |
 ---------------------------------------------------------
-|1  ||John           ||123A    ||91231112  ||Yes       |
+|1  ||John           ||123A    ||91231112  ||Yes        |
 ---------------------------------------------------------
-|2  ||Jack           ||234B    ||--        ||No        |
+|2  ||Jack           ||234B    ||--        ||No         |
 ---------------------------------------------------------
-=====================================================================
+=========================================================
 ```
 
 ### Listing checked-in persons only: `list`
 
-Shows a list of all persons with their details currently checked-in in the venue. It also shows the number of people 
-left to reach the maximum capacity for that venue.
+Shows a list of all persons with their details currently checked-in. It also shows the number of people 
+remaining to reach the maximum capacity for that venue.
 
 Format: `list`
 
@@ -127,13 +126,13 @@ Example Input: `list`
 
 Example Output:
 ```
-=====================================================================
-|   ||Name           ||Id      ||Phone     ||Checked In|
+=========================================================
+|   ||Name           ||Id      ||Phone                  |
 ---------------------------------------------------------
-|1  ||John           ||123A    ||91231112  ||Yes       |
+|1  ||John           ||123A    ||91231112               |
 ---------------------------------------------------------
 Number of people left for max capacity: 999
-=====================================================================
+=========================================================
 ```
 
 ### Finding a person by ID number: `find`
@@ -146,12 +145,12 @@ Example input: `find i/123A`
 
 Example Output:
 ```
-=====================================================================
-|   ||Name           ||Id      ||Phone     ||Checked In|
 =========================================================
-|1  ||John           ||123A    ||91231112  ||Yes       |
+|   ||Name           ||Id      ||Phone     ||Checked In |
+=========================================================
+|1  ||John           ||123A    ||91231112  ||Yes        |
 ---------------------------------------------------------
-=====================================================================
+=========================================================
 ```
 
 ### Checkout a person: `checkout`
@@ -164,11 +163,11 @@ Example input: `checkout n/John i/123A`
 
 Example output:
 ```
-=====================================================================
+=========================================================
 John has been successfully checked out!
 Current capacity: 50 
 Maximum capacity: 100
-=====================================================================
+=========================================================
 ```
 
 ### Clearing all entries: `clear`
@@ -181,9 +180,9 @@ Example Input: `clear`
 
 Example Output:
 ```
-=====================================================================
+=========================================================
 Cleared 1350 entries.
-=====================================================================
+=========================================================
 ```
 
 ### Edit venue capacity: `editmax`
@@ -197,9 +196,9 @@ Example Input:
 
 Example Output:
 ```
-=====================================================================
+=========================================================
 New max capacity: 100
-=====================================================================
+=========================================================
 ```
 
 ### Exiting CYC: `exit`
@@ -212,9 +211,9 @@ Example Input: `exit`
 
 Example Output: 
 ```
-=====================================================================
+=========================================================
 Exiting Control Your Crowd...
-=====================================================================
+=========================================================
 ```
 
 ### Visitor Log (WIP) - Register once only
