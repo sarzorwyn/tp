@@ -52,9 +52,10 @@ more. If you can type fast, CYC can enable you to manage the crowd faster than t
 > * Commands are in `lower_case`.
 > * Items in square brackets `[ ]` are optional.
 > * Words in `UPPER_CASE` are the parameters to be supplied by user.
-    * E.g. in `checkin n/NAME i/LAST_4_CHARS_OF_ID`, `NAME` is a parameter that has to be supplied by user. So e.g. `checkin n/John i/123A`.
+>    * E.g. in `checkin n/NAME i/LAST_4_CHARS_OF_ID`, `NAME` is a parameter that has to be supplied by user. So e.g. `checkin n/John i/123A`.
 > * Additional parameters for commands that do not take in parameters (such as `help`, `list`, `exit`, `clear`) will be ignored.
->   e.g. if the user types `help 123`, it will be interpreted as `help`.  
+>   * e.g. if the user types `help 123`, it will be interpreted as `help`.
+> * `i/LAST_4_CHARS_OF_ID` is unique. (i.e. no two persons will have the same ID)
 
 ### Viewing help: `help`
 
