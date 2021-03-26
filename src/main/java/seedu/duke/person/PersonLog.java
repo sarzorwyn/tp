@@ -46,11 +46,16 @@ public class PersonLog {
 
     // Actually not needed I just put here first.
     public void saveAllPersons() throws StorageOperationException {
-        ArrayList<Person> persons = (ArrayList<Person>) personLog.values();
+        ArrayList<Person> persons = new ArrayList<>(personLog.values());
         logFile.saveAllPersons(persons);
     }
 
     public void loadAllPersons() throws StorageOperationException {
         logFile.loadAllPersons();
+    }
+
+    public void clearAllPersons() throws StorageOperationException {
+        personLog.clear();
+        logFile.clear();
     }
 }
