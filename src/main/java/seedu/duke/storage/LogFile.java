@@ -61,6 +61,10 @@ public class LogFile {
     }
 
     public void loadAllPersons() throws StorageOperationException {
+        if (!personLog.exists()) {
+            return;
+        }
+
         try {
             FileInputStream fileIn = new FileInputStream(personLog);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);

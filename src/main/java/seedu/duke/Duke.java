@@ -67,7 +67,8 @@ public class Duke {
             personLog.loadAllPersons();
         } catch (StorageOperationException e) {
             // Shut the program down as it can not be recovered
-            throw new RuntimeException();
+            // throw new RuntimeException();
+            ui.notifyErrorToUser(e);
         }
         ui.showWelcomeMessage(VERSION_NO);
     }
@@ -91,10 +92,12 @@ public class Duke {
                 storage.save(trackingList);
                 ui.printReaction(commandOutput);
             } catch (PersonNotFoundException pnfe) {
-                System.out.println("Person not found!");
+                //System.out.println("Person not found!");
+                ui.notifyErrorToUser(pnfe);
                 continue;
             } catch (StorageOperationException soe) {
-                System.out.println(soe.getMessage());
+                //System.out.println(soe.getMessage());
+                ui.notifyErrorToUser(soe);
             }
 
         } while (!(command instanceof ExitCommand));

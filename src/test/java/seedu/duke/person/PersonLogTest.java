@@ -34,6 +34,11 @@ class PersonLogTest {
         testIsFound();
         testFindPerson();
         testModifyPerson();
+        try {
+            personLog.clearAllPersons();
+        } catch (StorageOperationException e) {
+            e.printStackTrace();
+        }
     }
 
     void testIsFound() {
