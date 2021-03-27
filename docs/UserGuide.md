@@ -18,11 +18,12 @@ more. If you can type fast, CYC can enable you to manage the crowd faster than t
     * [Checkout a person](UserGuide.md#checkout-a-person-checkout): `checkout`
     * [Clearing all entries](UserGuide.md#clearing-all-entries-clear): `clear`
     * [Edit venue capacity](UserGuide.md#edit-venue-capacity-editmax): `editmax`
+    * [Move Storage](UserGuide.md#move-storage-movestorage): `movestorage`
     * [Exiting the program](UserGuide.md#exiting-cyc-exit): `exit`
-    * [Visitor Log (WIP) - Register once only](UserGuide.md#visitor-log-wip---register-once-only)
-    * [Saving data (WIP)](UserGuide.md#saving-data-wip)
-    * [Changing save location (WIP)](UserGuide.md#changing-save-location-wip)
-    * [History](UserGuide.md#history-wip)
+    * [Visitor Log](UserGuide.md#visitor-log)
+    * [Saving data](UserGuide.md#saving-data)
+    * [Changing save location](UserGuide.md#changing-save-location)
+    * [History](UserGuide.md#history)
 * [FAQ](UserGuide.md#faq)
 * [Command summary](UserGuide.md#command-summary)
 
@@ -82,9 +83,7 @@ Clear all visitor entries: clear
 Edit venue capacity: editmax NEW_CAPACITY
 Exit Control Your Crowd: exit
 Refer to the user guide: https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html
-
 =========================================================
-
 ```
 
 ### Check-in a person: `checkin`
@@ -227,6 +226,9 @@ New max capacity: 100
 =========================================================
 ```
 
+### Move storage: `movestorage`
+COMING SOON
+
 ### Change storage location: `movestorage`
 
 Move the location of the storage file to the specified destination.
@@ -258,7 +260,7 @@ Exiting Control Your Crowd...
 =========================================================
 ```
 
-### Storing the details of previous persons
+### Visitor Log
 
 CYC automatically saves the details of previous persons.
 
@@ -272,7 +274,9 @@ The program defaults to saving to `/TrackingList.txt` in the same folder as the 
 
 ### Changing save location
 To change the save location, you can use the command `movestorage`
-### History (WIP)
+
+### History
+COMING SOON
 
 ## FAQ
 
