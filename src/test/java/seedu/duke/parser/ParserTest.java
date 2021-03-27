@@ -42,7 +42,7 @@ public class ParserTest {
 
 
     @Test
-    public void parseCheckIn_noName() throws WrongFlagException, NoArgumentPassedException {
+    public void parseCheckIn_noName() {
         Throwable exception = assertThrows(NoArgumentPassedException.class, () ->
                 parser.parseCheckIn(""));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
