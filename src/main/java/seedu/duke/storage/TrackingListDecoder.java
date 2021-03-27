@@ -41,10 +41,18 @@ public class TrackingListDecoder {
             throw new StorageOperationException("Failed to decode encoded file!");
         }
 
+        // Check if Phone is stored as string null
+        Phone phone;
+        if (matcher.group("phone").equals("null")) {
+            phone = new Phone(null);
+        } else {
+            phone = new Phone(matcher.group("phone"));
+        }
+
         Person decodedPerson = new Person(
                 new Id(matcher.group("id")),
                 new Name(matcher.group("name")),
-                new Phone(matcher.group("phone"))
+                phone
         );
 
         // Parse the check in status of the file which is stored as int

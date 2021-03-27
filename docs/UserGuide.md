@@ -258,7 +258,13 @@ Exiting Control Your Crowd...
 =========================================================
 ```
 
-### Visitor Log (WIP) - Register once only
+### Storing the details of previous persons
+
+CYC automatically saves the details of previous persons.
+
+A person who have checked in before, does not have to input all his details again when using the `checkin` command.
+
+The person details are stored in `/LogFile.txt` in the same folder as the program.
 
 ### Saving data
 The program automatically saves data to a `.txt` file after each command you input.
@@ -272,7 +278,10 @@ To change the save location, you can use the command `movestorage`
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: {your answer here}
+**A**: Please follow these steps:
+1. Follow the [Quick Start](UserGuide.md#quick-start) guide and install CYC on the computer
+2. Transfer the `/LogFile.txt` and `/TrackingList.txt` to the target computer's main CYC folder.
+3. Start CYC and it will automatically load the data.
 
 ## Command Summary
 
