@@ -8,6 +8,7 @@ import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
+import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
@@ -61,9 +62,15 @@ public class Parser {
             return parseExit();
         case ClearCommand.COMMAND:
             return parseClear();
+        case MoveStorageCommand.COMMAND:
+            return parseMoveStorage(argument);
         default:
             throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
+    }
+
+    private Command parseMoveStorage(String argument) {
+        return new MoveStorageCommand(argument);
     }
 
     private Command parseClear() {
