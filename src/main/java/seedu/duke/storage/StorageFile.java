@@ -50,10 +50,22 @@ public class StorageFile {
     }
 
     /**
+     * Creates the save file directory if it does not exist
+     */
+    public void createDataDirectory() throws StorageOperationException {
+        try {
+            Files.createDirectories(path.getParent());
+        } catch(Exception IOException) {
+            throw new StorageOperationException("Error writing into file: " + path);
+        }
+    }
+
+    /**
      * Loads {@code TrackingList} data from this storage file and returns it.
      * @throws StorageOperationException if there were errors reading the file
      */
     public TrackingList load() throws StorageOperationException {
+        createDataDirectory();
 
         // If the file does not exist, return a empty Tracking List
         if (!Files.exists(path) || !Files.isRegularFile(path)) {

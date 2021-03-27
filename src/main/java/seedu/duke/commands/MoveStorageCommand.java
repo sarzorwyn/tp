@@ -23,6 +23,8 @@ public class MoveStorageCommand extends Command {
         assert trackingList.listPerson().equals(savedTrackingList.listPerson())
                 : "Saved file is desynced from actual trackingList!";
 
+        // Create the directory by using load
+        newStorage.load();
         newStorage.save(trackingList);
         Duke.getInstance().setStorage(newStorage);
 
