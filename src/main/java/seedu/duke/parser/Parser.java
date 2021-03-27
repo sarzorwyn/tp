@@ -185,33 +185,39 @@ public class Parser {
             InvalidNameFormatException, InvalidPhoneNumberException,
             StorageOperationException, PersonNotFoundException {
 
-        String[] checkInDetails;
+
                 
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         assert !argument.isBlank() : "Argument cannot be blank.";
-        if (idFlagChecker(argument) == -1 || nameFlagChecker(argument) == -1) {
+        if (idFlagChecker(argument) == -1) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
 
         String id;
-        String name;
+        String name = "null";
         String phoneNumber = null;
-        if (phoneFlagChecker(argument) == -1) {
-            checkInDetails = argument.split("n/|i/",3);
+        String[] checkInDetails;
+
+        if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) == -1) {
+            checkInDetails = argument.split("i/",2);
+        } else if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) != -1) {
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         } else {
-            checkInDetails = argument.split("n/|i/|p/",4);
+            checkInDetails = argument.split("i/|n/|p/",4);
         }
 
-        if (checkInDetails[1].isBlank() || checkInDetails[2].isBlank()) {     //checks if n/ and i/ is provided
+        if (checkInDetails[1].isBlank()) {     //checks if n/ and i/ is provided
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
-            name = checkInDetails[1].trim();
-            id = checkInDetails[2].trim();
+            id = checkInDetails[1].trim();
         }
         if (checkInDetails.length == 4) {
+            name = checkInDetails[2].trim();
             phoneNumber = checkInDetails[3].trim();
+        } else if (checkInDetails.length == 3) {
+            name = checkInDetails[2].trim();
         }
 
         if (!Id.isValidId(id)) {
