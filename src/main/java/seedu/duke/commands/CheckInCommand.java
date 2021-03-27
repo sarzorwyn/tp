@@ -26,11 +26,21 @@ public class CheckInCommand extends Command {
         Id id = new Id(idString);
         if (personLog.isFound(id)) {
             toCheckin = personLog.findPerson(id);
+            checkSameName(nameString);
         } else if (nameString == null) {
             throw new PersonNotFoundException(Messages.PERSON_NOT_FOUND);
         } else {
             toCheckin = new Person(id, new Name(nameString), new Phone(phoneString));
             personLog.addPerson(toCheckin);
+        }
+    }
+
+    private void checkSameName(String nameString) throws PersonNotFoundException {
+        if (nameString == null) {
+            return;
+        }
+        if (!toCheckin.getName().toString().equals(nameString)) {
+            throw new PersonNotFoundException(Messages.DIFF_NAME_SAME_ID);
         }
     }
 

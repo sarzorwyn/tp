@@ -5,6 +5,7 @@ public class Messages {
     private static final String USER_GUIDE_LINK = "https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html";
 
     public static final String PERSON_NOT_FOUND = "Person not found!";
+    public static final String DIFF_NAME_SAME_ID = "Person with the same Id already exist!";
     public static final String INVALID_COMMAND = "Invalid command detected! Try again!";
     public static final String NO_ARGUMENT = "No argument passed! Try again!";
     public static final String WRONG_FLAG = "Wrong flags used!";
