@@ -191,7 +191,7 @@ public class Parser {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         assert !argument.isBlank() : "Argument cannot be blank.";
-        if (idFlagChecker(argument) == -1) {
+        if (idFlagChecker(argument) == -1 || !argument.startsWith("i/")) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
 

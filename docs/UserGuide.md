@@ -87,11 +87,14 @@ Refer to the user guide: https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.h
 
 Check in and add a person to the CYC. Also notifies users on current venue capacity, as well as the maximum.
 
-Format: `checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]`
+Format: `checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]`
 
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* `NAME` is optional. If the user has checked in before, entering the `LAST_4_CHARS_OF_ID` is sufficient to retrieve the user's `NAME` and `PHONE_NUMBER` 
+  from previous check in. **If the user has not checked in before, `NAME` must be entered.**
 * `NAME` must only contain english alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
 * `PHONE_NUMBER` is optional. `PHONE_NUMBER` must consist of 8 integers, as per local (Singapore) phone number format.
+
 
 Example Input: `checkin n/John i/123A p/91231112`
 
