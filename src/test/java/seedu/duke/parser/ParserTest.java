@@ -56,9 +56,9 @@ public class ParserTest {
 
     @Test
     public void parseCheckIn_Exceptions() {
-        Throwable exception = assertThrows(WrongFlagException.class, () ->
-                parser.parseCheckIn("n/Jon 123"));
-        assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
+        Throwable exception = assertThrows(InvalidIdException.class, () ->
+                parser.parseCheckIn("i/Jon 123"));
+        assertEquals(exception.getMessage(), Messages.ID_ERROR);
 
         exception = assertThrows(NoArgumentPassedException.class, () ->
                 parser.parseCheckIn(""));
@@ -73,11 +73,11 @@ public class ParserTest {
             StorageOperationException, InvalidIntegerException {
 
         CheckInCommand checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin n/ John i/ 123A");
+                "checkin i/ 123A n/ jon");
         assertEquals("checkin", checkInCommand.COMMAND);
 
         checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin n/John i/123A p/12345678");
+                "checkin i/123A n/jon p/12345678");
         assertEquals("checkin", checkInCommand.COMMAND);
     }
 
@@ -118,7 +118,7 @@ public class ParserTest {
             InvalidPhoneNumberException, InvalidNameFormatException,
             StorageOperationException, InvalidIntegerException {
 
-        parser.parseCommand("checkin n/Jon i/123A");
+        parser.parseCommand("checkin i/123A n/Jon");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");
         assertEquals("find", findCommand.COMMAND);
     }
