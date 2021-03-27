@@ -299,6 +299,7 @@ Find person by ID | `find i/LAST_4_CHARS_OF_ID` | `find i/123A`
 Checkout a person | `checkout [n/NAME] i/LAST_4_CHARS_OF_ID` | `checkout n/John i/123A`
 Clear all entries | `clear` | `clear`
 Edit venue capacity | `editmax NEW_CAPACITY` | `editmax 100`
+Move storage | `movestorage PATH` | `movestorage data/storage`
 Exit | `exit` | `exit`
 
 
