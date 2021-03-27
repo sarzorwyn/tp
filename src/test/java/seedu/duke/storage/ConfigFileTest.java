@@ -1,6 +1,5 @@
 package seedu.duke.storage;
 
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -16,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ConfigFileTest {
     private static ConfigFile configFile;
     private static String testPath = "src/test/data/ConfigFileTest/settings.properties";
-    private static String originalPath = "src/test/data/ConfigFileTest/revert.properties";
+    private static String originalPath = "src/test/data/ConfigFileTest/revert.txt";
 
     @BeforeAll
     public static void configFileTest() {
