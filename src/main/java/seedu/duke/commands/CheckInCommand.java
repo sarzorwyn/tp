@@ -22,7 +22,7 @@ public class CheckInCommand extends Command {
     public static final String CHECKIN_MESSAGE = "%s has been successfully checked-in!";
     private Person toCheckin;
     private final PersonLog personLog = PersonLog.getInstance();
-    private final HistoryFile historyFile;
+    private HistoryFile historyFile;
 
     public CheckInCommand(String idString,
                           String nameString,
@@ -56,6 +56,7 @@ public class CheckInCommand extends Command {
     @Override
     public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException {
         toCheckin.setCheckedIn(true);
+        historyFile = new HistoryFile();
         if (!trackingList.contains(toCheckin)) {
             trackingList.add(toCheckin);
             historyFile.saveToHistory(toCheckin, " checked in at ");
