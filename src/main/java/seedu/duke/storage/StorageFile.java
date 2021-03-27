@@ -36,7 +36,7 @@ public class StorageFile {
     /**
      * Creates Storage file with default path.
      */
-    public StorageFile() throws InvalidPathException {
+    public StorageFile() throws StorageOperationException {
         this(DEFAULT_STORAGE_FILEPATH);
     }
 
@@ -45,11 +45,15 @@ public class StorageFile {
      * @param path The path that will be used for storage
      * @throws InvalidPathException If the path specified is invalid
      */
-    public StorageFile(String path) throws InvalidPathException {
+    public StorageFile(String path) throws StorageOperationException {
         if (path == null) {
             path = DEFAULT_STORAGE_FILEPATH;
         }
-        this.path = Paths.get(DIRECTORY_HOME,path + TXT_FILE_FORMAT);
+        try {
+            this.path = Paths.get(DIRECTORY_HOME, path + TXT_FILE_FORMAT);
+        } catch (InvalidPathException ipe) {
+            throw new StorageOperationException("Invalid path: " + path);
+        }
     }
 
     /**

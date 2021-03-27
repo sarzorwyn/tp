@@ -18,17 +18,15 @@ public class MoveStorageCommand extends Command {
     public CommandOutput execute(TrackingList trackingList) throws StorageOperationException {
         Duke duke = Duke.getInstance();
         StorageFile newStorage = new StorageFile(newPath);
-        StorageFile oldStorage =  duke.getStorage();
-        TrackingList savedTrackingList = oldStorage.load();
-
-        assert trackingList.listPerson().equals(savedTrackingList.listPerson())
-                : "Saved file is desynced from actual trackingList!";
 
         // Create the directory by using load
         newStorage.load();
         newStorage.save(trackingList);
         duke.setStorage(newStorage);
-        duke.getConfigFile().setStorageFilePath(newPath);
+
+        if (duke.getConfigFile() != null) {
+            duke.getConfigFile().setStorageFilePath(newPath);
+        }
 
         return new CommandOutput(String.format(MOVE_MESSAGE, newPath), COMMAND);
     }
