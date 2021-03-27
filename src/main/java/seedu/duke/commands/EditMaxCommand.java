@@ -1,5 +1,6 @@
 package seedu.duke.commands;
 
+import seedu.duke.Duke;
 import seedu.duke.location.Location;
 import seedu.duke.person.TrackingList;
 
@@ -9,14 +10,14 @@ import seedu.duke.person.TrackingList;
 public class EditMaxCommand extends Command {
 
     public static final String COMMAND = "editmax";
-    public static final String EDIT_MAX_MESSAGE = "Max capacity: %d";
+    public static final String EDIT_MAX_MESSAGE = "New max capacity: %d";
 
     private final int newMaxCapacity;
     private final Location location;
 
-    public EditMaxCommand(String newMaxCapacity, Location location) {
+    public EditMaxCommand(String newMaxCapacity) {
         this.newMaxCapacity = Integer.parseInt(newMaxCapacity);
-        this.location = location;
+        location = Duke.getInstance().getLocation();
     }
 
     @Override

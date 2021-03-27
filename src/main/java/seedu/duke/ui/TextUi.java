@@ -92,7 +92,7 @@ public class TextUi {
             Person peronSelected = persons.get(i);
             String name = peronSelected.getName().getNameString();
             String idString = peronSelected.getId().getIdString();
-            String phoneString = (!peronSelected.getPhone().getPhoneNo().equals("null"))
+            String phoneString = (peronSelected.getPhone().isAvailable())
                     ? "--" : peronSelected.getPhone().getPhoneNo();
             out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, name, idString, phoneString);
             printSingleDivider();
@@ -105,7 +105,7 @@ public class TextUi {
         printDivider();
         String name = person.getName().getNameString();
         String idString = person.getId().getIdString();
-        String phoneString = (!person.getPhone().getPhoneNo().equals("null"))
+        String phoneString = (person.getPhone().isAvailable())
                 ? "--" : person.getPhone().getPhoneNo();
         String statusString = (person.getCheckedIn()) ? "Yes" : "No";
         out.printf((PRINT_LISTALL_FORMAT) + "%n", 1, name, idString, phoneString, statusString);
@@ -118,7 +118,7 @@ public class TextUi {
             Person personSelected = persons.get(i);
             String name = personSelected.getName().getNameString();
             String idString = personSelected.getId().getIdString();
-            String phoneString = (!personSelected.getPhone().getPhoneNo().equals("null"))
+            String phoneString = (personSelected.getPhone().isAvailable())
                     ? "--" : personSelected.getPhone().getPhoneNo();
             String statusString = (personSelected.getCheckedIn()) ? "Yes" : "No";
             out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, name, idString, phoneString, statusString);

@@ -1,8 +1,11 @@
 package seedu.duke.commands;
 
+import seedu.duke.exceptions.PersonNotFoundException;
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.Id;
 import seedu.duke.person.Name;
 import seedu.duke.person.Person;
+import seedu.duke.person.PersonLog;
 import seedu.duke.person.Phone;
 import seedu.duke.person.TrackingList;
 
@@ -14,34 +17,24 @@ public class CheckInCommand extends Command {
     public static final String COMMAND = "checkin";
     public static final String CHECKIN_MESSAGE = "%s has been successfully checked-in!";
     private final Person toCheckin;
+    private final PersonLog personLog = PersonLog.getInstance();
 
-    // For v2.0
-    //    /**
-    //     * Checkin using raw values (first time).
-    //     * If already checkin, update the location list.
-    //     */
-    //    public CheckinCommand(String id,
-    //                          String name,
-    //                          String phone,
-    //                          Location location) {
-    //        if (trackingList.findPerson(id)) {
-    //            toCheckin = trackinglist.findPerson(id);
-    //            toCheckin.addLocation(location);
-    //        }
-    //        toCheckin = new Person(
-    //                new Id(id),
-    //                new Name(name),
-    //                new Phone(phone),
-    //                new Locations(visitedPlaces));
-    //  }
-
+    /** To check-in a person who is not found in the Person Log. */
     public CheckInCommand(String id,
                           String name,
-                          String phone) {
+                          String phone) throws StorageOperationException {
         toCheckin = new Person(
                 new Id(id),
                 new Name(name),
                 new Phone(phone));
+        if (!personLog.isFound(toCheckin.getId())) {
+            personLog.addPerson(toCheckin);
+        }
+    }
+
+    /** To check-in a person who is already in the Person Log. */
+    public CheckInCommand(String id) {
+        toCheckin = personLog.findPerson(new Id(id));
     }
 
     public Person getToCheckIn() {
@@ -51,7 +44,9 @@ public class CheckInCommand extends Command {
     @Override
     public CommandOutput execute(TrackingList trackingList) {
         toCheckin.setCheckedIn(true);
-        trackingList.add(toCheckin);
+        if (!trackingList.contains(toCheckin)) {
+            trackingList.add(toCheckin);
+        }
         return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin.getName()), COMMAND);
     }
 

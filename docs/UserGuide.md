@@ -1,4 +1,4 @@
-#User Guide for Control Your Crowd (CYC)
+# User Guide for Control Your Crowd (CYC)
 
 ## Introduction
 
@@ -10,91 +10,134 @@ more. If you can type fast, CYC can enable you to manage the crowd faster than t
 
 * [Quick Start](UserGuide.md#quick-start)
 * [Features](UserGuide.md#features)
-    * [Viewing help](): `help`
-    * [Check-in a person](): `checkin`
-    * [Listing all persons](): `listall`
-    * [Listing checked-in persons only](): `list`
-    * [Finding a person by ID](): `find`
-    * [Checkout a person](): `checkout`
-    * [Clearing all entries](): `clear`
-    * [Edit venue capacity](): `editmax`
-    * [Exiting the program](): `exit`
-    * [Visitor Log (WIP) - Register once only]()
-    * [Saving data (WIP)]()
-    * [Changing save location (WIP)]()
-    * [History]()
+    * [Viewing help](UserGuide.md#viewing-help-help): `help`
+    * [Check-in a person](UserGuide.md#check-in-a-person-checkin): `checkin`
+    * [Listing all persons](UserGuide.md#listing-all-persons-listall): `listall`
+    * [Listing checked-in persons only](UserGuide.md#listing-checked-in-persons-only-list): `list`
+    * [Finding a person by ID](UserGuide.md#finding-a-person-by-id-number-find): `find`
+    * [Checkout a person](UserGuide.md#checkout-a-person-checkout): `checkout`
+    * [Clearing all entries](UserGuide.md#clearing-all-entries-clear): `clear`
+    * [Edit venue capacity](UserGuide.md#edit-venue-capacity-editmax): `editmax`
+    * [Exiting the program](UserGuide.md#exiting-cyc-exit): `exit`
+    * [Visitor Log (WIP) - Register once only](UserGuide.md#visitor-log-wip---register-once-only)
+    * [Saving data (WIP)](UserGuide.md#saving-data-wip)
+    * [Changing save location (WIP)](UserGuide.md#changing-save-location-wip)
+    * [History](UserGuide.md#history-wip)
 * [FAQ](UserGuide.md#faq)
 * [Command summary](UserGuide.md#command-summary)
 
 ## Quick Start
 
-1. Ensure that you have Java 11 or above installed in your Computer.
-2. Download the latest version of `ControlYourCrowd.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases).
-3. Copy the file to the folder you want to use as the home folder for your CYC.
-4. Open up a command window to the location where your `ControlYourCrowd.jar` is located.
-5. Run the command `java -jar [venue name] [venue maximum capacity] ControlYourCrowd.jar`. For example, 
+> Prerequisites:
+> * Ensure that you have Java 11 or above installed in your Computer.
+
+1. Download the latest version of `ControlYourCrowd.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases).
+2. Copy the file to the folder you want to use as the home folder for your CYC.
+3. Open up a command window to the location where your `ControlYourCrowd.jar` is located.
+4. Run the command `java -jar [venue name] [venue maximum capacity] ControlYourCrowd.jar`. For example, 
    `java -jar NUS 1000 ControlYourCrowd.jar`.
-6. If the setup is correct, you should see CYC being loaded as shown below.
+5. If the setup is correct, you should see CYC being loaded as shown below.
     ```
    =========================================================
    Welcome to Safest Entry Tracker - Version v1.0
    Data successfully loaded from storage file path.
    =========================================================
    ```
-7. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
+6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
    for details of each command.
 
 ## Features 
 
-Notes about the command format:
-* Commands are in `lower_case`
-* Items in square brackets `[ ]` are optional.
-* Words in `UPPER_CASE` are the parameters to be supplied by user.
-    * E.g. in `checkin n/NAME i/LAST_4_CHARS_OF_ID`, `NAME` is a parameter that has to be supplied by user. So e.g. `checkin n/John i/123A`
-* Additional parameters for commands that do not take in parameters (such as `help`, `list`, `exit`, `clear`) will be ignored.
-e.g if the user types `help 123`, it will be intepreted as `help`.
-  
-
+> Notes about the command format:
+> * Commands are in `lower_case`.
+> * Items in square brackets `[ ]` are optional.
+> * Words in `UPPER_CASE` are the parameters to be supplied by user.
+>    * E.g. in `checkin n/NAME i/LAST_4_CHARS_OF_ID`, `NAME` is a parameter that has to be supplied by user. So e.g. `checkin n/John i/123A`.
+> * Additional parameters for commands that do not take in parameters (such as `help`, `list`, `exit`, `clear`) will be ignored.
+>   * e.g. if the user types `help 123`, it will be interpreted as `help`.
+> * `i/LAST_4_CHARS_OF_ID` is unique. (i.e. no two persons will have the same ID)
 
 ### Viewing help: `help`
-Shows a message explaining how to access the help page.
 
+Shows a message explaining how to access the help page.
 
 Format: `help`
 
 *  Additional parameters for commands that do not take in parameters 
     (such as `help`, `list`, `exit`, `clear`) will be ignored. The `TODO_NAME` cannot contain punctuation.  
 
-Example of usage: 
+Example Input: `help`
 
-`help`
+Example Output:
+```
+Command Entered: help
+=========================================================
+COMMAND SUMMARY:
+Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]
+List all visitors: listall
+List checked-in visitors only: list
+Find visitor by ID: find i/LAST_4_CHARS_OF_ID
+Checkout visitor: checkout [n/NAME] i/LAST_4_CHARS_OF_ID
+Clear all visitor entries: clear
+Edit venue capacity: editmax NEW_CAPACITY
+Exit Control Your Crowd: exit
+Refer to the user guide: https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html
 
-### Checking in a person: `checkin`
+=========================================================
+
+```
+
+### Check-in a person: `checkin`
 
 Check in and add a person to the CYC. Also notifies users on current venue capacity, as well as the maximum.
 
 Format: `checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]`
 
-Example Input:
-`checkin n/John i/123a p/91231112`
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* `NAME` must be a string. Integers will not be accepted.
+* `PHONE_NUMBER` is optional. `PHONE_NUMBER`   must consist of 8 integers, as per local (Singapore) phone number format.
+
+Example Input: `checkin n/John i/123A p/91231112`
 
 Example Output:
 ```
-=====================================================================
+=========================================================
 John has been successfully checked in!
-There are currently 50 people in the mall. Maximum capacity is 500.
-=====================================================================
-
+Current capacity: 50
+Maximum capacity: 500
+=========================================================
+```
 However, expect the following output when the maximum capacity is reached.
-=====================================================================
-Unable to check in! Maximum capacity of 500 has been reached.
-=====================================================================
+```
+=========================================================
+Unable to check in! Maximum capacity of 500 reached.
+=========================================================
 ```
 
-### Listing all persons: list
+### Listing all persons: listall
 
-Shows a list of all persons currently in the venue with the total number of people currently in the venue. 
-Also shows the number of people left to reach the maximum capacity for the venue.
+Shows a list of all persons who have checked-in and checked out.
+
+Format: `listall`
+
+Example Input: `listall`
+
+Example Output:
+```
+=========================================================
+|   ||Name           ||Id      ||Phone     ||Checked In |
+---------------------------------------------------------
+|1  ||John           ||123A    ||91231112  ||Yes        |
+---------------------------------------------------------
+|2  ||Jack           ||234B    ||--        ||No         |
+---------------------------------------------------------
+=========================================================
+```
+
+### Listing checked-in persons only: `list`
+
+Shows a list of all persons with their details currently checked-in. It also shows the number of people 
+remaining to reach the maximum capacity for that venue.
 
 Format: `list`
 
@@ -102,44 +145,53 @@ Example Input: `list`
 
 Example Output:
 ```
-=====================================================================
-John
-Jack
-Jill
-Total: 3
-Number people left for max capacity: 97
-==================================================================
+=========================================================
+|   ||Name           ||Id      ||Phone                  |
+---------------------------------------------------------
+|1  ||John           ||123A    ||91231112               |
+---------------------------------------------------------
+Number of people left for max capacity: 999
+=========================================================
 ```
 
-### Locating person by ID number: `find`
+### Finding a person by ID number: `find`
 
-Given the person's last 4 characters of ID, we can find the details of the person's visit and status (Checked in, or checked out)
+Given the person's last 4 characters of ID, we can find the details of the person and status (Checked in, or checked out)
 
 Format: `find i/LAST_4_CHARS_OF_ID`
 
-Example input:
-`find i/123A`
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+    
+Example input: `find i/123A`
+
 Example Output:
 ```
-=====================================================================
-John *****123A entered Mall @ 12.30 pm
-=====================================================================
+=========================================================
+|   ||Name           ||Id      ||Phone     ||Checked In |
+=========================================================
+|1  ||John           ||123A    ||91231112  ||Yes        |
+---------------------------------------------------------
+=========================================================
 ```
 
-### Checking out a person: `checkout`
+### Checkout a person: `checkout`
 
-Removes the person’s name and personal details from the checked-in list
+Removes the person’s name and personal details from the checked-in list.
 
-Format: `checkout n/NAME  i/LAST_4_CHARS_OF_ID`
+Format: `checkout [n/NAME] i/LAST_4_CHARS_OF_ID`
 
-Example input:
-`checkout n/John i/123A`
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* `NAME` is optional. `NAME` must be a string. Integers will not be accepted.
+
+Example input: `checkout n/John i/123A`
+
 Example output:
 ```
-=====================================================================
-John *****123A has been successfully checked out!
-There are currently 50 people in the mall. Maximum capacity is 100.
-=====================================================================
+=========================================================
+John has been successfully checked out!
+Current capacity: 50 
+Maximum capacity: 100
+=========================================================
 ```
 
 ### Clearing all entries: `clear`
@@ -148,14 +200,13 @@ Clear all entries stored by the program, at the end of the day, or when required
 
 Format: `clear`
 
-Example Input:
-`clear`
+Example Input: `clear`
 
 Example Output:
 ```
-=====================================================================
+=========================================================
 Cleared 1350 entries.
-==================================================================
+=========================================================
 ```
 
 ### Edit venue capacity: `editmax`
@@ -164,15 +215,58 @@ Edits the max capacity of the venue.
 
 Format: `editmax NEW_CAPACITY`
 
+* `NEW_CAPACITY` must be a positive integer.
+
 Example Input:
 `editmax 100`
 
 Example Output:
 ```
-=====================================================================
-Changed max capacity of venue to 100
-==================================================================
+=========================================================
+New max capacity: 100
+=========================================================
 ```
+
+### Change storage location: `movestorage`
+
+Move the location of the storage file to the specified destination.
+
+Format: `movestorage NEW_DESTINATION`
+
+Example Input:
+`movestorage /new/test`
+
+Example Output:
+```
+=========================================================
+Moved storage file to /new/test.txt
+=========================================================
+```
+
+### Exiting CYC: `exit`
+
+Exit the CYC program.
+
+Format: `exit`
+
+Example Input: `exit`
+
+Example Output: 
+```
+=========================================================
+Exiting Control Your Crowd...
+=========================================================
+```
+
+### Visitor Log (WIP) - Register once only
+
+### Saving data
+The program automatically saves data to a `.txt` file after each command you input.
+The program defaults to saving to `/TrackingList.txt` in the same folder as the program.
+
+### Changing save location
+To change the save location, you can use the command `movestorage`
+### History (WIP)
 
 ## FAQ
 
@@ -182,6 +276,16 @@ Changed max capacity of venue to 100
 
 ## Command Summary
 
-{Give a 'cheat sheet' of commands here}
+Action | Format | Examples
+--- | --- | ---
+Help | `help` | `help`
+Check-in a person | `checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]` | `checkin n/John i/123A p/91231112`
+List all person | `listall` | `listall`
+List checked-in persons only | `list` | `list`
+Find person by ID | `find i/LAST_4_CHARS_OF_ID` | `find i/123A`
+Checkout a person | `checkout [n/NAME] i/LAST_4_CHARS_OF_ID` | `checkout n/John i/123A`
+Clear all entries | `clear` | `clear`
+Edit venue capacity | `editmax NEW_CAPACITY` | `editmax 100`
+Exit | `exit` | `exit`
 
-* Add todo `todo n/TODO_NAME d/DEADLINE`
+
