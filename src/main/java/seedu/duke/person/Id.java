@@ -1,6 +1,7 @@
 package seedu.duke.person;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Id implements Serializable {
     private static final long serialVersionUID = 2L;
@@ -34,5 +35,10 @@ public class Id implements Serializable {
             return idString.equals(((Id) other).getIdString());
         }
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idString);
     }
 }

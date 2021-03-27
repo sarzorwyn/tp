@@ -11,6 +11,7 @@ import seedu.duke.commands.ListCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
@@ -62,7 +63,7 @@ public class ParserTest {
 
     @Test
     public void parseCheckIn_testCommand() throws NoArgumentPassedException,
-            WrongFlagException, InvalidCommandException {
+            WrongFlagException, InvalidCommandException, StorageOperationException {
         CheckInCommand checkInCommand = (CheckInCommand) parser.parseCommand(
                 "checkin n/ John i/ 123A");
         assertEquals("checkin", checkInCommand.COMMAND);
@@ -82,7 +83,7 @@ public class ParserTest {
 
     @Test
     public void parseCheckOut_testCommand() throws NoArgumentPassedException,
-            WrongFlagException, InvalidCommandException {
+            WrongFlagException, InvalidCommandException, StorageOperationException {
         CheckoutCommand checkoutCommand = (CheckoutCommand) parser.parseCommand(
                 "checkout n/John i/123A");
         assertEquals("checkout", checkoutCommand.COMMAND);
@@ -100,7 +101,7 @@ public class ParserTest {
 
     @Test
     public void parseFind_testCommand() throws NoArgumentPassedException,
-            WrongFlagException, InvalidCommandException {
+            WrongFlagException, InvalidCommandException, StorageOperationException {
         parser.parseCommand("checkin n/Jon i/123A");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");
         assertEquals("find", findCommand.COMMAND);
@@ -108,14 +109,14 @@ public class ParserTest {
 
     @Test
     public void parseList_testCommand() throws NoArgumentPassedException,
-            WrongFlagException, InvalidCommandException {
+            WrongFlagException, InvalidCommandException, StorageOperationException {
         ListCommand listCommand = (ListCommand) parser.parseCommand("listall");
         assertEquals("listall", listCommand.COMMAND);
     }
 
     @Test
     public void parseListCheckedOut_testCommand() throws NoArgumentPassedException,
-            WrongFlagException, InvalidCommandException {
+            WrongFlagException, InvalidCommandException, StorageOperationException {
         ListCheckedInCommand listCheckedInCommand = (ListCheckedInCommand) parser.parseCommand(
                 "list");
         assertEquals("list", listCheckedInCommand.COMMAND);
@@ -123,14 +124,14 @@ public class ParserTest {
 
     @Test
     public void parseExit_testCommand() throws NoArgumentPassedException,
-            WrongFlagException, InvalidCommandException {
+            WrongFlagException, InvalidCommandException, StorageOperationException {
         ExitCommand exitCommand = (ExitCommand) parser.parseCommand("exit");
         assertEquals("exit", ExitCommand.COMMAND);
     }
 
     @Test
     public void parseClear_testCommand() throws NoArgumentPassedException,
-            WrongFlagException, InvalidCommandException {
+            WrongFlagException, InvalidCommandException, StorageOperationException {
         ClearCommand clearCommand = (ClearCommand) parser.parseCommand("clear");
         assertEquals("clear", ClearCommand.COMMAND);
     }

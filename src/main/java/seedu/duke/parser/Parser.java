@@ -11,6 +11,7 @@ import seedu.duke.commands.ListCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
 public class Parser {
@@ -30,7 +31,7 @@ public class Parser {
     }
 
     public Command parseCommand(String userInput) throws
-            InvalidCommandException, NoArgumentPassedException, WrongFlagException {
+            InvalidCommandException, NoArgumentPassedException, WrongFlagException, StorageOperationException {
         String[] inputArray;
         String argument = null;
         assert userInput != null : "User input cannot be null";
@@ -132,7 +133,8 @@ public class Parser {
         return argument.indexOf("p/");
     }
     
-    Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException {
+    Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException,
+            StorageOperationException {
         String[] checkInDetails;
                 
         if (argument.isBlank()) {
