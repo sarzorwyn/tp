@@ -21,15 +21,12 @@ import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
-
-import javax.naming.InvalidNameException;
+import seedu.duke.person.Id;
+import seedu.duke.person.Name;
+import seedu.duke.person.Phone;
 
 public class Parser {
-    public static final String ID_REGEX = "\\d{3}[A-Z]";
-    public static final String PHONE_REGEX = "\\d{8}";
-    public static final String NAME_REGEX = "[a-zA-Z][a-zA-Z( )*]{0,99}";
     public static final String MAX_REGEX = "[0-9]+";
-
 
     /**
      * Method that splits user input into 2 sections.
@@ -112,7 +109,6 @@ public class Parser {
         return new HelpCommand();
     }
 
-
     private Command  parseMoveStorage(String argument) {
         return new MoveStorageCommand(argument);
     }
@@ -184,22 +180,6 @@ public class Parser {
         return argument.indexOf("p/");
     }
 
-
-    public static boolean isValidId(String idString) {
-        return idString.matches(ID_REGEX);
-    }
-
-    public static boolean isValidPhone(String phoneNo) {
-        if (phoneNo == null) {
-            return true;
-        }
-        return phoneNo.matches(PHONE_REGEX);
-    }
-
-    public static boolean isValidName(String nameString) {
-        return nameString.matches(NAME_REGEX);
-    }
-
     Command parseCheckIn(String argument) throws
             NoArgumentPassedException, WrongFlagException, InvalidIdException,
             InvalidNameFormatException, InvalidPhoneNumberException,
@@ -234,13 +214,13 @@ public class Parser {
             phoneNumber = checkInDetails[3].trim();
         }
 
-        if (!isValidId(id)) {
+        if (!Id.isValidId(id)) {
             throw new InvalidIdException(Messages.ID_ERROR);
         }
-        if (!isValidName(name)) {
+        if (!Name.isValidName(name)) {
             throw new InvalidNameFormatException(Messages.NAME_ERROR);
         }
-        if (!isValidPhone(phoneNumber)) {
+        if (!Phone.isValidPhone(phoneNumber)) {
             throw new InvalidPhoneNumberException(Messages.PHONE_ERROR);
         }
 

@@ -2,11 +2,12 @@ package seedu.duke.person;
 
 import java.io.Serializable;
 
+import static seedu.duke.common.Messages.NAME_ERROR;
+
 public class Name implements Serializable {
     private static final long serialVersionUID = 3L;
     public final String nameString;
-    public static final String NAME_REGEX = "[a-zA-Z][a-zA-Z( )*]{0,99}";
-    public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (100 characters limit)";
+    public static final String NAME_REGEX = "[a-zA-Z][a-zA-Z( )*]{0,29}";
 
     public Name(String nameString) {
         assert isValidName(nameString) : NAME_ERROR;
@@ -14,6 +15,9 @@ public class Name implements Serializable {
     }
 
     public static boolean isValidName(String nameString) {
+        if (nameString == null) {
+            return true;
+        }
         return nameString.matches(NAME_REGEX);
     }
 

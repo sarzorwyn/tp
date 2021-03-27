@@ -3,11 +3,12 @@ package seedu.duke.person;
 import java.io.Serializable;
 import java.util.Objects;
 
+import static seedu.duke.common.Messages.ID_ERROR;
+
 public class Id implements Serializable {
     private static final long serialVersionUID = 2L;
     public final String idString;
     public static final String ID_REGEX = "\\d{3}[A-Z]";
-    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
 
     public Id(String idString) {
         assert isValidId(idString) : ID_ERROR;
