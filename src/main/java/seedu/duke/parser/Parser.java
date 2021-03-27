@@ -18,6 +18,7 @@ import seedu.duke.exceptions.InvalidIntegerException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
@@ -49,7 +50,7 @@ public class Parser {
             InvalidCommandException, NoArgumentPassedException,
             WrongFlagException, InvalidIdException,
             InvalidNameFormatException, InvalidPhoneNumberException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         String[] inputArray;
         String argument = null;
@@ -200,9 +201,9 @@ public class Parser {
     }
 
     Command parseCheckIn(String argument) throws
-                NoArgumentPassedException,WrongFlagException, InvalidIdException,
-                InvalidNameFormatException, InvalidPhoneNumberException,
-                StorageOperationException {
+            NoArgumentPassedException, WrongFlagException, InvalidIdException,
+            InvalidNameFormatException, InvalidPhoneNumberException,
+            StorageOperationException, PersonNotFoundException {
 
         String[] checkInDetails;
                 
