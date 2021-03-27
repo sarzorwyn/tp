@@ -32,7 +32,8 @@ public class Parser {
     }
 
     public Command parseCommand(String userInput) throws
-            InvalidCommandException, NoArgumentPassedException, WrongFlagException, StorageOperationException {
+            InvalidCommandException, NoArgumentPassedException,
+            WrongFlagException, StorageOperationException {
         String[] inputArray;
         String argument = null;
         assert userInput != null : "User input cannot be null";
