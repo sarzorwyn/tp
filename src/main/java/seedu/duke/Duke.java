@@ -99,6 +99,7 @@ public class Duke {
             try {
                 commandOutput = command.execute(trackingList);
                 storage.save(trackingList);
+                personLog.saveAllPersons();
                 ui.printReaction(commandOutput);
             } catch (PersonNotFoundException pnfe) {
                 //System.out.println("Person not found!");
