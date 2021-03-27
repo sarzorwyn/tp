@@ -8,6 +8,7 @@ import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
+import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
@@ -167,6 +168,19 @@ public class ParserTest {
         ClearCommand clearCommand = (ClearCommand) parser.parseCommand("clear");
         assertEquals("clear", ClearCommand.COMMAND);
     }
+
+    @Test
+    public void parseMoveStorage_testCommand() throws NoArgumentPassedException,
+
+            WrongFlagException, InvalidCommandException, InvalidIdException,
+            InvalidPhoneNumberException, InvalidNameFormatException,
+            StorageOperationException, InvalidIntegerException {
+
+        MoveStorageCommand moveStorageCommand =
+                (MoveStorageCommand) parser.parseCommand("movestorage /new/test");
+        assertEquals("movestorage", MoveStorageCommand.COMMAND);
+    }
+
 
     @Test
     public void parseWrongCommand_Exception() {

@@ -112,7 +112,7 @@ public class Parser {
     }
 
 
-    private Command  parseMoveStorage(String argument) {
+    private Command parseMoveStorage(String argument) {
         return new MoveStorageCommand(argument);
     }
 
