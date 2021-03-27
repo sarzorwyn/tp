@@ -4,6 +4,9 @@ import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidIdException;
+import seedu.duke.exceptions.InvalidNameFormatException;
+import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
@@ -81,7 +84,8 @@ public class Duke {
             userInput = ui.getUserInput();
             try {
                 command = parser.parseCommand(userInput);
-            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException e) {
+            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException
+                    | InvalidIdException | InvalidNameFormatException | InvalidPhoneNumberException e) {
                 ui.notifyErrorToUser(e);
                 continue;
             }
