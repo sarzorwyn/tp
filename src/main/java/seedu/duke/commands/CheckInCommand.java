@@ -1,6 +1,5 @@
 package seedu.duke.commands;
 
-import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.Id;
 import seedu.duke.person.Name;

@@ -70,7 +70,21 @@ Example Input: `help`
 
 Example Output:
 ```
-WORK IN PROGRESS
+Command Entered: help
+=========================================================
+COMMAND SUMMARY:
+Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]
+List all visitors: listall
+List checked-in visitors only: list
+Find visitor by ID: find i/LAST_4_CHARS_OF_ID
+Checkout visitor: checkout [n/NAME] i/LAST_4_CHARS_OF_ID
+Clear all visitor entries: clear
+Edit venue capacity: editmax NEW_CAPACITY
+Exit Control Your Crowd: exit
+Refer to the user guide: https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html
+
+=========================================================
+
 ```
 
 ### Check-in a person: `checkin`
@@ -78,6 +92,10 @@ WORK IN PROGRESS
 Check in and add a person to the CYC. Also notifies users on current venue capacity, as well as the maximum.
 
 Format: `checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]`
+
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* `NAME` must be a string. Integers will not be accepted.
+* `PHONE_NUMBER` is optional. `PHONE_NUMBER`   must consist of 8 integers, as per local (Singapore) phone number format.
 
 Example Input: `checkin n/John i/123A p/91231112`
 
@@ -142,6 +160,8 @@ Given the person's last 4 characters of ID, we can find the details of the perso
 
 Format: `find i/LAST_4_CHARS_OF_ID`
 
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+    
 Example input: `find i/123A`
 
 Example Output:
@@ -159,6 +179,9 @@ Example Output:
 Removes the person’s name and personal details from the checked-in list.
 
 Format: `checkout [n/NAME] i/LAST_4_CHARS_OF_ID`
+
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* `NAME` is optional. `NAME` must be a string. Integers will not be accepted.
 
 Example input: `checkout n/John i/123A`
 
@@ -191,6 +214,8 @@ Cleared 1350 entries.
 Edits the max capacity of the venue.
 
 Format: `editmax NEW_CAPACITY`
+
+* `NEW_CAPACITY` must be a positive integer.
 
 Example Input:
 `editmax 100`
@@ -233,7 +258,13 @@ Exiting Control Your Crowd...
 =========================================================
 ```
 
-### Visitor Log (WIP) - Register once only
+### Storing the details of previous persons
+
+CYC automatically saves the details of previous persons.
+
+A person who have checked in before, does not have to input all his details again when using the `checkin` command.
+
+The person details are stored in `/LogFile.txt` in the same folder as the program.
 
 ### Saving data
 The program automatically saves data to a `.txt` file after each command you input.
@@ -247,7 +278,10 @@ To change the save location, you can use the command `movestorage`
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: {your answer here}
+**A**: Please follow these steps:
+1. Follow the [Quick Start](UserGuide.md#quick-start) guide and install CYC on the computer
+2. Transfer the `/LogFile.txt` and `/TrackingList.txt` to the target computer's main CYC folder.
+3. Start CYC and it will automatically load the data.
 
 ## Command Summary
 
