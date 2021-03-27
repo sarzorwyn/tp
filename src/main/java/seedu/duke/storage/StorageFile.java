@@ -50,12 +50,12 @@ public class StorageFile {
     }
 
     /**
-     * Creates the save file directory if it does not exist
+     * Creates the save file directory if it does not exist.
      */
     public void createDataDirectory() throws StorageOperationException {
         try {
             Files.createDirectories(path.getParent());
-        } catch(Exception IOException) {
+        } catch (IOException ioe) {
             throw new StorageOperationException("Error writing into file: " + path);
         }
     }
