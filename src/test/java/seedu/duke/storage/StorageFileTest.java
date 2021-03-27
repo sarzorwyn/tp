@@ -5,7 +5,6 @@ import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.TrackingList;
 
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -24,9 +23,9 @@ public class StorageFileTest {
     private static final String NEW_FILE = "NewFile";
 
     @Test
-    public void constructor_invalidFilePath_InvalidPathExceptionThrown() {
+    public void constructor_invalidFilePath_StorageOperationExceptionThrown() {
         String invalidPath = ":-?;\0";
-        assertThrows(InvalidPathException.class, () -> new StorageFile(invalidPath));
+        assertThrows(StorageOperationException.class, () -> new StorageFile(invalidPath));
     }
 
     @Test
@@ -39,7 +38,8 @@ public class StorageFileTest {
     }
 
     @Test
-    public void load_invalidFormat_StorageOperationExceptionThrown() {
+    public void load_invalidFormat_StorageOperationExceptionThrown()
+            throws StorageOperationException {
         StorageFile storage = new StorageFile(TEST_DATA_PATH + INVALID_DATA_FILE);
         assertThrows(StorageOperationException.class, storage::load);
     }
