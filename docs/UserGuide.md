@@ -236,7 +236,9 @@ Exiting Control Your Crowd...
 ### Storing the details of previous persons
 
 CYC automatically saves the details of previous persons.
+
 A person who have checked in before, does not have to input all his details again when using the `checkin` command.
+
 The person details are stored in `/LogFile.txt` in the same folder as the program.
 
 ### Saving data
