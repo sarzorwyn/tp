@@ -36,7 +36,7 @@ public class Location {
         if (args.length != 2) {
             throw new InvalidArgumentSizeException(Messages.INVALID_ARGUMENT_SIZE);
         }
-        if (!args[1].matches(MAX_CAPACITY_REGEX)) {
+        if (!args[1].matches(MAX_CAPACITY_REGEX) || Integer.parseInt(args[1]) < 0) {
             throw new InvalidMaxCapacityException(Messages.INVALID_MAX_CAPACITY);
         }
     }
