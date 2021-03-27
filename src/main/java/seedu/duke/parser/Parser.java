@@ -62,7 +62,8 @@ public class Parser {
                 && !command.equals("exit")
                 && !command.equals("listall")
                 && !command.equals("clear")
-                && !command.equals("help")) {
+                && !command.equals("help")
+                && !command.equals("editmax")) {
             throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
         switch (command) {
@@ -93,7 +94,7 @@ public class Parser {
         }
     }
 
-    private boolean isValidInteger(String argument) {
+    boolean isValidInteger(String argument) {
         return (argument.matches(MAX_REGEX));
     }
 

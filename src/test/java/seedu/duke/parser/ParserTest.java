@@ -4,10 +4,13 @@ import org.junit.jupiter.api.Test;
 import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CheckoutCommand;
 import seedu.duke.commands.ClearCommand;
+import seedu.duke.commands.EditMaxCommand;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
+import seedu.duke.commands.HelpCommand;
 import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
+import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
@@ -21,6 +24,7 @@ import seedu.duke.exceptions.WrongFlagException;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.duke.testutil.SamplePersons.JOHN;
 
@@ -58,7 +62,7 @@ public class ParserTest {
     @Test
     public void parseCheckIn_Exceptions() {
         Throwable exception = assertThrows(InvalidIdException.class, () ->
-                parser.parseCheckIn("i/Jon 123"));
+                parser.parseCheckIn("i/John 123"));
         assertEquals(exception.getMessage(), Messages.ID_ERROR);
 
         exception = assertThrows(NoArgumentPassedException.class, () ->
@@ -74,11 +78,11 @@ public class ParserTest {
             StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         CheckInCommand checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin i/ 123A n/ jon");
+                "checkin i/ 123A n/ John");
         assertEquals("checkin", checkInCommand.COMMAND);
 
         checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin i/123A n/jon p/12345678");
+                "checkin i/123A n/John p/12345678");
         assertEquals("checkin", checkInCommand.COMMAND);
     }
 
@@ -119,7 +123,7 @@ public class ParserTest {
             InvalidPhoneNumberException, InvalidNameFormatException,
             StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
-        parser.parseCommand("checkin i/123A n/Jon");
+        parser.parseCommand("checkin i/123A n/John");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");
         assertEquals("find", findCommand.COMMAND);
     }
@@ -149,13 +153,37 @@ public class ParserTest {
 
     @Test
     public void parseExit_testCommand() throws NoArgumentPassedException,
-
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
             StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         ExitCommand exitCommand = (ExitCommand) parser.parseCommand("exit");
-        assertEquals("exit", ExitCommand.COMMAND);
+        assertEquals("exit", exitCommand.COMMAND);
+    }
+
+    @Test
+    public void parseHelp_testCommand() throws StorageOperationException, InvalidIntegerException,
+            InvalidIdException, InvalidCommandException, InvalidPhoneNumberException, PersonNotFoundException,
+            NoArgumentPassedException, WrongFlagException, InvalidNameFormatException {
+        HelpCommand helpCommand = (HelpCommand) parser.parseCommand("help");
+        assertEquals("help",helpCommand.COMMAND);
+    }
+
+    @Test
+    public void parseEditMax_testCommand() throws StorageOperationException, InvalidIntegerException,
+            InvalidIdException, InvalidCommandException, InvalidPhoneNumberException,
+            PersonNotFoundException, NoArgumentPassedException, WrongFlagException,
+            InvalidNameFormatException {
+        EditMaxCommand editMaxCommand = (EditMaxCommand) parser.parseCommand("editmax 1000");
+        assertEquals("editmax",editMaxCommand.COMMAND);
+    }
+
+    @Test
+    public void parseMoveStorageCommand_testCommand() throws StorageOperationException, InvalidIntegerException,
+            InvalidIdException, InvalidCommandException, InvalidPhoneNumberException,
+            PersonNotFoundException, NoArgumentPassedException, WrongFlagException, InvalidNameFormatException {
+        MoveStorageCommand moveStorageCommand = (MoveStorageCommand) parser.parseCommand("movestorage abc");
+        assertEquals("movestorage",moveStorageCommand.COMMAND);
     }
 
     @Test
@@ -175,4 +203,19 @@ public class ParserTest {
                 parser.parseCommand(""));
         assertEquals(exception.getMessage(), Messages.INVALID_COMMAND);
     }
+
+    @Test
+    public void parseInvalidCommand_Exception() {
+        Throwable exception = assertThrows(InvalidCommandException.class, () ->
+                parser.parseCommand("abc abc"));
+        assertEquals(exception.getMessage(), Messages.INVALID_COMMAND);
+    }
+
+    @Test
+    public void parseInvalidInteger_Exception() {
+
+        assertFalse(parser.isValidInteger("abc"));
+    }
+
+    
 }
