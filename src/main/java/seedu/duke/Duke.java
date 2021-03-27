@@ -108,4 +108,11 @@ public class Duke {
         return location;
     }
 
+    public StorageFile getStorage() {
+        return storage;
+    }
+
+    public void setStorage(StorageFile storage) {
+        this.storage = storage;
+    }
 }
