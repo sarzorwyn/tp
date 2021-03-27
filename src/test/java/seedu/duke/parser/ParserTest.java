@@ -11,6 +11,7 @@ import seedu.duke.commands.ListCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
+import seedu.duke.exceptions.InvalidIntegerException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
@@ -46,7 +47,7 @@ public class ParserTest {
 
 
     @Test
-    public void parseCheckIn_noName() throws WrongFlagException, NoArgumentPassedException {
+    public void parseCheckIn_noName() {
         Throwable exception = assertThrows(NoArgumentPassedException.class, () ->
                 parser.parseCheckIn(""));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
@@ -69,7 +70,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException,
             InvalidIdException, InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         CheckInCommand checkInCommand = (CheckInCommand) parser.parseCommand(
                 "checkin n/ John i/ 123A");
@@ -93,7 +94,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException,
             InvalidIdException, InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         CheckoutCommand checkoutCommand = (CheckoutCommand) parser.parseCommand(
                 "checkout n/John i/123A");
@@ -115,7 +116,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         parser.parseCommand("checkin n/Jon i/123A");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");
@@ -127,7 +128,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         ListCommand listCommand = (ListCommand) parser.parseCommand("listall");
         assertEquals("listall", listCommand.COMMAND);
@@ -138,7 +139,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         ListCheckedInCommand listCheckedInCommand = (ListCheckedInCommand) parser.parseCommand(
                 "list");
@@ -150,7 +151,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         ExitCommand exitCommand = (ExitCommand) parser.parseCommand("exit");
         assertEquals("exit", ExitCommand.COMMAND);
@@ -161,7 +162,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         ClearCommand clearCommand = (ClearCommand) parser.parseCommand("clear");
         assertEquals("clear", ClearCommand.COMMAND);
