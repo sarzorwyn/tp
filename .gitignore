@@ -19,4 +19,5 @@ text-ui-test/EXPECTED-UNIX.TXT
 TrackingList.txt
 LogFile.txt
 History.txt
+
 *.properties
