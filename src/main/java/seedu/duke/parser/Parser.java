@@ -196,7 +196,7 @@ public class Parser {
         }
 
         String id;
-        String name = "null";
+        String name = null;
         String phoneNumber = null;
         String[] checkInDetails;
 
