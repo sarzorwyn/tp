@@ -109,11 +109,9 @@ public class Parser {
         return new HelpCommand();
     }
 
-
     private Command parseMoveStorage(String argument) {
-           return new MoveStorageCommand(argument);
+        return new MoveStorageCommand(argument);
     }
-
 
     private Command parseClear() {
         return new ClearCommand();
