@@ -2,6 +2,8 @@ package seedu.duke.person;
 
 import java.io.Serializable;
 
+import static seedu.duke.common.Messages.PHONE_ERROR;
+
 /**
  * Represents the phone number of a person.
  * If a person does not have a phone, isAvailable will be false.
@@ -11,7 +13,6 @@ public class Phone implements Serializable {
     public String phoneNo;
     public boolean isAvailable;
     public static final String PHONE_REGEX = "\\d{8}";
-    public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
 
     /**
      * Constructs a phone object.
@@ -25,6 +26,9 @@ public class Phone implements Serializable {
     }
 
     public static boolean isValidPhone(String phoneNo) {
+        if (phoneNo == null) {
+            return true;
+        }
         return phoneNo.matches(PHONE_REGEX);
     }
 
