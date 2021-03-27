@@ -15,6 +15,7 @@ import seedu.duke.exceptions.InvalidIntegerException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
@@ -56,9 +57,9 @@ public class ParserTest {
 
     @Test
     public void parseCheckIn_Exceptions() {
-        Throwable exception = assertThrows(WrongFlagException.class, () ->
-                parser.parseCheckIn("n/Jon 123"));
-        assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
+        Throwable exception = assertThrows(InvalidIdException.class, () ->
+                parser.parseCheckIn("i/Jon 123"));
+        assertEquals(exception.getMessage(), Messages.ID_ERROR);
 
         exception = assertThrows(NoArgumentPassedException.class, () ->
                 parser.parseCheckIn(""));
@@ -70,14 +71,14 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException,
             InvalidIdException, InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         CheckInCommand checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin n/ John i/ 123A");
+                "checkin i/ 123A n/ jon");
         assertEquals("checkin", checkInCommand.COMMAND);
 
         checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin n/John i/123A p/12345678");
+                "checkin i/123A n/jon p/12345678");
         assertEquals("checkin", checkInCommand.COMMAND);
     }
 
@@ -94,7 +95,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException,
             InvalidIdException, InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         CheckoutCommand checkoutCommand = (CheckoutCommand) parser.parseCommand(
                 "checkout n/John i/123A");
@@ -116,9 +117,9 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
-        parser.parseCommand("checkin n/Jon i/123A");
+        parser.parseCommand("checkin i/123A n/Jon");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");
         assertEquals("find", findCommand.COMMAND);
     }
@@ -128,7 +129,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         ListCommand listCommand = (ListCommand) parser.parseCommand("listall");
         assertEquals("listall", listCommand.COMMAND);
@@ -139,7 +140,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         ListCheckedInCommand listCheckedInCommand = (ListCheckedInCommand) parser.parseCommand(
                 "list");
@@ -151,7 +152,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         ExitCommand exitCommand = (ExitCommand) parser.parseCommand("exit");
         assertEquals("exit", ExitCommand.COMMAND);
@@ -162,7 +163,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         ClearCommand clearCommand = (ClearCommand) parser.parseCommand("clear");
         assertEquals("clear", ClearCommand.COMMAND);
