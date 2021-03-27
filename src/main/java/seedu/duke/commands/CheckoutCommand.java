@@ -25,7 +25,7 @@ public class CheckoutCommand extends Command {
     private String nameString;
     private Person toCheckout;
     private static final Logger logger = Logger.getLogger(CheckoutCommand.class.getName());
-    private final HistoryFile historyFile;
+    private HistoryFile historyFile;
 
     public CheckoutCommand(String idString,String nameString) {
         this.id = new Id(idString);
@@ -42,6 +42,7 @@ public class CheckoutCommand extends Command {
 
     @Override
     public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException, HistoryStorageException {
+        historyFile = new HistoryFile();
         toCheckout = trackingList.findExactPerson(id);
         Name toCheckoutName = toCheckout.getName();
         if (nameString != null) {
