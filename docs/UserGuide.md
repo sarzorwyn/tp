@@ -278,7 +278,10 @@ To change the save location, you can use the command `movestorage`
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: {your answer here}
+**A**: Please follow these steps:
+1. Follow the [Quick Start](UserGuide.md#quick-start) guide and install CYC on the computer
+2. Transfer the `/LogFile.txt` and `/TrackingList.txt` to the target computer's *main* CYC folder.
+3. Start the program and it will automatically load the data.
 
 ## Command Summary
 
