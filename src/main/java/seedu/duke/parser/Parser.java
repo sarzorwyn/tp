@@ -9,12 +9,14 @@ import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
+import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
 import javax.naming.InvalidNameException;
@@ -40,9 +42,12 @@ public class Parser {
     }
 
     public Command parseCommand(String userInput) throws
+
             InvalidCommandException, NoArgumentPassedException,
             WrongFlagException, InvalidIdException,
-            InvalidNameFormatException, InvalidPhoneNumberException {
+            InvalidNameFormatException, InvalidPhoneNumberException,
+            StorageOperationException {
+
         String[] inputArray;
         String argument = null;
         assert userInput != null : "User input cannot be null";
@@ -73,13 +78,22 @@ public class Parser {
             return parseExit();
         case ClearCommand.COMMAND:
             return parseClear();
+
         //case EditMaxCommand.COMMAND:
             //return parseEditMax(argument);
+
+        case MoveStorageCommand.COMMAND:
+            return parseMoveStorage(argument);
+
         default:
             throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
     }
 
+
+    private Command parseMoveStorage(String argument) {
+        return new MoveStorageCommand(argument);
+    }
 
 
     private Command parseClear() {
@@ -148,6 +162,7 @@ public class Parser {
         return argument.indexOf("p/");
     }
 
+
     public static boolean isValidId(String idString) {
         return idString.matches(ID_REGEX);
     }
@@ -165,7 +180,9 @@ public class Parser {
 
     Command parseCheckIn(String argument) throws
                 NoArgumentPassedException,WrongFlagException, InvalidIdException,
-                InvalidNameFormatException, InvalidPhoneNumberException {
+                InvalidNameFormatException, InvalidPhoneNumberException,
+                StorageOperationException {
+
         String[] checkInDetails;
                 
         if (argument.isBlank()) {
