@@ -18,17 +18,15 @@ import seedu.duke.exceptions.InvalidIntegerException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
-
-import javax.naming.InvalidNameException;
+import seedu.duke.person.Id;
+import seedu.duke.person.Name;
+import seedu.duke.person.Phone;
 
 public class Parser {
-    public static final String ID_REGEX = "\\d{3}[A-Z]";
-    public static final String PHONE_REGEX = "\\d{8}";
-    public static final String NAME_REGEX = "[a-zA-Z][a-zA-Z( )*]{0,99}";
     public static final String MAX_REGEX = "[0-9]+";
-
 
     /**
      * Method that splits user input into 2 sections.
@@ -49,7 +47,7 @@ public class Parser {
             InvalidCommandException, NoArgumentPassedException,
             WrongFlagException, InvalidIdException,
             InvalidNameFormatException, InvalidPhoneNumberException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         String[] inputArray;
         String argument = null;
@@ -113,7 +111,7 @@ public class Parser {
 
 
     private Command parseMoveStorage(String argument) {
-        return new MoveStorageCommand(argument);
+           return new MoveStorageCommand(argument);
     }
 
 
@@ -183,63 +181,53 @@ public class Parser {
         return argument.indexOf("p/");
     }
 
-
-    public static boolean isValidId(String idString) {
-        return idString.matches(ID_REGEX);
-    }
-
-    public static boolean isValidPhone(String phoneNo) {
-        if (phoneNo == null) {
-            return true;
-        }
-        return phoneNo.matches(PHONE_REGEX);
-    }
-
-    public static boolean isValidName(String nameString) {
-        return nameString.matches(NAME_REGEX);
-    }
-
     Command parseCheckIn(String argument) throws
-                NoArgumentPassedException,WrongFlagException, InvalidIdException,
-                InvalidNameFormatException, InvalidPhoneNumberException,
-                StorageOperationException {
+            NoArgumentPassedException, WrongFlagException, InvalidIdException,
+            InvalidNameFormatException, InvalidPhoneNumberException,
+            StorageOperationException, PersonNotFoundException {
 
-        String[] checkInDetails;
+
                 
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         assert !argument.isBlank() : "Argument cannot be blank.";
-        if (idFlagChecker(argument) == -1 || nameFlagChecker(argument) == -1) {
+        if (idFlagChecker(argument) == -1 || !argument.startsWith("i/")) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
 
         String id;
-        String name;
+        String name = null;
         String phoneNumber = null;
-        if (phoneFlagChecker(argument) == -1) {
-            checkInDetails = argument.split("n/|i/",3);
+        String[] checkInDetails;
+
+        if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) == -1) {
+            checkInDetails = argument.split("i/",2);
+        } else if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) != -1) {
+            throw new WrongFlagException(Messages.WRONG_FLAG);
         } else {
-            checkInDetails = argument.split("n/|i/|p/",4);
+            checkInDetails = argument.split("i/|n/|p/",4);
         }
 
-        if (checkInDetails[1].isBlank() || checkInDetails[2].isBlank()) {     //checks if n/ and i/ is provided
+        if (checkInDetails[1].isBlank()) {     //checks if n/ and i/ is provided
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
-            name = checkInDetails[1].trim();
-            id = checkInDetails[2].trim();
+            id = checkInDetails[1].trim();
         }
         if (checkInDetails.length == 4) {
+            name = checkInDetails[2].trim();
             phoneNumber = checkInDetails[3].trim();
+        } else if (checkInDetails.length == 3) {
+            name = checkInDetails[2].trim();
         }
 
-        if (!isValidId(id)) {
+        if (!Id.isValidId(id)) {
             throw new InvalidIdException(Messages.ID_ERROR);
         }
-        if (!isValidName(name)) {
+        if (!Name.isValidName(name)) {
             throw new InvalidNameFormatException(Messages.NAME_ERROR);
         }
-        if (!isValidPhone(phoneNumber)) {
+        if (!Phone.isValidPhone(phoneNumber)) {
             throw new InvalidPhoneNumberException(Messages.PHONE_ERROR);
         }
 

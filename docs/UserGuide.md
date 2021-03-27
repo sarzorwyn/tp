@@ -18,11 +18,12 @@ more. If you can type fast, CYC can enable you to manage the crowd faster than t
     * [Checkout a person](UserGuide.md#checkout-a-person-checkout): `checkout`
     * [Clearing all entries](UserGuide.md#clearing-all-entries-clear): `clear`
     * [Edit venue capacity](UserGuide.md#edit-venue-capacity-editmax): `editmax`
+    * [Move Storage](UserGuide.md#move-storage-movestorage): `movestorage`
     * [Exiting the program](UserGuide.md#exiting-cyc-exit): `exit`
-    * [Visitor Log (WIP) - Register once only](UserGuide.md#visitor-log-wip---register-once-only)
-    * [Saving data (WIP)](UserGuide.md#saving-data-wip)
-    * [Changing save location (WIP)](UserGuide.md#changing-save-location-wip)
-    * [History](UserGuide.md#history-wip)
+    * [Visitor Log](UserGuide.md#visitor-log)
+    * [Saving data](UserGuide.md#saving-data)
+    * [Changing save location](UserGuide.md#changing-save-location)
+    * [History](UserGuide.md#history)
 * [FAQ](UserGuide.md#faq)
 * [Command summary](UserGuide.md#command-summary)
 
@@ -63,9 +64,6 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
-*  Additional parameters for commands that do not take in parameters 
-    (such as `help`, `list`, `exit`, `clear`) will be ignored. The `TODO_NAME` cannot contain punctuation.  
-
 Example Input: `help`
 
 Example Output:
@@ -82,20 +80,21 @@ Clear all visitor entries: clear
 Edit venue capacity: editmax NEW_CAPACITY
 Exit Control Your Crowd: exit
 Refer to the user guide: https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html
-
 =========================================================
-
 ```
 
 ### Check-in a person: `checkin`
 
 Check in and add a person to the CYC. Also notifies users on current venue capacity, as well as the maximum.
 
-Format: `checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]`
+Format: `checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]`
 
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
-* `NAME` must be a string. Integers will not be accepted.
-* `PHONE_NUMBER` is optional. `PHONE_NUMBER`   must consist of 8 integers, as per local (Singapore) phone number format.
+* `NAME` is optional. If the user has checked in before, entering the `LAST_4_CHARS_OF_ID` is sufficient to retrieve the user's `NAME` and `PHONE_NUMBER` 
+  from previous check in. **If the user has not checked in before, `NAME` must be entered.**
+* `NAME` must only contain english alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
+* `PHONE_NUMBER` is optional. `PHONE_NUMBER` must consist of 8 integers, as per local (Singapore) phone number format.
+
 
 Example Input: `checkin n/John i/123A p/91231112`
 
@@ -227,6 +226,9 @@ New max capacity: 100
 =========================================================
 ```
 
+### Move storage: `movestorage`
+COMING SOON
+
 ### Change storage location: `movestorage`
 
 Move the location of the storage file to the specified destination.
@@ -258,7 +260,7 @@ Exiting Control Your Crowd...
 =========================================================
 ```
 
-### Storing the details of previous persons
+### Visitor Log
 
 CYC automatically saves the details of previous persons.
 
@@ -272,13 +274,18 @@ The program defaults to saving to `/TrackingList.txt` in the same folder as the 
 
 ### Changing save location
 To change the save location, you can use the command `movestorage`
-### History (WIP)
+
+### History
+COMING SOON
 
 ## FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
-**A**: {your answer here}
+**A**: Please follow these steps:
+1. Follow the [Quick Start](UserGuide.md#quick-start) guide and install CYC on the computer
+2. Transfer the `/LogFile.txt` and `/TrackingList.txt` to the target computer's main CYC folder.
+3. Start CYC and it will automatically load the data.
 
 ## Command Summary
 
@@ -292,6 +299,7 @@ Find person by ID | `find i/LAST_4_CHARS_OF_ID` | `find i/123A`
 Checkout a person | `checkout [n/NAME] i/LAST_4_CHARS_OF_ID` | `checkout n/John i/123A`
 Clear all entries | `clear` | `clear`
 Edit venue capacity | `editmax NEW_CAPACITY` | `editmax 100`
+Move storage | `movestorage PATH` | `movestorage data/storage`
 Exit | `exit` | `exit`
 
 
