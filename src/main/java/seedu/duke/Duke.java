@@ -3,7 +3,17 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
-import seedu.duke.exceptions.*;
+import seedu.duke.exceptions.InvalidArgumentSizeException;
+import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidIdException;
+import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
+import seedu.duke.exceptions.InvalidNameFormatException;
+import seedu.duke.exceptions.InvalidPhoneNumberException;
+import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.PersonNotFoundException;
+import seedu.duke.exceptions.StorageOperationException;
+import seedu.duke.exceptions.WrongFlagException;
 import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.PersonLog;
@@ -77,9 +87,10 @@ public class Duke {
             userInput = ui.getUserInput();
             try {
                 command = parser.parseCommand(userInput);
-            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException
-                    | InvalidIdException | InvalidNameFormatException | InvalidPhoneNumberException 
-                    | StorageOperationException e) {
+            } catch (InvalidCommandException | NoArgumentPassedException
+                    | WrongFlagException | InvalidIdException | InvalidNameFormatException
+                    | InvalidPhoneNumberException | StorageOperationException
+                    | InvalidIntegerException e) {
 
                 ui.notifyErrorToUser(e);
                 continue;

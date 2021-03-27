@@ -23,4 +23,5 @@ public class Messages {
     public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
     public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (100 characters limit)";
     public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
+    public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
 }

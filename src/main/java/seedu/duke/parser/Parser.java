@@ -7,12 +7,14 @@ import seedu.duke.commands.Command;
 import seedu.duke.commands.EditMaxCommand;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
+import seedu.duke.commands.HelpCommand;
 import seedu.duke.commands.ListCheckedInCommand;
 import seedu.duke.commands.ListCommand;
 import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
+import seedu.duke.exceptions.InvalidIntegerException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
@@ -25,6 +27,7 @@ public class Parser {
     public static final String ID_REGEX = "\\d{3}[A-Z]";
     public static final String PHONE_REGEX = "\\d{8}";
     public static final String NAME_REGEX = "[a-zA-Z][a-zA-Z( )*]{0,99}";
+    public static final String MAX_REGEX = "[0-9]+";
 
 
     /**
@@ -46,7 +49,7 @@ public class Parser {
             InvalidCommandException, NoArgumentPassedException,
             WrongFlagException, InvalidIdException,
             InvalidNameFormatException, InvalidPhoneNumberException,
-            StorageOperationException {
+            StorageOperationException, InvalidIntegerException {
 
         String[] inputArray;
         String argument = null;
@@ -60,7 +63,8 @@ public class Parser {
         } else if (!command.equals("list")
                 && !command.equals("exit")
                 && !command.equals("listall")
-                && !command.equals("clear")) {
+                && !command.equals("clear")
+                && !command.equals("help")) {
             throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
         switch (command) {
@@ -78,9 +82,10 @@ public class Parser {
             return parseExit();
         case ClearCommand.COMMAND:
             return parseClear();
-
-        //case EditMaxCommand.COMMAND:
-            //return parseEditMax(argument);
+        case HelpCommand.COMMAND:
+            return parseHelp();
+        case EditMaxCommand.COMMAND:
+            return parseEditMax(argument);
 
         case MoveStorageCommand.COMMAND:
             return parseMoveStorage(argument);
@@ -90,8 +95,24 @@ public class Parser {
         }
     }
 
+    private boolean isValidInteger(String argument) {
+        return (argument.matches(MAX_REGEX));
+    }
 
-    private Command parseMoveStorage(String argument) {
+    private Command parseEditMax(String argument) throws InvalidIntegerException {
+        if (!isValidInteger(argument)) {
+            throw new InvalidIntegerException(Messages.INVALID_INTEGER);
+        }
+        return new EditMaxCommand(argument);
+
+    }
+
+    private Command parseHelp() {
+        return new HelpCommand();
+    }
+
+
+    private Command  parseMoveStorage(String argument) {
         return new MoveStorageCommand(argument);
     }
 
