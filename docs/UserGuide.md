@@ -219,10 +219,12 @@ Exiting Control Your Crowd...
 
 ### Visitor Log (WIP) - Register once only
 
-### Saving data (WIP)
+### Saving data
+The program automatically saves data to a `.txt` file after each command you input.
+The program defaults to saving to `/TrackingList.txt` in the same folder as the program.
 
-### Changing save location (WIP)
-
+### Changing save location
+To change the save location, you can use the command 
 ### History (WIP)
 
 ## FAQ
