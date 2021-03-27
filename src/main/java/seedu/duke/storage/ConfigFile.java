@@ -10,7 +10,7 @@ import java.util.Properties;
 
 public class ConfigFile {
 
-    public static final String CONFIG_FILE = "config.properties";
+    public static final String CONFIG_FILE = "settings.properties";
 
     private final Properties prop;
     private String storageFilePath;

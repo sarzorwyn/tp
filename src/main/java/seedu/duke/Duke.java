@@ -68,7 +68,6 @@ public class Duke {
         personLog = PersonLog.getInstance();
         try {
             configFile = new ConfigFile();
-            System.out.println(configFile.getStorageFilePath());
             storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
             personLog.loadAllPersons();
