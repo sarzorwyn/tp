@@ -40,7 +40,7 @@ public class HistoryFile {
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
             br.newLine();
-            br.write(name + "," + id + "," + movement + "," + datetime.getDateAndTimeInString() + ",");
+            br.write(name + " , " + id + " , " + movement + ", " + datetime.getDateAndTimeInString() + " ,");
 
             br.close();
             fr.close();
