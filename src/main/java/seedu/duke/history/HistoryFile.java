@@ -2,6 +2,7 @@ package seedu.duke.history;
 
 import seedu.duke.datetime.DateTime;
 import seedu.duke.exceptions.HistoryStorageException;
+import seedu.duke.person.Person;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -30,21 +31,55 @@ public class HistoryFile {
         this.path = Paths.get(DIRECTORY_HOME,path + FILE_FORMAT);
     }
 
-    public void save(String entry) throws HistoryStorageException {
+    public void saveToHistory(Person person, String movement) throws HistoryStorageException {
+        String name = person.getName().getNameString();
+        String Id = person.getId().getIdString();
+        try {
+            DateTime datetime = new DateTime();
+            File file = new File(DEFAULT_HISTORY_FILEPATH + FILE_FORMAT);
+            FileWriter fr = new FileWriter(file, true);
+            BufferedWriter br = new BufferedWriter(fr);
+            br.write(name + " " + Id + " " + movement + " " + datetime.getDateAndTimeInString());
+            br.newLine();
+
+            br.close();
+            fr.close();
+        } catch (IOException ioe) {
+            throw new HistoryStorageException("Error writing to history file: " + path);
+        }
+    }
+
+    public void startHistory() throws HistoryStorageException {
+        try {
+            DateTime datetime = new DateTime();
+            File file = new File(DEFAULT_HISTORY_FILEPATH + FILE_FORMAT);
+            FileWriter fr = new FileWriter(file, true);
+            BufferedWriter br = new BufferedWriter(fr);
+            br.write("Start of history for " + datetime.getDateAndTimeInString());
+            br.newLine();
+
+            br.close();
+            fr.close();
+        } catch (IOException ioe) {
+            throw new HistoryStorageException("Error writing to  history file: " + path);
+        }
+    }
+
+    public void endHistory() throws HistoryStorageException {
         try {
             DateTime datetime = new DateTime();
             File file = new File(DEFAULT_HISTORY_FILEPATH + FILE_FORMAT);
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
             br.newLine();
-            br.write(entry + " " + datetime.getDateAndTimeInString());
+            br.write("End of history for " + datetime.getDateAndTimeInString());
+            br.newLine();
 
             br.close();
             fr.close();
         } catch (IOException ioe) {
-            throw new HistoryStorageException("Error writing to file: " + path);
+            throw new HistoryStorageException("Error writing to  history file: " + path);
         }
     }
-
 
 }

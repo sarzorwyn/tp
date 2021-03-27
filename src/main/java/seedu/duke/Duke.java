@@ -3,17 +3,8 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
-import seedu.duke.exceptions.InvalidArgumentSizeException;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.exceptions.InvalidIdException;
-import seedu.duke.exceptions.InvalidIntegerException;
-import seedu.duke.exceptions.InvalidMaxCapacityException;
-import seedu.duke.exceptions.InvalidNameFormatException;
-import seedu.duke.exceptions.InvalidPhoneNumberException;
-import seedu.duke.exceptions.NoArgumentPassedException;
-import seedu.duke.exceptions.PersonNotFoundException;
-import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.exceptions.WrongFlagException;
+import seedu.duke.exceptions.*;
+import seedu.duke.history.HistoryFile;
 import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.PersonLog;
@@ -33,6 +24,7 @@ public class Duke {
     private Location location;
     private PersonLog personLog;
     private ConfigFile configFile;
+    private HistoryFile historyFile;
     private static Duke theOnlyDuke = null;
 
     private Duke() {
@@ -67,6 +59,7 @@ public class Duke {
         personLog = PersonLog.getInstance();
         try {
             location = new Location(args);
+            historyFile = new HistoryFile();
             configFile = new ConfigFile();
             storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
@@ -108,6 +101,8 @@ public class Duke {
             } catch (StorageOperationException soe) {
                 //System.out.println(soe.getMessage());
                 ui.notifyErrorToUser(soe);
+            } catch (HistoryStorageException hse) {
+                ui.notifyErrorToUser(hse);
             }
 
         } while (!(command instanceof ExitCommand));
@@ -127,5 +122,9 @@ public class Duke {
 
     public ConfigFile getConfigFile() {
         return configFile;
+    }
+
+    public HistoryFile getHistoryFile() {
+        return historyFile;
     }
 }
