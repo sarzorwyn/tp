@@ -46,7 +46,21 @@ public class StorageFile {
      * @throws InvalidPathException If the path specified is invalid
      */
     public StorageFile(String path) throws InvalidPathException {
+        if (path == null) {
+            path = DEFAULT_STORAGE_FILEPATH;
+        }
         this.path = Paths.get(DIRECTORY_HOME,path + TXT_FILE_FORMAT);
+    }
+
+    /**
+     * Creates the save file directory if it does not exist.
+     */
+    public void createDataDirectory() throws StorageOperationException {
+        try {
+            Files.createDirectories(path.getParent());
+        } catch (IOException ioe) {
+            throw new StorageOperationException("Error writing into file: " + path);
+        }
     }
 
     /**
@@ -54,6 +68,7 @@ public class StorageFile {
      * @throws StorageOperationException if there were errors reading the file
      */
     public TrackingList load() throws StorageOperationException {
+        createDataDirectory();
 
         // If the file does not exist, return a empty Tracking List
         if (!Files.exists(path) || !Files.isRegularFile(path)) {
