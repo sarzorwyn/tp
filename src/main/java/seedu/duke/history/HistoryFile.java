@@ -33,14 +33,14 @@ public class HistoryFile {
 
     public void saveToHistory(Person person, String movement) throws HistoryStorageException {
         String name = person.getName().getNameString();
-        String Id = person.getId().getIdString();
+        String id = person.getId().getIdString();
         try {
             DateTime datetime = new DateTime();
             File file = new File(DEFAULT_HISTORY_FILEPATH + FILE_FORMAT);
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
-            br.write(name + " " + Id + " " + movement + " " + datetime.getDateAndTimeInString());
             br.newLine();
+            br.write(name + " " + id + " " + movement + " " + datetime.getDateAndTimeInString());
 
             br.close();
             fr.close();
@@ -55,8 +55,8 @@ public class HistoryFile {
             File file = new File(DEFAULT_HISTORY_FILEPATH + FILE_FORMAT);
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
-            br.write("Start of history for " + datetime.getDateAndTimeInString());
             br.newLine();
+            br.write("===============" + datetime.getDateInString() + "===============");
 
             br.close();
             fr.close();
@@ -72,9 +72,7 @@ public class HistoryFile {
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
             br.newLine();
-            br.write("End of history for " + datetime.getDateAndTimeInString());
-            br.newLine();
-
+            br.write("===============" + datetime.getDateInString() + "===============");
             br.close();
             fr.close();
         } catch (IOException ioe) {

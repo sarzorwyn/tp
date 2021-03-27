@@ -37,18 +37,19 @@ public class Duke {
         return theOnlyDuke;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws HistoryStorageException {
         getInstance().run(args);
     }
 
-    public void run(String[] args) {
+    public void run(String[] args) throws HistoryStorageException {
         start(args);
         runUntilExit();
         exit();
     }
 
     /** Prints Goodbye message then exists. */
-    private void exit() {
+    private void exit() throws HistoryStorageException {
+        historyFile.endHistory();
         System.exit(0);
     }
 
@@ -64,7 +65,9 @@ public class Duke {
             storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
             personLog.loadAllPersons();
-        } catch (StorageOperationException | InvalidArgumentSizeException | InvalidMaxCapacityException e) {
+            historyFile.startHistory();
+        } catch (StorageOperationException | InvalidArgumentSizeException
+                | InvalidMaxCapacityException | HistoryStorageException e) {
             // Shut the program down as it can not be recovered
             // throw new RuntimeException();
             ui.notifyErrorToUser(e);
@@ -94,15 +97,10 @@ public class Duke {
                 storage.save(trackingList);
                 personLog.saveAllPersons();
                 ui.printReaction(commandOutput);
-            } catch (PersonNotFoundException pnfe) {
+            } catch (PersonNotFoundException | StorageOperationException
+                    | HistoryStorageException e) {
                 //System.out.println("Person not found!");
-                ui.notifyErrorToUser(pnfe);
-                continue;
-            } catch (StorageOperationException soe) {
-                //System.out.println(soe.getMessage());
-                ui.notifyErrorToUser(soe);
-            } catch (HistoryStorageException hse) {
-                ui.notifyErrorToUser(hse);
+                ui.notifyErrorToUser(e);
             }
 
         } while (!(command instanceof ExitCommand));
