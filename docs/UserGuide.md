@@ -64,9 +64,6 @@ Shows a message explaining how to access the help page.
 
 Format: `help`
 
-*  Additional parameters for commands that do not take in parameters 
-    (such as `help`, `list`, `exit`, `clear`) will be ignored. The `TODO_NAME` cannot contain punctuation.  
-
 Example Input: `help`
 
 Example Output:
@@ -93,8 +90,8 @@ Check in and add a person to the CYC. Also notifies users on current venue capac
 Format: `checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]`
 
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
-* `NAME` must be a string. Integers will not be accepted.
-* `PHONE_NUMBER` is optional. `PHONE_NUMBER`   must consist of 8 integers, as per local (Singapore) phone number format.
+* `NAME` must only contain english alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
+* `PHONE_NUMBER` is optional. `PHONE_NUMBER` must consist of 8 integers, as per local (Singapore) phone number format.
 
 Example Input: `checkin n/John i/123A p/91231112`
 
