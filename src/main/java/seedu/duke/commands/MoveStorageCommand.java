@@ -8,7 +8,7 @@ import seedu.duke.storage.StorageFile;
 public class MoveStorageCommand extends Command {
     public static final String COMMAND = "movestorage";
     private final String newPath;
-    public String MOVE_MESSAGE = "Moved saved file to %s";
+    public String MOVE_MESSAGE = "Moved storage file to %s.txt";
 
     public MoveStorageCommand(String path) {
         this.newPath = path;
