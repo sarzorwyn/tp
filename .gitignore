@@ -13,7 +13,9 @@ src/main/resources/docs/
 *.iml
 bin/
 
+# Storage files
 /text-ui-test/ACTUAL.txt
 text-ui-test/EXPECTED-UNIX.TXT
 TrackingList.txt
 LogFile.txt
+*.properties

@@ -46,6 +46,9 @@ public class StorageFile {
      * @throws InvalidPathException If the path specified is invalid
      */
     public StorageFile(String path) throws InvalidPathException {
+        if (path == null) {
+            path = DEFAULT_STORAGE_FILEPATH;
+        }
         this.path = Paths.get(DIRECTORY_HOME,path + TXT_FILE_FORMAT);
     }
 

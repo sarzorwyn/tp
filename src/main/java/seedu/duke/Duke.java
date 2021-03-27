@@ -15,6 +15,7 @@ import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.PersonLog;
 import seedu.duke.person.TrackingList;
+import seedu.duke.storage.ConfigFile;
 import seedu.duke.storage.StorageFile;
 import seedu.duke.ui.TextUi;
 
@@ -29,6 +30,7 @@ public class Duke {
     private TrackingList trackingList;
     private Location location;
     private PersonLog personLog;
+    private ConfigFile configFile;
     private static Duke theOnlyDuke = null;
 
     private Duke() {
@@ -65,7 +67,8 @@ public class Duke {
         parser = new Parser();
         personLog = PersonLog.getInstance();
         try {
-            storage = new StorageFile();
+            configFile = new ConfigFile();
+            storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
             personLog.loadAllPersons();
         } catch (StorageOperationException e) {
@@ -119,5 +122,9 @@ public class Duke {
 
     public void setStorage(StorageFile storage) {
         this.storage = storage;
+    }
+
+    public ConfigFile getConfigFile() {
+        return configFile;
     }
 }
