@@ -2,14 +2,13 @@ package seedu.duke.commands;
 
 import seedu.duke.person.TrackingList;
 
-
 /**
  * Terminates SET program.
  */
 public class ExitCommand extends Command {
 
     public static final String COMMAND = "exit";
-    public static final String EXIT_MESSAGE = "Exiting Safest Entry Tracker...";
+    public static final String EXIT_MESSAGE = "Exiting Control Your Crowd...";
 
     @Override
     public CommandOutput execute(TrackingList trackingList) {

@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import static seedu.duke.commands.ExitCommand.EXIT_MESSAGE;
 import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
 
 public class ExitCommandTest {
@@ -12,7 +13,7 @@ public class ExitCommandTest {
     public void testExit() {
         ExitCommand exit = new ExitCommand();
         String exitMessage = exit.execute(SAMPLE_TRACKING_LIST).messageToUser;
-        assertEquals("Exiting Safest Entry Tracker...", exitMessage);
+        assertEquals(EXIT_MESSAGE, exitMessage);
     }
 
 }
