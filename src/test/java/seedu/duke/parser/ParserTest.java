@@ -62,7 +62,7 @@ public class ParserTest {
     @Test
     public void parseCheckIn_Exceptions() {
         Throwable exception = assertThrows(InvalidIdException.class, () ->
-                parser.parseCheckIn("i/Jon 123"));
+                parser.parseCheckIn("i/John 123"));
         assertEquals(exception.getMessage(), Messages.ID_ERROR);
 
         exception = assertThrows(NoArgumentPassedException.class, () ->
@@ -78,11 +78,11 @@ public class ParserTest {
             StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         CheckInCommand checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin i/ 123A n/ jon");
+                "checkin i/ 123A n/ John");
         assertEquals("checkin", checkInCommand.COMMAND);
 
         checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin i/123A n/jon p/12345678");
+                "checkin i/123A n/John p/12345678");
         assertEquals("checkin", checkInCommand.COMMAND);
     }
 
@@ -123,7 +123,7 @@ public class ParserTest {
             InvalidPhoneNumberException, InvalidNameFormatException,
             StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
-        parser.parseCommand("checkin i/123A n/Jon");
+        parser.parseCommand("checkin i/123A n/John");
         FindCommand findCommand = (FindCommand) parser.parseCommand("find i/123A");
         assertEquals("find", findCommand.COMMAND);
     }
