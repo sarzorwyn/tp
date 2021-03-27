@@ -202,6 +202,22 @@ New max capacity: 100
 =========================================================
 ```
 
+### Change storage location: `movestorage`
+
+Move the location of the storage file to the specified destination.
+
+Format: `movestorage NEW_DESTINATION`
+
+Example Input:
+`movestorage /new/test`
+
+Example Output:
+```
+=========================================================
+Moved storage file to /new/test.txt
+=========================================================
+```
+
 ### Exiting CYC: `exit`
 
 Exit the CYC program.
@@ -219,10 +235,12 @@ Exiting Control Your Crowd...
 
 ### Visitor Log (WIP) - Register once only
 
-### Saving data (WIP)
+### Saving data
+The program automatically saves data to a `.txt` file after each command you input.
+The program defaults to saving to `/TrackingList.txt` in the same folder as the program.
 
-### Changing save location (WIP)
-
+### Changing save location
+To change the save location, you can use the command `movestorage`
 ### History (WIP)
 
 ## FAQ
