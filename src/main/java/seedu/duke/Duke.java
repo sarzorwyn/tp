@@ -10,6 +10,7 @@ import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
+import seedu.duke.person.PersonLog;
 import seedu.duke.person.TrackingList;
 import seedu.duke.storage.StorageFile;
 import seedu.duke.ui.TextUi;
@@ -24,6 +25,7 @@ public class Duke {
     private StorageFile storage;
     private TrackingList trackingList;
     private Location location;
+    private PersonLog personLog;
     private static Duke theOnlyDuke = null;
 
     private Duke() {
@@ -58,12 +60,15 @@ public class Duke {
         location = new Location(locationName, maxCapacity);
         ui = new TextUi();
         parser = new Parser();
+        personLog = PersonLog.getInstance();
         try {
             storage = new StorageFile();
             trackingList = storage.load();
+            personLog.loadAllPersons();
         } catch (StorageOperationException e) {
             // Shut the program down as it can not be recovered
-            throw new RuntimeException();
+            // throw new RuntimeException();
+            ui.notifyErrorToUser(e);
         }
         ui.showWelcomeMessage(VERSION_NO);
     }
@@ -76,7 +81,8 @@ public class Duke {
             userInput = ui.getUserInput();
             try {
                 command = parser.parseCommand(userInput);
-            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException e) {
+            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException
+                    | StorageOperationException e) {
                 ui.notifyErrorToUser(e);
                 continue;
             }
@@ -87,10 +93,12 @@ public class Duke {
                 storage.save(trackingList);
                 ui.printReaction(commandOutput);
             } catch (PersonNotFoundException pnfe) {
-                System.out.println("Person not found!");
+                //System.out.println("Person not found!");
+                ui.notifyErrorToUser(pnfe);
                 continue;
             } catch (StorageOperationException soe) {
-                System.out.println(soe.getMessage());
+                //System.out.println(soe.getMessage());
+                ui.notifyErrorToUser(soe);
             }
 
         } while (!(command instanceof ExitCommand));
