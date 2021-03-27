@@ -58,7 +58,7 @@ public class CheckInCommand extends Command {
         toCheckin.setCheckedIn(true);
         if (!trackingList.contains(toCheckin)) {
             trackingList.add(toCheckin);
-        historyFile.saveToHistory(toCheckin, " checked in at ");
+            historyFile.saveToHistory(toCheckin, " checked in at ");
         }
         return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin.getName()), COMMAND);
     }
