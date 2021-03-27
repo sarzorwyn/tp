@@ -16,6 +16,7 @@ import seedu.duke.exceptions.InvalidIntegerException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
@@ -174,7 +175,7 @@ public class ParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
 
         MoveStorageCommand moveStorageCommand =
                 (MoveStorageCommand) parser.parseCommand("movestorage /new/test");
