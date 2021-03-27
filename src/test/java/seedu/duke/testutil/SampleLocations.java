@@ -1,18 +1,29 @@
 package seedu.duke.testutil;
 
+import seedu.duke.exceptions.InvalidArgumentSizeException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
+import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.location.Location;
 
 public class SampleLocations {
-    public static final Location SCHOOL = new LocationBuilder().withLocationName("National University of Singapore")
-            .withMaxCapacity(500).build();
-    public static final Location SMALL_SHOP = new LocationBuilder().withLocationName("ValueDollar")
-            .withMaxCapacity(25).build();
-    public static final Location BIG_MALL = new LocationBuilder().withLocationName("VivoCity")
-            .withMaxCapacity(1000).build();
-    public static final Location FOOD_COURT = new LocationBuilder().withLocationName("Kopitiam")
-            .withMaxCapacity(50).build();
-    public static final Location CINEMA = new LocationBuilder().withLocationName("Cathay Cineplex")
-            .withMaxCapacity(100).build();
-    public static final Location EVENT = new LocationBuilder().withLocationName("Wedding")
-            .withMaxCapacity(250).build();
+
+    public static Location SCHOOL;
+    public static Location SMALL_SHOP;
+    public static Location BIG_MALL;
+    public static Location FOOD_COURT;
+    public static Location CINEMA;
+    public static Location EVENT;
+
+    static {
+        try {
+            SCHOOL = new Location(new String[] {"National University of Singapore", "1000"});
+            SMALL_SHOP = new Location(new String[] {"ValueDollar", "25"});
+            BIG_MALL = new Location(new String[] {"VivoCity", "1000"});
+            FOOD_COURT = new Location(new String[] {"Kopitiam", "50"});
+            CINEMA = new Location(new String[] {"Cathay Cineplex", "100"});
+            EVENT = new Location(new String[] {"Wedding", "250"});
+        } catch (InvalidMaxCapacityException | InvalidArgumentSizeException e) {
+            e.printStackTrace();
+        }
+    }
 }

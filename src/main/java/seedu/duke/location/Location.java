@@ -1,14 +1,19 @@
 package seedu.duke.location;
 
+import seedu.duke.common.Messages;
+import seedu.duke.exceptions.InvalidArgumentSizeException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
+
 public class Location {
 
-    // enter locationName and set maxCapacity as arguments when running the jar file
     private String locationName;
     private int maxCapacity;
+    private static final String MAX_CAPACITY_REGEX = "\\d+";
 
-    public Location(String locationName, int maxCapacity) {
-        this.locationName = locationName;
-        this.maxCapacity = maxCapacity;
+    public Location(String[] args) throws InvalidMaxCapacityException, InvalidArgumentSizeException {
+        checkArgumentValidity(args);
+        this.locationName = args[0];
+        this.maxCapacity = Integer.parseInt(args[1]);
     }
 
     public String getLocationName() {
@@ -25,6 +30,15 @@ public class Location {
 
     public void setMaxCapacity(int maxCapacity) {
         this.maxCapacity = maxCapacity;
+    }
+
+    private void checkArgumentValidity(String[] args) throws InvalidArgumentSizeException, InvalidMaxCapacityException {
+        if (args.length != 2) {
+            throw new InvalidArgumentSizeException(Messages.INVALID_ARGUMENT_SIZE);
+        }
+        if (!args[1].matches(MAX_CAPACITY_REGEX)) {
+            throw new InvalidMaxCapacityException(Messages.INVALID_MAX_CAPACITY);
+        }
     }
 
 }

@@ -3,14 +3,7 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
-import seedu.duke.exceptions.InvalidCommandException;
-import seedu.duke.exceptions.InvalidIdException;
-import seedu.duke.exceptions.InvalidNameFormatException;
-import seedu.duke.exceptions.InvalidPhoneNumberException;
-import seedu.duke.exceptions.NoArgumentPassedException;
-import seedu.duke.exceptions.PersonNotFoundException;
-import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.exceptions.WrongFlagException;
+import seedu.duke.exceptions.*;
 import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.PersonLog;
@@ -18,7 +11,6 @@ import seedu.duke.person.TrackingList;
 import seedu.duke.storage.ConfigFile;
 import seedu.duke.storage.StorageFile;
 import seedu.duke.ui.TextUi;
-
 
 public class Duke {
 
@@ -44,13 +36,11 @@ public class Duke {
     }
 
     public static void main(String[] args) {
-        String locationName = args[0];
-        int maxCapacity = Integer.parseInt(args[1]);
-        getInstance().run(locationName, maxCapacity);
+        getInstance().run(args);
     }
 
-    public void run(String locationName, int maxCapacity) {
-        start(locationName, maxCapacity);
+    public void run(String[] args) {
+        start(args);
         runUntilExit();
         exit();
     }
@@ -61,17 +51,17 @@ public class Duke {
     }
 
     /** Main entry-point for the java.duke.Duke application. */
-    private void start(String locationName, int maxCapacity) {
-        location = new Location(locationName, maxCapacity);
+    private void start(String[] args) {
         ui = new TextUi();
         parser = new Parser();
         personLog = PersonLog.getInstance();
         try {
+            location = new Location(args);
             configFile = new ConfigFile();
             storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
             personLog.loadAllPersons();
-        } catch (StorageOperationException e) {
+        } catch (StorageOperationException | InvalidArgumentSizeException | InvalidMaxCapacityException e) {
             // Shut the program down as it can not be recovered
             // throw new RuntimeException();
             ui.notifyErrorToUser(e);
