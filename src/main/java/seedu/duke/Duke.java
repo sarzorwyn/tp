@@ -107,4 +107,7 @@ public class Duke {
         return location;
     }
 
+    public void setStorage(StorageFile storage) {
+        this.storage = storage;
+    }
 }
