@@ -17,7 +17,5 @@ public class Messages {
     public static final String EDIT_CAPACITY_HELP = "Edit venue capacity: editmax NEW_CAPACITY";
     public static final String EXIT_HELP = "Exit Control Your Crowd: exit";
     public static final String USER_GUIDE_LINK_HELP = "Refer to the user guide: " + USER_GUIDE_LINK;
-    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
-    public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (100 characters limit)";
-    public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
+
 }
