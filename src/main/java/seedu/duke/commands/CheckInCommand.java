@@ -1,5 +1,7 @@
 package seedu.duke.commands;
 
+import seedu.duke.common.Messages;
+import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.Id;
 import seedu.duke.person.Name;
@@ -15,25 +17,21 @@ public class CheckInCommand extends Command {
 
     public static final String COMMAND = "checkin";
     public static final String CHECKIN_MESSAGE = "%s has been successfully checked-in!";
-    private final Person toCheckin;
+    private Person toCheckin;
     private final PersonLog personLog = PersonLog.getInstance();
 
-    /** To check-in a person who is not found in the Person Log. */
-    public CheckInCommand(String id,
-                          String name,
-                          String phone) throws StorageOperationException {
-        toCheckin = new Person(
-                new Id(id),
-                new Name(name),
-                new Phone(phone));
-        if (!personLog.isFound(toCheckin.getId())) {
+    public CheckInCommand(String idString,
+                          String nameString,
+                          String phoneString) throws StorageOperationException, PersonNotFoundException {
+        Id id = new Id(idString);
+        if (personLog.isFound(id)) {
+            toCheckin = personLog.findPerson(id);
+        } else if (nameString == null) {
+            throw new PersonNotFoundException(Messages.PERSON_NOT_FOUND);
+        } else {
+            toCheckin = new Person(id, new Name(nameString), new Phone(phoneString));
             personLog.addPerson(toCheckin);
         }
-    }
-
-    /** To check-in a person who is already in the Person Log. */
-    public CheckInCommand(String id) {
-        toCheckin = personLog.findPerson(new Id(id));
     }
 
     public Person getToCheckIn() {

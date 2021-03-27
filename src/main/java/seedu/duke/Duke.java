@@ -87,10 +87,9 @@ public class Duke {
             userInput = ui.getUserInput();
             try {
                 command = parser.parseCommand(userInput);
-            } catch (InvalidCommandException | NoArgumentPassedException
-                    | WrongFlagException | InvalidIdException | InvalidNameFormatException
-                    | InvalidPhoneNumberException | StorageOperationException
-                    | InvalidIntegerException e) {
+            } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException | InvalidIdException
+                    | InvalidNameFormatException | InvalidPhoneNumberException | StorageOperationException
+                    | InvalidIntegerException | PersonNotFoundException e) {
 
                 ui.notifyErrorToUser(e);
                 continue;
