@@ -1,25 +1,28 @@
 package seedu.duke.commands;
 
 import seedu.duke.Duke;
-import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.TrackingList;
 import seedu.duke.storage.StorageFile;
 
-import java.nio.file.InvalidPathException;
-
-public class MoveSaveCommand extends Command {
-    public static final String COMMAND = "movesave";
+public class MoveStorageCommand extends Command {
+    public static final String COMMAND = "movestorage";
     private final String newPath;
     public String MOVE_MESSAGE = "Moved saved file to %s";
 
-    public MoveSaveCommand(String path) {
+    public MoveStorageCommand(String path) {
         this.newPath = path;
     }
 
     @Override
     public CommandOutput execute(TrackingList trackingList) throws StorageOperationException {
         StorageFile newStorage = new StorageFile(newPath);
+        StorageFile oldStorage =  Duke.getInstance().getStorage();
+        TrackingList savedTrackingList = oldStorage.load();
+
+        assert trackingList.listPerson().equals(savedTrackingList.listPerson())
+                : "Saved file is desynced from actual trackingList!";
+
         newStorage.save(trackingList);
         Duke.getInstance().setStorage(newStorage);
 
