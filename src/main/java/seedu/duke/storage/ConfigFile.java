@@ -10,24 +10,31 @@ import java.util.Properties;
 
 public class ConfigFile {
 
-    public static final String CONFIG_FILE = "settings.properties";
+    private static final String DEFAULT_FILE = "settings.properties";
 
     private final Properties prop;
+    private String configPath;
     private String storageFilePath;
 
-    /** Runs load when initialized. */
     public ConfigFile() {
+        this(DEFAULT_FILE);
+    }
+
+    /** Runs load when initialized. */
+    public ConfigFile(String path) {
         prop = new Properties();
+        configPath = path;
         this.load();
     }
 
     public void load() {
         try {
-            File file = new File(CONFIG_FILE);
+            File file = new File(configPath);
             FileInputStream inputStream = new FileInputStream(file);
 
             prop.load(inputStream);
             storageFilePath = prop.getProperty("StorageFilePath");
+            inputStream.close();
         } catch (IOException e) {
             // If the file does not exist, return a null Storage file path
             storageFilePath = null;
@@ -35,13 +42,14 @@ public class ConfigFile {
     }
 
     private void save() throws StorageOperationException {
-        File file = new File(CONFIG_FILE);
+        File file = new File(configPath);
         try {
             file.createNewFile();
-            FileWriter fileWriter = new FileWriter(CONFIG_FILE);
+            FileWriter fileWriter = new FileWriter(configPath);
             prop.store(fileWriter, "Config file");
+            fileWriter.close();
         } catch (IOException soe) {
-            throw new StorageOperationException("Error writing to file: " + CONFIG_FILE);
+            throw new StorageOperationException("Error writing to file: " + configPath);
         }
     }
 
