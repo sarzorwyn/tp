@@ -4,6 +4,9 @@ import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidIdException;
+import seedu.duke.exceptions.InvalidNameFormatException;
+import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
@@ -12,6 +15,7 @@ import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.PersonLog;
 import seedu.duke.person.TrackingList;
+import seedu.duke.storage.ConfigFile;
 import seedu.duke.storage.StorageFile;
 import seedu.duke.ui.TextUi;
 
@@ -26,6 +30,7 @@ public class Duke {
     private TrackingList trackingList;
     private Location location;
     private PersonLog personLog;
+    private ConfigFile configFile;
     private static Duke theOnlyDuke = null;
 
     private Duke() {
@@ -62,7 +67,8 @@ public class Duke {
         parser = new Parser();
         personLog = PersonLog.getInstance();
         try {
-            storage = new StorageFile();
+            configFile = new ConfigFile();
+            storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
             personLog.loadAllPersons();
         } catch (StorageOperationException e) {
@@ -82,7 +88,9 @@ public class Duke {
             try {
                 command = parser.parseCommand(userInput);
             } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException
+                    | InvalidIdException | InvalidNameFormatException | InvalidPhoneNumberException 
                     | StorageOperationException e) {
+
                 ui.notifyErrorToUser(e);
                 continue;
             }
@@ -114,5 +122,9 @@ public class Duke {
 
     public void setStorage(StorageFile storage) {
         this.storage = storage;
+    }
+
+    public ConfigFile getConfigFile() {
+        return configFile;
     }
 }

@@ -4,6 +4,7 @@ import seedu.duke.commands.CheckInCommand;
 import seedu.duke.commands.CheckoutCommand;
 import seedu.duke.commands.ClearCommand;
 import seedu.duke.commands.Command;
+import seedu.duke.commands.EditMaxCommand;
 import seedu.duke.commands.ExitCommand;
 import seedu.duke.commands.FindCommand;
 import seedu.duke.commands.ListCheckedInCommand;
@@ -11,11 +12,20 @@ import seedu.duke.commands.ListCommand;
 import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
+import seedu.duke.exceptions.InvalidIdException;
+import seedu.duke.exceptions.InvalidNameFormatException;
+import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
+import javax.naming.InvalidNameException;
+
 public class Parser {
+    public static final String ID_REGEX = "\\d{3}[A-Z]";
+    public static final String PHONE_REGEX = "\\d{8}";
+    public static final String NAME_REGEX = "[a-zA-Z][a-zA-Z( )*]{0,99}";
+
 
     /**
      * Method that splits user input into 2 sections.
@@ -32,7 +42,12 @@ public class Parser {
     }
 
     public Command parseCommand(String userInput) throws
-            InvalidCommandException, NoArgumentPassedException, WrongFlagException, StorageOperationException {
+
+            InvalidCommandException, NoArgumentPassedException,
+            WrongFlagException, InvalidIdException,
+            InvalidNameFormatException, InvalidPhoneNumberException,
+            StorageOperationException {
+
         String[] inputArray;
         String argument = null;
         assert userInput != null : "User input cannot be null";
@@ -63,16 +78,23 @@ public class Parser {
             return parseExit();
         case ClearCommand.COMMAND:
             return parseClear();
+
+        //case EditMaxCommand.COMMAND:
+            //return parseEditMax(argument);
+
         case MoveStorageCommand.COMMAND:
             return parseMoveStorage(argument);
+
         default:
             throw new InvalidCommandException(Messages.INVALID_COMMAND);
         }
     }
 
+
     private Command parseMoveStorage(String argument) {
         return new MoveStorageCommand(argument);
     }
+
 
     private Command parseClear() {
         return new ClearCommand();
@@ -106,11 +128,11 @@ public class Parser {
         String name = null;
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
-        } else if (idChecker(argument) == -1) {
+        } else if (idFlagChecker(argument) == -1) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
 
-        if (nameChecker(argument) == -1) {
+        if (nameFlagChecker(argument) == -1) {
             checkoutDetails = argument.split("i/",2);
         } else {
             checkoutDetails = argument.split("i/|n/",3);
@@ -128,38 +150,58 @@ public class Parser {
         return new CheckoutCommand(id,name);
     }
 
-    public int idChecker(String argument) {
+    public int idFlagChecker(String argument) {
         return argument.indexOf("i/");
     }
     
-    private int nameChecker(String argument) {
+    private int nameFlagChecker(String argument) {
         return argument.indexOf("n/");
     }
     
-    private int phoneChecker(String argument) {
+    private int phoneFlagChecker(String argument) {
         return argument.indexOf("p/");
     }
-    
-    Command parseCheckIn(String argument) throws NoArgumentPassedException, WrongFlagException,
-            StorageOperationException {
+
+
+    public static boolean isValidId(String idString) {
+        return idString.matches(ID_REGEX);
+    }
+
+    public static boolean isValidPhone(String phoneNo) {
+        if (phoneNo == null) {
+            return true;
+        }
+        return phoneNo.matches(PHONE_REGEX);
+    }
+
+    public static boolean isValidName(String nameString) {
+        return nameString.matches(NAME_REGEX);
+    }
+
+    Command parseCheckIn(String argument) throws
+                NoArgumentPassedException,WrongFlagException, InvalidIdException,
+                InvalidNameFormatException, InvalidPhoneNumberException,
+                StorageOperationException {
+
         String[] checkInDetails;
                 
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         }
         assert !argument.isBlank() : "Argument cannot be blank.";
-        if (idChecker(argument) == -1 || nameChecker(argument) == -1) {
+        if (idFlagChecker(argument) == -1 || nameFlagChecker(argument) == -1) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
-        }
-        if (phoneChecker(argument) == -1) {
-            checkInDetails = argument.split("n/|i/",3);
-        } else {
-            checkInDetails = argument.split("n/|i/|p/",4);
         }
 
         String id;
         String name;
         String phoneNumber = null;
+        if (phoneFlagChecker(argument) == -1) {
+            checkInDetails = argument.split("n/|i/",3);
+        } else {
+            checkInDetails = argument.split("n/|i/|p/",4);
+        }
+
         if (checkInDetails[1].isBlank() || checkInDetails[2].isBlank()) {     //checks if n/ and i/ is provided
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
@@ -169,6 +211,17 @@ public class Parser {
         if (checkInDetails.length == 4) {
             phoneNumber = checkInDetails[3].trim();
         }
+
+        if (!isValidId(id)) {
+            throw new InvalidIdException(Messages.ID_ERROR);
+        }
+        if (!isValidName(name)) {
+            throw new InvalidNameFormatException(Messages.NAME_ERROR);
+        }
+        if (!isValidPhone(phoneNumber)) {
+            throw new InvalidPhoneNumberException(Messages.PHONE_ERROR);
+        }
+
         return new CheckInCommand(id, name, phoneNumber);
     }
 
