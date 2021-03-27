@@ -37,7 +37,7 @@ public class HistoryFile {
             FileWriter fr = new FileWriter(file, true);
             BufferedWriter br = new BufferedWriter(fr);
             br.newLine();
-            br.write(entry + " " +datetime.getDateAndTimeInString());
+            br.write(entry + " " + datetime.getDateAndTimeInString());
 
             br.close();
             fr.close();
