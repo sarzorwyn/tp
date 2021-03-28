@@ -101,4 +101,30 @@ public class StorageFile {
             throw new StorageOperationException("Error writing to file: " + path);
         }
     }
+
+    public void saveLogFile(List<String> jsonLog) throws StorageOperationException {
+        try {
+            Files.write(path, jsonLog);
+        } catch (IOException ioe) {
+            throw new StorageOperationException("Error writing to file: " + path);
+        }
+    }
+
+    public List<String> loadLogFile() throws StorageOperationException {
+        createDataDirectory();
+
+        // If the file does not exist, return null
+        if (!Files.exists(path) || !Files.isRegularFile(path)) {
+            return null;
+        }
+
+        try {
+            return Files.readAllLines(path);
+        } catch (FileNotFoundException fnfe) {
+            throw new AssertionError("A file non found scenario should have been handled before this");
+        } catch (IOException ioe) {
+            throw new StorageOperationException("Error loading from file: " + path);
+        }
+    }
+
 }

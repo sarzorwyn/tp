@@ -11,14 +11,15 @@ import static seedu.duke.testutil.SamplePersons.ALICE;
 import static seedu.duke.testutil.SamplePersons.BOB;
 import static seedu.duke.testutil.SamplePersons.JACK_NO_PHONE;
 import static seedu.duke.testutil.SamplePersons.JOHN;
-import static seedu.duke.testutil.SamplePersons.JOHN_DIFF_ID;
 import static seedu.duke.testutil.SamplePersons.MARY;
+import static seedu.duke.testutil.SamplePersons.NON_EXISTENT_PERSON;
 
 class PersonLogTest {
     PersonLog personLog = PersonLog.getInstance();
 
     @Test
     public void personLogTest() {
+        personLog.changePath("test/LogFile");
         try {
             personLog.clearAllPersons();
             personLog.addPerson(ALICE);
@@ -34,28 +35,27 @@ class PersonLogTest {
         testIsFound();
         testFindPerson();
         testModifyPerson();
-        try {
-            personLog.clearAllPersons();
-        } catch (StorageOperationException e) {
-            e.printStackTrace();
-        }
     }
 
     void testIsFound() {
         assertTrue(personLog.isFound(ALICE.getId()));
         assertTrue(personLog.isFound(JACK_NO_PHONE.getId()));
-        assertFalse(personLog.isFound(JOHN_DIFF_ID.getId()));
+        assertFalse(personLog.isFound(NON_EXISTENT_PERSON.getId()));
     }
 
     void testFindPerson() {
         assertEquals(JOHN, personLog.findPerson(JOHN.getId()));
-        assertNull(personLog.findPerson(JOHN_DIFF_ID.getId()));
+        assertNull(personLog.findPerson(NON_EXISTENT_PERSON.getId()));
     }
 
     void testModifyPerson() {
         String jackNewPhone = "12345678";
         JACK_NO_PHONE.getPhone().setPhoneNo(jackNewPhone);
-        personLog.modifyPerson(JACK_NO_PHONE);
+        try {
+            personLog.modifyPerson(JACK_NO_PHONE);
+        } catch (StorageOperationException e) {
+            System.out.println(e.getMessage());
+        }
 
         Person newJack = personLog.findPerson(JACK_NO_PHONE.getId());
 

@@ -27,9 +27,11 @@ public class PersonLog {
     }
 
     public void addPerson(Person person) throws StorageOperationException {
-        assert !isFound(person.getId()) : "Person cannot already exist in the log";
+        if (isFound(person.getId())) {
+            return;
+        }
         personLog.put(person.getId(), person);
-        logFile.savePerson(person, true);
+        saveAllPersons();
     }
 
     public boolean isFound(Id id) {
@@ -40,11 +42,11 @@ public class PersonLog {
         return isFound(id) ? new Person(personLog.get(id)) : null;
     }
 
-    public void modifyPerson(Person person) {
+    public void modifyPerson(Person person) throws StorageOperationException {
         personLog.replace(person.getId(), person);
+        saveAllPersons();
     }
 
-    // Actually not needed I just put here first.
     public void saveAllPersons() throws StorageOperationException {
         ArrayList<Person> persons = new ArrayList<>(personLog.values());
         logFile.saveAllPersons(persons);
@@ -54,8 +56,12 @@ public class PersonLog {
         logFile.loadAllPersons();
     }
 
+    public void changePath(String path) {
+        logFile.setPath(path);
+    }
+
     public void clearAllPersons() throws StorageOperationException {
-        personLog.clear();
-        logFile.clear();
+        ArrayList<Person> persons = new ArrayList<>(personLog.values());
+        logFile.saveAllPersons(persons);
     }
 }

@@ -11,15 +11,15 @@ import java.util.Scanner;
 
 public class TextUi {
 
-    public static final String PRINT_LISTALL_FORMAT = "|%-3s||%-15s||%-8s||%-10s||%-10s|";
-    public static final String PRINT_LIST_FORMAT =  "|%-3s||%-16s||%-12s||%-17s|";
+    public static final String PRINT_LISTALL_FORMAT = "|%-3s||%-35s||%-8s||%-10s||%-10s|";
+    public static final String PRINT_LIST_FORMAT =  "|%-3s||%-36s||%-12s||%-17s|";
 
     private final PrintStream out;
     private final Scanner in;
     private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
-    private static final String DIVIDER = "=".repeat(57);
-    private static final String SINGLE_DIVIDER = "-".repeat(57);
+    private static final String DIVIDER = "=".repeat(76);
+    private static final String SINGLE_DIVIDER = "-".repeat(76);
 
     public TextUi() {
         this(System.in, System.out);
@@ -69,9 +69,11 @@ public class TextUi {
      */
     private void printList(List<Person> persons) {
         assert persons != null : "Does not print null";
+        printDivider();
         out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
         printDivider();
         printPersonsInListWithStatus(persons);
+        printDivider();
     }
 
     /**
@@ -82,34 +84,39 @@ public class TextUi {
      */
     private void printCheckedInList(List<Person> persons) {
         assert persons != null : "Does not print null";
+        printDivider();
         out.printf((PRINT_LIST_FORMAT) + "%n", " ", "Name", "Id", "Phone");
         printDivider();
         printPersonsInListWithoutStatus(persons);
+        printDivider();
     }
 
     private void printPersonsInListWithoutStatus(List<Person> persons) {
         for (int i = 0; i < persons.size(); ++i) {
             Person peronSelected = persons.get(i);
             String name = peronSelected.getName().getNameString();
+            String truncatedName = nameTruncator(name);
             String idString = peronSelected.getId().getIdString();
             String phoneString = (peronSelected.getPhone().isAvailable())
-                    ? "--" : peronSelected.getPhone().getPhoneNo();
-            out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, name, idString, phoneString);
+                    ? peronSelected.getPhone().getPhoneNo() : "--";
+            out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, truncatedName, idString, phoneString);
             printSingleDivider();
         }
     }
 
     private void printFindList(Person person) {
         assert person != null : "Only prints Person";
+        printDivider();
         out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
         printDivider();
         String name = person.getName().getNameString();
+        String truncatedName = nameTruncator(name);
         String idString = person.getId().getIdString();
         String phoneString = (person.getPhone().isAvailable())
-                ? "--" : person.getPhone().getPhoneNo();
+                ? person.getPhone().getPhoneNo() : "--";
         String statusString = (person.getCheckedIn()) ? "Yes" : "No";
-        out.printf((PRINT_LISTALL_FORMAT) + "%n", 1, name, idString, phoneString, statusString);
-        printSingleDivider();
+        out.printf((PRINT_LISTALL_FORMAT) + "%n", 1, truncatedName, idString, phoneString, statusString);
+        printDivider();
 
     }
 
@@ -117,11 +124,12 @@ public class TextUi {
         for (int i = 0; i < persons.size(); ++i) {
             Person personSelected = persons.get(i);
             String name = personSelected.getName().getNameString();
+            String truncatedName = nameTruncator(name);
             String idString = personSelected.getId().getIdString();
             String phoneString = (personSelected.getPhone().isAvailable())
-                    ? "--" : personSelected.getPhone().getPhoneNo();
+                    ? personSelected.getPhone().getPhoneNo() : "--";
             String statusString = (personSelected.getCheckedIn()) ? "Yes" : "No";
-            out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, name, idString, phoneString, statusString);
+            out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, truncatedName, idString, phoneString, statusString);
             printSingleDivider();
         }
     }
@@ -129,7 +137,7 @@ public class TextUi {
     public void showWelcomeMessage(String version) {
         printDivider();
         assert version instanceof String : "Version has to be a string";
-        out.println("Welcome to Safest Entry Tracker - Version " + version);
+        out.println("Welcome to Control Your Crowd - Version " + version);
         // for next patch update - Storage class - dataStorageSuccessful()
         out.println("Data successfully loaded from storage file path.");
         printDivider();
@@ -174,5 +182,10 @@ public class TextUi {
         out.println(error.getMessage());
     }
 
-
+    private String nameTruncator(String longName) {
+        if (longName.length() > 30) {
+            return longName.substring(0,30);
+        }
+        return longName;
+    }
 }
