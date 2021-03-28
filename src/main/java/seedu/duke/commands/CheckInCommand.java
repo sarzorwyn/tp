@@ -61,6 +61,12 @@ public class CheckInCommand extends Command {
             trackingList.add(toCheckin);
             historyFile.saveToHistory(toCheckin, " checked in at ");
         }
+        try {
+            toCheckin = trackingList.findExactPerson(toCheckin.getId());
+            toCheckin.setCheckedIn(true);
+        } catch (PersonNotFoundException e) {
+            System.out.println("test123");
+        }
         return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin.getName()), COMMAND);
     }
 
