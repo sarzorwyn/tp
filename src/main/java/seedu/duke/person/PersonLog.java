@@ -37,7 +37,7 @@ public class PersonLog {
     }
 
     public Person findPerson(Id id) {
-        return isFound(id) ? personLog.get(id) : null;
+        return isFound(id) ? new Person(personLog.get(id)) : null;
     }
 
     public void modifyPerson(Person person) {

@@ -54,6 +54,12 @@ public class CheckInCommand extends Command {
         if (!trackingList.contains(toCheckin)) {
             trackingList.add(toCheckin);
         }
+        try {
+            toCheckin = trackingList.findExactPerson(toCheckin.getId());
+            toCheckin.setCheckedIn(true);
+        } catch (PersonNotFoundException e) {
+            System.out.println("test123");
+        }
         return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin.getName()), COMMAND);
     }
 
