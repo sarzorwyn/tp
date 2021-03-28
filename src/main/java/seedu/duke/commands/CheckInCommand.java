@@ -20,8 +20,7 @@ public class CheckInCommand extends Command {
 
     public static final String COMMAND = "checkin";
     public static final String CHECKIN_MESSAGE = "%s has been successfully checked-in!";
-    private Person toCheckin;
-    private final PersonLog personLog = PersonLog.getInstance();
+    private final Person toCheckin;
     private HistoryFile historyFile;
 
     public CheckInCommand(String idString,
@@ -29,6 +28,7 @@ public class CheckInCommand extends Command {
                           String phoneString) throws StorageOperationException, PersonNotFoundException {
         Id id = new Id(idString);
         historyFile = Duke.getInstance().getHistoryFile();
+        PersonLog personLog = PersonLog.getInstance();
         if (personLog.isFound(id)) {
             toCheckin = personLog.findPerson(id);
             checkSameName(nameString);
@@ -54,19 +54,15 @@ public class CheckInCommand extends Command {
     }
 
     @Override
-    public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException {
-        toCheckin.setCheckedIn(true);
+    public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException, PersonNotFoundException {
         historyFile = new HistoryFile();
         if (!trackingList.contains(toCheckin)) {
-            trackingList.add(toCheckin);
-            historyFile.saveToHistory(toCheckin, " checked in at ");
-        }
-        try {
-            toCheckin = trackingList.findExactPerson(toCheckin.getId());
             toCheckin.setCheckedIn(true);
-        } catch (PersonNotFoundException e) {
-            System.out.println("test123");
+            trackingList.add(toCheckin);
+        } else {
+            trackingList.findExactPerson(toCheckin.getId()).setCheckedIn(true);
         }
+        historyFile.saveToHistory(toCheckin, " checked in at ");
         return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin.getName()), COMMAND);
     }
 

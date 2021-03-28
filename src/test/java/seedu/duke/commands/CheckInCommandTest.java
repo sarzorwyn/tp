@@ -47,8 +47,8 @@ public class CheckInCommandTest {
             PersonNotFoundException, HistoryStorageException {
         PersonLog personLogTest = PersonLog.getInstance();
         personLogTest.addPerson(ALICE);
-        ALICE.setCheckedIn(false);
         CheckInCommand checkin = new CheckInCommand(ALICE.getId().getIdString(), null, null);
+        ALICE.setCheckedIn(false);
         checkin.execute(SAMPLE_TRACKING_LIST);
         assertTrue(checkin.getToCheckIn().getCheckedIn());
     }
