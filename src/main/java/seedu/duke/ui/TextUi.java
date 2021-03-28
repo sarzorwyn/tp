@@ -1,5 +1,6 @@
 package seedu.duke.ui;
 
+import seedu.duke.Duke;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
 import java.util.logging.Logger;
@@ -88,7 +89,25 @@ public class TextUi {
         out.printf((PRINT_LIST_FORMAT) + "%n", " ", "Name", "Id", "Phone");
         printDivider();
         printPersonsInListWithoutStatus(persons);
+        int currentCapacity = getCurrentCapacity(persons);
+        int maximumCapacity = getMaximumCapacity();
+        int amountLeftToMaxCapacity = maximumCapacity - currentCapacity;
+        System.out.println("Number of people left for max capacity: " + amountLeftToMaxCapacity);
         printDivider();
+    }
+
+    private int getMaximumCapacity() {
+        return Duke.getInstance().getLocation().getMaxCapacity();
+    }
+
+    private int getCurrentCapacity(List<Person> persons) {
+        int count = 0;
+        for (Person p : persons) {
+            if (p.getCheckedIn()) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private void printPersonsInListWithoutStatus(List<Person> persons) {
