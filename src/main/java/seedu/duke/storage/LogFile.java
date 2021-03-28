@@ -1,97 +1,61 @@
 package seedu.duke.storage;
 
+import com.google.gson.Gson;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.person.Person;
 import seedu.duke.person.PersonLog;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.nio.file.InvalidPathException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class LogFile {
     private static final String DEFAULT_STORAGE_FILEPATH = "LogFile";
-    private static final String TXT_FILE_FORMAT = ".txt";
-    private static final String DIRECTORY_HOME = System.getProperty("user.dir");
 
-    private final Path path;
-    private final File personLog;
+    private final String path;
 
     /**
      * Creates LogFile file with default path.
      */
-    public LogFile() throws InvalidPathException {
+    public LogFile() {
         this(DEFAULT_STORAGE_FILEPATH);
     }
 
     /**
      * Creates LogFile file with given file path.
      * @param path The path that will be used for storage
-     * @throws InvalidPathException If the path specified is invalid
      */
-    public LogFile(String path) throws InvalidPathException {
-        this.path = Paths.get(DIRECTORY_HOME,path + TXT_FILE_FORMAT);
-        this.personLog = new File(this.path.toString());
+    public LogFile(String path) {
+        this.path = path;
     }
 
-    public void savePerson(Person person, boolean append) throws StorageOperationException {
-        try {
-            FileOutputStream fileOut = new FileOutputStream(personLog, append);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+    public void savePerson(Person person) throws StorageOperationException {
+        Gson gson = new Gson();
+        gson.toJson(person);
 
-            objectOut.writeObject(person);
-
-            fileOut.close();
-            objectOut.close();
-        } catch (IOException e) {
-            throw new StorageOperationException("Error writing to file: " + path);
-        }
+        StorageFile storage = new StorageFile(path);
+        storage.saveLogFile(Collections.singletonList(gson.toJson(person)));
     }
 
     public void saveAllPersons(ArrayList<Person> persons) throws StorageOperationException {
-        for (Person person : persons) {
-            this.savePerson(person, false);
-        }
+        Gson gson = new Gson();
+        final List<String> gsonPersons = new ArrayList<>();
+        persons.forEach(person -> gsonPersons.add(gson.toJson(person)));
+
+        StorageFile storage = new StorageFile(path);
+        storage.saveLogFile(gsonPersons);
     }
 
     public void loadAllPersons() throws StorageOperationException {
-        if (!personLog.exists()) {
-            return;
-        }
+        StorageFile storage = new StorageFile(path);
+        List<String> jsonLogs = storage.loadLogFile();
 
-        try {
-            FileInputStream fileIn = new FileInputStream(personLog);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-
-            Object inputObject;
-            PersonLog personLog = PersonLog.getInstance();
-
-            while (objectIn.available() != 0) {
-                inputObject = objectIn.readObject();
-                if (inputObject instanceof Person) {
-                    personLog.addPerson((Person) inputObject);
-                }
-            }
-        } catch (IOException e) {
-            throw new StorageOperationException("Error loading from file: " + path);
-        } catch (ClassNotFoundException e) {
-            throw new StorageOperationException("Corrupted file: " + path);
+        Person person;
+        Gson gson = new Gson();
+        for (String eachLog : jsonLogs) {
+            person = gson.fromJson(eachLog, Person.class);
+            PersonLog.getInstance().addPerson(person);
         }
     }
 
-    public void clear() throws StorageOperationException {
-        FileOutputStream fileOut = null;
-        try {
-            fileOut = new FileOutputStream(personLog);
-            fileOut.close();
-        } catch (IOException e) {
-            throw new StorageOperationException("Error clearing file: " + path);
-        }
-    }
 }

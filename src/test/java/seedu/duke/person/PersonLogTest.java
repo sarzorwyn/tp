@@ -20,7 +20,6 @@ class PersonLogTest {
     @Test
     public void personLogTest() {
         try {
-            personLog.clearAllPersons();
             personLog.addPerson(ALICE);
             personLog.addPerson(BOB);
             personLog.addPerson(JOHN);
@@ -34,11 +33,6 @@ class PersonLogTest {
         testIsFound();
         testFindPerson();
         testModifyPerson();
-        try {
-            personLog.clearAllPersons();
-        } catch (StorageOperationException e) {
-            e.printStackTrace();
-        }
     }
 
     void testIsFound() {
