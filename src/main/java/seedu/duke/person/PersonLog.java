@@ -27,7 +27,9 @@ public class PersonLog {
     }
 
     public void addPerson(Person person) throws StorageOperationException {
-        assert !isFound(person.getId()) : "Person cannot already exist in the log";
+        if (isFound(person.getId())) {
+            return;
+        }
         personLog.put(person.getId(), person);
         saveAllPersons();
     }
