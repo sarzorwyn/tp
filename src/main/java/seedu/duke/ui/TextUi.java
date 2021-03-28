@@ -18,8 +18,8 @@ public class TextUi {
     private final Scanner in;
     private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
-    private static final String DIVIDER = "=".repeat(77);
-    private static final String SINGLE_DIVIDER = "-".repeat(77);
+    private static final String DIVIDER = "=".repeat(76);
+    private static final String SINGLE_DIVIDER = "-".repeat(76);
 
     public TextUi() {
         this(System.in, System.out);
@@ -69,9 +69,11 @@ public class TextUi {
      */
     private void printList(List<Person> persons) {
         assert persons != null : "Does not print null";
+        printDivider();
         out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
         printDivider();
         printPersonsInListWithStatus(persons);
+        printDivider();
     }
 
     /**
@@ -82,9 +84,11 @@ public class TextUi {
      */
     private void printCheckedInList(List<Person> persons) {
         assert persons != null : "Does not print null";
+        printDivider();
         out.printf((PRINT_LIST_FORMAT) + "%n", " ", "Name", "Id", "Phone");
         printDivider();
         printPersonsInListWithoutStatus(persons);
+        printDivider();
     }
 
     private void printPersonsInListWithoutStatus(List<Person> persons) {
@@ -102,6 +106,7 @@ public class TextUi {
 
     private void printFindList(Person person) {
         assert person != null : "Only prints Person";
+        printDivider();
         out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
         printDivider();
         String name = person.getName().getNameString();
@@ -111,7 +116,7 @@ public class TextUi {
                 ? person.getPhone().getPhoneNo() : "--";
         String statusString = (person.getCheckedIn()) ? "Yes" : "No";
         out.printf((PRINT_LISTALL_FORMAT) + "%n", 1, truncated_name, idString, phoneString, statusString);
-        printSingleDivider();
+        printDivider();
 
     }
 
