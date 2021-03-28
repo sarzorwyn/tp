@@ -65,20 +65,20 @@ public class CheckInCommand extends Command {
     public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException, PersonNotFoundException {
         historyFile = new HistoryFile();
         MAXIMUM_CAPACITY = location.getMaxCapacity();
-        if (trackingList.getCurrentCapacity() < MAXIMUM_CAPACITY) {
-            if (!trackingList.contains(toCheckin)) {
-                toCheckin.setCheckedIn(true);
-                trackingList.add(toCheckin);
-            } else {
-                trackingList.findExactPerson(toCheckin.getId()).setCheckedIn(true);
-            }
-            historyFile.saveToHistory(toCheckin, " checked in at ");
-            CURRENT_CAPACITY = trackingList.getCurrentCapacity();
-            return new CommandOutput(String.format(CHECKIN_SUCCESS_MESSAGE, toCheckin.getName())
-                    + String.format(CURRENT_CAPACITY_MESSAGE, CURRENT_CAPACITY)
-                    + MAXIMUM_CAPACITY_MESSAGE, COMMAND);
+        if (trackingList.getCurrentCapacity() >= MAXIMUM_CAPACITY) {
+            return new CommandOutput(String.format(CHECKIN_FAIL_MESSAGE, MAXIMUM_CAPACITY), COMMAND);
         }
-        return new CommandOutput(String.format(CHECKIN_FAIL_MESSAGE, MAXIMUM_CAPACITY), COMMAND);
+        if (!trackingList.contains(toCheckin)) {
+            toCheckin.setCheckedIn(true);
+            trackingList.add(toCheckin);
+        } else {
+            trackingList.findExactPerson(toCheckin.getId()).setCheckedIn(true);
+        }
+        historyFile.saveToHistory(toCheckin, " checked in at ");
+        CURRENT_CAPACITY = trackingList.getCurrentCapacity();
+        return new CommandOutput(String.format(CHECKIN_SUCCESS_MESSAGE, toCheckin.getName())
+                + String.format(CURRENT_CAPACITY_MESSAGE, CURRENT_CAPACITY)
+                + String.format(MAXIMUM_CAPACITY_MESSAGE, MAXIMUM_CAPACITY), COMMAND);
     }
 
 }
