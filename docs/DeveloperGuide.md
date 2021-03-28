@@ -45,12 +45,30 @@ A `Person` object contains:
 
 ### Storage component
 **API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
+![](images/StorageModule.png?raw=true "Storage Module diagram")
 
 The `Storage` component,
 * saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
-* reads a `.txt` file of valid encoding and populates a `TrackingList`.
-* defaults to `TrackingList.txt` but can be saved at a custom specified location.
-* loads on program startup automatically saves after each command.
+* reads a `.txt` file of valid encoding and populates a `TrackingList`
+* keeps a list of user setting in a `Config.properties` file which is read on launch
+* defaults to `TrackingList.txt` but can be saved at a custom specified location
+* loads on program startup automatically saves after each command
+
+The storage module uses the `StorageFile` class to store the `TrackingList` class from Model. 
+`StorageFile` achieves this by using two helper classes, `TrackingListEncoder` and `TrackingListDecoder`.
+
+`TrackingListEncoder` takes the currently stored `TrackingList` and converts it to a more storage friendly String.
+This String is then written to a file on the disk, known on the diagram as `StoredTrackingList`.
+As the name suggests, `TrackingListDecoder` achieves the reverse by taking the file on drive, `StoredTrackingList`,
+and interprets the file to be loaded into the memory as a `TrackingList`.
+
+`StoredTrackingList` is the `.txt` file stored in the same directory as the program.
+The location is determined by the `ConfigFile` class. 
+
+The program settings for the user is manged by the `ConfigFile` class. 
+Another file, `settingsFile` is read by `ConfigFile` when the program is started, 
+to load the settings into the program memory. 
+When a change is made by the user, `ConfigFile` will update the `settingsFile` through a save function.
 
 ### Common classes
 
@@ -84,7 +102,7 @@ in the most efficient way possible.
 
 ## Non-Functional Requirements [WIP]
 
-{Give non-functional requirements}
+The program works on all major modern operating systems (Windows, macOS, Linux) without any effort by the user.
 
 ## Glossary [WIP]
 
