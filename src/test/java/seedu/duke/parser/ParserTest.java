@@ -54,7 +54,7 @@ public class ParserTest {
     @Test
     public void parseCheckIn_noName() {
         Throwable exception = assertThrows(NoArgumentPassedException.class, () ->
-                parser.parseCheckIn(""));
+                 CheckInParser.parseCheckIn(""));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
 
     }
@@ -62,11 +62,11 @@ public class ParserTest {
     @Test
     public void parseCheckIn_Exceptions() {
         Throwable exception = assertThrows(InvalidIdException.class, () ->
-                parser.parseCheckIn("i/John 123"));
+                CheckInParser.parseCheckIn("i/John 123"));
         assertEquals(exception.getMessage(), Messages.ID_ERROR);
 
         exception = assertThrows(NoArgumentPassedException.class, () ->
-                parser.parseCheckIn(""));
+                CheckInParser.parseCheckIn(""));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
     }
 
@@ -112,7 +112,7 @@ public class ParserTest {
     @Test
     public void parseFindException_checker() {
         Throwable exception = assertThrows(WrongFlagException.class, () ->
-                parser.parseFind(""));
+                FindParser.parseFind(""));
         assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
     }
 
