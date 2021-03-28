@@ -89,7 +89,7 @@ public class ParserTest {
     @Test
     public void parseCheckOut_Exceptions() {
         Throwable exception = assertThrows(NoArgumentPassedException.class, () ->
-                parser.parseCheckOut(""));
+                CheckoutParser.parseCheckOut(""));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
 
     }
