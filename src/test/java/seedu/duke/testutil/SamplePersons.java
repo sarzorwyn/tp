@@ -24,4 +24,6 @@ public class SamplePersons {
     public static final Person MARY = new PersonBuilder().withId("230C")
             .withName("Mary").withPhone("95001501")
             .withCheckedInStatus(true).build();
+    public static final Person NON_EXISTENT_PERSON = new PersonBuilder().withId("090S")
+            .withName("Must not exist").withPhone("00000000").build();
 }

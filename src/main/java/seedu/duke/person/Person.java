@@ -23,6 +23,13 @@ public class Person implements Serializable {
         this.phone = phone;
     }
 
+    public Person(Person another) {
+        this.id = another.getId();
+        this.name =  another.getName();
+        this.phone = another.getPhone();
+        this.isCheckedIn = another.getCheckedIn();
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
