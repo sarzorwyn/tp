@@ -95,11 +95,11 @@ public class TextUi {
         for (int i = 0; i < persons.size(); ++i) {
             Person peronSelected = persons.get(i);
             String name = peronSelected.getName().getNameString();
-            String truncated_name = nameTruncator(name);
+            String truncatedName = nameTruncator(name);
             String idString = peronSelected.getId().getIdString();
             String phoneString = (peronSelected.getPhone().isAvailable())
                     ? peronSelected.getPhone().getPhoneNo() : "--";
-            out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, truncated_name, idString, phoneString);
+            out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, truncatedName, idString, phoneString);
             printSingleDivider();
         }
     }
@@ -110,12 +110,12 @@ public class TextUi {
         out.printf((PRINT_LISTALL_FORMAT) + "%n", " ", "Name", "Id", "Phone", "Checked In");
         printDivider();
         String name = person.getName().getNameString();
-        String truncated_name = nameTruncator(name);
+        String truncatedName = nameTruncator(name);
         String idString = person.getId().getIdString();
         String phoneString = (person.getPhone().isAvailable())
                 ? person.getPhone().getPhoneNo() : "--";
         String statusString = (person.getCheckedIn()) ? "Yes" : "No";
-        out.printf((PRINT_LISTALL_FORMAT) + "%n", 1, truncated_name, idString, phoneString, statusString);
+        out.printf((PRINT_LISTALL_FORMAT) + "%n", 1, truncatedName, idString, phoneString, statusString);
         printDivider();
 
     }
@@ -124,12 +124,12 @@ public class TextUi {
         for (int i = 0; i < persons.size(); ++i) {
             Person personSelected = persons.get(i);
             String name = personSelected.getName().getNameString();
-            String truncated_name = nameTruncator(name);
+            String truncatedName = nameTruncator(name);
             String idString = personSelected.getId().getIdString();
             String phoneString = (personSelected.getPhone().isAvailable())
                     ? personSelected.getPhone().getPhoneNo() : "--";
             String statusString = (personSelected.getCheckedIn()) ? "Yes" : "No";
-            out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, truncated_name, idString, phoneString, statusString);
+            out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, truncatedName, idString, phoneString, statusString);
             printSingleDivider();
         }
     }
