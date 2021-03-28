@@ -14,13 +14,15 @@ public class TextUi {
 
     public static final String PRINT_LISTALL_FORMAT = "|%-3s||%-35s||%-8s||%-10s||%-10s|";
     public static final String PRINT_LIST_FORMAT =  "|%-3s||%-36s||%-12s||%-17s|";
+    public static final String PHONE_NUMBER_FILLER = "--";
+    public static final int DIVIDER_LENGTH = 76;
 
     private final PrintStream out;
     private final Scanner in;
     private static final Logger logger = Logger.getLogger(TextUi.class.getSimpleName());
 
-    private static final String DIVIDER = "=".repeat(76);
-    private static final String SINGLE_DIVIDER = "-".repeat(76);
+    private static final String DIVIDER = "=".repeat(DIVIDER_LENGTH);
+    private static final String SINGLE_DIVIDER = "-".repeat(DIVIDER_LENGTH);
 
     public TextUi() {
         this(System.in, System.out);
@@ -117,7 +119,7 @@ public class TextUi {
             String truncatedName = nameTruncator(name);
             String idString = peronSelected.getId().getIdString();
             String phoneString = (peronSelected.getPhone().isAvailable())
-                    ? peronSelected.getPhone().getPhoneNo() : "--";
+                    ? peronSelected.getPhone().getPhoneNo() : PHONE_NUMBER_FILLER;
             out.printf((PRINT_LIST_FORMAT) + "%n", i + 1, truncatedName, idString, phoneString);
             printSingleDivider();
         }
@@ -132,7 +134,7 @@ public class TextUi {
         String truncatedName = nameTruncator(name);
         String idString = person.getId().getIdString();
         String phoneString = (person.getPhone().isAvailable())
-                ? person.getPhone().getPhoneNo() : "--";
+                ? person.getPhone().getPhoneNo() : PHONE_NUMBER_FILLER;
         String statusString = (person.getCheckedIn()) ? "Yes" : "No";
         out.printf((PRINT_LISTALL_FORMAT) + "%n", 1, truncatedName, idString, phoneString, statusString);
         printDivider();
@@ -146,7 +148,7 @@ public class TextUi {
             String truncatedName = nameTruncator(name);
             String idString = personSelected.getId().getIdString();
             String phoneString = (personSelected.getPhone().isAvailable())
-                    ? personSelected.getPhone().getPhoneNo() : "--";
+                    ? personSelected.getPhone().getPhoneNo() : PHONE_NUMBER_FILLER;
             String statusString = (personSelected.getCheckedIn()) ? "Yes" : "No";
             out.printf((PRINT_LISTALL_FORMAT) + "%n", i + 1, truncatedName, idString, phoneString, statusString);
             printSingleDivider();
