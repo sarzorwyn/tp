@@ -12,7 +12,7 @@ import java.util.List;
 public class LogFile {
     private static final String DEFAULT_STORAGE_FILEPATH = "LogFile";
 
-    private final String path;
+    private String path;
 
     /**
      * Creates LogFile file with default path.
@@ -50,6 +50,10 @@ public class LogFile {
         StorageFile storage = new StorageFile(path);
         List<String> jsonLogs = storage.loadLogFile();
 
+        if (jsonLogs == null) {
+            return;
+        }
+
         Person person;
         Gson gson = new Gson();
         for (String eachLog : jsonLogs) {
@@ -58,4 +62,7 @@ public class LogFile {
         }
     }
 
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

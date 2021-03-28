@@ -113,7 +113,7 @@ public class StorageFile {
     public List<String> loadLogFile() throws StorageOperationException {
         createDataDirectory();
 
-        // If the file does not exist, return a empty Tracking List
+        // If the file does not exist, return null
         if (!Files.exists(path) || !Files.isRegularFile(path)) {
             return null;
         }

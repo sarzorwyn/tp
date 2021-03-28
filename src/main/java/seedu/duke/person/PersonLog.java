@@ -42,8 +42,9 @@ public class PersonLog {
         return isFound(id) ? new Person(personLog.get(id)) : null;
     }
 
-    public void modifyPerson(Person person) {
+    public void modifyPerson(Person person) throws StorageOperationException {
         personLog.replace(person.getId(), person);
+        saveAllPersons();
     }
 
     public void saveAllPersons() throws StorageOperationException {
@@ -53,5 +54,14 @@ public class PersonLog {
 
     public void loadAllPersons() throws StorageOperationException {
         logFile.loadAllPersons();
+    }
+
+    public void changePath(String path) {
+        logFile.setPath(path);
+    }
+
+    public void clearAllPersons() throws StorageOperationException {
+        ArrayList<Person> persons = new ArrayList<>(personLog.values());
+        logFile.saveAllPersons(persons);
     }
 }
