@@ -1,12 +1,15 @@
 package seedu.duke.commands;
 
+import seedu.duke.Duke;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.PersonNotFoundException;
 
 import seedu.duke.person.Id;
 import seedu.duke.person.Name;
 import seedu.duke.person.Person;
 import seedu.duke.person.TrackingList;
+import seedu.duke.history.HistoryFile;
 
 import java.util.logging.Logger;
 
@@ -22,9 +25,11 @@ public class CheckoutCommand extends Command {
     private String nameString;
     private Person toCheckout;
     private static final Logger logger = Logger.getLogger(CheckoutCommand.class.getName());
+    private HistoryFile historyFile;
 
     public CheckoutCommand(String idString,String nameString) {
         this.id = new Id(idString);
+        historyFile = Duke.getInstance().getHistoryFile();
         if (nameString == null) {
             this.nameString = null;
         }
@@ -36,7 +41,8 @@ public class CheckoutCommand extends Command {
     }
 
     @Override
-    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException {
+    public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException, HistoryStorageException {
+        historyFile = new HistoryFile();
         toCheckout = trackingList.findExactPerson(id);
         Name toCheckoutName = toCheckout.getName();
         if (nameString != null) {
@@ -50,6 +56,7 @@ public class CheckoutCommand extends Command {
             throw new PersonNotFoundException(Messages.PERSON_NOT_FOUND);
         }
         toCheckout.setCheckedIn(false);
+        historyFile.saveToHistory(toCheckout, " checked out at ");
         return new CommandOutput(String.format(CHECKOUT_MESSAGE, toCheckoutName), COMMAND);
     }
 

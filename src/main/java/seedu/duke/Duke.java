@@ -3,17 +3,19 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
-import seedu.duke.exceptions.InvalidArgumentSizeException;
+import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
-import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.InvalidMaxCapacityException;
+import seedu.duke.exceptions.InvalidArgumentSizeException;
+import seedu.duke.exceptions.NoArgumentPassedException;
+import seedu.duke.exceptions.WrongFlagException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
-import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
-import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.exceptions.WrongFlagException;
+import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.history.HistoryFile;
 import seedu.duke.location.Location;
 import seedu.duke.parser.Parser;
 import seedu.duke.person.PersonLog;
@@ -33,6 +35,7 @@ public class Duke {
     private Location location;
     private PersonLog personLog;
     private ConfigFile configFile;
+    private HistoryFile historyFile;
     private static Duke theOnlyDuke = null;
 
     private Duke() {
@@ -45,18 +48,19 @@ public class Duke {
         return theOnlyDuke;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws HistoryStorageException {
         getInstance().run(args);
     }
 
-    public void run(String[] args) {
+    public void run(String[] args) throws HistoryStorageException {
         start(args);
         runUntilExit();
         exit();
     }
 
     /** Prints Goodbye message then exists. */
-    private void exit() {
+    private void exit() throws HistoryStorageException {
+        historyFile.endHistory();
         System.exit(0);
     }
 
@@ -67,11 +71,14 @@ public class Duke {
         personLog = PersonLog.getInstance();
         try {
             location = new Location(args);
+            historyFile = new HistoryFile();
             configFile = new ConfigFile();
             storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
             personLog.loadAllPersons();
-        } catch (StorageOperationException | InvalidArgumentSizeException | InvalidMaxCapacityException e) {
+            historyFile.startHistory();
+        } catch (StorageOperationException | InvalidArgumentSizeException
+                | InvalidMaxCapacityException | HistoryStorageException e) {
             // Shut the program down as it can not be recovered
             // throw new RuntimeException();
             ui.notifyErrorToUser(e);
@@ -101,13 +108,10 @@ public class Duke {
                 storage.save(trackingList);
                 personLog.saveAllPersons();
                 ui.printReaction(commandOutput);
-            } catch (PersonNotFoundException pnfe) {
+            } catch (PersonNotFoundException | StorageOperationException
+                    | HistoryStorageException e) {
                 //System.out.println("Person not found!");
-                ui.notifyErrorToUser(pnfe);
-                continue;
-            } catch (StorageOperationException soe) {
-                //System.out.println(soe.getMessage());
-                ui.notifyErrorToUser(soe);
+                ui.notifyErrorToUser(e);
             }
 
         } while (!(command instanceof ExitCommand));
@@ -127,5 +131,9 @@ public class Duke {
 
     public ConfigFile getConfigFile() {
         return configFile;
+    }
+
+    public HistoryFile getHistoryFile() {
+        return historyFile;
     }
 }

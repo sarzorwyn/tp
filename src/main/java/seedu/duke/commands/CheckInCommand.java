@@ -1,8 +1,11 @@
 package seedu.duke.commands;
 
+import seedu.duke.Duke;
 import seedu.duke.common.Messages;
+import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
+import seedu.duke.history.HistoryFile;
 import seedu.duke.person.Id;
 import seedu.duke.person.Name;
 import seedu.duke.person.Person;
@@ -19,11 +22,13 @@ public class CheckInCommand extends Command {
     public static final String CHECKIN_MESSAGE = "%s has been successfully checked-in!";
     private Person toCheckin;
     private final PersonLog personLog = PersonLog.getInstance();
+    private HistoryFile historyFile;
 
     public CheckInCommand(String idString,
                           String nameString,
                           String phoneString) throws StorageOperationException, PersonNotFoundException {
         Id id = new Id(idString);
+        historyFile = Duke.getInstance().getHistoryFile();
         if (personLog.isFound(id)) {
             toCheckin = personLog.findPerson(id);
             checkSameName(nameString);
@@ -49,10 +54,12 @@ public class CheckInCommand extends Command {
     }
 
     @Override
-    public CommandOutput execute(TrackingList trackingList) {
+    public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException {
         toCheckin.setCheckedIn(true);
+        historyFile = new HistoryFile();
         if (!trackingList.contains(toCheckin)) {
             trackingList.add(toCheckin);
+            historyFile.saveToHistory(toCheckin, " checked in at ");
         }
         return new CommandOutput(String.format(CHECKIN_MESSAGE, toCheckin.getName()), COMMAND);
     }
