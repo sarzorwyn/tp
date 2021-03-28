@@ -59,7 +59,7 @@ public class StorageFile {
     /**
      * Creates the save file directory if it does not exist.
      */
-    public void createDataDirectory() throws StorageOperationException {
+    private void createDataDirectory() throws StorageOperationException {
         try {
             Files.createDirectories(path.getParent());
         } catch (IOException ioe) {
