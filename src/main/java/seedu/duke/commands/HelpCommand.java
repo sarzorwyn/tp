@@ -10,6 +10,7 @@ import static seedu.duke.common.Messages.EXIT_HELP;
 import static seedu.duke.common.Messages.FIND_BY_ID_HELP;
 import static seedu.duke.common.Messages.LIST_ALL_HELP;
 import static seedu.duke.common.Messages.LIST_CHECKED_IN_HELP;
+import static seedu.duke.common.Messages.MOVE_STORAGE_HELP;
 import static seedu.duke.common.Messages.USER_GUIDE_LINK_HELP;
 
 public class HelpCommand extends Command {
@@ -19,7 +20,7 @@ public class HelpCommand extends Command {
             + LIST_ALL_HELP + System.lineSeparator() + LIST_CHECKED_IN_HELP + System.lineSeparator()
             + FIND_BY_ID_HELP + System.lineSeparator() + CHECKOUT_HELP + System.lineSeparator()
             + CLEAR_HELP + System.lineSeparator() + EDIT_CAPACITY_HELP + System.lineSeparator()
-            + EXIT_HELP + System.lineSeparator() + USER_GUIDE_LINK_HELP;
+            + MOVE_STORAGE_HELP + System.lineSeparator() + EXIT_HELP + System.lineSeparator() + USER_GUIDE_LINK_HELP;
 
     @Override
     public CommandOutput execute(TrackingList trackingList) {
