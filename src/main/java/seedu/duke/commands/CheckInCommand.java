@@ -25,8 +25,7 @@ public class CheckInCommand extends Command {
     private static int MAXIMUM_CAPACITY;
     public static final String CHECKIN_SUCCESS_MESSAGE = "%s has been successfully checked-in!"
             + System.lineSeparator();
-    public static final String CURRENT_CAPACITY_MESSAGE = "Current capacity: %d" + System.lineSeparator();
-    public static final String MAXIMUM_CAPACITY_MESSAGE = "Maximum capacity: %d";
+    public static final String CURRENT_AND_MAX_CAPACITY_MESSAGE = "Current capacity: %d out of %d.";
     public static final String CHECKIN_FAIL_MESSAGE = "Unable to check in! Maximum capacity of %d reached!";
     private final Person toCheckin;
     private HistoryFile historyFile;
@@ -77,8 +76,7 @@ public class CheckInCommand extends Command {
         historyFile.saveToHistory(toCheckin, " checked in at ");
         CURRENT_CAPACITY = trackingList.getCurrentCapacity();
         return new CommandOutput(String.format(CHECKIN_SUCCESS_MESSAGE, toCheckin.getName())
-                + String.format(CURRENT_CAPACITY_MESSAGE, CURRENT_CAPACITY)
-                + String.format(MAXIMUM_CAPACITY_MESSAGE, MAXIMUM_CAPACITY), COMMAND);
+                + String.format(CURRENT_AND_MAX_CAPACITY_MESSAGE, CURRENT_CAPACITY, MAXIMUM_CAPACITY), COMMAND);
     }
 
 }
