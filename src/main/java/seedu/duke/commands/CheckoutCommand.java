@@ -23,8 +23,7 @@ public class CheckoutCommand extends Command {
     private final Location location = Duke.getInstance().getLocation();
     private static int CURRENT_CAPACITY;
     private static int MAXIMUM_CAPACITY;
-    public static final String CURRENT_CAPACITY_MESSAGE = "Current capacity: %d" + System.lineSeparator();
-    public static final String MAXIMUM_CAPACITY_MESSAGE = "Maximum capacity: %d";
+    public static final String CURRENT_AND_MAXIMUM_MESSAGE = "Current capacity: %d out of %d";
     public static final String CHECKOUT_MESSAGE = "%s has been successfully checked-out!" + System.lineSeparator();
 
     private final Id id;
@@ -66,8 +65,7 @@ public class CheckoutCommand extends Command {
         MAXIMUM_CAPACITY = location.getMaxCapacity();
         CURRENT_CAPACITY = trackingList.getCurrentCapacity();
         return new CommandOutput(String.format(CHECKOUT_MESSAGE, toCheckoutName)
-                + String.format(CURRENT_CAPACITY_MESSAGE, CURRENT_CAPACITY)
-                + String.format(MAXIMUM_CAPACITY_MESSAGE, MAXIMUM_CAPACITY), COMMAND);
+                + String.format(CURRENT_AND_MAXIMUM_MESSAGE, CURRENT_CAPACITY, MAXIMUM_CAPACITY), COMMAND);
     }
 
 }
