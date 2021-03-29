@@ -143,4 +143,18 @@ public class TrackingList {
         }
         return matchingPersons;
     }
+
+    /**
+     * Finds the current capacity at the venue.
+     * @return current capacity
+     */
+    public int getCurrentCapacity() {
+        int currentCapacity = 0;
+        for (Person p: personList) {
+            if (p.getCheckedIn()) {
+                currentCapacity++;
+            }
+        }
+        return currentCapacity;
+    }
 }

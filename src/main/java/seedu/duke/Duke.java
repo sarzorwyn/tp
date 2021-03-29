@@ -26,7 +26,7 @@ import seedu.duke.ui.TextUi;
 
 public class Duke {
 
-    private static final String VERSION_NO = "v1.0";
+    private static final String VERSION_NO = "v2.0";
 
     private TextUi ui;
     private Parser parser;
