@@ -5,6 +5,7 @@ import seedu.duke.commands.MoveStorageCommand;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
@@ -21,7 +22,8 @@ public class MoveStorageParserTest {
     @Test
     public void parseMoveStorageCommand_testCommand() throws StorageOperationException, InvalidIntegerException,
             InvalidIdException, InvalidCommandException, InvalidPhoneNumberException,
-            PersonNotFoundException, NoArgumentPassedException, WrongFlagException, InvalidNameFormatException {
+            PersonNotFoundException, NoArgumentPassedException, WrongFlagException, InvalidNameFormatException,
+            InvalidMaxCapacityException {
         MoveStorageCommand moveStorageCommand = (MoveStorageCommand) parser.parseCommand("movestorage abc");
         assertEquals("movestorage",moveStorageCommand.COMMAND);
     }

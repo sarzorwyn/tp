@@ -6,6 +6,7 @@ import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
@@ -24,7 +25,7 @@ public class EditMaxParserTest {
     public void parseEditMax_testCommand() throws StorageOperationException, InvalidIntegerException,
             InvalidIdException, InvalidCommandException, InvalidPhoneNumberException,
             PersonNotFoundException, NoArgumentPassedException, WrongFlagException,
-            InvalidNameFormatException {
+            InvalidNameFormatException, InvalidMaxCapacityException {
         EditMaxCommand editMaxCommand = (EditMaxCommand) parser.parseCommand("editmax 1000");
         assertEquals("editmax",editMaxCommand.COMMAND);
 

@@ -179,18 +179,6 @@ public class TextUi {
      */
     public String getUserInput() {
         String rawInput = in.nextLine();
-        echoInput(rawInput);
-        return rawInput;
-    }
-
-    /**
-     * Allow users to verify input or commands.
-     *
-     * @param rawInput Input from user.
-     * @return Input from user.
-     */
-    public String echoInput(String rawInput) {
-        out.println("Command Entered: " + rawInput);
         return rawInput;
     }
 
