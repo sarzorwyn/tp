@@ -51,12 +51,9 @@ CYC.
    * Ensure that the venue maximum capacity entered is a positive integer that does not exceed 6 digits.
 5. If the setup is correct, you should see CYC being loaded as shown below (note: your version of CYC would be the 
    latest version).
-    ```
-   =============================================================================
-   Welcome to Control Your Crowd - Version v2.0
-   Data successfully loaded from storage file path.
-   =============================================================================
-   ```
+   
+   ![image](/docs/images/welcomemessage.png)
+   
 6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
    for details of each command.
 
@@ -83,22 +80,6 @@ you in situations when you forget the available commands, or their format while 
 #### Example Output:
 
 ![image](/docs/images/help.png)
-
-```
-Command Entered: help
-=============================================================================
-COMMAND SUMMARY:
-Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]
-List all visitors: listall
-List checked-in visitors only: list
-Find visitor by ID: find i/LAST_4_CHARS_OF_ID
-Checkout visitor: checkout [n/NAME] i/LAST_4_CHARS_OF_ID
-Clear all visitor entries: clear
-Edit venue capacity: editmax NEW_CAPACITY
-Exit Control Your Crowd: exit
-Refer to the user guide: https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html
-=============================================================================
-```
 
 ### Check-in a person: `checkin`
 
@@ -127,21 +108,9 @@ For both new visitor and returning visitor, you should observe the following out
 
 ![image](/docs/images/checkin_success.PNG)
 
-```
-=============================================================================
-John has been successfully checked in!
-Current capacity: 50 out of 500
-=============================================================================
-```
 However, you should expect the following output when the maximum capacity is reached.
 
 ![image](/docs/images/checkinFail.png)
-
-```
-=============================================================================
-Unable to check in! Maximum capacity of 500 reached.
-=============================================================================
-```
 
 ### Listing all persons: listall
 
@@ -170,11 +139,11 @@ Example Output:
 Shows a list of all persons with their details currently checked-in. It also shows the number of people 
 remaining to reach the maximum capacity for that venue.
 
-Format: `list`
+#### Format: `list`
 
-Example Input: `list`
+#### Example Input: `list`
 
-Example Output:
+#### Example Output:
 ```
 ============================================================================
 |   ||Name                                ||Id          ||Phone            |
@@ -191,13 +160,13 @@ Number of people left for max capacity: 999
 
 Given the person's last 4 characters of ID, we can find the details of the person and status (Checked in, or checked out)
 
-Format: `find i/LAST_4_CHARS_OF_ID`
+#### Format: `find i/LAST_4_CHARS_OF_ID`
 
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
     
-Example input: `find i/123A`
+#### Example input: `find i/123A`
 
-Example Output:
+#### Example Output:
 ```
 ============================================================================
 |   ||Name                               ||Id      ||Phone     ||Checked In|
@@ -210,14 +179,13 @@ Example Output:
 
 Removes the person’s name and personal details from the checked-in list.
 
-Format: `checkout [n/NAME] i/LAST_4_CHARS_OF_ID`
-
+#### Format: `checkout [n/NAME] i/LAST_4_CHARS_OF_ID`
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
 * `NAME` is optional. `NAME` must be a string. Integers will not be accepted.
 
-Example input: `checkout n/John i/123A`
+#### Example input: `checkout n/John i/123A`
 
-Example output:
+#### Example output:
 ```
 ============================================================================
 John has been successfully checked out!
@@ -229,11 +197,11 @@ Current capacity: 50 out of 100
 
 Clear all entries stored by the program, at the end of the day, or when required.
 
-Format: `clear`
+#### Format: `clear`
 
-Example Input: `clear`
+#### Example Input: `clear`
 
-Example Output:
+#### Example Output:
 ```
 ============================================================================
 Cleared 1350 entries.
@@ -244,14 +212,12 @@ Cleared 1350 entries.
 
 Edits the max capacity of the venue.
 
-Format: `editmax NEW_CAPACITY`
-
+#### Format: `editmax NEW_CAPACITY`
 * `NEW_CAPACITY` must be a positive integer.
 
-Example Input:
-`editmax 100`
+#### Example Input: `editmax 100`
 
-Example Output:
+#### Example Output:
 ```
 ============================================================================
 New max capacity: 100
@@ -262,12 +228,11 @@ New max capacity: 100
 
 Move the location of the storage file to the specified destination.
 
-Format: `movestorage NEW_DESTINATION`
+#### Format: `movestorage NEW_DESTINATION`
 
-Example Input:
-`movestorage /new/test`
+#### Example Input: `movestorage /new/test`
 
-Example Output:
+#### Example Output:
 ```
 ============================================================================
 Moved storage file to /new/test.txt
@@ -278,11 +243,11 @@ Moved storage file to /new/test.txt
 
 Exit the CYC program.
 
-Format: `exit`
+#### Format: `exit`
 
-Example Input: `exit`
+#### Example Input: `exit`
 
-Example Output: 
+#### Example Output: 
 ```
 ============================================================================
 Exiting Control Your Crowd...
