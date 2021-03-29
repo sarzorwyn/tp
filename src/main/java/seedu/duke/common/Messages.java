@@ -11,6 +11,10 @@ public class Messages {
     public static final String WRONG_FLAG = "Wrong flags used!";
     public static final String INVALID_MAX_CAPACITY = "Invalid argument for max capacity! Try again!";
     public static final String INVALID_ARGUMENT_SIZE = "There should be only 2 arguments! Try again!";
+    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
+    public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (30 characters limit)";
+    public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
+    public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
 
     public static final String CHECKIN_HELP = "Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]";
     public static final String LIST_ALL_HELP = "List all visitors: listall";
@@ -19,10 +23,7 @@ public class Messages {
     public static final String CHECKOUT_HELP = "Checkout visitor: checkout [n/NAME] i/LAST_4_CHARS_OF_ID";
     public static final String CLEAR_HELP = "Clear all visitor entries: clear";
     public static final String EDIT_CAPACITY_HELP = "Edit venue capacity: editmax NEW_CAPACITY";
+    public static final String MOVE_STORAGE_HELP = "Move location of storage file: movestorage PATH";
     public static final String EXIT_HELP = "Exit Control Your Crowd: exit";
     public static final String USER_GUIDE_LINK_HELP = "Refer to the user guide: " + USER_GUIDE_LINK;
-    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
-    public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (30 characters limit)";
-    public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
-    public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
 }

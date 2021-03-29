@@ -15,15 +15,13 @@ import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
-import seedu.duke.person.Id;
-import seedu.duke.person.Name;
-import seedu.duke.person.Phone;
 
 public class Parser {
     public static final String MAX_REGEX = "[0-9]+";
@@ -47,7 +45,7 @@ public class Parser {
             InvalidCommandException, NoArgumentPassedException,
             WrongFlagException, InvalidIdException,
             InvalidNameFormatException, InvalidPhoneNumberException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
 
         String[] inputArray;
         String argument = null;

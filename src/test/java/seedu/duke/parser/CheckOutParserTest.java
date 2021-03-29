@@ -6,6 +6,7 @@ import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
@@ -25,7 +26,7 @@ public class CheckOutParserTest {
 
             WrongFlagException, InvalidCommandException,
             InvalidIdException, InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
 
         CheckoutCommand checkoutCommand = (CheckoutCommand) parser.parseCommand(
                 "checkout n/John i/123A");

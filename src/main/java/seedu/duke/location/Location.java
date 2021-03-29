@@ -8,7 +8,7 @@ public class Location {
 
     private String locationName;
     private int maxCapacity;
-    private static final String MAX_CAPACITY_REGEX = "\\d+";
+    private static final String MAX_CAPACITY_REGEX = "^[0-9]{1,6}$";
 
     public Location(String[] args) throws InvalidMaxCapacityException, InvalidArgumentSizeException {
         checkArgumentValidity(args);

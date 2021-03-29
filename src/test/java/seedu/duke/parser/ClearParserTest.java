@@ -5,6 +5,7 @@ import seedu.duke.commands.ClearCommand;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.InvalidIntegerException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
 import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.InvalidPhoneNumberException;
 import seedu.duke.exceptions.NoArgumentPassedException;
@@ -23,7 +24,7 @@ public class ClearParserTest {
 
             WrongFlagException, InvalidCommandException, InvalidIdException,
             InvalidPhoneNumberException, InvalidNameFormatException,
-            StorageOperationException, InvalidIntegerException, PersonNotFoundException {
+            StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
 
         ClearCommand clearCommand = (ClearCommand) parser.parseCommand("clear");
         assertEquals("clear", ClearCommand.COMMAND);

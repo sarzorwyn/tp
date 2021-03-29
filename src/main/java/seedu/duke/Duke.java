@@ -96,8 +96,7 @@ public class Duke {
                 command = parser.parseCommand(userInput);
             } catch (InvalidCommandException | NoArgumentPassedException | WrongFlagException | InvalidIdException
                     | InvalidNameFormatException | InvalidPhoneNumberException | StorageOperationException
-                    | InvalidIntegerException | PersonNotFoundException e) {
-
+                    | InvalidIntegerException | PersonNotFoundException | InvalidMaxCapacityException e) {
                 ui.notifyErrorToUser(e);
                 continue;
             }
