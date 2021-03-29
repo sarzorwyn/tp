@@ -2,7 +2,6 @@
 Welcome to Control Your Crowd - Version v2.0
 Data successfully loaded from storage file path.
 ============================================================================
-Command Entered: exit
 ============================================================================
 Exiting Control Your Crowd...
 ============================================================================
