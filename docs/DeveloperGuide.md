@@ -5,29 +5,34 @@
 {Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
 
 
+### UI component
 
+The UI consists of `TextUi` class. It acts as a middleware between users' input
+and `Parser` class under **Logic Component**.
+
+The `Ui` component,
+
+* Reads user commands using `Scanner` class.
+* Pass raw user commands into `Parser` class under **Logic Component**.
+* After the **Logic Component** has executed the function, it will then return `CommandOutput` object
+  which contains the outcome of the execution, fail or succeed.
 
 ### Logic component
 
-1. Logic uses the `Parser` class the user input obtained from the `TextUi` class.
-2. This results in a specific `Command` object to be returned from the `Parser'.   
-3. Depending on the type of the `Command` object, its corresponding command execution will be called.
-4. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
-5. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as formatting the list to the user.
+**API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package (*TO BE CREATED LATER*)
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for {to be inserted when doing sequence diagram}.
+The Logic component,
+1. uses the `Parser` class to parse the user input obtained by the `TextUi` class of `Ui`.
+2. This results in a specific `Command` object to be returned from the `Parser` class.
+3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Duke` of `Ui`.
+4. The command execution can affect the `Model` (e.g. check in a new visitor). 
+5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
+6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
 
-### UI component
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `parseCommand("checkout i/123A)"` API call.
 
-The UI consists of `TextUi` class. It acts as a middleware between users' input 
-and `Parser` class under **Logic Component**. 
-
-The `ui` component,
-
-* Reads user commands using `Scanner` class. 
-* Pass raw user commands into `Parser` class under **Logic Component**.
-* After the **Logic Component** has executed the function, it will then return `CommandOutput` object
-which contains the outcome of the execution, fail or succeed. 
+![LogicComponentSequenceDiagram](images/LogicComponentSequenceDiagram.png)
+*Figure #. Interactions Inside the Logic Component for the `checkout i/123A` Command*
 
 ### Model component
 
