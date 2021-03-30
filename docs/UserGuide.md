@@ -24,18 +24,19 @@
 
 Welcome to the User Guide of **Control Your Crowd**!
 
-Our application, Control Your Crowd (CYC), will allow you to manage your crowds in real time. It allows efficient
-tracking and accessing of visitors' profiles. You can also easily check in and check out a visitor, get current crowd level,
-limit the venue capacity, save the visitor log for future references and much more! CYC is an all-in-one application to
-help you manage your crowd levels at any venue with ease.
+Our application, Control Your Crowd (CYC), will allow you to manage your crowds in real-time. It allows efficient 
+tracking and accessing of visitors' profiles. You can also easily check-in and check out a visitor, get the current 
+crowd level, limit the venue capacity, save the visitor log for future references, and much more! CYC is an all-in-one 
+application to help you manage your crowd levels at any venue with ease.
+The application uses a Command Line Interface (CLI); this means that you operate the 
+application by typing commands into a command window. With simple and easy-to-use commands, 
+CYC provides you with efficient crowd management which is faster than traditional 
+Graphical User Interface (GUI) applications can offer. GUI applications 
+allow the user to interact with the application through graphical icons such as buttons and clickable.
 
-The application uses a Command Line Interface (CLI); this means that you operate the application by typing commands into
-a command window. If you can type fast, CYC can enable you to manage the crowd faster than other traditional Graphical User
-Interface (GUI) applications; GUI applications allow user to interact with the application through graphical icons such
-as buttons.
 
-If you are interested, jump to [Quick Start](UserGuide.md#quick-start) to learn how to start managing your crowd using
-CYC.
+Jump to [Quick Start](UserGuide.md#quick-start) to learn how to manage your crowd efficiently
+with CYC.
 
 ## Quick Start
 
@@ -70,8 +71,8 @@ CYC.
 
 ### Viewing help: `help`
 
-This command will provide you a summary of the all the commands with its corresponding format. This command will help
-you in situations when you forget the available commands, or their format while on duty.
+This command will provide you a summary of the all the commands with its corresponding format.
+This command will help you in situations when you forget the available commands, or their format while on duty.
 
 #### Format: `help`
 
@@ -83,7 +84,9 @@ you in situations when you forget the available commands, or their format while 
 
 ### Check-in a person: `checkin`
 
-This command allows you to check in and add a person to the CYC. It will also notify you on the current venue capacity.
+Supposed there is a visitor,
+you can check in a person to CYC via `checkin` command. After a successful check-in, CYC will also notify you on the
+current venue capacity.
 
 #### Format: 
 `checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]`
@@ -93,13 +96,14 @@ This command allows you to check in and add a person to the CYC. It will also no
 * `NAME` must only contain english alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
 * `PHONE_NUMBER` is optional. `PHONE_NUMBER` must consist of 8 integers, as per local (Singapore) phone number format.
 
-#### Example Input: 
-Suppose a new visitor, John wants to check in. Since it is his first time visiting, you should check in John using his
+Supposedly John is a new visitor and he wants to check in. Since it is his first time visiting, you should check in John using his
 `i/LAST_4_CHARS_OF_ID`, `n/NAME` and `[p/PHONE_NUMBER]` as shown below.
+#### Example Input:
 
 `checkin i/123A n/John p/91231112`
 
-After that, the next time John wants to check in, you only need to check in using his `i/LAST_4_CHARS_OF_ID` as shown below.
+When John visits again in the future, you would only need to check in 
+using his `i/LAST_4_CHARS_OF_ID` as shown below.
 
 `checkin i/123A`
 
@@ -114,7 +118,12 @@ However, you should expect the following output when the maximum capacity is rea
 
 ### Listing all persons: listall
 
-Shows a list of all persons who have checked-in and checked out.
+Supposed you want to find out all the visitors that had entered the venue,
+it can be done with `listall`. This command shows a list of all persons
+who have checked-in and checked out. The ID and phone numbers are also 
+shown in case you need to contact any of these visitors. However,
+if the visitor's phone number has not been registered with CYC, it will
+be shown as `--`.
 
 Format: `listall`
 
@@ -126,7 +135,9 @@ Example Output:
 
 ### Listing checked-in persons only: `list`
 
-Shows a list of all persons with their details currently checked-in. It also shows the number of people 
+`list` command is similar to `listall`, the only difference is that `list` only
+returns the list of visitors that are still in the venue or have not check out.
+Shows a list of all persons with their details currently checked in. It also shows the number of people 
 remaining to reach the maximum capacity for that venue.
 
 #### Format: `list`
@@ -139,6 +150,8 @@ remaining to reach the maximum capacity for that venue.
 
 ### Finding a person by ID number: `find`
 
+You can use `find` command if you need to check whether a particular visitor
+is still in the venue or check for his/her particulars.
 Given the person's last 4 characters of ID, we can find the details of the person and status (Checked in, or checked out)
 
 #### Format: `find i/LAST_4_CHARS_OF_ID`
@@ -151,9 +164,12 @@ Given the person's last 4 characters of ID, we can find the details of the perso
 
 ![find_success](images/find_success.png)
 
-### Checkout a person: `checkout`
+### Check out a person: `checkout`
 
-Removes the person’s name and personal details from the checked-in list.
+You can check out a visitor from CYC, when he/she is leaving from the venue via
+`checkout` command. By doing so, you will be removing the visitor from checked in
+list in CYC. However, person's particulars will be retained for a faster 
+check in the following visit.
 
 #### Format: `checkout [n/NAME] i/LAST_4_CHARS_OF_ID`
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
@@ -167,7 +183,10 @@ Removes the person’s name and personal details from the checked-in list.
 
 ### Clearing all entries: `clear`
 
-Clear all entries stored by the program, at the end of the day, or when required.
+
+`clear` command clears all entries stored by the program. It could be useful
+to clear CYC data at the end of the day, or when required. However, this is 
+not recommended as you will lose track of the visitors who have not check out.
 
 #### Format: `clear`
 
