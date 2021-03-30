@@ -55,10 +55,10 @@ The Logic component,
 5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
 6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `parseCommand("checkout i/123A)"` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `parseCommand("clear)"` API call.
 
-![LogicComponentSequenceDiagram](images/LogicComponentSequenceDiagram.png)
-*Figure #. Interactions Inside the Logic Component for the `checkout i/123A` Command*
+![](images/LogicComponentSequenceDiagram.png)
+*Figure #. Interactions Inside the Logic Component for the `clear` Command*
 
 ### Model component
 
