@@ -1,4 +1,28 @@
-# Developer Guide
+# Control Your Crowd - Developer Guide
+
+1. [Setting up]()
+2. [Design]()
+   1. [Architecture]()
+   2. [UI component]()
+   3. [Logic component]()
+   4. [Model component]()
+   5. [Storage component]()
+   6. [Common classes]()
+3. [Implementation]()
+4. [Documentation]()
+5. [Testing]()
+6. [Dev Ops]()
+7. [Appendix]()
+   1. [Appendix A: Product Scope]()
+   2. [Appendix B: User Stories]()
+   3. [Appendix C: Use Cases]()
+   4. [Appendix D: Non Functional Requirements]()
+   5. [Appendix E: Glossary]()
+   6. [Appendix F: Product Survey]()
+   7. [Appendix G: Instructions for Manual Testing]()
+      1. [Launch and Shutdown]()
+      2. [Clearing the list]()
+      3. [Saving data]()
 
 ## Design & implementation
 
@@ -10,7 +34,7 @@
 The UI consists of `TextUi` class. It acts as a middleware between users' input
 and `Parser` class under **Logic Component**.
 
-The `Ui` component,
+The `UI` component,
 
 * Reads user commands using `Scanner` class.
 * Pass raw user commands into `Parser` class under **Logic Component**.
@@ -22,9 +46,9 @@ The `Ui` component,
 **API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package (*TO BE CREATED LATER*)
 
 The Logic component,
-1. uses the `Parser` class to parse the user input obtained by the `TextUi` class of `Ui`.
+1. uses the `Parser` class to parse the user input obtained by the `TextUi` class of `UI`.
 2. This results in a specific `Command` object to be returned from the `Parser` class.
-3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Duke` of `Ui`.
+3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Duke` of `UI`.
 4. The command execution can affect the `Model` (e.g. check in a new visitor). 
 5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
 6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
