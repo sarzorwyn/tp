@@ -24,18 +24,19 @@
 
 Welcome to the User Guide of **Control Your Crowd**!
 
-Our application, Control Your Crowd (CYC), will allow you to manage your crowds in real time. It allows efficient
-tracking and accessing of visitors' profiles. You can also easily check in and check out a visitor, get current crowd level,
-limit the venue capacity, save the visitor log for future references and much more! CYC is an all-in-one application to
-help you manage your crowd levels at any venue with ease.
+Our application, Control Your Crowd (CYC), will allow you to manage your crowds in real-time. It allows efficient 
+tracking and accessing of visitors' profiles. You can also easily check-in and check out a visitor, get the current 
+crowd level, limit the venue capacity, save the visitor log for future references, and much more! CYC is an all-in-one 
+application to help you manage your crowd levels at any venue with ease.
+The application uses a Command Line Interface (CLI); this means that you operate the 
+application by typing commands into a command window. With simple and easy-to-use commands, 
+CYC provides you with efficient crowd management which is faster than traditional 
+Graphical User Interface (GUI) applications can offer. GUI applications 
+allow the user to interact with the application through graphical icons such as buttons and clickable.
 
-The application uses a Command Line Interface (CLI); this means that you operate the application by typing commands into
-a command window. If you can type fast, CYC can enable you to manage the crowd faster than other traditional Graphical User
-Interface (GUI) applications; GUI applications allow user to interact with the application through graphical icons such
-as buttons.
 
-If you are interested, jump to [Quick Start](UserGuide.md#quick-start) to learn how to start managing your crowd using
-CYC.
+Jump to [Quick Start](UserGuide.md#quick-start) to learn how to manage your crowd efficiently
+with CYC.
 
 ## Quick Start
 
