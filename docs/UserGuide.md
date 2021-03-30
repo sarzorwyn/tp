@@ -117,7 +117,7 @@ using his `i/LAST_4_CHARS_OF_ID` as shown below.
 #### Example Output:
 For both new visitor and returning visitor, you should observe the following output.
 
-![checkin_success](images/checkin_success.PNG)
+![checkin_success](images/checkin_success.png)
 
 However, you should expect the following output when the maximum capacity is reached.
 
