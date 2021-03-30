@@ -52,7 +52,7 @@ CYC.
 5. If the setup is correct, you should see CYC being loaded as shown below (note: your version of CYC would be the 
    latest version).
    
-   ![image](/docs/images/welcomemessage.png)
+   ![QuickStart](images/welcomemessage.png)
    
 6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
    for details of each command.
@@ -79,7 +79,7 @@ you in situations when you forget the available commands, or their format while 
 
 #### Example Output:
 
-![image](/docs/images/help.png)
+![help](images/help.png)
 
 ### Check-in a person: `checkin`
 
@@ -106,11 +106,11 @@ After that, the next time John wants to check in, you only need to check in usin
 #### Example Output:
 For both new visitor and returning visitor, you should observe the following output.
 
-![image](/docs/images/checkin_success.PNG)
+![checkin_success](images/checkin_success.PNG)
 
 However, you should expect the following output when the maximum capacity is reached.
 
-![image](/docs/images/checkinFail.png)
+![checkin_fail](images/checkinFail.png)
 
 ### Listing all persons: listall
 
@@ -121,18 +121,8 @@ Format: `listall`
 Example Input: `listall`
 
 Example Output:
-```
-============================================================================
-|   ||Name                               ||Id      ||Phone     ||Checked In|
-============================================================================
-|1  ||John                               ||123A    ||91231112  ||Yes       |
-----------------------------------------------------------------------------
-|2  ||Jack                               ||234B    ||--        ||No        |
-----------------------------------------------------------------------------
-|3  ||Jane                               ||965T    ||--        ||Yes       |
-----------------------------------------------------------------------------
-============================================================================
-```
+
+![listall_success](images/listall_success.png)
 
 ### Listing checked-in persons only: `list`
 
@@ -144,17 +134,8 @@ remaining to reach the maximum capacity for that venue.
 #### Example Input: `list`
 
 #### Example Output:
-```
-============================================================================
-|   ||Name                                ||Id          ||Phone            |
-============================================================================
-|1  ||John                                ||123A        ||91231112         |
-----------------------------------------------------------------------------
-|2  ||Jane                                ||965T        ||--               |
-----------------------------------------------------------------------------
-Number of people left for max capacity: 999
-============================================================================
-```
+
+![list_success](images/list_success.png)
 
 ### Finding a person by ID number: `find`
 
@@ -167,13 +148,8 @@ Given the person's last 4 characters of ID, we can find the details of the perso
 #### Example input: `find i/123A`
 
 #### Example Output:
-```
-============================================================================
-|   ||Name                               ||Id      ||Phone     ||Checked In|
-============================================================================
-|1  ||John                               ||123A    ||91231112  ||Yes       |
-============================================================================
-```
+
+![find_success](images/find_success.png)
 
 ### Checkout a person: `checkout`
 
@@ -186,12 +162,8 @@ Removes the person’s name and personal details from the checked-in list.
 #### Example input: `checkout n/John i/123A`
 
 #### Example output:
-```
-============================================================================
-John has been successfully checked out!
-Current capacity: 50 out of 100
-============================================================================
-```
+
+![checkout_success](images/checkout_success.png)
 
 ### Clearing all entries: `clear`
 
@@ -202,11 +174,8 @@ Clear all entries stored by the program, at the end of the day, or when required
 #### Example Input: `clear`
 
 #### Example Output:
-```
-============================================================================
-Cleared 1350 entries.
-============================================================================
-```
+
+![clear_success](images/clear_4_entries.png)
 
 ### Edit venue capacity: `editmax`
 
@@ -215,14 +184,11 @@ Edits the max capacity of the venue.
 #### Format: `editmax NEW_CAPACITY`
 * `NEW_CAPACITY` must be a positive integer.
 
-#### Example Input: `editmax 100`
+#### Example Input: `editmax 150`
 
 #### Example Output:
-```
-============================================================================
-New max capacity: 100
-============================================================================
-```
+
+![editmax_success](images/editmax_success.png)
 
 ### Change storage location: `movestorage`
 
@@ -233,11 +199,8 @@ Move the location of the storage file to the specified destination.
 #### Example Input: `movestorage /new/test`
 
 #### Example Output:
-```
-============================================================================
-Moved storage file to /new/test.txt
-============================================================================
-```
+
+![movestorage_success](images/moveStorage_success.png)
 
 ### Exiting CYC: `exit`
 
@@ -248,11 +211,8 @@ Exit the CYC program.
 #### Example Input: `exit`
 
 #### Example Output: 
-```
-============================================================================
-Exiting Control Your Crowd...
-============================================================================
-```
+
+![exit](images/exit_success.png)
 
 ### Visitor Log
 
