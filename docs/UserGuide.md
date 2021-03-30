@@ -226,7 +226,9 @@ New max capacity: 100
 
 ### Change storage location: `movestorage`
 
-Move the location of the storage file to the specified destination.
+This command allows you to move the location of the saved file, if you desire a different location 
+from the default setting. A suggested use would be to set it to the current date, so that you can easily refer to
+the records if needed.
 
 #### Format: `movestorage NEW_DESTINATION`
 
