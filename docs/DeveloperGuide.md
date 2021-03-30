@@ -1,33 +1,64 @@
-# Developer Guide
+# Control Your Crowd - Developer Guide
 
-## Design & implementation
+* [Setting up](DeveloperGuide.md#setting-up)
+* [Design](DeveloperGuide.md#design)
+  * [Architecture](DeveloperGuide.md#architecture)
+  * [UI component](DeveloperGuide.md#ui-component)
+  * [Logic component](DeveloperGuide.md#logic-component)
+  * [Model component](DeveloperGuide.md#model-component)
+  * [Storage component](DeveloperGuide.md#storage-component)
+  * [Common classes](DeveloperGuide.md#common-classes)
+* [Implementation](DeveloperGuide.md#implementation)
+* [Documentation](DeveloperGuide.md#documentation)
+* [Testing](DeveloperGuide.md#testing)
+* [Dev Ops](DeveloperGuide.md#dev-ops)
+* [Appendix](DeveloperGuide.md#appendix)
+  * [Appendix A: Product Scope](DeveloperGuide.md#appendix-a-product-scope)
+    * [Target user profile](DeveloperGuide.md#target-user-profile)
+    * [Value proposition](DeveloperGuide.md#value-proposition)
+  * [Appendix B: User Stories](DeveloperGuide.md#appendix-b-user-stories)
+  * [Appendix C: Use Cases](DeveloperGuide.md#appendix-c-use-cases)
+  * [Appendix D: Non Functional Requirements](DeveloperGuide.md#appendix-d-non-functional-requirements)
+  * [Appendix E: Glossary](DeveloperGuide.md#appendix-e-glossary)
+  * [Appendix F: Instructions for Manual Testing](DeveloperGuide.md#appendix-f-instructions-for-manual-testing)
+    * [Launch and Shutdown](DeveloperGuide.md#launch-and-shutdown)
+    * [Clearing the list](DeveloperGuide.md#clearing-the-list)
+    * [Saving data](DeveloperGuide.md#saving-data)
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+## Setting up
 
+## Design
 
-
-
-### Logic component
-
-1. Logic uses the `Parser` class the user input obtained from the `TextUi` class.
-2. This results in a specific `Command` object to be returned from the `Parser'.   
-3. Depending on the type of the `Command` object, its corresponding command execution will be called.
-4. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
-5. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as formatting the list to the user.
-
-Given below is the Sequence Diagram for interactions within the `Logic` component for {to be inserted when doing sequence diagram}.
+### Architecture
 
 ### UI component
 
-The UI consists of `TextUi` class. It acts as a middleware between users' input 
-and `Parser` class under **Logic Component**. 
+The UI consists of `TextUi` class. It acts as a middleware between users' input
+and `Parser` class under **Logic Component**.
 
-The `ui` component,
+The `UI` component,
 
-* Reads user commands using `Scanner` class. 
+* Reads user commands using `Scanner` class.
 * Pass raw user commands into `Parser` class under **Logic Component**.
 * After the **Logic Component** has executed the function, it will then return `CommandOutput` object
-which contains the outcome of the execution, fail or succeed. 
+  which contains the outcome of the execution, fail or succeed.
+
+### Logic component
+
+**API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package (*TO BE CREATED LATER*)
+
+The Logic component,
+1. uses the `Parser` class to parse the user input obtained by the `TextUi` class of `UI`.
+2. This results in a specific `Command` object to be returned from the `Parser` class.
+3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Duke` of `UI`.
+4. The command execution can affect the `Model` (e.g. clearing the list). 
+5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
+6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
+
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `parseCommand("clear)"` API call.
+
+![](images/LogicComponentSequenceDiagram.png?raw=true "Logic component Sequence Diagram for clear")
+*Figure #. Interactions Inside the Logic Component for the `clear` Command*
 
 ### Model component
 
@@ -74,9 +105,20 @@ When a change is made by the user, `ConfigFile` will update the `settingsFile` t
 
 Classes used by multiple components are in the `seedu.Duke.commons` package. 
 
+## Implementation
 
-## Product scope [WIP]
-### Target user profile
+## Documentation
+
+## Testing
+
+## Dev Ops
+
+## Appendix
+
+### Appendix A: Product scope
+[WIP]
+
+#### Target user profile
 * User that requires more control over crowd level management in a building.
 * Can type fast
 * Prefers a simple desktop application over the more complicated systems
@@ -86,12 +128,13 @@ Classes used by multiple components are in the `seedu.Duke.commons` package.
 
 {Describe the target user profile}
 
-### Value proposition
+#### Value proposition
 
 A fast and versatile software solution that enables mall management to crowd control 
 in the most efficient way possible.
 
-## User Stories [WIP]
+### Appendix B: User Stories 
+[WIP]
 
 |Priority| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
@@ -100,14 +143,23 @@ in the most efficient way possible.
 |****|mall staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
 |****|mall staff|be able to easily key in a unique personal identifier| check in and find a visitor|
 
-## Non-Functional Requirements [WIP]
+### Appendix C: Use Cases
+
+### Appendix D: Non-Functional Requirements
+
+[WIP]
 
 The program works on all major modern operating systems (Windows, macOS, Linux) without any effort by the user.
 
-## Glossary [WIP]
+### Appendix E: Glossary 
+[WIP]
 
 * *glossary item* - Definition
 
-## Instructions for manual testing [WIP]
+### Appendix F: Instructions for manual testing 
+[WIP]
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+#### Launch and Shutdown
+#### Clearing the list
+#### Saving data
