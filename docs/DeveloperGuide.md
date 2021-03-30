@@ -57,7 +57,7 @@ The Logic component,
 
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `parseCommand("clear)"` API call.
 
-![](images/LogicComponentSequenceDiagram.png)
+![](images/LogicComponentSequenceDiagram.png?raw=true "Logic component Sequence Diagram for clear")
 *Figure #. Interactions Inside the Logic Component for the `clear` Command*
 
 ### Model component
