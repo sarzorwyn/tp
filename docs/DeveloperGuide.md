@@ -51,7 +51,7 @@ The Logic component,
 1. uses the `Parser` class to parse the user input obtained by the `TextUi` class of `UI`.
 2. This results in a specific `Command` object to be returned from the `Parser` class.
 3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Duke` of `UI`.
-4. The command execution can affect the `Model` (e.g. check in a new visitor). 
+4. The command execution can affect the `Model` (e.g. clearing the list). 
 5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
 6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
 
