@@ -1,33 +1,35 @@
 # Control Your Crowd - Developer Guide
 
-1. [Setting up]()
-2. [Design]()
-   1. [Architecture]()
-   2. [UI component]()
-   3. [Logic component]()
-   4. [Model component]()
-   5. [Storage component]()
-   6. [Common classes]()
-3. [Implementation]()
-4. [Documentation]()
-5. [Testing]()
-6. [Dev Ops]()
-7. [Appendix]()
-   1. [Appendix A: Product Scope]()
-   2. [Appendix B: User Stories]()
-   3. [Appendix C: Use Cases]()
-   4. [Appendix D: Non Functional Requirements]()
-   5. [Appendix E: Glossary]()
-   6. [Appendix F: Product Survey]()
-   7. [Appendix G: Instructions for Manual Testing]()
-      1. [Launch and Shutdown]()
-      2. [Clearing the list]()
-      3. [Saving data]()
+* [Setting up](DeveloperGuide.md#setting-up)
+* [Design](DeveloperGuide.md#design)
+  * [Architecture](DeveloperGuide.md#architecture)
+  * [UI component](DeveloperGuide.md#ui-component)
+  * [Logic component](DeveloperGuide.md#logic-component)
+  * [Model component](DeveloperGuide.md#model-component)
+  * [Storage component](DeveloperGuide.md#storage-component)
+  * [Common classes](DeveloperGuide.md#common-classes)
+* [Implementation](DeveloperGuide.md#implementation)
+* [Documentation](DeveloperGuide.md#documentation)
+* [Testing](DeveloperGuide.md#testing)
+* [Dev Ops](DeveloperGuide.md#dev-ops)
+* [Appendix](DeveloperGuide.md#appendix)
+  * [Appendix A: Product Scope](DeveloperGuide.md#appendix-a-product-scope)
+    * [Target user profile](DeveloperGuide.md#target-user-profile)
+    * [Value proposition](DeveloperGuide.md#value-proposition)
+  * [Appendix B: User Stories](DeveloperGuide.md#appendix-b-user-stories)
+  * [Appendix C: Use Cases](DeveloperGuide.md#appendix-c-use-cases)
+  * [Appendix D: Non Functional Requirements](DeveloperGuide.md#appendix-d-non-functional-requirements)
+  * [Appendix E: Glossary](DeveloperGuide.md#appendix-e-glossary)
+  * [Appendix F: Instructions for Manual Testing](DeveloperGuide.md#appendix-f-instructions-for-manual-testing)
+    * [Launch and Shutdown](DeveloperGuide.md#launch-and-shutdown)
+    * [Clearing the list](DeveloperGuide.md#clearing-the-list)
+    * [Saving data](DeveloperGuide.md#saving-data)
 
-## Design & implementation
+## Setting up
 
-{Describe the design and implementation of the product. Use UML diagrams and short code snippets where applicable.}
+## Design
 
+### Architecture
 
 ### UI component
 
@@ -103,9 +105,20 @@ When a change is made by the user, `ConfigFile` will update the `settingsFile` t
 
 Classes used by multiple components are in the `seedu.Duke.commons` package. 
 
+## Implementation
 
-## Product scope [WIP]
-### Target user profile
+## Documentation
+
+## Testing
+
+## Dev Ops
+
+## Appendix
+
+### Appendix A: Product scope
+[WIP]
+
+#### Target user profile
 * User that requires more control over crowd level management in a building.
 * Can type fast
 * Prefers a simple desktop application over the more complicated systems
@@ -115,12 +128,13 @@ Classes used by multiple components are in the `seedu.Duke.commons` package.
 
 {Describe the target user profile}
 
-### Value proposition
+#### Value proposition
 
 A fast and versatile software solution that enables mall management to crowd control 
 in the most efficient way possible.
 
-## User Stories [WIP]
+### Appendix B: User Stories 
+[WIP]
 
 |Priority| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
@@ -129,14 +143,23 @@ in the most efficient way possible.
 |****|mall staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
 |****|mall staff|be able to easily key in a unique personal identifier| check in and find a visitor|
 
-## Non-Functional Requirements [WIP]
+### Appendix C: Use Cases
+
+### Appendix D: Non-Functional Requirements
+
+[WIP]
 
 The program works on all major modern operating systems (Windows, macOS, Linux) without any effort by the user.
 
-## Glossary [WIP]
+### Appendix E: Glossary 
+[WIP]
 
 * *glossary item* - Definition
 
-## Instructions for manual testing [WIP]
+### Appendix F: Instructions for manual testing 
+[WIP]
 
 {Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
+#### Launch and Shutdown
+#### Clearing the list
+#### Saving data
