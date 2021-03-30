@@ -1,3 +1,5 @@
+![Banner](images/github_ug_photo.png)
+
 # User Guide for Control Your Crowd (CYC)
 
 * [Introduction](UserGuide.md#introduction)
@@ -26,8 +28,11 @@ Welcome to the User Guide of **Control Your Crowd**!
 
 Our application, Control Your Crowd (CYC), will allow you to manage your crowds in real-time. It allows efficient 
 tracking and accessing of visitors' profiles. You can also easily check-in and check out a visitor, get the current 
-crowd level, limit the venue capacity, save the visitor log for future references, and much more! CYC is an all-in-one 
-application to help you manage your crowd levels at any venue with ease.
+crowd level, limit the venue capacity, save the visitor log for future references, and much more! 
+CYC is an all-in-one application to help event management team, event organizers for events such as Ultra Music
+Festival manage crowd level with ease. It also works very well for small enterprises and mall management team that
+needs to monitor influx of visitors. 
+
 The application uses a Command Line Interface (CLI); this means that you operate the 
 application by typing commands into a command window. With simple and easy-to-use commands, 
 CYC provides you with efficient crowd management which is faster than traditional 
@@ -57,6 +62,8 @@ with CYC.
    
 6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
    for details of each command.
+   
+- tips: Maximize the command line window to ensure that you get to make use of the visuals of CYC CLI.
 
 ## Features 
 
@@ -187,6 +194,7 @@ check in the following visit.
 `clear` command clears all entries stored by the program. It could be useful
 to clear CYC data at the end of the day, or when required. However, this is 
 not recommended as you will lose track of the visitors who have not check out.
+Therefore, use `clear` command with caution.
 
 #### Format: `clear`
 
@@ -198,7 +206,11 @@ not recommended as you will lose track of the visitors who have not check out.
 
 ### Edit venue capacity: `editmax`
 
+In the event that requires the venue capacity to change, you 
+can update the new venue capacity in CYC using `editmax` command.
 Edits the max capacity of the venue.
+
+
 
 #### Format: `editmax NEW_CAPACITY`
 * `NEW_CAPACITY` must be a positive integer.
@@ -225,7 +237,7 @@ the records if needed.
 
 ### Exiting CYC: `exit`
 
-Exit the CYC program.
+`exit` command will save the current state of CYC before exiting the programme. 
 
 #### Format: `exit`
 
@@ -237,35 +249,47 @@ Exit the CYC program.
 
 ### Visitor Log
 
-CYC automatically saves the details of previous persons.
+CYC automatically saves the details of previous persons therefore providing the users with a
+convenient location to retrieve all particulars and details of visitors. 
 
-A person who have checked in before, does not have to input all his details again when using the `checkin` command.
+With Visitor log,
+a person who have checked in before, does not have to input all his details 
+again when using the `checkin` command.
 
 The person details are stored in `/LogFile.txt` in the same folder as the program.
 
-### Saving data
+### Auto Save
 The program automatically saves data to a `.txt` file after each command you input.
 The program defaults to saving to `/TrackingList.txt` in the same folder as the program.
+As such, you do not have to worry about saving the data or memory loss in case of
+programme crash. 
 
 ### Changing save location
-To change the save location, you can use the command `movestorage`
+To change the save location, you can use the command `movestorage`. The command format for move storage
+is stated above. 
 
 ### History
 
-CYC automatically keeps a back up of the checkin and checkout history as CSV, comma separated values.
+CYC automatically keeps a back up of the checkin and checkout history in `history.txt` file after
+each check in and check out operation.
 
 Users, such as event organiser or mall owners, could therefore study these data for future planning and necessary
-upgrade of facilities.
+upgrade of facilities. History data is also stored in CSV format, comma separated values such that it can be 
+extracted and cleaned to use for automatic data analytics.
 
 ### Saving history
 The program automatically saves the history to 'history.txt' file after each checkin and checkout operation.
 
 ### Clearing history
+
+In the unlikely event that, your machine runs our of storage space or you want to reset
+the history. You can follow these steps, to clear history.
+
 To clear history, please follow the following steps:
 1. Exit CYC.
 2. Locate the directory of CYC on the computer.
 3. Locate `/History.txt` and delete the file directly. 
-   (CYC will start a new History file upon a restart.)
+   (CYC will create a new History file upon a restart.)
 
 ## FAQ
 
