@@ -1,3 +1,5 @@
+![Banner](images/github_ug_photo.png)
+
 # User Guide for Control Your Crowd (CYC)
 
 * [Introduction](UserGuide.md#introduction)
@@ -24,18 +26,22 @@
 
 Welcome to the User Guide of **Control Your Crowd**!
 
-Our application, Control Your Crowd (CYC), will allow you to manage your crowds in real time. It allows efficient
-tracking and accessing of visitors' profiles. You can also easily check in and check out a visitor, get current crowd level,
-limit the venue capacity, save the visitor log for future references and much more! CYC is an all-in-one application to
-help you manage your crowd levels at any venue with ease.
+Our application, Control Your Crowd (CYC), will allow you to manage your crowds in real-time. It allows efficient 
+tracking and accessing of visitors' profiles. You can also easily check-in and check out a visitor, get the current 
+crowd level, limit the venue capacity, save the visitor log for future references, and much more! 
+CYC is an all-in-one application to help event management team, event organizers for events such as Ultra Music
+Festival manage crowd level with ease. It also works very well for small enterprises and mall management team that
+needs to monitor influx of visitors. 
 
-The application uses a Command Line Interface (CLI); this means that you operate the application by typing commands into
-a command window. If you can type fast, CYC can enable you to manage the crowd faster than other traditional Graphical User
-Interface (GUI) applications; GUI applications allow user to interact with the application through graphical icons such
-as buttons.
+The application uses a Command Line Interface (CLI); this means that you operate the 
+application by typing commands into a command window. With simple and easy-to-use commands, 
+CYC provides you with efficient crowd management which is faster than traditional 
+Graphical User Interface (GUI) applications can offer. GUI applications 
+allow the user to interact with the application through graphical icons such as buttons and clickable.
 
-If you are interested, jump to [Quick Start](UserGuide.md#quick-start) to learn how to start managing your crowd using
-CYC.
+
+Jump to [Quick Start](UserGuide.md#quick-start) to learn how to manage your crowd efficiently
+with CYC.
 
 ## Quick Start
 
@@ -52,10 +58,12 @@ CYC.
 5. If the setup is correct, you should see CYC being loaded as shown below (note: your version of CYC would be the 
    latest version).
    
-   ![image](/docs/images/welcomemessage.png)
+   ![QuickStart](images/welcomemessage.png)
    
 6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
    for details of each command.
+   
+- tips: Maximize the command line window to ensure that you get to make use of the visuals of CYC CLI.
 
 ## Features 
 
@@ -70,8 +78,8 @@ CYC.
 
 ### Viewing help: `help`
 
-This command will provide you a summary of the all the commands with its corresponding format. This command will help
-you in situations when you forget the available commands, or their format while on duty.
+This command will provide you a summary of the all the commands with its corresponding format.
+This command will help you in situations when you forget the available commands, or their format while on duty.
 
 #### Format: `help`
 
@@ -79,11 +87,13 @@ you in situations when you forget the available commands, or their format while 
 
 #### Example Output:
 
-![image](/docs/images/help.png)
+![help](images/help.png)
 
 ### Check-in a person: `checkin`
 
-This command allows you to check in and add a person to the CYC. It will also notify you on the current venue capacity.
+Supposed there is a visitor,
+you can check in a person to CYC via `checkin` command. After a successful check-in, CYC will also notify you on the
+current venue capacity.
 
 #### Format: 
 `checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]`
@@ -93,50 +103,48 @@ This command allows you to check in and add a person to the CYC. It will also no
 * `NAME` must only contain english alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
 * `PHONE_NUMBER` is optional. `PHONE_NUMBER` must consist of 8 integers, as per local (Singapore) phone number format.
 
-#### Example Input: 
-Suppose a new visitor, John wants to check in. Since it is his first time visiting, you should check in John using his
+Supposedly John is a new visitor and he wants to check in. Since it is his first time visiting, you should check in John using his
 `i/LAST_4_CHARS_OF_ID`, `n/NAME` and `[p/PHONE_NUMBER]` as shown below.
+#### Example Input:
 
 `checkin i/123A n/John p/91231112`
 
-After that, the next time John wants to check in, you only need to check in using his `i/LAST_4_CHARS_OF_ID` as shown below.
+When John visits again in the future, you would only need to check in 
+using his `i/LAST_4_CHARS_OF_ID` as shown below.
 
 `checkin i/123A`
 
 #### Example Output:
 For both new visitor and returning visitor, you should observe the following output.
 
-![image](/docs/images/checkin_success.PNG)
+![checkin_success](images/checkin_success.png)
 
 However, you should expect the following output when the maximum capacity is reached.
 
-![image](/docs/images/checkinFail.png)
+![checkin_fail](images/checkinFail.png)
 
 ### Listing all persons: listall
 
-Shows a list of all persons who have checked-in and checked out.
+Supposed you want to find out all the visitors that had entered the venue,
+it can be done with `listall`. This command shows a list of all persons
+who have checked-in and checked out. The ID and phone numbers are also 
+shown in case you need to contact any of these visitors. However,
+if the visitor's phone number has not been registered with CYC, it will
+be shown as `--`.
 
 Format: `listall`
 
 Example Input: `listall`
 
 Example Output:
-```
-============================================================================
-|   ||Name                               ||Id      ||Phone     ||Checked In|
-============================================================================
-|1  ||John                               ||123A    ||91231112  ||Yes       |
-----------------------------------------------------------------------------
-|2  ||Jack                               ||234B    ||--        ||No        |
-----------------------------------------------------------------------------
-|3  ||Jane                               ||965T    ||--        ||Yes       |
-----------------------------------------------------------------------------
-============================================================================
-```
+
+![listall_success](images/listall_success.png)
 
 ### Listing checked-in persons only: `list`
 
-Shows a list of all persons with their details currently checked-in. It also shows the number of people 
+`list` command is similar to `listall`, the only difference is that `list` only
+returns the list of visitors that are still in the venue or have not check out.
+Shows a list of all persons with their details currently checked in. It also shows the number of people 
 remaining to reach the maximum capacity for that venue.
 
 #### Format: `list`
@@ -144,20 +152,13 @@ remaining to reach the maximum capacity for that venue.
 #### Example Input: `list`
 
 #### Example Output:
-```
-============================================================================
-|   ||Name                                ||Id          ||Phone            |
-============================================================================
-|1  ||John                                ||123A        ||91231112         |
-----------------------------------------------------------------------------
-|2  ||Jane                                ||965T        ||--               |
-----------------------------------------------------------------------------
-Number of people left for max capacity: 999
-============================================================================
-```
+
+![list_success](images/list_success.png)
 
 ### Finding a person by ID number: `find`
 
+You can use `find` command if you need to check whether a particular visitor
+is still in the venue or check for his/her particulars.
 Given the person's last 4 characters of ID, we can find the details of the person and status (Checked in, or checked out)
 
 #### Format: `find i/LAST_4_CHARS_OF_ID`
@@ -167,17 +168,15 @@ Given the person's last 4 characters of ID, we can find the details of the perso
 #### Example input: `find i/123A`
 
 #### Example Output:
-```
-============================================================================
-|   ||Name                               ||Id      ||Phone     ||Checked In|
-============================================================================
-|1  ||John                               ||123A    ||91231112  ||Yes       |
-============================================================================
-```
 
-### Checkout a person: `checkout`
+![find_success](images/find_success.png)
 
-Removes the person’s name and personal details from the checked-in list.
+### Check out a person: `checkout`
+
+You can check out a visitor from CYC, when he/she is leaving from the venue via
+`checkout` command. By doing so, you will be removing the visitor from checked in
+list in CYC. However, person's particulars will be retained for a faster 
+check in the following visit.
 
 #### Format: `checkout [n/NAME] i/LAST_4_CHARS_OF_ID`
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
@@ -186,43 +185,41 @@ Removes the person’s name and personal details from the checked-in list.
 #### Example input: `checkout n/John i/123A`
 
 #### Example output:
-```
-============================================================================
-John has been successfully checked out!
-Current capacity: 50 out of 100
-============================================================================
-```
+
+![checkout_success](images/checkout_success.png)
 
 ### Clearing all entries: `clear`
 
-Clear all entries stored by the program, at the end of the day, or when required.
+
+`clear` command clears all entries stored by the program. It could be useful
+to clear CYC data at the end of the day, or when required. However, this is 
+not recommended as you will lose track of the visitors who have not check out.
+Therefore, use `clear` command with caution.
 
 #### Format: `clear`
 
 #### Example Input: `clear`
 
 #### Example Output:
-```
-============================================================================
-Cleared 1350 entries.
-============================================================================
-```
+
+![clear_success](images/clear_4_entries.png)
 
 ### Edit venue capacity: `editmax`
 
+In the event that requires the venue capacity to change, you 
+can update the new venue capacity in CYC using `editmax` command.
 Edits the max capacity of the venue.
+
+
 
 #### Format: `editmax NEW_CAPACITY`
 * `NEW_CAPACITY` must be a positive integer.
 
-#### Example Input: `editmax 100`
+#### Example Input: `editmax 150`
 
 #### Example Output:
-```
-============================================================================
-New max capacity: 100
-============================================================================
-```
+
+![editmax_success](images/editmax_success.png)
 
 ### Change storage location: `movestorage`
 
@@ -235,58 +232,64 @@ the records if needed.
 #### Example Input: `movestorage /new/test`
 
 #### Example Output:
-```
-============================================================================
-Moved storage file to /new/test.txt
-============================================================================
-```
+
+![movestorage_success](images/moveStorage_success.png)
 
 ### Exiting CYC: `exit`
 
-Exit the CYC program.
+`exit` command will save the current state of CYC before exiting the programme. 
 
 #### Format: `exit`
 
 #### Example Input: `exit`
 
 #### Example Output: 
-```
-============================================================================
-Exiting Control Your Crowd...
-============================================================================
-```
+
+![exit](images/exit_success.png)
 
 ### Visitor Log
 
-CYC automatically saves the details of previous persons.
+CYC automatically saves the details of previous persons therefore providing the users with a
+convenient location to retrieve all particulars and details of visitors. 
 
-A person who have checked in before, does not have to input all his details again when using the `checkin` command.
+With Visitor log,
+a person who have checked in before, does not have to input all his details 
+again when using the `checkin` command.
 
 The person details are stored in `/LogFile.txt` in the same folder as the program.
 
-### Saving data
+### Auto Save
 The program automatically saves data to a `.txt` file after each command you input.
 The program defaults to saving to `/TrackingList.txt` in the same folder as the program.
+As such, you do not have to worry about saving the data or memory loss in case of
+programme crash. 
 
 ### Changing save location
-To change the save location, you can use the command `movestorage`
+To change the save location, you can use the command `movestorage`. The command format for move storage
+is stated above. 
 
 ### History
 
-CYC automatically keeps a back up of the checkin and checkout history as CSV, comma separated values.
+CYC automatically keeps a back up of the checkin and checkout history in `history.txt` file after
+each check in and check out operation.
 
 Users, such as event organiser or mall owners, could therefore study these data for future planning and necessary
-upgrade of facilities.
+upgrade of facilities. History data is also stored in CSV format, comma separated values such that it can be 
+extracted and cleaned to use for automatic data analytics.
 
 ### Saving history
 The program automatically saves the history to 'history.txt' file after each checkin and checkout operation.
 
 ### Clearing history
+
+In the unlikely event that, your machine runs our of storage space or you want to reset
+the history. You can follow these steps, to clear history.
+
 To clear history, please follow the following steps:
 1. Exit CYC.
 2. Locate the directory of CYC on the computer.
 3. Locate `/History.txt` and delete the file directly. 
-   (CYC will start a new History file upon a restart.)
+   (CYC will create a new History file upon a restart.)
 
 ## FAQ
 
