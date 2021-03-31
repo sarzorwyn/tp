@@ -27,6 +27,10 @@ public class ConfigFile {
         this.load();
     }
 
+    /**
+     * Loads the config file using the properties class
+     *
+     */
     public void load() {
         try {
             File file = new File(configPath);
@@ -57,6 +61,11 @@ public class ConfigFile {
         return storageFilePath;
     }
 
+    /**
+     * Sets the storage file path and saves it into the config file.
+     * @param storageFilePath The new path which the storage file will be saved at
+     * @throws StorageOperationException If there is an error writing to config file
+     */
     public void setStorageFilePath(String storageFilePath) throws StorageOperationException {
         this.storageFilePath = storageFilePath;
         prop.setProperty("StorageFilePath", storageFilePath);

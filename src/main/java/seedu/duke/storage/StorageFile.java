@@ -69,7 +69,7 @@ public class StorageFile {
 
     /**
      * Loads {@code TrackingList} data from this storage file and returns it.
-     * @throws StorageOperationException if there were errors reading the file
+     * @throws StorageOperationException If there were errors reading the file
      */
     public TrackingList load() throws StorageOperationException {
         createDataDirectory();
@@ -102,6 +102,11 @@ public class StorageFile {
         }
     }
 
+    /**
+     * Writes the log details into the log file.
+     * @param jsonLog json formatted log strings to be written
+     * @throws StorageOperationException If there is error writing to the log file
+     */
     public void saveLogFile(List<String> jsonLog) throws StorageOperationException {
         try {
             Files.write(path, jsonLog);
@@ -110,6 +115,11 @@ public class StorageFile {
         }
     }
 
+    /**
+     * Reads from the log file, creates it if it does not exist.
+     * @return A list of strings read from the log file
+     * @throws StorageOperationException If there is error reading from the log file
+     */
     public List<String> loadLogFile() throws StorageOperationException {
         createDataDirectory();
 
