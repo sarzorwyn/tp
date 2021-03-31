@@ -102,6 +102,11 @@ public class StorageFile {
         }
     }
 
+    /**
+     * Writes the log details into the log file.
+     * @param jsonLog json formatted log strings to be written
+     * @throws StorageOperationException Throws when there is error writing to the log file
+     */
     public void saveLogFile(List<String> jsonLog) throws StorageOperationException {
         try {
             Files.write(path, jsonLog);
