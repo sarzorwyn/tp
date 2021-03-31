@@ -3,7 +3,7 @@ package seedu.duke.commands;
 import seedu.duke.person.TrackingList;
 
 /**
- * Terminates SET program.
+ * Terminates Control Your Crowd.
  */
 public class ExitCommand extends Command {
 
