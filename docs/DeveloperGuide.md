@@ -67,15 +67,22 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 **API** : [`seedu.duke.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/person) package
 
+
+<img src="images/ModelComponentStructure.png" width="400" height="400" />
+
+*Figure #. Structure of the Model Component*
+
 The Model component,
 
-* contains a `TrackingList` class to keep track of all the `Person` objects.
-* contains a `Person` class which represents a person who checks in or out.
+* contains a `Person` class which represents a person who checks in/out.
+* contains a `TrackingList` class which uses an ArrayList to keep track of all the `Person` objects who have currently checked in/out.
+* contains a `PersonLog` class which uses a HashMap to permanently store all the `Person` objects who have checked in before.
 
 A `Person` object contains:
 * an `Id` object
 * a `Name` object
 * a `Phone` object
+
 
 ### Storage component
 **API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
