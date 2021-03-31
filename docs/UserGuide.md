@@ -10,13 +10,13 @@
     * [Listing all persons](UserGuide.md#listing-all-persons-listall): `listall`
     * [Listing checked-in persons only](UserGuide.md#listing-checked-in-persons-only-list): `list`
     * [Finding a person by ID](UserGuide.md#finding-a-person-by-id-number-find): `find`
-    * [Checkout a person](UserGuide.md#checkout-a-person-checkout): `checkout`
+    * [Checkout a person](UserGuide.md#check-out-a-person-checkout): `checkout`
     * [Clearing all entries](UserGuide.md#clearing-all-entries-clear): `clear`
     * [Edit venue capacity](UserGuide.md#edit-venue-capacity-editmax): `editmax`
     * [Move Storage](UserGuide.md#change-storage-location-movestorage): `movestorage`
     * [Exiting the program](UserGuide.md#exiting-cyc-exit): `exit`
     * [Visitor Log](UserGuide.md#visitor-log)
-    * [Saving data](UserGuide.md#saving-data)
+    * [Saving data](UserGuide.md#auto-save)
     * [Changing save location](UserGuide.md#changing-save-location)
     * [History](UserGuide.md#history)
 * [FAQ](UserGuide.md#faq)
@@ -49,12 +49,14 @@ with CYC.
 > * Ensure that you have **Java 11** or above installed in your Computer. If you do not have, you can get it from
 >   [here](https://www.oracle.com/sg/java/technologies/javase-jdk11-downloads.html).
 
-1. Download the latest version of `ControlYourCrowd.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases).
+1. Download the latest version of `CYC.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases).
 2. Copy the file to the folder you want to use as the home folder for your CYC.
-3. Open up a command window to the location where your `ControlYourCrowd.jar` is located.
-4. Run the command `java -jar [venue name] [venue maximum capacity] ControlYourCrowd.jar`. For example, 
-   `java -jar NUS 500 ControlYourCrowd.jar`.
+3. Open up a command window to the location where your `CYC.jar` is located.
+4. Run the command `java -jar CYC.jar [venue name] [venue maximum capacity]`. For example, 
+   `java -jar CYC.jar NUS 500`.
    * Ensure that the venue maximum capacity entered is a positive integer that does not exceed 6 digits.
+   * When you are running the `CYC.jar` again, ensure that the `[venue maximum capacity]` is more than the current
+     number of visitors checked in. Failure to do so will lead to negative maximum venue capacity.     
 5. If the setup is correct, you should see CYC being loaded as shown below (note: your version of CYC would be the 
    latest version).
    
@@ -213,7 +215,7 @@ Edits the max capacity of the venue.
 
 
 #### Format: `editmax NEW_CAPACITY`
-* `NEW_CAPACITY` must be a positive integer.
+* `NEW_CAPACITY` must be a positive integer and not more than six digits.
 
 #### Example Input: `editmax 150`
 
