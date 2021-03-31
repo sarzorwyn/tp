@@ -79,11 +79,12 @@ A `Person` object contains:
 
 ### Storage component
 **API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
-![](images/StorageModule.png?raw=true "Storage Module diagram")
+![](images/storage_module.png?raw=true "Storage Module diagram")
 
 The `Storage` component,
 * saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
 * reads a `.txt` file of valid encoding and populates a `TrackingList`
+* records a log of all historical states of `TrackingList`
 * keeps a list of user setting in a `Config.properties` file which is read on launch
 * defaults to `TrackingList.txt` but can be saved at a custom specified location
 * loads on program startup automatically saves after each command
@@ -98,6 +99,12 @@ and interprets the file to be loaded into the memory as a `TrackingList`.
 
 `StoredTrackingList` is the `.txt` file stored in the same directory as the program.
 The location is determined by the `ConfigFile` class. 
+
+`LogFile` takes the `TrackingList` every time the storage is updated
+and packages it into `json` formatted string.
+`LogFile` communicates with the disk by calling the methods
+`loadLogFile` and `saveLogFile` in the `StorageFile` class.
+
 
 The program settings for the user is manged by the `ConfigFile` class. 
 Another file, `settingsFile` is read by `ConfigFile` when the program is started, 
