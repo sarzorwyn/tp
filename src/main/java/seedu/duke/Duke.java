@@ -77,11 +77,13 @@ public class Duke {
             trackingList = storage.load();
             personLog.loadAllPersons();
             historyFile.startHistory();
-        } catch (StorageOperationException | InvalidArgumentSizeException
-                | InvalidMaxCapacityException | HistoryStorageException e) {
+        } catch (StorageOperationException | HistoryStorageException e) {
             // Shut the program down as it can not be recovered
             // throw new RuntimeException();
             ui.notifyErrorToUser(e);
+        } catch (InvalidMaxCapacityException | InvalidArgumentSizeException e) {
+            ui.notifyErrorToUser(e);
+            System.exit(0);
         }
         ui.showWelcomeMessage(VERSION_NO);
     }
