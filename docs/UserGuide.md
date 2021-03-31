@@ -10,13 +10,13 @@
     * [Listing all persons](UserGuide.md#listing-all-persons-listall): `listall`
     * [Listing checked-in persons only](UserGuide.md#listing-checked-in-persons-only-list): `list`
     * [Finding a person by ID](UserGuide.md#finding-a-person-by-id-number-find): `find`
-    * [Checkout a person](UserGuide.md#checkout-a-person-checkout): `checkout`
+    * [Checkout a person](UserGuide.md#check-out-a-person-checkout): `checkout`
     * [Clearing all entries](UserGuide.md#clearing-all-entries-clear): `clear`
     * [Edit venue capacity](UserGuide.md#edit-venue-capacity-editmax): `editmax`
     * [Move Storage](UserGuide.md#change-storage-location-movestorage): `movestorage`
     * [Exiting the program](UserGuide.md#exiting-cyc-exit): `exit`
     * [Visitor Log](UserGuide.md#visitor-log)
-    * [Saving data](UserGuide.md#saving-data)
+    * [Saving data](UserGuide.md#auto-save)
     * [Changing save location](UserGuide.md#changing-save-location)
     * [History](UserGuide.md#history)
 * [FAQ](UserGuide.md#faq)
@@ -55,6 +55,8 @@ with CYC.
 4. Run the command `java -jar CYC.jar [venue name] [venue maximum capacity]`. For example, 
    `java -jar CYC.jar NUS 500`.
    * Ensure that the venue maximum capacity entered is a positive integer that does not exceed 6 digits.
+   * When you are running the `CYC.jar` again, ensure that the `[venue maximum capacity]` is more than the current
+     number of visitors checked in. Failure to do so will lead to negative maximum venue capacity.     
 5. If the setup is correct, you should see CYC being loaded as shown below (note: your version of CYC would be the 
    latest version).
    
