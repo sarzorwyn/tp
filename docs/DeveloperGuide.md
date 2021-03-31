@@ -45,6 +45,9 @@ The `UI` component,
 
 ### Logic component
 
+![](images/LogicComponentStructure.png?raw=true "Structure of Logic Component")
+*Figure #. Structure of the Logic Component*
+
 **API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package (*TO BE CREATED LATER*)
 
 The Logic component,
