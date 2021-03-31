@@ -64,7 +64,7 @@ public class ConfigFile {
     /**
      * Sets the storage file path and saves it into the config file.
      * @param storageFilePath The new path which the storage file will be saved at
-     * @throws StorageOperationException Throws when there is an error writing to config file
+     * @throws StorageOperationException If there is an error writing to config file
      */
     public void setStorageFilePath(String storageFilePath) throws StorageOperationException {
         this.storageFilePath = storageFilePath;
