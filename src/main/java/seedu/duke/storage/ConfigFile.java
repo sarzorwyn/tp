@@ -28,8 +28,7 @@ public class ConfigFile {
     }
 
     /**
-     * Loads the config file using the properties class
-     *
+     * Loads the config file using the properties class.
      */
     public void load() {
         try {
