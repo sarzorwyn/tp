@@ -15,7 +15,8 @@ import seedu.duke.person.Phone;
 import seedu.duke.person.TrackingList;
 
 /**
- * Check-in a person.
+ * Check in a visitor.
+ * Adds a new visitor to the trackingList and personLog.
  */
 public class CheckInCommand extends Command {
 
@@ -28,8 +29,18 @@ public class CheckInCommand extends Command {
     public static final String CURRENT_AND_MAX_CAPACITY_MESSAGE = "Current capacity: %d out of %d.";
     public static final String CHECKIN_FAIL_MESSAGE = "Unable to check in! Maximum capacity of %d reached!";
     private final Person toCheckin;
-    private HistoryFile historyFile;
+    private final HistoryFile historyFile;
 
+    /**
+     * Creates a CheckInCommand to checkin a visitor.
+     * New visitor is added to the personLog.
+     *
+     * @param idString ID of the visitor
+     * @param nameString name of the visitor
+     * @param phoneString phone number of the visitor
+     * @throws StorageOperationException if there are errors reading the file
+     * @throws PersonNotFoundException if the visitor cannot be found in the personLog
+     */
     public CheckInCommand(String idString,
                           String nameString,
                           String phoneString) throws StorageOperationException, PersonNotFoundException {
@@ -47,6 +58,12 @@ public class CheckInCommand extends Command {
         }
     }
 
+    /**
+     * Checks if the visitor checking in has the same ID as someone else in the personLog.
+     *
+     * @param nameString name of the visitor
+     * @throws PersonNotFoundException if another person with the same ID is found in the personLog
+     */
     private void checkSameName(String nameString) throws PersonNotFoundException {
         if (nameString == null) {
             return;
@@ -60,9 +77,18 @@ public class CheckInCommand extends Command {
         return toCheckin;
     }
 
+    /**
+     * Executes the CheckinCommand.
+     * Restricts visitors from checking in if maximum capacity reached.
+     *
+     * @param trackingList list of visitors
+     * @return check in success message or check in failure message depending on the current capacity
+     * @throws HistoryStorageException if there are problems saving into the file
+     * @throws PersonNotFoundException if visitor cannot be found in the trackingList with the ID
+     */
     @Override
     public CommandOutput execute(TrackingList trackingList) throws HistoryStorageException, PersonNotFoundException {
-        historyFile = new HistoryFile();
+        // historyFile = new HistoryFile();
         MAXIMUM_CAPACITY = location.getMaxCapacity();
         if (trackingList.getCurrentCapacity() >= MAXIMUM_CAPACITY) {
             return new CommandOutput(String.format(CHECKIN_FAIL_MESSAGE, MAXIMUM_CAPACITY), COMMAND);

@@ -13,6 +13,9 @@ import static seedu.duke.common.Messages.LIST_CHECKED_IN_HELP;
 import static seedu.duke.common.Messages.MOVE_STORAGE_HELP;
 import static seedu.duke.common.Messages.USER_GUIDE_LINK_HELP;
 
+/**
+ * Format full help instructions for every command for display.
+ */
 public class HelpCommand extends Command {
 
     public static final String COMMAND = "help";
@@ -22,6 +25,12 @@ public class HelpCommand extends Command {
             + CLEAR_HELP + System.lineSeparator() + EDIT_CAPACITY_HELP + System.lineSeparator()
             + MOVE_STORAGE_HELP + System.lineSeparator() + EXIT_HELP + System.lineSeparator() + USER_GUIDE_LINK_HELP;
 
+    /**
+     * Executes the HelpCommand.
+     *
+     * @param trackingList list of visitors
+     * @return the command summary of all the commands
+     */
     @Override
     public CommandOutput execute(TrackingList trackingList) {
         return new CommandOutput(HELP_MESSAGE, COMMAND);

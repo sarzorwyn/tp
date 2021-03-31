@@ -15,7 +15,7 @@ import seedu.duke.history.HistoryFile;
 import java.util.logging.Logger;
 
 /**
- * Check-out a person.
+ * Check out a visitor.
  */
 public class CheckoutCommand extends Command {
 
@@ -25,13 +25,18 @@ public class CheckoutCommand extends Command {
     private static int MAXIMUM_CAPACITY;
     public static final String CURRENT_AND_MAXIMUM_MESSAGE = "Current capacity: %d out of %d";
     public static final String CHECKOUT_MESSAGE = "%s has been successfully checked-out!" + System.lineSeparator();
-
     private final Id id;
     private String nameString;
     private Person toCheckout;
     private static final Logger logger = Logger.getLogger(CheckoutCommand.class.getName());
     private HistoryFile historyFile;
 
+    /**
+     * Creates a CheckoutCommand to checkout a visitor.
+     *
+     * @param idString ID of the visitor who wants to check out
+     * @param nameString name of the visitor who wants ti check out
+     */
     public CheckoutCommand(String idString,String nameString) {
         this.id = new Id(idString);
         historyFile = Duke.getInstance().getHistoryFile();
@@ -45,9 +50,17 @@ public class CheckoutCommand extends Command {
         return toCheckout;
     }
 
+    /**
+     * Executes the CheckoutCommand.
+     *
+     * @param trackingList list of visitors
+     * @return checkout message with the information about the current capacity in the venue
+     * @throws PersonNotFoundException if the visitor cannot be found in the trackingList with the ID
+     * @throws HistoryStorageException if there are problems saving into the file
+     */
     @Override
     public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException, HistoryStorageException {
-        historyFile = new HistoryFile();
+        // historyFile = new HistoryFile();
         toCheckout = trackingList.findExactPerson(id);
         Name toCheckoutName = toCheckout.getName();
         if (nameString != null) {
