@@ -23,6 +23,10 @@ import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
 
+
+/**
+ * Parses user input arguments and returns a new Command object.
+ */
 public class Parser {
     public static final String MAX_REGEX = "[0-9]+";
 
@@ -40,6 +44,21 @@ public class Parser {
         return textArray;
     }
 
+    /**
+     * Methodthat parses the user command and returns a Command object, depending on user input.
+     * @param userInput This is the user input.
+     * @return Command. This returns a Command object, depending on the user input.
+     * @throws InvalidCommandException if the user enters a single word command that is not part of functionality
+     * @throws NoArgumentPassedException if no argument is entered by user.
+     * @throws WrongFlagException if user enters the wrong flag header
+     * @throws InvalidIdException if the ID does not consist of 3 integers followed by an uppercase letter
+     * @throws InvalidNameFormatException if the name does not consist of strings
+     * @throws InvalidPhoneNumberException if the phone number does not consist of 8 integers
+     * @throws StorageOperationException if there were errors reading the file
+     * @throws InvalidIntegerException if the argument does not consist of integers only
+     * @throws PersonNotFoundException if the person cannot be located in the storage
+     * @throws InvalidMaxCapacityException if the argument is not a valid integer that represents maximum capacity
+     */
     public Command parseCommand(String userInput) throws
 
             InvalidCommandException, NoArgumentPassedException,
