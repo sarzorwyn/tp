@@ -4,14 +4,23 @@ import seedu.duke.commands.CheckoutCommand;
 import seedu.duke.commands.Command;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidIdException;
-import seedu.duke.exceptions.InvalidNameFormatException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.WrongFlagException;
 import seedu.duke.person.Id;
-import seedu.duke.person.Name;
 
+/**
+ * Checks out user based on ID input by user.
+ */
 public class CheckoutParser extends Parser {
 
+    /**
+     * Parses user input and checks out the specified user.
+     * @param argument Takes in ID of user to be checked out.
+     * @return returns CheckoutCommand.
+     * @throws NoArgumentPassedException if no value is passed into parseCheckOut
+     * @throws WrongFlagException if ID flag is not used
+     * @throws InvalidIdException if ID does not consist of 3 integers followed by uppercase character.
+     */
     public static Command parseCheckOut(String argument) throws NoArgumentPassedException,
             WrongFlagException, InvalidIdException {
         String [] checkoutDetails;
