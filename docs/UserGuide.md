@@ -52,9 +52,14 @@ with CYC.
 1. Download the latest version of `CYC.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases).
 2. Copy the file to the folder you want to use as the home folder for your CYC.
 3. Open up a command window to the location where your `CYC.jar` is located.
-4. Run the command `java -jar CYC.jar [venue name] [venue maximum capacity]`. For example, 
+4. Run the command `java -jar CYC.jar [VENUE_NAME] [VENUE_MAXIMUM_CAPACITY]`. For example, 
    `java -jar CYC.jar NUS 500`.
-   * Ensure that the venue maximum capacity entered is a positive integer that does not exceed 6 digits.
+   * You can add special characters to `[VENUE_NAME]`. For example, `java -jar CYC.jar *Scape 500`.
+     * You must provide the `[VENUE_NAME]` with quotations if your `[VENUE_NAME]` has spacings.
+       For example, `"National University of Singapore"` instead of `National University of Singapore`.
+   * Ensure that the `VENUE_MAXIMUM_CAPACITY` entered is a positive integer that does not exceed 6 digits.
+     * You can enter input the `VENUE_MAXIMUM_CAPACITY` with or without quotations. 
+       For example, `500` and `"500"` will both work.
    * When you are running the `CYC.jar` again, ensure that the `[venue maximum capacity]` is more than the current
      number of visitors checked in. Failure to do so will lead to negative maximum venue capacity.     
 5. If the setup is correct, you should see CYC being loaded as shown below (note: your version of CYC would be the 
@@ -65,7 +70,10 @@ with CYC.
 6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
    for details of each command.
    
-- tips: Maximize the command line window to ensure that you get to make use of the visuals of CYC CLI.
+> Tips and Additional Notes: 
+> * Maximize the command line window to ensure that you get to make use of the visuals of CYC CLI.
+> * Do **NOT** edit the `LogFile.txt`, `TrackingList.txt` or `History.txt` files.
+>   * You are only allowed to copy the contents of the `History.txt` file.
 
 ## Features 
 
@@ -125,6 +133,11 @@ However, you should expect the following output when the maximum capacity is rea
 
 ![checkin_fail](images/checkinFail.png)
 
+> Additional Note:
+> * If you attempt to check in a visitor who has already checked in, CYC will display the success message.
+>   * If you want to find out if a particular visitor has been checked in, you can use `find i/LAST_4_CHARS_OF_ID`.
+>     You can click [here](UserGuide.md#finding-a-person-by-id-number-find) to learn more about that command.
+ 
 ### Listing all persons: listall
 
 Supposed you want to find out all the visitors that had entered the venue,
@@ -216,6 +229,8 @@ Edits the max capacity of the venue.
 
 #### Format: `editmax NEW_CAPACITY`
 * `NEW_CAPACITY` must be a positive integer and not more than six digits.
+* The program crashes if you do not provide `NEW_CAPACITY`.
+    * This bug will be fixed in the next release.
 
 #### Example Input: `editmax 150`
 
