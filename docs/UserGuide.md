@@ -274,6 +274,7 @@ a person who have checked in before, does not have to input all his details
 again when using the `checkin` command.
 
 The person details are stored in `/LogFile.txt` in the same folder as the program.
+You can reset Visitor Log by exiting CYC and deleting it before reboot. 
 
 ### Auto Save
 The program automatically saves data to a `.txt` file after each command you input.

@@ -80,6 +80,7 @@ public class Duke {
         } catch (StorageOperationException | HistoryStorageException e) {
             // Shut the program down as it can not be recovered
             // throw new RuntimeException();
+            //PR testing for checks
             ui.notifyErrorToUser(e);
         } catch (InvalidMaxCapacityException | InvalidArgumentSizeException e) {
             ui.notifyErrorToUser(e);
