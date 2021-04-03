@@ -14,7 +14,26 @@ import seedu.duke.person.Id;
 import seedu.duke.person.Name;
 import seedu.duke.person.Phone;
 
+/**
+ * Checks in user, with compulsory ID, and name for first time check in.
+ *      Subsequent check in can be conducted with only ID, for user who has checked in previously.
+ */
 public class CheckInParser extends Parser {
+    /**
+     * Parses user input and checks in user based on provided details.
+     * @param argument Takes in compulsory user ID, and optional name, if user has already been checked in before
+     *                 otherwise name is compulsory too. Phone number is optional.
+     * @return returns CheckInCommand.
+     * @throws NoArgumentPassedException if no values are passed into parseCheckIn.
+     * @throws WrongFlagException if ID flag is not the first flag to be used, and if phone flag is used,
+     *                            while no name flag is provided.
+     * @throws InvalidIdException if ID does not consists of 3 integers followed by uppercase character.
+     * @throws InvalidNameFormatException if name does not consist of string of characters.
+     * @throws InvalidPhoneNumberException if phone number does not consist of 8 integers.
+     * @throws StorageOperationException if there were errors reading the file
+     * @throws PersonNotFoundException if only the ID is entered, and person has not been found, since he has not been
+     *                                 checked in before.
+     */
     protected static Command parseCheckIn(String argument) throws
             NoArgumentPassedException, WrongFlagException, InvalidIdException,
             InvalidNameFormatException, InvalidPhoneNumberException,

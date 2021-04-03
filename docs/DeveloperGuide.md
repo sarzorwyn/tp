@@ -30,6 +30,32 @@
 ## Design
 
 ### Architecture
+![Architecture](images/architecture.png)
+*Figure #. Architecture Diagram*
+
+The ***Architecture Diagram*** shown above explains the high-level design of Control Your Crowd (CYC) application.
+Below is a quick overview of each component.
+
+`Main` is a class that is critical to starting the application proper, as well as exiting it:
+* At app launch: Retrieves memory and saved log files (If available), initializes components in correct sequence, 
+and connects them with each other.
+  
+* At shut down: Saves the log file to storage, and shuts down all components.
+
+
+`Common` consists of a class of messages used by multiple components.
+* `Messages` consists of a list of messages that will be displayed to the users, for various reasons such as error handling
+and user notification.
+
+The rest of Control-Your-Crowd (CYC) consist of four components.
+* `UI`: The UI of the application, acting as middleware between users and CYC.
+
+* `Logic`: The command executor for CYC.
+
+* `Model` : Holds the in-App data, such as the details of the user, and their checked-in/checked-out status.
+
+* `Storage`: Reads and writes data from the hard disk to CYC.
+
 
 ### UI component
 
@@ -42,6 +68,7 @@ The `UI` component,
 * Pass raw user commands into `Parser` class under **Logic Component**.
 * After the **Logic Component** has executed the function, it will then return `CommandOutput` object
   which contains the outcome of the execution, fail or succeed.
+
 
 ### Logic component
 
@@ -68,7 +95,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 **API** : [`seedu.duke.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/person) package
 
 
-<img src="images/ModelComponentStructure.png" width="400" height="400" />
+<img src="images/ModelComponentStructure.png" width="600" height="600" />
 
 *Figure #. Structure of the Model Component*
 
