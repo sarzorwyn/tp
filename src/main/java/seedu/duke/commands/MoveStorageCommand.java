@@ -7,6 +7,7 @@ import seedu.duke.storage.StorageFile;
 
 import java.io.IOException;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -38,9 +39,7 @@ public class MoveStorageCommand extends Command {
      */
     @Override
     public CommandOutput execute(TrackingList trackingList) throws StorageOperationException {
-        if (Files.exists(Paths.get(newPath + TXT_FILE_FORMAT))) {
-            throw new StorageOperationException("Destination path already exists!");
-        }
+        checkNewPath();
 
         Duke duke = Duke.getInstance();
         StorageFile newStorage = new StorageFile(newPath);
@@ -56,11 +55,21 @@ public class MoveStorageCommand extends Command {
         return new CommandOutput(String.format(MOVE_MESSAGE, newPath), COMMAND);
     }
 
+    private void checkNewPath() throws StorageOperationException {
+        try {
+            if (Files.exists(Paths.get(newPath + TXT_FILE_FORMAT))) {
+                throw new StorageOperationException("Destination path already exists!");
+            }
+        } catch (InvalidPathException ipe) {
+            throw new StorageOperationException("Invalid path: " + newPath + TXT_FILE_FORMAT);
+        }
+    }
+
     private void moveConfigPath(Duke duke) throws StorageOperationException {
         String storageFilePath = duke.getConfigFile().getStorageFilePath();
 
         // check not null because Paths.get() can't handle null
-        if (storageFilePath != null && Files.exists(Paths.get(storageFilePath + TXT_FILE_FORMAT))) {
+        if (storageFilePath != null ) {
             deleteOldFile(Paths.get(storageFilePath + TXT_FILE_FORMAT));
         }
         duke.getConfigFile().setStorageFilePath(newPath);
@@ -68,9 +77,12 @@ public class MoveStorageCommand extends Command {
 
     private void deleteOldFile(Path storageFilePath) throws StorageOperationException {
         try {
+            Files.exists(Paths.get(storageFilePath + TXT_FILE_FORMAT));
             Files.delete(storageFilePath);
         } catch (IOException ioe) {
             throw new StorageOperationException("Unable to delete old storage file!");
+        } catch (InvalidPathException ipe) {
+            throw new StorageOperationException("Invalid path: " + storageFilePath + TXT_FILE_FORMAT);
         }
     }
 }
