@@ -290,6 +290,9 @@ programme crash.
 To change the save location, you can use the command `movestorage`. The command format for move storage
 is stated above. 
 
+If the user deletes the folder of the new path, the program may run into write errors.
+To resolve the issue, `settings.properties` should be deleted to reset the program state.
+
 ### History
 
 CYC automatically keeps a back up of the checkin and checkout history in `history.txt` file after
