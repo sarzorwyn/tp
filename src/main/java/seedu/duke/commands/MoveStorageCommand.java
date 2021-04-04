@@ -69,7 +69,7 @@ public class MoveStorageCommand extends Command {
         String storageFilePath = duke.getConfigFile().getStorageFilePath();
 
         // check not null because Paths.get() can't handle null
-        if (storageFilePath != null ) {
+        if (storageFilePath != null) {
             deleteOldFile(Paths.get(storageFilePath + TXT_FILE_FORMAT));
         }
         duke.getConfigFile().setStorageFilePath(newPath);
