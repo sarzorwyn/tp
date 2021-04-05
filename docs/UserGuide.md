@@ -106,7 +106,7 @@ you can check in a person to CYC via `checkin` command. After a successful check
 current venue capacity.
 
 #### Format: 
-`checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]`
+`checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]`
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
 * `NAME` is optional. If the user has checked in before, entering the `LAST_4_CHARS_OF_ID` is sufficient to retrieve the user's `NAME` and `PHONE_NUMBER` 
   from previous check in. **If the user has not checked in before, `NAME` must be entered.**
