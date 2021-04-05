@@ -75,11 +75,11 @@ public class CheckInParser extends Parser {
             id = checkInDetails[1].trim().toUpperCase();
         }
         if (checkInDetails.length == 4) {
-            name = checkInDetails[2].trim().toUpperCase();
+            name = checkInDetails[2].trim();//.toUpperCase();
             phoneNumber = checkInDetails[3].trim();
 
         } else if (checkInDetails.length == 3 && containsNameOnly) {
-            name = checkInDetails[2].trim().toUpperCase();
+            name = checkInDetails[2].trim();//.toUpperCase();
         } else if (checkInDetails.length == 3 && containsPhoneOnly) {
             phoneNumber = checkInDetails[2].trim();
         }
