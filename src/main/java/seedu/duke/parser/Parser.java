@@ -127,4 +127,8 @@ public class Parser {
         return argument.indexOf("p/");
     }
 
+    protected static int flagChecker(String argument) {
+        return argument.indexOf('/');
+    }
+
 }
