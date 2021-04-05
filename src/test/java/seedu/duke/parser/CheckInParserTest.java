@@ -29,7 +29,7 @@ public class CheckInParserTest {
             StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
 
         CheckInCommand checkInCommand = (CheckInCommand) parser.parseCommand(
-                "checkin i/ 123A n/ John");
+                "checkin i/ 123A n/ JOHN");
         assertEquals("checkin", checkInCommand.COMMAND);
 
         checkInCommand = (CheckInCommand) parser.parseCommand(
