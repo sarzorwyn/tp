@@ -28,7 +28,7 @@ public class CheckoutParser extends Parser {
 
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
-        } else if (idFlagChecker(argument) == -1) {
+        } else if (idFlagChecker(argument) == -1 || !argument.startsWith("i/")) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
 
