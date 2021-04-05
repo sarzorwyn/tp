@@ -304,7 +304,7 @@ The program automatically saves the history to 'history.txt' file after each che
 
 ### Clearing history
 
-In the unlikely event that, your machine runs our of storage space or you want to reset
+In the unlikely event that, your machine runs out of storage space or you want to reset
 the history. You can follow these steps, to clear history.
 
 To clear history, please follow the following steps:
