@@ -50,7 +50,7 @@ public class CheckInParserTest {
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
 
         exception = assertThrows(InvalidIdException.class, () ->
-                CheckInParser.parseCheckIn("i/John 123"));
+                CheckInParser.parseCheckIn("i/JOHN 123"));
         assertEquals(exception.getMessage(), Messages.ID_ERROR);
 
         exception = assertThrows(NoArgumentPassedException.class, () ->
