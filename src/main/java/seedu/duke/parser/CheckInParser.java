@@ -14,6 +14,8 @@ import seedu.duke.person.Id;
 import seedu.duke.person.Name;
 import seedu.duke.person.Phone;
 
+import java.util.Locale;
+
 /**
  * Checks in user, with compulsory ID, and name for first time check in.
  *      Subsequent check in can be conducted with only ID, for user who has checked in previously.
@@ -63,7 +65,7 @@ public class CheckInParser extends Parser {
         if (checkInDetails[1].isBlank()) {     //checks if n/ and i/ is provided
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
-            id = checkInDetails[1].trim();
+            id = checkInDetails[1].trim().toUpperCase();
         }
         if (checkInDetails.length == 4) {
             name = checkInDetails[2].trim();
