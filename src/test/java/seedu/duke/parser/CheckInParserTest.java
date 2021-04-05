@@ -35,6 +35,11 @@ public class CheckInParserTest {
         checkInCommand = (CheckInCommand) parser.parseCommand(
                 "checkin i/123A n/John p/12345678");
         assertEquals("checkin", checkInCommand.COMMAND);
+
+        checkInCommand = (CheckInCommand) parser.parseCommand(
+                "checkin i/123A p/12345678");
+        assertEquals("checkin", checkInCommand.COMMAND);
+
     }
 
     @Test
@@ -56,10 +61,6 @@ public class CheckInParserTest {
                 CheckInParser.parseCheckIn("n/"));
         assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
 
-        exception = assertThrows(WrongFlagException.class, () ->
-                CheckInParser.parseCheckIn("i/123A p/12345678"));
-        assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
-
         exception = assertThrows(NoArgumentPassedException.class, () ->
                 CheckInParser.parseCheckIn("i/"));
         assertEquals(exception.getMessage(), Messages.NO_ARGUMENT);
@@ -71,6 +72,14 @@ public class CheckInParserTest {
         exception = assertThrows(InvalidPhoneNumberException.class, () ->
                 CheckInParser.parseCheckIn("i/123A n/John p/123456"));
         assertEquals(exception.getMessage(), Messages.PHONE_ERROR);
+
+        exception = assertThrows(WrongFlagException.class, () ->
+                CheckInParser.parseCheckIn("m/123a"));
+        assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
+
+
+
+
 
 
     }

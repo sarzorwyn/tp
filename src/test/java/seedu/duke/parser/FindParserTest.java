@@ -38,5 +38,9 @@ public class FindParserTest {
         Throwable exception = assertThrows(WrongFlagException.class, () ->
                 FindParser.parseFind(""));
         assertEquals(exception.getMessage(), Messages.WRONG_FLAG);
+
+        exception = assertThrows(InvalidIdException.class, () ->
+                FindParser.parseFind("i/abc"));
+        assertEquals(exception.getMessage(), Messages.ID_ERROR);
     }
 }

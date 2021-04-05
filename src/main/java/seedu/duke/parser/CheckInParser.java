@@ -52,7 +52,7 @@ public class CheckInParser extends Parser {
         String id;
         String name = null;
         String phoneNumber = null;
-        String[] checkInDetails;
+        String[] checkInDetails = new String[0];
 
         boolean containsPhoneOnly = false;
         boolean containsNameOnly = false;
@@ -67,10 +67,7 @@ public class CheckInParser extends Parser {
         } else if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) != -1) {
             checkInDetails = argument.split("i/|p/",3);
             containsPhoneOnly = true;
-        } else {
-            throw new WrongFlagException(Messages.WRONG_FLAG);
-
-        }
+        } 
 
         if (checkInDetails[1].isBlank()) {     //checks if n/ and i/ is provided
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
