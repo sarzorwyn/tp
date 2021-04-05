@@ -52,11 +52,8 @@ with CYC.
 1. Download the latest version of `CYC.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases).
 2. Copy the file to the folder you want to use as the home folder for your CYC.
 3. Open up a command window to the location where your `CYC.jar` is located.
-4. Run the command `java -jar CYC.jar [VENUE_NAME] [VENUE_MAXIMUM_CAPACITY]`. For example, 
-   `java -jar CYC.jar NUS 500`.
-   * You can add special characters to `[VENUE_NAME]`. For example, `java -jar CYC.jar *Scape 500`.
-     * You must provide the `[VENUE_NAME]` with quotations if your `[VENUE_NAME]` has spacings.
-       For example, `"National University of Singapore"` instead of `National University of Singapore`.
+4. Run the command `java -jar CYC.jar [VENUE_MAXIMUM_CAPACITY]`. For example, 
+   `java -jar CYC.jar 500`.
    * Ensure that the `VENUE_MAXIMUM_CAPACITY` entered is a positive integer that does not exceed 6 digits.
      * You can enter input the `VENUE_MAXIMUM_CAPACITY` with or without quotations. 
        For example, `500` and `"500"` will both work.
