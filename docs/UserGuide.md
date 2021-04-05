@@ -106,7 +106,7 @@ you can check in a person to CYC via `checkin` command. After a successful check
 current venue capacity.
 
 #### Format: 
-`checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]`
+`checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]`
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
 * `NAME` is optional. If the user has checked in before, entering the `LAST_4_CHARS_OF_ID` is sufficient to retrieve the user's `NAME` and `PHONE_NUMBER` 
   from previous check in. **If the user has not checked in before, `NAME` must be entered.**
@@ -324,6 +324,13 @@ To clear history, please follow the following steps:
 1. Follow the [Quick Start](UserGuide.md#quick-start) guide and install CYC on the computer
 2. Transfer the `/History.txt`,`/LogFile.txt` and `/TrackingList.txt` to the target computer's main CYC folder.
 3. Start CYC and it will automatically load the data.
+
+**Q**: What does `Clear` command clears exactly?
+
+**A**: `Clear` command only clears the visitors that are checked in. However, it does not clear the person log. Which
+means if you had checked in a person with name: John, Id: 123A. After executing `clear` command, CYC will not allow you
+to check in another person with name: James, Id: 123A as CYC will detect that the Id is a duplicate despite its two 
+different people.
 
 ## Command Summary
 

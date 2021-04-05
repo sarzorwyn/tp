@@ -188,7 +188,9 @@ public class TextUi {
      * @param error Exception thrown from respective command.
      */
     public void notifyErrorToUser(Exception error) {
+        printDivider();
         out.println(error.getMessage());
+        printDivider();
     }
 
     private String nameTruncator(String longName) {
@@ -197,4 +199,5 @@ public class TextUi {
         }
         return longName;
     }
+
 }
