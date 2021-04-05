@@ -241,8 +241,12 @@ Edits the max capacity of the venue.
 ### Change storage location: `movestorage`
 
 This command allows you to move the location of the saved file, if you desire a different location 
-from the default setting. A suggested use would be to set it to the current date, so that you can easily refer to
-the records if needed.
+from the default setting. A suggested use would be to use it to backup files.
+
+> Additional Notes:
+> * The path specified has to be unused.
+> * The path specified will have `.txt` to the end of it.
+> * The previous location will be deleted by the program.
 
 #### Format: `movestorage NEW_DESTINATION`
 
@@ -285,6 +289,9 @@ programme crash.
 ### Changing save location
 To change the save location, you can use the command `movestorage`. The command format for move storage
 is stated above. 
+
+If the user deletes the folder of the new path, the program may run into write errors.
+To resolve the issue, `settings.properties` should be deleted to reset the program state.
 
 ### History
 
