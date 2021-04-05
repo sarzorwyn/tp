@@ -172,6 +172,7 @@ Classes used by multiple components are in the `seedu.Duke.commons` package.
 
 {Describe the target user profile}
 
+
 #### Value proposition
 
 A fast and versatile software solution that enables mall management to crowd control 
