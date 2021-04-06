@@ -3,6 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.Duke;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
+import seedu.duke.common.Messages;
 import java.util.logging.Logger;
 
 import java.io.InputStream;
@@ -190,6 +191,7 @@ public class TextUi {
     public void notifyErrorToUser(Exception error) {
         printDivider();
         out.println(error.getMessage());
+        out.println(Messages.GENERAL_INPUT_ERROR);
         printDivider();
     }
 

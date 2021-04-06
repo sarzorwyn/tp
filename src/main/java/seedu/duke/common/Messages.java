@@ -13,13 +13,14 @@ public class Messages {
     public static final String NO_ARGUMENT = "No argument passed! Try again!";
     public static final String WRONG_FLAG = "Wrong flags used!";
     public static final String INVALID_MAX_CAPACITY = "Invalid argument for max capacity! Try again!"
-            + System.lineSeparator() + "E.g. java -jar CYC.jar NUS 1000";
+            + System.lineSeparator() + "E.g. java -jar CYC.jar 1000";
     public static final String INVALID_ARGUMENT_SIZE = "There should be exactly 2 arguments! Try again!"
-            + System.lineSeparator() + "E.g. java -jar CYC.jar NUS 1000";
-    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
+            + System.lineSeparator() + "E.g. java -jar CYC.jar 1000";
+    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter.";
     public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (30 characters limit)";
     public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
     public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
+    public static final String GENERAL_INPUT_ERROR  = "It could also be other error, please check the user guide.";
     public static final String ALREADY_CHECKEDOUT = "%s is already checked out.";
 
     /**
