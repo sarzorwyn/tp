@@ -45,6 +45,7 @@ public class CheckoutCommand extends Command {
      * @return checkout message with the information about the current capacity in the venue
      * @throws PersonNotFoundException if the visitor cannot be found in the trackingList with the ID
      * @throws HistoryStorageException if there are problems saving into the file
+     * @throws CheckoutException if person is already checked out
      */
     @Override
     public CommandOutput execute(TrackingList trackingList) throws PersonNotFoundException, HistoryStorageException,
