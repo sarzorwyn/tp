@@ -13,10 +13,11 @@ public class Messages {
             + System.lineSeparator() + "E.g. java -jar CYC.jar 1000";
     public static final String INVALID_ARGUMENT_SIZE = "There should be exactly 2 arguments! Try again!"
             + System.lineSeparator() + "E.g. java -jar CYC.jar 1000";
-    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter";
+    public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter.";
     public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (30 characters limit)";
     public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
     public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
+    public static final String GENERAL_INPUT_ERROR  = "It could also be other error, please check the user guide.";
 
     public static final String CHECKIN_HELP = "Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]";
     public static final String LIST_ALL_HELP = "List all visitors: listall";
