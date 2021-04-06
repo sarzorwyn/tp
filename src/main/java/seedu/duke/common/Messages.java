@@ -4,6 +4,9 @@ public class Messages {
 
     private static final String USER_GUIDE_LINK = "https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html";
 
+    /**
+     * Messages for errors.
+     */
     public static final String PERSON_NOT_FOUND = "Person not found!";
     public static final String DIFF_NAME_SAME_ID = "Person with the same Id already exist!";
     public static final String INVALID_COMMAND = "Invalid command detected! Try again!";
@@ -18,6 +21,7 @@ public class Messages {
     public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
     public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
     public static final String GENERAL_INPUT_ERROR  = "It could also be other error, please check the user guide.";
+    public static final String ALREADY_CHECKEDOUT = "%s is already checked out.";
 
     public static final String CHECKIN_HELP = "Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]";
     public static final String LIST_ALL_HELP = "List all visitors: listall";
