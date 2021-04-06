@@ -37,6 +37,13 @@ public class LogFile {
         storage.saveLogFile(Collections.singletonList(gson.toJson(person)));
     }
 
+    /**
+     * saves the current list of visitors in the trackingList into Logfile
+     *
+     * @param persons tracking list containing the current list of visitors
+     * @throws StorageOperationException Exception thrown if there is error with storage
+     * operation such as accessing file or creating file
+     */
     public void saveAllPersons(ArrayList<Person> persons) throws StorageOperationException {
         Gson gson = new Gson();
         final List<String> gsonPersons = new ArrayList<>();
@@ -46,6 +53,13 @@ public class LogFile {
         storage.saveLogFile(gsonPersons);
     }
 
+    /**
+     * loads the list of visitors stored in the log file into temp tracking list
+     * via get instance
+     *
+     * @throws StorageOperationException Exception throw if there is any error with
+     * storage operation such as accessing file or creating file
+     */
     public void loadAllPersons() throws StorageOperationException {
         StorageFile storage = new StorageFile(path);
         List<String> jsonLogs = storage.loadLogFile();
