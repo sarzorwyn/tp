@@ -28,7 +28,7 @@ public class Messages {
      */
     public static final String CHECKIN_HELP = "Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]";
     public static final String LIST_ALL_HELP = "List all visitors: listall";
-    public static final String LIST_CHECKED_IN_HELP = "List checked-in visitors only: list";
+    public static final String LIST_CHECKED_IN_HELP = "List checked-in visitors only: listcheckedin";
     public static final String FIND_BY_ID_HELP = "Find visitor by ID: find i/LAST_4_CHARS_OF_ID";
     public static final String CHECKOUT_HELP = "Checkout visitor: checkout i/LAST_4_CHARS_OF_ID";
     public static final String CLEAR_HELP = "Clear all visitor entries: clear";
