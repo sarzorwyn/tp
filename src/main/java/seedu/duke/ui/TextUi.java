@@ -190,6 +190,7 @@ public class TextUi {
     public void notifyErrorToUser(Exception error) {
         printDivider();
         out.println(error.getMessage());
+
         out.println(Messages.GENERAL_INPUT_ERROR);
         printDivider();
     }
