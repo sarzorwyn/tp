@@ -3,6 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.Duke;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.person.Person;
+import seedu.duke.common.Messages;
 import java.util.logging.Logger;
 
 import java.io.InputStream;
@@ -49,7 +50,7 @@ public class TextUi {
             assert commandOutput.persons != null : "Expect NoPersonFound Exception,";
             printList(commandOutput.persons);
             break;
-        case "list":
+        case "listcheckedin":
             assert commandOutput.persons != null : "Expect NoPersonFound Exception.";
             printCheckedInList(commandOutput.persons);
             break;
@@ -190,6 +191,7 @@ public class TextUi {
     public void notifyErrorToUser(Exception error) {
         printDivider();
         out.println(error.getMessage());
+        out.println(Messages.GENERAL_INPUT_ERROR);
         printDivider();
     }
 
