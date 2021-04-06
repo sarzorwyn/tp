@@ -3,6 +3,7 @@ package seedu.duke;
 import seedu.duke.commands.Command;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.commands.ExitCommand;
+import seedu.duke.exceptions.CheckoutException;
 import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.InvalidCommandException;
 import seedu.duke.exceptions.InvalidIdException;
@@ -110,8 +111,8 @@ public class Duke {
                 storage.save(trackingList);
                 personLog.saveAllPersons();
                 ui.printReaction(commandOutput);
-            } catch (PersonNotFoundException | StorageOperationException
-                    | HistoryStorageException e) {
+            } catch (PersonNotFoundException | StorageOperationException | HistoryStorageException
+                    | CheckoutException e) {
                 //System.out.println("Person not found!");
                 ui.notifyErrorToUser(e);
             }

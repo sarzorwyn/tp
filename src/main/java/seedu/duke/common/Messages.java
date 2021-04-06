@@ -23,11 +23,14 @@ public class Messages {
     public static final String GENERAL_INPUT_ERROR  = "It could also be other error, please check the user guide.";
     public static final String ALREADY_CHECKEDOUT = "%s is already checked out.";
 
+    /**
+     * Command summary for help command.
+     */
     public static final String CHECKIN_HELP = "Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]";
     public static final String LIST_ALL_HELP = "List all visitors: listall";
     public static final String LIST_CHECKED_IN_HELP = "List checked-in visitors only: list";
     public static final String FIND_BY_ID_HELP = "Find visitor by ID: find i/LAST_4_CHARS_OF_ID";
-    public static final String CHECKOUT_HELP = "Checkout visitor: checkout [n/NAME] i/LAST_4_CHARS_OF_ID";
+    public static final String CHECKOUT_HELP = "Checkout visitor: checkout i/LAST_4_CHARS_OF_ID";
     public static final String CLEAR_HELP = "Clear all visitor entries: clear";
     public static final String EDIT_CAPACITY_HELP = "Edit venue capacity: editmax NEW_CAPACITY";
     public static final String MOVE_STORAGE_HELP = "Move location of storage file: movestorage PATH";
