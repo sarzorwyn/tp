@@ -59,6 +59,7 @@ The rest of Control-Your-Crowd (CYC) consist of four components.
 
 ### UI component
 
+![](images/UIComponentStructure.png?raw=true "Logic component Sequence Diagram for clear")
 The UI consists of `TextUi` class. It acts as a middleware between users' input
 and `Parser` class under **Logic Component**.
 
