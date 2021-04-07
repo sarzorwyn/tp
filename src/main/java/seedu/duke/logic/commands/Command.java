@@ -3,6 +3,7 @@ package seedu.duke.logic.commands;
 import seedu.duke.exceptions.CheckInException;
 import seedu.duke.exceptions.CheckoutException;
 import seedu.duke.exceptions.HistoryStorageException;
+import seedu.duke.exceptions.InvalidMaxCapacityException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.model.TrackingList;
@@ -20,6 +21,6 @@ public abstract class Command {
      */
     public abstract CommandOutput execute(TrackingList trackingList) throws
             PersonNotFoundException, StorageOperationException, HistoryStorageException, CheckoutException,
-            CheckInException;
+            CheckInException, InvalidMaxCapacityException;
 
 }
