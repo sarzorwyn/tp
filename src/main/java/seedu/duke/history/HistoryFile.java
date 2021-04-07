@@ -31,6 +31,15 @@ public class HistoryFile {
         this.path = Paths.get(DIRECTORY_HOME,path + FILE_FORMAT);
     }
 
+    /**
+     * saves to History file once the check in or check out is passed from command. Save the person name and
+     * Id with movement in CSV format. Instead of rewriting the content in the file, saveToHistoru append a new
+     * line under exisiting history.
+     *
+     * @param person person or visitor object that is checking in or checking out
+     * @param movement either check in or check out
+     * @throws HistoryStorageException exception thrown if there is any error with file operation
+     */
     public void saveToHistory(Person person, String movement) throws HistoryStorageException {
         String name = person.getName().getNameString();
         String id = person.getId().getIdString();
@@ -49,6 +58,12 @@ public class HistoryFile {
         }
     }
 
+    /**
+     * Upon starting CYC, it will access the history file and start a time stamp to indicate start of the
+     * session. The timestamp will be appended under existing content instead of rewriting the content.
+     *
+     * @throws HistoryStorageException exception thrown if there is any error with file operation.
+     */
     public void startHistory() throws HistoryStorageException {
         try {
             DateTime datetime = new DateTime();
@@ -65,6 +80,12 @@ public class HistoryFile {
         }
     }
 
+    /**
+     * Upon exiting CYC, it will access the history file and add a time stamp to indicate end of the
+     * session. The timestamp will be appended under existing content instead of rewriting the content.
+     *
+     * @throws HistoryStorageException exception thrown if there is any error with file operation.
+     */
     public void endHistory() throws HistoryStorageException {
         try {
             DateTime datetime = new DateTime();

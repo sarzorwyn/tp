@@ -3,6 +3,7 @@ package seedu.duke.common;
 public class Messages {
 
     private static final String USER_GUIDE_LINK = "https://ay2021s2-cs2113t-t09-1.github.io/tp/UserGuide.html";
+    public static final String GENERAL_INPUT_ERROR  = "If unsure, please use 'help' command to check the format.";
 
     /**
      * Messages for errors.
@@ -22,7 +23,6 @@ public class Messages {
     public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (30 characters limit)";
     public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
     public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
-    public static final String GENERAL_INPUT_ERROR  = "It could also be other error, please check the user guide.";
     public static final String ALREADY_CHECKEDOUT = "%s is already checked out.";
     public static final String ALREADY_CHECKEDIN = "%s is already checked in.";
 

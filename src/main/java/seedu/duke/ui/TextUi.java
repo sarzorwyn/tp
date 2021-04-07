@@ -161,7 +161,6 @@ public class TextUi {
         assert version instanceof String : "Version has to be a string";
         out.println("Welcome to Control Your Crowd - Version " + version);
         // for next patch update - Storage class - dataStorageSuccessful()
-        out.println("Data successfully loaded from storage file path.");
         printDivider();
     }
 
@@ -191,6 +190,7 @@ public class TextUi {
     public void notifyErrorToUser(Exception error) {
         printDivider();
         out.println(error.getMessage());
+
         out.println(Messages.GENERAL_INPUT_ERROR);
         printDivider();
     }
