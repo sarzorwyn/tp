@@ -132,6 +132,8 @@ This String is then written to a file on the disk, known on the diagram as `Stor
 As the name suggests, `TrackingListDecoder` achieves the reverse by taking the file on drive, `StoredTrackingList`,
 and interprets the file to be loaded into the memory as a `TrackingList`.
 
+![](images/storage_pathdir.png?raw=true "Storage Module file structure")
+
 `StoredTrackingList` is the `.txt` file stored in the same directory as the program.
 The location is determined by the `ConfigFile` class. 
 
