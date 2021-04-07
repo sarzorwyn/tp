@@ -2,14 +2,15 @@ package seedu.duke.ui;
 
 import seedu.duke.Duke;
 import seedu.duke.commands.CommandOutput;
-import seedu.duke.person.Person;
 import seedu.duke.common.Messages;
-import java.util.logging.Logger;
+import seedu.duke.person.Person;
 
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class TextUi {
 
@@ -179,7 +180,12 @@ public class TextUi {
      * @return String type of user input.
      */
     public String getUserInput() {
-        String rawInput = in.nextLine();
+        String rawInput = null;
+        try {
+            rawInput = in.nextLine();
+        } catch (NoSuchElementException e) {
+            System.exit(-1);
+        }
         return rawInput;
     }
 

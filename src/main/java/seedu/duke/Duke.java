@@ -29,6 +29,7 @@ import seedu.duke.ui.TextUi;
 public class Duke {
 
     private static final String VERSION_NO = "v2.0";
+    private static final String EXIT_MESSAGE = "Exiting Control Your Crowd...";
 
     private TextUi ui;
     private Parser parser;
@@ -51,6 +52,7 @@ public class Duke {
     }
 
     public static void main(String[] args) throws HistoryStorageException {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> System.out.println(EXIT_MESSAGE)));
         getInstance().run(args);
     }
 
