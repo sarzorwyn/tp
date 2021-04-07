@@ -125,7 +125,7 @@ public class Main {
                 }
                 ui.printReaction(commandOutput);
             } catch (PersonNotFoundException | StorageOperationException | HistoryStorageException | CheckoutException
-                    | CheckInException e) {
+                    | CheckInException | InvalidMaxCapacityException e) {
                 //System.out.println("Person not found!");
                 ui.notifyErrorToUser(e);
             }
