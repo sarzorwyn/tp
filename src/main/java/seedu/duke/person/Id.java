@@ -1,11 +1,10 @@
 package seedu.duke.person;
 
-import java.io.Serializable;
 import java.util.Objects;
 
 import static seedu.duke.common.Messages.ID_ERROR;
 
-public class Id implements Serializable {
+public class Id {
     private static final long serialVersionUID = 2L;
     public final String idString;
     public static final String ID_REGEX = "\\d{3}[A-Z]";
