@@ -2,7 +2,7 @@ package seedu.duke.history;
 
 import seedu.duke.datetime.DateTime;
 import seedu.duke.exceptions.HistoryStorageException;
-import seedu.duke.person.Person;
+import seedu.duke.model.person.Person;
 
 import java.io.BufferedWriter;
 import java.io.File;

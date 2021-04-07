@@ -1,11 +1,11 @@
 package seedu.duke.storage;
 
 import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.person.Id;
-import seedu.duke.person.Name;
-import seedu.duke.person.Person;
-import seedu.duke.person.Phone;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.person.Id;
+import seedu.duke.model.person.Name;
+import seedu.duke.model.person.Person;
+import seedu.duke.model.person.Phone;
+import seedu.duke.model.TrackingList;
 
 import java.util.ArrayList;
 import java.util.List;

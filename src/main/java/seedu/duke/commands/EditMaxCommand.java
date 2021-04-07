@@ -3,8 +3,8 @@ package seedu.duke.commands;
 import seedu.duke.Duke;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidMaxCapacityException;
-import seedu.duke.location.Location;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.Location;
+import seedu.duke.model.TrackingList;
 
 /**
  * Set a new maximum capacity for the venue.

@@ -2,7 +2,7 @@ package seedu.duke.commands;
 
 import seedu.duke.Duke;
 import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 import seedu.duke.storage.StorageFile;
 
 import java.io.IOException;

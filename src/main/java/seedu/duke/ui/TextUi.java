@@ -3,7 +3,7 @@ package seedu.duke.ui;
 import seedu.duke.Duke;
 import seedu.duke.commands.CommandOutput;
 import seedu.duke.common.Messages;
-import seedu.duke.person.Person;
+import seedu.duke.model.person.Person;
 
 import java.io.InputStream;
 import java.io.PrintStream;

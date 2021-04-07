@@ -5,7 +5,7 @@ import seedu.duke.commands.FindCommand;
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.WrongFlagException;
-import seedu.duke.person.Id;
+import seedu.duke.model.person.Id;
 
 /**
  * Finds a user and returns the user's details if user's ID is input.

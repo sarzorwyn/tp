@@ -1,6 +1,7 @@
-package seedu.duke.person;
+package seedu.duke.model.person;
 
 import org.junit.jupiter.api.Test;
+import seedu.duke.model.person.Id;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

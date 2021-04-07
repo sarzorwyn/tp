@@ -1,4 +1,4 @@
-package seedu.duke.person;
+package seedu.duke.model.person;
 
 import org.junit.jupiter.api.Test;
 
@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.duke.person.Phone.isValidPhone;
+import static seedu.duke.model.person.Phone.isValidPhone;
 import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SamplePersons.JOHN_DIFF_ID;
 import static seedu.duke.testutil.SamplePersons.JOHN_NO_PHONE;

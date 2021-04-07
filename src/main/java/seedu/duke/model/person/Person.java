@@ -1,4 +1,4 @@
-package seedu.duke.person;
+package seedu.duke.model.person;
 
 /**
  * Represents a Person.

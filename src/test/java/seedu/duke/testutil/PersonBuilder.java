@@ -1,9 +1,9 @@
 package seedu.duke.testutil;
 
-import seedu.duke.person.Id;
-import seedu.duke.person.Name;
-import seedu.duke.person.Person;
-import seedu.duke.person.Phone;
+import seedu.duke.model.person.Id;
+import seedu.duke.model.person.Name;
+import seedu.duke.model.person.Person;
+import seedu.duke.model.person.Phone;
 
 public class PersonBuilder {
     private Id id;

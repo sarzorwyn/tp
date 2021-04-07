@@ -1,7 +1,7 @@
 package seedu.duke.storage;
 
-import seedu.duke.person.Person;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.person.Person;
+import seedu.duke.model.TrackingList;
 
 import java.util.ArrayList;
 import java.util.List;

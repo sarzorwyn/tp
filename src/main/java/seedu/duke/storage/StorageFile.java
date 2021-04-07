@@ -1,7 +1,7 @@
 package seedu.duke.storage;
 
 import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -1,7 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.person.Person;
+import seedu.duke.model.person.Person;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
