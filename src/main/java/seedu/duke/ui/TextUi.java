@@ -184,7 +184,7 @@ public class TextUi {
         try {
             rawInput = in.nextLine();
         } catch (NoSuchElementException e) {
-            System.exit(-1);
+            System.exit(0);
         }
         return rawInput;
     }
