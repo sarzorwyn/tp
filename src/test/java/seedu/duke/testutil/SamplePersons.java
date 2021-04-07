@@ -1,6 +1,6 @@
 package seedu.duke.testutil;
 
-import seedu.duke.person.Person;
+import seedu.duke.model.person.Person;
 
 public class SamplePersons {
     public static final Person ALICE = new PersonBuilder().withId("665B")

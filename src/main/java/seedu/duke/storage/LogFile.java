@@ -2,8 +2,8 @@ package seedu.duke.storage;
 
 import com.google.gson.Gson;
 import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.person.Person;
-import seedu.duke.person.PersonLog;
+import seedu.duke.model.person.Person;
+import seedu.duke.model.PersonLog;
 
 import java.util.ArrayList;
 import java.util.Collections;

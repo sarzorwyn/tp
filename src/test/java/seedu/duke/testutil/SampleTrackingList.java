@@ -1,9 +1,8 @@
 package seedu.duke.testutil;
 
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 import static seedu.duke.testutil.SamplePersons.ALICE;
 import static seedu.duke.testutil.SamplePersons.BOB;
-import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SamplePersons.JOHN_NO_PHONE;
 import static seedu.duke.testutil.SamplePersons.MARY;
 

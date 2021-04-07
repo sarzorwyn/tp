@@ -2,7 +2,7 @@ package seedu.duke.storage;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

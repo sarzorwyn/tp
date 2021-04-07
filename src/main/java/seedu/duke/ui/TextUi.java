@@ -1,15 +1,16 @@
 package seedu.duke.ui;
 
-import seedu.duke.Duke;
-import seedu.duke.commands.CommandOutput;
-import seedu.duke.person.Person;
+import seedu.duke.Main;
+import seedu.duke.logic.commands.CommandOutput;
 import seedu.duke.common.Messages;
-import java.util.logging.Logger;
+import seedu.duke.model.person.Person;
 
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 public class TextUi {
 
@@ -100,7 +101,7 @@ public class TextUi {
     }
 
     private int getMaximumCapacity() {
-        return Duke.getInstance().getLocation().getMaxCapacity();
+        return Main.getInstance().getLocation().getMaxCapacity();
     }
 
     private int getCurrentCapacity(List<Person> persons) {
@@ -178,7 +179,12 @@ public class TextUi {
      * @return String type of user input.
      */
     public String getUserInput() {
-        String rawInput = in.nextLine();
+        String rawInput = null;
+        try {
+            rawInput = in.nextLine();
+        } catch (NoSuchElementException e) {
+            System.exit(0);
+        }
         return rawInput;
     }
 
