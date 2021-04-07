@@ -21,7 +21,8 @@ public class Location {
      * @throws InvalidMaxCapacityException if the maximum capacity provided does not meet the requirements
      * @throws InvalidArgumentSizeException if the user did not provide exactly 1 argument
      */
-    public Location(String[] args, int currentCapacity) throws InvalidMaxCapacityException, InvalidArgumentSizeException {
+    public Location(String[] args, int currentCapacity) throws InvalidMaxCapacityException,
+            InvalidArgumentSizeException {
         checkArgumentValidity(args);
         setMaxCapacity(Integer.parseInt(args[0]), currentCapacity);
     }

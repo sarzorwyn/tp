@@ -13,18 +13,19 @@ import static seedu.duke.testutil.SampleLocations.EVENT;
 import static seedu.duke.testutil.SampleLocations.FOOD_COURT;
 
 public class LocationTest {
+    public static final int CURRENT_CAPACITY = 20;
 
     @Test
     public void testInvalidArgumentSize() {
         Throwable exception = assertThrows(InvalidArgumentSizeException.class, () ->
-                new Location(new String[]{"Location1", "123"}));
+                new Location(new String[]{"Location1", "123"}, CURRENT_CAPACITY));
         assertEquals(Messages.INVALID_ARGUMENT_SIZE, exception.getMessage());
     }
 
     @Test
     public void testInvalidMaxCapacity() {
         Throwable exception = assertThrows(InvalidMaxCapacityException.class, () ->
-                new Location(new String[]{"Location2"}));
+                new Location(new String[]{"Location2"}, CURRENT_CAPACITY));
         assertEquals(Messages.INVALID_MAX_CAPACITY_ARG, exception.getMessage());
     }
 
@@ -35,9 +36,9 @@ public class LocationTest {
     }
 
     @Test
-    public void testSetMaxCapacity() {
+    public void testSetMaxCapacity() throws InvalidMaxCapacityException {
         int newMaxCapacity = 30;
-        FOOD_COURT.setMaxCapacity(newMaxCapacity);
+        FOOD_COURT.setMaxCapacity(newMaxCapacity, CURRENT_CAPACITY);
         assertEquals(newMaxCapacity, FOOD_COURT.getMaxCapacity());
     }
 
