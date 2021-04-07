@@ -1,7 +1,7 @@
 package seedu.duke.ui;
 
-import seedu.duke.Duke;
-import seedu.duke.commands.CommandOutput;
+import seedu.duke.Main;
+import seedu.duke.logic.commands.CommandOutput;
 import seedu.duke.common.Messages;
 import seedu.duke.model.person.Person;
 
@@ -101,7 +101,7 @@ public class TextUi {
     }
 
     private int getMaximumCapacity() {
-        return Duke.getInstance().getLocation().getMaxCapacity();
+        return Main.getInstance().getLocation().getMaxCapacity();
     }
 
     private int getCurrentCapacity(List<Person> persons) {
