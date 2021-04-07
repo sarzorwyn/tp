@@ -4,6 +4,8 @@ import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidArgumentSizeException;
 import seedu.duke.exceptions.InvalidMaxCapacityException;
 
+import static seedu.duke.common.Messages.INVALID_MAX_CAPACITY_CHECKED_IN;
+
 /**
  * Details of the venue for managing the crowd levels.
  */
@@ -19,16 +21,25 @@ public class Location {
      * @throws InvalidMaxCapacityException if the maximum capacity provided does not meet the requirements
      * @throws InvalidArgumentSizeException if the user did not provide exactly 1 argument
      */
-    public Location(String[] args) throws InvalidMaxCapacityException, InvalidArgumentSizeException {
+    public Location(String[] args, int currentCapacity) throws InvalidMaxCapacityException,
+            InvalidArgumentSizeException {
         checkArgumentValidity(args);
-        this.maxCapacity = Integer.parseInt(args[0]);
+        setMaxCapacity(Integer.parseInt(args[0]), currentCapacity);
     }
 
     public int getMaxCapacity() {
         return maxCapacity;
     }
 
-    public void setMaxCapacity(int maxCapacity) {
+    public void setMaxCapacity(int maxCapacity, int currentCapacity) throws InvalidMaxCapacityException {
+
+        if (this.maxCapacity < currentCapacity) { // If max capacity not initialised
+            this.maxCapacity = currentCapacity;
+        }
+
+        if (maxCapacity < currentCapacity) {
+            throw new InvalidMaxCapacityException(INVALID_MAX_CAPACITY_CHECKED_IN + currentCapacity);
+        }
         this.maxCapacity = maxCapacity;
     }
 

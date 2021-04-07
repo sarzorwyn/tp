@@ -49,7 +49,11 @@ public class EditMaxCommand extends Command {
      */
     @Override
     public CommandOutput execute(TrackingList trackingList) {
-        location.setMaxCapacity(newMaxCapacity);
+        try {
+            location.setMaxCapacity(newMaxCapacity, trackingList.getCurrentCapacity());
+        } catch (InvalidMaxCapacityException e) {
+            e.printStackTrace();
+        }
         return new CommandOutput(String.format(EDIT_MAX_MESSAGE, newMaxCapacity), COMMAND);
     }
 

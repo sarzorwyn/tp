@@ -72,11 +72,11 @@ public class Duke {
         parser = new Parser();
         personLog = PersonLog.getInstance();
         try {
-            location = new Location(args);
             historyFile = new HistoryFile();
             configFile = new ConfigFile();
             storage = new StorageFile(configFile.getStorageFilePath());
             trackingList = storage.load();
+            location = new Location(args, trackingList.getCurrentCapacity());
             personLog.loadAllPersons();
             historyFile.startHistory();
         } catch (StorageOperationException | HistoryStorageException e) {

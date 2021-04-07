@@ -1,12 +1,10 @@
 package seedu.duke.person;
 
-import java.io.Serializable;
-
 /**
  * Represents a Person.
  * Assumption: values are validated and not null.
  */
-public class Person implements Serializable {
+public class Person {
     private static final long serialVersionUID = 1L;
     private Id id;
     private Name name;
