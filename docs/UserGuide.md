@@ -331,6 +331,7 @@ different people.
 
 ## 5. Command Summary
 
+
 Action | Format | Examples
 --- | --- | ---
 Help | `help` | `help`
@@ -338,7 +339,7 @@ Check-in a person | `checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]` | `ch
 List all person | `listall` | `listall`
 List checked-in persons only | `listcheckedin` | `listcheckedin`
 Find person by ID | `find i/LAST_4_CHARS_OF_ID` | `find i/123A`
-Checkout a person | `checkout i/LAST_4_CHARS_OF_ID` | `checkout n/John i/123A`
+Checkout a person | `checkout i/LAST_4_CHARS_OF_ID` | `checkout i/123A`
 Clear all entries | `clear` | `clear`
 Edit venue capacity | `editmax NEW_CAPACITY` | `editmax 100`
 Move storage | `movestorage PATH` | `movestorage data/storage`
