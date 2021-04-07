@@ -40,7 +40,7 @@ Below is a quick overview of each component.
 * At app launch: Retrieves memory and saved log files (If available), initializes components in correct sequence, 
 and connects them with each other.
   
-* At shut down: Saves the log file to storage, and shuts down all components.
+* At shut down: It saves the log file to storage, and shuts down all components.
 
 
 `Common` consists of a class of messages used by multiple components.
@@ -48,7 +48,7 @@ and connects them with each other.
 and user notification.
 
 The rest of Control-Your-Crowd (CYC) consist of four components.
-* `UI`: The UI of the application, acting as middleware between users and CYC.
+* `UI`: The user interface of the application, and the entry point from the user.
 
 * `Logic`: The command executor for CYC.
 
@@ -75,13 +75,13 @@ The `UI` component,
 ![](images/LogicComponentStructure.png?raw=true "Structure of Logic Component")
 *Figure #. Structure of the Logic Component*
 
-**API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package (*TO BE CREATED LATER*)
+**API** : [`seedu.cyc.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/logic) package (*TO BE CREATED LATER*)
 
 The Logic component,
-1. uses the `Parser` class to parse the user input obtained by the `TextUi` class of `UI`.
+1. Uses the `Parser` class to parse the user input obtained by the `TextUi` class of `UI`.
 2. This results in a specific `Command` object to be returned from the `Parser` class.
-3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Duke` of `UI`.
-4. The command execution can affect the `Model` (e.g. clearing the list). 
+3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Main` of `UI`.
+4. Some command execution affects the data in `Model` (e.g. clearing the list). 
 5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
 6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
 
@@ -92,7 +92,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ### Model component
 
-**API** : [`seedu.duke.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/person) package
+**API** : [`seedu.cyc.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/person) package
 
 
 <img src="images/ModelComponentStructure.png" width="600" height="600" />
@@ -112,7 +112,7 @@ A `Person` object contains:
 
 
 ### Storage component
-**API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
+**API** : [`seedu.cyc.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/storage) package
 ![](images/storage_module.png?raw=true "Storage Module diagram")
 
 The `Storage` component,
@@ -147,7 +147,7 @@ When a change is made by the user, `ConfigFile` will update the `settingsFile` t
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.Duke.commons` package. 
+Classes used by multiple components are in the `seedu.cyc.commons` package. 
 
 ## Implementation
 
