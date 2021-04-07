@@ -18,6 +18,8 @@ public class Messages {
             + System.lineSeparator() + "E.g. java -jar CYC.jar 1000";
     public static final String INVALID_MAX_CAPACITY = "Maximum capacity should be a positive integer that is less than"
             + " 7 digits.";
+    public static final String INVALID_MAX_CAPACITY_CHECKED_IN = "Maximum capacity should be more than the total"
+            + " number of checked in people: ";
     public static final String ID_ERROR = "ID should be 3 digits followed by a uppercase letter.";
     public static final String NAME_ERROR = "Name should consist of alphabets (or spaces) only. (30 characters limit)";
     public static final String PHONE_ERROR = "Phone number should consist of only 8 digits";
