@@ -1,14 +1,12 @@
 package seedu.duke.person;
 
-import java.io.Serializable;
-
 import static seedu.duke.common.Messages.PHONE_ERROR;
 
 /**
  * Represents the phone number of a person.
  * If a person does not have a phone, isAvailable will be false.
  */
-public class Phone implements Serializable {
+public class Phone {
     private static final long serialVersionUID = 4L;
     public String phoneNo;
     public boolean isAvailable;
