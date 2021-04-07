@@ -1,10 +1,8 @@
 package seedu.duke.person;
 
-import java.io.Serializable;
-
 import static seedu.duke.common.Messages.NAME_ERROR;
 
-public class Name implements Serializable {
+public class Name {
     private static final long serialVersionUID = 3L;
     public final String nameString;
     public static final String NAME_REGEX = "[a-zA-Z][a-zA-Z( )*]{0,29}";

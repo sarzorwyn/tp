@@ -9,39 +9,24 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static seedu.duke.testutil.SampleLocations.BIG_MALL;
-import static seedu.duke.testutil.SampleLocations.CINEMA;
 import static seedu.duke.testutil.SampleLocations.EVENT;
 import static seedu.duke.testutil.SampleLocations.FOOD_COURT;
-import static seedu.duke.testutil.SampleLocations.SCHOOL;
-import static seedu.duke.testutil.SampleLocations.SMALL_SHOP;
 
 public class LocationTest {
+    public static final int CURRENT_CAPACITY = 20;
 
     @Test
     public void testInvalidArgumentSize() {
         Throwable exception = assertThrows(InvalidArgumentSizeException.class, () ->
-                new Location(new String[]{"Location1"}));
+                new Location(new String[]{"Location1", "123"}, CURRENT_CAPACITY));
         assertEquals(Messages.INVALID_ARGUMENT_SIZE, exception.getMessage());
     }
 
     @Test
     public void testInvalidMaxCapacity() {
         Throwable exception = assertThrows(InvalidMaxCapacityException.class, () ->
-                new Location(new String[]{"Location2", "aaa123"}));
-        assertEquals(Messages.INVALID_MAX_CAPACITY, exception.getMessage());
-    }
-
-    @Test
-    public void testGetLocationName() {
-        assertEquals("National University of Singapore", SCHOOL.getLocationName());
-        assertNotEquals("Daiso", SMALL_SHOP.getLocationName());
-    }
-
-    @Test
-    public void testSetLocationName() {
-        String newLocationName = "Golden Village";
-        CINEMA.setLocationName(newLocationName);
-        assertEquals(newLocationName, CINEMA.getLocationName());
+                new Location(new String[]{"Location2"}, CURRENT_CAPACITY));
+        assertEquals(Messages.INVALID_MAX_CAPACITY_ARG, exception.getMessage());
     }
 
     @Test
@@ -51,9 +36,9 @@ public class LocationTest {
     }
 
     @Test
-    public void testSetMaxCapacity() {
+    public void testSetMaxCapacity() throws InvalidMaxCapacityException {
         int newMaxCapacity = 30;
-        FOOD_COURT.setMaxCapacity(newMaxCapacity);
+        FOOD_COURT.setMaxCapacity(newMaxCapacity, CURRENT_CAPACITY);
         assertEquals(newMaxCapacity, FOOD_COURT.getMaxCapacity());
     }
 

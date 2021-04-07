@@ -2,27 +2,27 @@
 
 # User Guide for Control Your Crowd (CYC)
 
-* [Introduction](UserGuide.md#introduction)
-* [Quick Start](UserGuide.md#quick-start)
-* [Features](UserGuide.md#features)
-    * [Viewing help](UserGuide.md#viewing-help-help): `help`
-    * [Check-in a person](UserGuide.md#check-in-a-person-checkin): `checkin`
-    * [Listing all persons](UserGuide.md#listing-all-persons-listall): `listall`
-    * [Listing checked-in persons only](UserGuide.md#listing-checked-in-persons-only-list): `list`
-    * [Finding a person by ID](UserGuide.md#finding-a-person-by-id-number-find): `find`
-    * [Checkout a person](UserGuide.md#check-out-a-person-checkout): `checkout`
-    * [Clearing all entries](UserGuide.md#clearing-all-entries-clear): `clear`
-    * [Edit venue capacity](UserGuide.md#edit-venue-capacity-editmax): `editmax`
-    * [Move Storage](UserGuide.md#change-storage-location-movestorage): `movestorage`
-    * [Exiting the program](UserGuide.md#exiting-cyc-exit): `exit`
-    * [Visitor Log](UserGuide.md#visitor-log)
-    * [Saving data](UserGuide.md#auto-save)
-    * [Changing save location](UserGuide.md#changing-save-location)
-    * [History](UserGuide.md#history)
-* [FAQ](UserGuide.md#faq)
-* [Command summary](UserGuide.md#command-summary)
+* [1. Introduction](UserGuide.md#1-introduction)
+* [2. Quick Start](UserGuide.md#2-quick-start)
+* [3. Features](UserGuide.md#3--features)
+    * [3.1 Viewing help](UserGuide.md#31-viewing-help-help): `help`
+    * [3.2 Check-in a person](UserGuide.md#32-check-in-a-person-checkin): `checkin`
+    * [3.3 Listing all persons](UserGuide.md#33-listing-all-persons-listall): `listall`
+    * [3.4 Listing checked-in persons only](UserGuide.md#34-listing-checked-in-persons-only-listcheckedin): `listcheckedin`
+    * [3.5 Finding a person by ID](UserGuide.md#35-finding-a-person-by-id-number-find): `find`
+    * [3.6 Checkout a person](UserGuide.md#36-check-out-a-person-checkout): `checkout`
+    * [3.7 Clearing all entries](UserGuide.md#37-clearing-all-entries-clear): `clear`
+    * [3.8 Edit venue capacity](UserGuide.md#38-edit-venue-capacity-editmax): `editmax`
+    * [3.9 Move Storage](UserGuide.md#39-change-storage-location-movestorage): `movestorage`
+    * [3.10 Exiting the program](UserGuide.md#310-exiting-cyc-exit): `exit`
+    * [3.11 Visitor Log](UserGuide.md#311-visitor-log)
+    * [3.12 Auto Save](UserGuide.md#312-auto-save)
+    * [3.13 Changing save location](UserGuide.md#313-changing-save-location)
+    * [3.14 History](UserGuide.md#314-history)
+* [4. FAQ](UserGuide.md#4-faq)
+* [5. Command summary](UserGuide.md#5-command-summary)
 
-## Introduction
+## 1. Introduction
 
 Welcome to the User Guide of **Control Your Crowd**!
 
@@ -43,7 +43,7 @@ allow the user to interact with the application through graphical icons such as 
 Jump to [Quick Start](UserGuide.md#quick-start) to learn how to manage your crowd efficiently
 with CYC.
 
-## Quick Start
+## 2. Quick Start
 
 > Prerequisites:
 > * Ensure that you have **Java 11** or above installed in your Computer. If you do not have, you can get it from
@@ -52,11 +52,8 @@ with CYC.
 1. Download the latest version of `CYC.jar` from [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases).
 2. Copy the file to the folder you want to use as the home folder for your CYC.
 3. Open up a command window to the location where your `CYC.jar` is located.
-4. Run the command `java -jar CYC.jar [VENUE_NAME] [VENUE_MAXIMUM_CAPACITY]`. For example, 
-   `java -jar CYC.jar NUS 500`.
-   * You can add special characters to `[VENUE_NAME]`. For example, `java -jar CYC.jar *Scape 500`.
-     * You must provide the `[VENUE_NAME]` with quotations if your `[VENUE_NAME]` has spacings.
-       For example, `"National University of Singapore"` instead of `National University of Singapore`.
+4. Run the command `java -jar CYC.jar [VENUE_MAXIMUM_CAPACITY]`. For example, 
+   `java -jar CYC.jar 500`.
    * Ensure that the `VENUE_MAXIMUM_CAPACITY` entered is a positive integer that does not exceed 6 digits.
      * You can enter input the `VENUE_MAXIMUM_CAPACITY` with or without quotations. 
        For example, `500` and `"500"` will both work.
@@ -75,7 +72,7 @@ with CYC.
 > * Do **NOT** edit the `LogFile.txt`, `TrackingList.txt` or `History.txt` files.
 >   * You are only allowed to copy the contents of the `History.txt` file.
 
-## Features 
+## 3.  Features 
 
 > Notes about the command format:
 > * Commands are in `lower_case`.
@@ -86,7 +83,7 @@ with CYC.
 >   * e.g. if the user types `help 123`, it will be interpreted as `help`.
 > * `i/LAST_4_CHARS_OF_ID` is unique. (i.e. no two persons will have the same ID)
 
-### Viewing help: `help`
+### 3.1 Viewing help: `help`
 
 This command will provide you a summary of the all the commands with its corresponding format.
 This command will help you in situations when you forget the available commands, or their format while on duty.
@@ -99,14 +96,14 @@ This command will help you in situations when you forget the available commands,
 
 ![help](images/help.png)
 
-### Check-in a person: `checkin`
+### 3.2 Check-in a person: `checkin`
 
 Supposed there is a visitor,
 you can check in a person to CYC via `checkin` command. After a successful check-in, CYC will also notify you on the
 current venue capacity.
 
 #### Format: 
-`checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]`
+`checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]`
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
 * `NAME` is optional. If the user has checked in before, entering the `LAST_4_CHARS_OF_ID` is sufficient to retrieve the user's `NAME` and `PHONE_NUMBER` 
   from previous check in. **If the user has not checked in before, `NAME` must be entered.**
@@ -138,7 +135,7 @@ However, you should expect the following output when the maximum capacity is rea
 >   * If you want to find out if a particular visitor has been checked in, you can use `find i/LAST_4_CHARS_OF_ID`.
 >     You can click [here](UserGuide.md#finding-a-person-by-id-number-find) to learn more about that command.
  
-### Listing all persons: listall
+### 3.3 Listing all persons: listall
 
 Supposed you want to find out all the visitors that had entered the venue,
 it can be done with `listall`. This command shows a list of all persons
@@ -155,22 +152,22 @@ Example Output:
 
 ![listall_success](images/listall_success.png)
 
-### Listing checked-in persons only: `list`
+### 3.4 Listing checked-in persons only: `listcheckedin`
 
-`list` command is similar to `listall`, the only difference is that `list` only
+`listcheckedin` command is similar to `listall`, the only difference is that `listcheckedin` only
 returns the list of visitors that are still in the venue or have not check out.
 Shows a list of all persons with their details currently checked in. It also shows the number of people 
 remaining to reach the maximum capacity for that venue.
 
-#### Format: `list`
+#### Format: `listcheckedin`
 
-#### Example Input: `list`
+#### Example Input: `listcheckedin`
 
 #### Example Output:
 
 ![list_success](images/list_success.png)
 
-### Finding a person by ID number: `find`
+### 3.5 Finding a person by ID number: `find`
 
 You can use `find` command if you need to check whether a particular visitor
 is still in the venue or check for his/her particulars.
@@ -186,7 +183,7 @@ Given the person's last 4 characters of ID, we can find the details of the perso
 
 ![find_success](images/find_success.png)
 
-### Check out a person: `checkout`
+### 3.6 Check out a person: `checkout`
 
 You can check out a visitor from CYC, when he/she is leaving from the venue via
 `checkout` command. By doing so, you will be removing the visitor from checked in
@@ -203,7 +200,7 @@ check in the following visit.
 
 ![checkout_success](images/checkout_success.png)
 
-### Clearing all entries: `clear`
+### 3.7 Clearing all entries: `clear`
 
 
 `clear` command clears all entries stored by the program. It could be useful
@@ -219,7 +216,7 @@ Therefore, use `clear` command with caution.
 
 ![clear_success](images/clear_4_entries.png)
 
-### Edit venue capacity: `editmax`
+### 3.8 Edit venue capacity: `editmax`
 
 In the event that requires the venue capacity to change, you 
 can update the new venue capacity in CYC using `editmax` command.
@@ -238,7 +235,7 @@ Edits the max capacity of the venue.
 
 ![editmax_success](images/editmax_success.png)
 
-### Change storage location: `movestorage`
+### 3.9 Change storage location: `movestorage`
 
 This command allows you to move the location of the saved file, if you desire a different location 
 from the default setting. A suggested use would be to use it to backup files.
@@ -256,7 +253,7 @@ from the default setting. A suggested use would be to use it to backup files.
 
 ![movestorage_success](images/moveStorage_success.png)
 
-### Exiting CYC: `exit`
+### 3.10 Exiting CYC: `exit`
 
 `exit` command will save the current state of CYC before exiting the programme. 
 
@@ -268,7 +265,7 @@ from the default setting. A suggested use would be to use it to backup files.
 
 ![exit](images/exit_success.png)
 
-### Visitor Log
+### 3.11 Visitor Log
 
 CYC automatically saves the details of previous persons therefore providing the users with a
 convenient location to retrieve all particulars and details of visitors. 
@@ -280,20 +277,20 @@ again when using the `checkin` command.
 The person details are stored in `/LogFile.txt` in the same folder as the program.
 You can reset Visitor Log by exiting CYC and deleting it before reboot. 
 
-### Auto Save
+### 3.12 Auto Save
 The program automatically saves data to a `.txt` file after each command you input.
 The program defaults to saving to `/TrackingList.txt` in the same folder as the program.
 As such, you do not have to worry about saving the data or memory loss in case of
 programme crash. 
 
-### Changing save location
+### 3.13 Changing save location
 To change the save location, you can use the command `movestorage`. The command format for move storage
 is stated above. 
 
 If the user deletes the folder of the new path, the program may run into write errors.
 To resolve the issue, `settings.properties` should be deleted to reset the program state.
 
-### History
+### 3.14 History
 
 CYC automatically keeps a back up of the checkin and checkout history in `history.txt` file after
 each check in and check out operation.
@@ -307,7 +304,7 @@ The program automatically saves the history to 'history.txt' file after each che
 
 ### Clearing history
 
-In the unlikely event that, your machine runs our of storage space or you want to reset
+In the unlikely event that, your machine runs out of storage space or you want to reset
 the history. You can follow these steps, to clear history.
 
 To clear history, please follow the following steps:
@@ -316,7 +313,7 @@ To clear history, please follow the following steps:
 3. Locate `/History.txt` and delete the file directly. 
    (CYC will create a new History file upon a restart.)
 
-## FAQ
+## 4. FAQ
 
 **Q**: How do I transfer my data to another computer? 
 
@@ -325,19 +322,27 @@ To clear history, please follow the following steps:
 2. Transfer the `/History.txt`,`/LogFile.txt` and `/TrackingList.txt` to the target computer's main CYC folder.
 3. Start CYC and it will automatically load the data.
 
-## Command Summary
+**Q**: What does `Clear` command clears exactly?
 
-Action | Format | Examples 
---- | --- | --- 
-Help | `help` | `help` 
-Check-in a person | `checkin i/LAST_4_CHARS_OF_ID [n/NAME] [p/PHONE_NUMBER]` | `checkin  i/123A n/John p/91231112` 
-List all person | `listall` | `listall` 
-List checked-in persons only | `list` | `list` 
-Find person by ID | `find i/LAST_4_CHARS_OF_ID` | `find i/123A` 
-Checkout a person | `checkout i/LAST_4_CHARS_OF_ID` | `checkout n/John i/123A` 
-Clear all entries | `clear` | `clear` 
-Edit venue capacity | `editmax NEW_CAPACITY` | `editmax 100` 
-Move storage | `movestorage PATH` | `movestorage data/storage` 
+**A**: `Clear` command only clears the visitors that are checked in. However, it does not clear the person log. Which
+means if you had checked in a person with name: John, Id: 123A. After executing `clear` command, CYC will not allow you
+to check in another person with name: James, Id: 123A as CYC will detect that the Id is a duplicate despite its two 
+different people.
+
+## 5. Command Summary
+
+
+Action | Format | Examples
+--- | --- | ---
+Help | `help` | `help`
+Check-in a person | `checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]` | `checkin  i/123A n/John p/91231112`
+List all person | `listall` | `listall`
+List checked-in persons only | `listcheckedin` | `listcheckedin`
+Find person by ID | `find i/LAST_4_CHARS_OF_ID` | `find i/123A`
+Checkout a person | `checkout i/LAST_4_CHARS_OF_ID` | `checkout i/123A`
+Clear all entries | `clear` | `clear`
+Edit venue capacity | `editmax NEW_CAPACITY` | `editmax 100`
+Move storage | `movestorage PATH` | `movestorage data/storage`
 Exit | `exit` | `exit`
 
 
