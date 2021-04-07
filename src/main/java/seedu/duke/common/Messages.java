@@ -10,7 +10,7 @@ public class Messages {
      */
     public static final String PERSON_NOT_FOUND = "Person not found!";
     public static final String DIFF_NAME_SAME_ID = "Person with the same Id already exist!";
-    public static final String INVALID_COMMAND = "Invalid command detected! Try again!";
+    public static final String INVALID_COMMAND = "Invalid command detected, or you are missing parameters! Try again!";
     public static final String NO_ARGUMENT = "No argument passed! Try again!";
     public static final String WRONG_FLAG = "Wrong flags used!";
     public static final String INVALID_MAX_CAPACITY_ARG = "Invalid argument for max capacity! Try again!"

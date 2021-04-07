@@ -190,11 +190,11 @@ You can check out a visitor from CYC, when he/she is leaving from the venue via
 list in CYC. However, person's particulars will be retained for a faster 
 check in the following visit.
 
-#### Format: `checkout [n/NAME] i/LAST_4_CHARS_OF_ID`
+#### Format: `checkout i/LAST_4_CHARS_OF_ID`
 * First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
-* `NAME` is optional. `NAME` must be a string. Integers will not be accepted.
+* `checkout` only accepts 1 `i/` flag, with the last 4 characters of ID. 
 
-#### Example input: `checkout n/John i/123A`
+#### Example input: `checkout i/123A`
 
 #### Example output:
 

@@ -14,6 +14,8 @@ import seedu.duke.person.Id;
 import seedu.duke.person.Name;
 import seedu.duke.person.Phone;
 
+import java.util.Locale;
+
 /**
  * Checks in user, with compulsory ID, and name for first time check in.
  *      Subsequent check in can be conducted with only ID, for user who has checked in previously.
@@ -50,26 +52,36 @@ public class CheckInParser extends Parser {
         String id;
         String name = null;
         String phoneNumber = null;
-        String[] checkInDetails;
+        String[] checkInDetails = new String[0];
+
+        boolean containsPhoneOnly = false;
+        boolean containsNameOnly = false;
 
         if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) == -1) {
             checkInDetails = argument.split("i/",2);
-        } else if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) != -1) {
-            throw new WrongFlagException(Messages.WRONG_FLAG);
-        } else {
+        } else if (nameFlagChecker(argument) != -1 && phoneFlagChecker(argument) != -1) {
             checkInDetails = argument.split("i/|n/|p/",4);
-        }
+        } else if (nameFlagChecker(argument) != -1 && phoneFlagChecker(argument) == -1) {
+            checkInDetails = argument.split("i/|n/",3);
+            containsNameOnly = true;
+        } else if (nameFlagChecker(argument) == -1 && phoneFlagChecker(argument) != -1) {
+            checkInDetails = argument.split("i/|p/",3);
+            containsPhoneOnly = true;
+        } 
 
         if (checkInDetails[1].isBlank()) {     //checks if n/ and i/ is provided
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
         } else {
-            id = checkInDetails[1].trim();
+            id = checkInDetails[1].trim().toUpperCase();
         }
         if (checkInDetails.length == 4) {
-            name = checkInDetails[2].trim();
+            name = checkInDetails[2].trim();//.toUpperCase();
             phoneNumber = checkInDetails[3].trim();
-        } else if (checkInDetails.length == 3) {
-            name = checkInDetails[2].trim();
+
+        } else if (checkInDetails.length == 3 && containsNameOnly) {
+            name = checkInDetails[2].trim();//.toUpperCase();
+        } else if (checkInDetails.length == 3 && containsPhoneOnly) {
+            phoneNumber = checkInDetails[2].trim();
         }
 
         if (!Id.isValidId(id)) {
