@@ -11,7 +11,7 @@ public class Messages {
     public static final String GENERAL_INVALID_INPUT = "If unsure, please use 'help' command to check the format.";
     public static final String PERSON_NOT_FOUND = "Person not found!";
     public static final String DIFF_NAME_SAME_ID = "Person with the same Id already exist!";
-    public static final String INVALID_COMMAND = "Invalid command detected! Try again!"
+    public static final String INVALID_COMMAND = "Invalid command detected, or you are missing parameters! Try again!"
             + System.lineSeparator() + GENERAL_INVALID_INPUT;
     public static final String NO_ARGUMENT = "No argument passed! Try again!"
             + System.lineSeparator() + GENERAL_INVALID_INPUT;
@@ -34,6 +34,7 @@ public class Messages {
     public static final String INVALID_INTEGER = "Argument should only consist of positive integers!";
     public static final String ALREADY_CHECKEDOUT = "%s is already checked out.";
     public static final String ALREADY_CHECKEDIN = "%s is already checked in.";
+  
     /**
      * Command summary for help command.
      */

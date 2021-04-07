@@ -2,7 +2,7 @@ package seedu.duke.testutil;
 
 import seedu.duke.exceptions.InvalidArgumentSizeException;
 import seedu.duke.exceptions.InvalidMaxCapacityException;
-import seedu.duke.location.Location;
+import seedu.duke.model.Location;
 
 public class SampleLocations {
 

@@ -7,13 +7,13 @@ import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.history.HistoryFile;
-import seedu.duke.location.Location;
-import seedu.duke.person.Id;
-import seedu.duke.person.Name;
-import seedu.duke.person.Person;
-import seedu.duke.person.PersonLog;
-import seedu.duke.person.Phone;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.Location;
+import seedu.duke.model.person.Id;
+import seedu.duke.model.person.Name;
+import seedu.duke.model.person.Person;
+import seedu.duke.model.PersonLog;
+import seedu.duke.model.person.Phone;
+import seedu.duke.model.TrackingList;
 
 import java.util.logging.Logger;
 

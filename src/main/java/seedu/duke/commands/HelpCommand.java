@@ -1,6 +1,6 @@
 package seedu.duke.commands;
 
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 
 import static seedu.duke.common.Messages.CHECKIN_HELP;
 import static seedu.duke.common.Messages.CHECKOUT_HELP;

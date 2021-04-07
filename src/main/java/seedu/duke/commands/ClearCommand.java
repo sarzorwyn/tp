@@ -1,6 +1,6 @@
 package seedu.duke.commands;
 
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 
 /**
  * Clears all the entries in trackingList.

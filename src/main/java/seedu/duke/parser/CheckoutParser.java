@@ -6,7 +6,7 @@ import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.WrongFlagException;
-import seedu.duke.person.Id;
+import seedu.duke.model.person.Id;
 
 /**
  * Checks out user based on ID input by user.
@@ -28,7 +28,7 @@ public class CheckoutParser extends Parser {
 
         if (argument.isBlank()) {
             throw new NoArgumentPassedException(Messages.NO_ARGUMENT);
-        } else if (idFlagChecker(argument) == -1) {
+        } else if (idFlagChecker(argument) == -1 || !argument.startsWith("i/")) {
             throw new WrongFlagException(Messages.WRONG_FLAG);
         }
 

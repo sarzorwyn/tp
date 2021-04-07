@@ -1,9 +1,9 @@
 package seedu.duke.commands;
 
 import seedu.duke.exceptions.PersonNotFoundException;
-import seedu.duke.person.Id;
-import seedu.duke.person.Person;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.person.Id;
+import seedu.duke.model.person.Person;
+import seedu.duke.model.TrackingList;
 
 /**
  * Finds the person in tracking list using id.

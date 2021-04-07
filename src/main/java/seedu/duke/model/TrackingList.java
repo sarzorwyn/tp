@@ -1,7 +1,11 @@
-package seedu.duke.person;
+package seedu.duke.model;
 
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.PersonNotFoundException;
+import seedu.duke.model.person.Id;
+import seedu.duke.model.person.Name;
+import seedu.duke.model.person.Person;
+import seedu.duke.model.person.Phone;
 
 import java.util.ArrayList;
 import java.util.Arrays;

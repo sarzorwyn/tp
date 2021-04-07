@@ -29,9 +29,6 @@ public class CheckOutParserTest {
             StorageOperationException, InvalidIntegerException, PersonNotFoundException, InvalidMaxCapacityException {
 
         CheckoutCommand checkoutCommand = (CheckoutCommand) parser.parseCommand(
-                "checkout n/John i/123A");
-        assertEquals("checkout", checkoutCommand.COMMAND);
-        checkoutCommand = (CheckoutCommand) parser.parseCommand(
                 "checkout i/123A");
         assertEquals("checkout", checkoutCommand.COMMAND);
     }
