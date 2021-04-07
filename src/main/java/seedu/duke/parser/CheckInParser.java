@@ -87,7 +87,7 @@ public class CheckInParser extends Parser {
         if (!Id.isValidId(id)) {
             throw new InvalidIdException(Messages.ID_ERROR);
         }
-        
+
 
         if (!Name.isValidName(name)) {
             throw new InvalidNameFormatException(Messages.NAME_ERROR);
