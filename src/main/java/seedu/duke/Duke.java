@@ -29,6 +29,7 @@ import seedu.duke.ui.TextUi;
 public class Duke {
 
     private static final String VERSION_NO = "v2.0";
+    private static final String EXIT_MESSAGE = "Exiting Control Your Crowd...";
 
     private TextUi ui;
     private Parser parser;
@@ -54,7 +55,15 @@ public class Duke {
         getInstance().run(args);
     }
 
+    /** Catches System.exit() and interrupts. Exits gracefully */
+    private void exitDuke() {
+        ExitCommand command = new ExitCommand();
+        CommandOutput commandOutput = command.execute(trackingList);
+        ui.printReaction(commandOutput);
+    }
+
     public void run(String[] args) throws HistoryStorageException {
+        Runtime.getRuntime().addShutdownHook(new Thread(this::exitDuke));
         start(args);
         runUntilExit();
         exit();
@@ -111,6 +120,9 @@ public class Duke {
                 commandOutput = command.execute(trackingList);
                 storage.save(trackingList);
                 personLog.saveAllPersons();
+                if (command instanceof ExitCommand) {
+                    break;
+                }
                 ui.printReaction(commandOutput);
             } catch (PersonNotFoundException | StorageOperationException | HistoryStorageException | CheckoutException
                     | CheckInException e) {
