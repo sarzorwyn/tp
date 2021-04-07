@@ -1,4 +1,4 @@
-package seedu.duke.location;
+package seedu.duke.model;
 
 import org.junit.jupiter.api.Test;
 import seedu.duke.common.Messages;

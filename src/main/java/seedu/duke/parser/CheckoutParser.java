@@ -6,7 +6,7 @@ import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidIdException;
 import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.WrongFlagException;
-import seedu.duke.person.Id;
+import seedu.duke.model.person.Id;
 
 /**
  * Checks out user based on ID input by user.

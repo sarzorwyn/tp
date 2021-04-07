@@ -5,7 +5,7 @@ import seedu.duke.exceptions.CheckoutException;
 import seedu.duke.exceptions.HistoryStorageException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 
 /**
  * Represents an executable command.

@@ -1,7 +1,7 @@
 package seedu.duke.commands;
 
 import org.junit.jupiter.api.Test;
-import seedu.duke.person.TrackingList;
+import seedu.duke.model.TrackingList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.duke.testutil.SamplePersons.ALICE;

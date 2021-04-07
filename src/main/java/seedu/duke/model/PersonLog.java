@@ -1,6 +1,8 @@
-package seedu.duke.person;
+package seedu.duke.model;
 
 import seedu.duke.exceptions.StorageOperationException;
+import seedu.duke.model.person.Id;
+import seedu.duke.model.person.Person;
 import seedu.duke.storage.LogFile;
 
 import java.util.ArrayList;

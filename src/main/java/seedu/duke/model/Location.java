@@ -1,4 +1,4 @@
-package seedu.duke.location;
+package seedu.duke.model;
 
 import seedu.duke.common.Messages;
 import seedu.duke.exceptions.InvalidArgumentSizeException;

@@ -10,11 +10,9 @@ import seedu.duke.exceptions.NoArgumentPassedException;
 import seedu.duke.exceptions.PersonNotFoundException;
 import seedu.duke.exceptions.StorageOperationException;
 import seedu.duke.exceptions.WrongFlagException;
-import seedu.duke.person.Id;
-import seedu.duke.person.Name;
-import seedu.duke.person.Phone;
-
-import java.util.Locale;
+import seedu.duke.model.person.Id;
+import seedu.duke.model.person.Name;
+import seedu.duke.model.person.Phone;
 
 /**
  * Checks in user, with compulsory ID, and name for first time check in.

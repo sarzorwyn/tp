@@ -1,6 +1,6 @@
 package seedu.duke.commands;
 
-import seedu.duke.person.Person;
+import seedu.duke.model.person.Person;
 
 import java.util.List;
 
