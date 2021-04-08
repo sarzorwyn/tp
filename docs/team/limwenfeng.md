@@ -15,3 +15,9 @@ Object-oriented programming (OOP) paradigm.
 ## Contributions to the User Guide
 
 ## Contributions to the Developer Guide
+
+## Contributions to team-based tasks
+
+## Review/mentoring contributions:
+
+## Contributions beyond team project
