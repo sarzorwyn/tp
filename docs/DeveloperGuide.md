@@ -197,7 +197,14 @@ in the most efficient way possible.
 
 [WIP]
 
-The program works on all major modern operating systems (Windows, macOS, Linux) without any effort by the user.
+1. The program works on all major modern operating systems (Windows, macOS, Linux) without any effort by the user.
+
+2. The program should boot up in less than 15 seconds. 
+
+3. A user with above average typing speed for regular English text (not code or system admin commands) should be
+able to accomplish most of the tasks faster using commands using just the keyboard.
+   
+4. Check in and check out for each visitor should take less than 5 seconds. 
 
 ### Appendix E: Glossary 
 [WIP]
