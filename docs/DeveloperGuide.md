@@ -56,6 +56,13 @@ The rest of Control-Your-Crowd (CYC) consist of four components.
 
 * `Storage`: Reads and writes data from the hard disk to CYC.
 
+#### How the architecture components interact with each other
+
+The *Sequence Diagram* below shows how the components interact with each other for the scenario where the user issues
+the command `clear`.
+
+![](images/ComponentsInteractionsDiagram.png?raw=true "Component interactions for clear command")
+*Figure #. Component interactions for `clear` command*
 
 ### UI component
 
@@ -70,18 +77,17 @@ The `UI` component,
 * After the **Logic Component** has executed the function, it will then return `CommandOutput` object
   which contains the outcome of the execution, fail or succeed.
 
-
 ### Logic component
 
 ![](images/LogicComponentStructure.png?raw=true "Structure of Logic Component")
 *Figure #. Structure of the Logic Component*
 
-**API** : [`seedu.cyc.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/logic) package (*TO BE CREATED LATER*)
+**API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package
 
 The Logic component,
 1. Uses the `Parser` class to parse the user input obtained by the `TextUi` class of `UI`.
 2. This results in a specific `Command` object to be returned from the `Parser` class.
-3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Main` of `UI`.
+3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Main` class.
 4. Some command execution affects the data in `Model` (e.g. clearing the list). 
 5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
 6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
