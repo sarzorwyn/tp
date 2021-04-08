@@ -126,6 +126,7 @@ The `Storage` component,
 
 The storage module uses the `StorageFile` class to store the `TrackingList` class from Model. 
 `StorageFile` achieves this by using two helper classes, `TrackingListEncoder` and `TrackingListDecoder`.
+`StorageFile` is called by the main class after the execution of any `Command`.
 
 `TrackingListEncoder` takes the currently stored `TrackingList` and converts it to a more storage friendly String.
 This String is then written to a file on the disk, known on the diagram as `StoredTrackingList`.
@@ -135,13 +136,17 @@ and interprets the file to be loaded into the memory as a `TrackingList`.
 ![](images/storage_pathdir.png?raw=true "Storage Module file structure")
 
 `StoredTrackingList` is the `.txt` file stored in the same directory as the program.
-The location is determined by the `ConfigFile` class. 
+The location is determined by the `ConfigFile` class.
 
 `LogFile` takes the `TrackingList` every time the storage is updated
 and packages it into `json` formatted string.
 `LogFile` communicates with the disk by calling the methods
 `loadLogFile` and `saveLogFile` in the `StorageFile` class.
 
+`History` stores a record every time the `Command` `CheckIn` and `CheckOut` are successfully executed.
+It includes information about the `Person` details, `Time` the person checked in, and movement 
+(whether the person was checked in or checked out)
+The data is stored in a `csv` format in `History.txt`.
 
 The program settings for the user is manged by the `ConfigFile` class. 
 Another file, `settingsFile` is read by `ConfigFile` when the program is started, 
