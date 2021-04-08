@@ -144,7 +144,8 @@ and packages it into `json` formatted string.
 `loadLogFile` and `saveLogFile` in the `StorageFile` class.
 
 `History` stores a record every time the `Command` `CheckIn` and `CheckOut` are successfully executed.
-It includes information about the `Person` details, `Location` and `Time` the person checked in. 
+It includes information about the `Person` details, `Time` the person checked in, and movement 
+(whether the person was checked in or checked out)
 The data is stored in a `csv` format in `History.txt`.
 
 The program settings for the user is manged by the `ConfigFile` class. 
