@@ -210,6 +210,15 @@ able to accomplish most of the tasks faster using commands using just the keyboa
    
 4. Check in and check out for each visitor should take less than 5 seconds. 
 
+5. User or staff should be able to find details of visitors (if he has checked in with phone number before) within 
+10 seconds.
+   
+6. User should be able to move the stored data to another machine by following simple instructions from the user guide.
+
+7. The format of data stored in history file should be easy to understand for the users. 
+
+8. The error messages on the programme should be cleared enough so that users can troubleshoot himself/herself. 
+
 ### Appendix E: Glossary 
 [WIP]
 
