@@ -56,8 +56,7 @@ public class TextUiTest {
     }
 
     @AfterEach
-    public void clearTrackingList() {trackingList.clear();}
-
-
-
+    public void clearTrackingList() {
+        trackingList.clear();
+    }
 }
