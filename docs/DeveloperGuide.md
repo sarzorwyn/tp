@@ -186,10 +186,14 @@ in the most efficient way possible.
 
 |Priority| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|*****|mall staff|be able to review the personal particulars of the customer|be aware of who he is|
+|*****|venue/event staff|be able to review the personal particulars of the customer|be aware of who he is|
 |*****|new user|be able to use the program without much training| use the program as soon as possible and easily implement it|
-|****|mall staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
-|****|mall staff|be able to easily key in a unique personal identifier| check in and find a visitor|
+|****|venue/event staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
+|****|venue/event staff|be able to easily key in a unique personal identifier| check in and find a visitor|
+|****|visitors|be able to check in and check out within a few seconds|enter and leave the mall faster|
+|****|venue/event management|be able to check who came and left|carry out contact tracing efficiently|
+|***|user|be able to move the saved data around|continue using the program on another machine|
+|***|user|be able to encrypt visitors' private details|privacy of the visitors will be not compromised|
 
 ### Appendix C: Use Cases
 
