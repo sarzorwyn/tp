@@ -21,17 +21,17 @@ import static seedu.duke.testutil.SamplePersons.MARY;
 public class TextUiTest {
     TextUi textUi = new TextUi();
     private TrackingList trackingList;
-    TrackingList constructedList = new TrackingList(JOHN, MARY, ALICE);
 
     @BeforeEach
     public void initTrackingList() {
         trackingList = new TrackingList();
+        trackingList.add(ALICE);
     }
 
     @Test
     public void testConstructor() {
-        int actualCurrentCapacity = textUi.getCurrentCapacity(constructedList.listPerson());
-        assertEquals(3, actualCurrentCapacity);
+        int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
+        assertEquals(1, actualCurrentCapacity);
     }
 
     @AfterEach
