@@ -29,4 +29,12 @@ public class TextUiTest {
         int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
         assertEquals(0, actualCurrentCapacity);
     }
+
+    @Test
+    public void testList() {
+        TrackingList trackingList = new TrackingList();
+        trackingList.add(ALICE);
+        int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
+        assertEquals(1, actualCurrentCapacity);
+    }
 }
