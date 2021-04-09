@@ -17,10 +17,9 @@
         * [Target user profile](DeveloperGuide.md#target-user-profile)
         * [Value proposition](DeveloperGuide.md#value-proposition)
     * [Appendix B: User Stories](DeveloperGuide.md#appendix-b-user-stories)
-    * [Appendix C: Use Cases](DeveloperGuide.md#appendix-c-use-cases)
-    * [Appendix D: Non Functional Requirements](DeveloperGuide.md#appendix-d-non-functional-requirements)
-    * [Appendix E: Glossary](DeveloperGuide.md#appendix-e-glossary)
-    * [Appendix F: Instructions for Manual Testing](DeveloperGuide.md#appendix-f-instructions-for-manual-testing)
+    * [Appendix C: Non Functional Requirements](DeveloperGuide.md#appendix-d-non-functional-requirements)
+    * [Appendix D: Glossary](DeveloperGuide.md#appendix-e-glossary)
+    * [Appendix E: Instructions for Manual Testing](DeveloperGuide.md#appendix-f-instructions-for-manual-testing)
         * [Launching CYC](DeveloperGuide.md#launching-cyc)
         * [Check in a visitor](DeveloperGuide.md#check-in-a-visitor)
         * [Check out a visitor](DeveloperGuide.md#check-out-a-visitor)  
@@ -31,6 +30,7 @@
         * [Listing checked in visitors](DeveloperGuide.md#listing-checked-in-visitors)
         * [Listing all visitors](DeveloperGuide.md#listing-all-visitors)
         * [Moving storage location](DeveloperGuide.md#moving-storage-location)
+        * [Exiting CYC](DeveloperGuide.md#exiting-cyc)
 
 ## Setting up
 
@@ -212,8 +212,6 @@ in the most efficient way possible.
 |****|mall staff|be able to easily key in a unique personal identifier| check in or find a visitor|
 |****|mall staff|be able to easily key in a unique personal identifier|check out a visitor|
 
-
-### Appendix C: Use Cases
 
 ### Appendix D: Non-Functional Requirements
 
@@ -450,17 +448,17 @@ class diagrams and many more.
 
 
 ### Appendix F: Instructions for manual testing
-
 Given below are instructions to test CYC manually.
 
-> These instructions only provide a starting point for testers to work on;
+> * These instructions only provide a starting point for testers to work on;
 > testers are expected to do more *exploratory* testing.
+> * You can refer to the [User Guide](UserGuide.md) for further information regarding the command formats.
 
 #### Launching CYC
-1. Initial launch
+1. Initial launch of CYC
     1. Download the jar file [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases) and copy into an empty folder.
     2. Open up a command window to that folder with the jar file.
-    3. Run the command `java -jar CYC.jar 3`  
+    3. Run the command `java -jar CYC.jar X` (where X is a positive number that is less than 7 digits)  
         
         **Expected:** CYC will be loaded, and a welcome message will be shown. Ensure that the version number in the
         welcome matches version of the jar file downloaded.
@@ -492,9 +490,9 @@ Given below are instructions to test CYC manually.
     
 
 4. Check in a visitor after the maximum capacity is reached
-    1. **Prerequisite:** The current capacity can be obtained using `listcheckedin` command.
-    The current capacity can also be obtained when you have successfully checked in a visitor.
-    Check in visitors until maximum capacity is reached.
+    1. **Prerequisite:** Check if maximum capacity is reached. The number of people left to maximum capacity can be
+    obtained using `listcheckedin` command, or the current capacity can be obtained whenever a visitor is successfully
+    checked in or out. If needed, check in visitors until maximum capacity is reached.
     2. Check in a visitor who has not checked in yet.
     
         **Expected:** The visitor will not be checked in. An error message with maximum capacity reached will be shown.
@@ -530,17 +528,63 @@ Given below are instructions to test CYC manually.
 >   * The data in the `TrackingList.txt` file will also be cleared.
 >   * The data in the `History.txt` and `LogFile.txt` files will be **not** be cleared.
 
-1. Clearing all the visitors
+1. Clearing all the visitors if any
     1. **Test case:** `clear`
         
         **Expected:** A message indicating the number of visitors cleared will be shown.
     
 #### Editing maximum capacity
+> Note:
+> * Valid capacity value means that the capacity **must** be a positive number that is less than 7 digits.
+> * Invalid capacity value means that the capacity is either a negative number, or a positive number that is more than 
+> 6 digits.
+
+1. Editing maximum capacity with a valid capacity value
+    1. **Prerequisites:** The current capacity must be known first. The current capacity can be obtained whenever a
+    visitor is successfully checked in or out. The current capacity can also be calculated by using the number of visitors
+    left to reach maximum capacity with the `listcheckedin` command.
+    2. **Test case:** `editmax X` (where X is more than or equal to the current capacity)
+    
+        **Expected:** A success message with the new maximum capacity of X will be shown.
+    3. **Test case:** `editmax Y` (where Y is less than the current capacity)
+    
+        **Expected:** Maximum capacity is not updated. A message with the error details and the current capacity
+        will be shown.
+
+
+2. Editing maximum capacity with an invalid capacity value
+    1. **Prerequisites:** Similar to the previous prerequisites.
+    2. **Test case:** `editmax N` (where N is a negative number)
+    
+        **Expected:** Maximum capacity is not updated. Error details will be shown in the message.
+    3. **Test case:** `editmax P` (where P is a positive number that is more than 6 digits)
+    
+        **Expected:** Similar to previous.
 
 #### Finding a visitor
+> Note:
+> * A valid visitor means that the person can be found in the `TrackingList`.
+> * An invalid visitor means that the person cannot be found in the `TrackingList`.
+>   * It could be because the person got removed when the `TrackingList` was cleared or
+>   the person is not registered in the `PersonLog`.
+
+1. Finding a valid visitor
+    1. **Prerequisites:** Ensure that the person you are trying to find is in the `TrackingList`.
+    2. **Test case:** `find i/123A` (where 123A is the ID of the valid visitor to be found)
+        
+        **Expected:** The details of the visitor found including the checked in status.
+    
+
+2. Finding an invalid visitor
+    1. **Prerequisites:** Ensure that the person you are trying to find is not in the `TrackingList` or in the `PersonLog`.
+    2. **Test case:** `find i/123B` (where 123B is the ID of a visitor not in the `TrackingList`)
+        
+        **Expected:** A person not found message will be shown.
+    3. **Test case:** `find i/123C` (where 123C is the ID of a visitor not in the `PersonLog`)
+    
+        **Expected:** Similar to previous.
 
 #### Help
-
 1. Getting help from CYC
     1. **Test case:** `help`
     
@@ -548,11 +592,11 @@ Given below are instructions to test CYC manually.
         A link to the User Guide will also be shown.
 
 #### Listing checked in visitors
-
 1. Listing visitors who are currently checked in
     1. **Test case:** `listcheckedin`
     
         **Expected:** A table with the particulars of all the visitors currently checked in will be displayed.
+        Number of people left to reach maximum capacity will also be provided.
 
 #### Listing all visitors
 > Note:
@@ -566,3 +610,24 @@ Given below are instructions to test CYC manually.
         with their checked in status will be displayed.
        
 #### Moving storage location
+1. Changing to a new storage location for `TrackingList`
+    1. **Prerequisites:** Ensure that the new storage location is unused.
+    2. **Test case:** `movestorage X` (where X is a valid path to the new storage location)
+    
+        **Expected:** A success message is shown with the new storage location path.
+    
+
+2. Changing the storage location to the default location without CYC running
+    1. **Prerequisites:** Ensure that you have changed to a new storage location and have exited CYC.
+    2. Delete the `settings.properties` file found in the folder where `CYC.jar` is located.
+    3. Launch CYC and checkin a visitor successfully.
+    4. Exit CYC.
+    5. Open `TrackingList.txt` file that is located in the same folder as the `CYC.jar`.
+    
+        **Expected:** The visitor that was checked in successfully can be found in the `TrackingList.txt` file.
+
+#### Exiting CYC
+1. Exit
+    1. **Test case:** `exit`
+        
+        **Expected** A exit message will be shown.
