@@ -193,11 +193,16 @@ in the most efficient way possible.
 
 |Priority| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|*****|mall staff|be able to review the personal particulars of the customer|be aware of who he is|
+|*****|venue/event staff|be able to review the personal particulars of the customer|be aware of who he is|
 |*****|new user|be able to use the program without much training| use the program as soon as possible and easily implement it|
+|****|venue/event staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
+|****|venue/event staff|be able to easily key in a unique personal identifier| check in and find a visitor|
+|****|visitors|be able to check in and check out within a few seconds|enter and leave the mall faster|
+|****|venue/event management|be able to check who came and left|carry out contact tracing efficiently|
+|***|user|be able to move the saved data around|continue using the program on another machine|
+|***|user|be able to encrypt visitors' private details|privacy of the visitors will be not compromised|
 |*****|mall staff|be able to view the current capacity of people in the mall|know when to stop letting people in|
-|****|mall staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
-|****|mall staff|be able to easily key in a unique personal identifier| check in and find a visitor|
+|****|mall staff|be able to easily key in a unique personal identifier| check in or find a visitor|
 |****|mall staff|be able to easily key in a unique personal identifier|check out a visitor|
 
 
@@ -207,22 +212,39 @@ in the most efficient way possible.
 
 [WIP]
 
-1. The program works on all major modern operating systems (Windows, macOS, Linux) 
+
+1. The program works on all major modern operating systems (Windows, macOS, Linux)
    without any effort by the user, as long as the system has Java 11 or above installed.
 
 
-2. A user with above average typing speed for regular English text should be able to accomplish most of the 
-tasks faster than using the mouse.
+2. The program should boot up in less than 15 seconds. 
+
+
+3. A user with above average typing speed for regular English text (not code or system admin commands) should be
+able to accomplish most of the tasks faster with the use of commands using just the keyboard.
    
 
-3. The log files, especially those containing sensitive personal data, are stored locally
+4. Check in and check out for each visitor should take less than 5 seconds. 
+
+
+5. User or staff should be able to find details of visitors (if he has checked in with phone number before) within 
+10 seconds.
+   
+
+6. User should be able to move the stored data to another machine by following simple instructions from the user guide.
+
+
+7. The format of data stored in history file should be easy to understand for the users. 
+
+
+8. The error messages on the programme should be cleared enough so that users can troubleshoot himself/herself. 
+
+
+9. The log files, especially those containing sensitive personal data, are stored locally
 and no wireless transfer is allowed.
    
 
-4. The software should be portable. So moving from OS to OS does not create any problem.
-
-
-5. Maintenance to clear the log files should be smooth and fast with no delay.
+10. Maintenance to clear the log files should be smooth and fast with no delay.
 
 
 ### Appendix E: Glossary 
