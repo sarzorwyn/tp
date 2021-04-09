@@ -2,28 +2,35 @@
 
 * [Setting up](DeveloperGuide.md#setting-up)
 * [Design](DeveloperGuide.md#design)
-  * [Architecture](DeveloperGuide.md#architecture)
-  * [UI component](DeveloperGuide.md#ui-component)
-  * [Logic component](DeveloperGuide.md#logic-component)
-  * [Model component](DeveloperGuide.md#model-component)
-  * [Storage component](DeveloperGuide.md#storage-component)
-  * [Common classes](DeveloperGuide.md#common-classes)
+    * [Architecture](DeveloperGuide.md#architecture)
+    * [UI component](DeveloperGuide.md#ui-component)
+    * [Logic component](DeveloperGuide.md#logic-component)
+    * [Model component](DeveloperGuide.md#model-component)
+    * [Storage component](DeveloperGuide.md#storage-component)
+    * [Common classes](DeveloperGuide.md#common-classes)
 * [Implementation](DeveloperGuide.md#implementation)
 * [Documentation](DeveloperGuide.md#documentation)
 * [Testing](DeveloperGuide.md#testing)
 * [Dev Ops](DeveloperGuide.md#dev-ops)
 * [Appendix](DeveloperGuide.md#appendix)
-  * [Appendix A: Product Scope](DeveloperGuide.md#appendix-a-product-scope)
-    * [Target user profile](DeveloperGuide.md#target-user-profile)
-    * [Value proposition](DeveloperGuide.md#value-proposition)
-  * [Appendix B: User Stories](DeveloperGuide.md#appendix-b-user-stories)
-  * [Appendix C: Use Cases](DeveloperGuide.md#appendix-c-use-cases)
-  * [Appendix D: Non Functional Requirements](DeveloperGuide.md#appendix-d-non-functional-requirements)
-  * [Appendix E: Glossary](DeveloperGuide.md#appendix-e-glossary)
-  * [Appendix F: Instructions for Manual Testing](DeveloperGuide.md#appendix-f-instructions-for-manual-testing)
-    * [Launch and Shutdown](DeveloperGuide.md#launch-and-shutdown)
-    * [Clearing the list](DeveloperGuide.md#clearing-the-list)
-    * [Saving data](DeveloperGuide.md#saving-data)
+    * [Appendix A: Product Scope](DeveloperGuide.md#appendix-a-product-scope)
+        * [Target user profile](DeveloperGuide.md#target-user-profile)
+        * [Value proposition](DeveloperGuide.md#value-proposition)
+    * [Appendix B: User Stories](DeveloperGuide.md#appendix-b-user-stories)
+    * [Appendix C: Use Cases](DeveloperGuide.md#appendix-c-use-cases)
+    * [Appendix D: Non Functional Requirements](DeveloperGuide.md#appendix-d-non-functional-requirements)
+    * [Appendix E: Glossary](DeveloperGuide.md#appendix-e-glossary)
+    * [Appendix F: Instructions for Manual Testing](DeveloperGuide.md#appendix-f-instructions-for-manual-testing)
+        * [Launching CYC](DeveloperGuide.md#launching-cyc)
+        * [Check in a visitor](DeveloperGuide.md#check-in-a-visitor)
+        * [Check out a visitor](DeveloperGuide.md#check-out-a-visitor)  
+        * [Clearing all visitors](DeveloperGuide.md#clearing-all-visitor)
+        * [Editing maximum capacity](DeveloperGuide.md#editing-maximum-capacity)
+        * [Finding a visitor](DeveloperGuide.md#finding-a-visitor)
+        * [Help](DeveloperGuide.md#help)
+        * [Listing checked in visitors](DeveloperGuide.md#listing-checked-in-visitors)
+        * [Listing all visitors](DeveloperGuide.md#listing-all-visitors)
+        * [Moving storage location](DeveloperGuide.md#moving-storage-location)
 
 ## Setting up
 
@@ -37,15 +44,15 @@ The ***Architecture Diagram*** shown above explains the high-level design of Con
 Below is a quick overview of each component.
 
 `Main` is a class that is critical to starting the application proper, as well as exiting it:
-* At app launch: Retrieves memory and saved log files (If available), initializes components in correct sequence, 
-and connects them with each other.
-  
+* At app launch: Retrieves memory and saved log files (If available), initializes components in correct sequence,
+  and connects them with each other.
+
 * At shut down: It saves the log file to storage, and shuts down all components.
 
 
 `Common` consists of a class of messages used by multiple components.
 * `Messages` consists of a list of messages that will be displayed to the users, for various reasons such as error handling
-and user notification.
+  and user notification.
 
 The rest of Control-Your-Crowd (CYC) consist of four components.
 * `UI`: The user interface of the application, and the entry point from the user.
@@ -88,7 +95,7 @@ The Logic component,
 1. Uses the `Parser` class to parse the user input obtained by the `TextUi` class of `UI`.
 2. This results in a specific `Command` object to be returned from the `Parser` class.
 3. Depending on the type of the `Command` object, its corresponding command execution will be called by `Main` class.
-4. Some command execution affects the data in `Model` (e.g. clearing the list). 
+4. Some command execution affects the data in `Model` (e.g. clearing the list).
 5. The result of the command execution is encapsulated as a `CommandOutput` object which is passed back to the `TextUi`.
 6. In addition, the `CommandOutput` object can also instruct the `TextUi` to perform certain actions, such as displaying the list to the user.
 
@@ -130,7 +137,7 @@ The `Storage` component,
 * defaults to `TrackingList.txt` but can be saved at a custom specified location
 * loads on program startup automatically saves after each command
 
-The storage module uses the `StorageFile` class to store the `TrackingList` class from Model. 
+The storage module uses the `StorageFile` class to store the `TrackingList` class from Model.
 `StorageFile` achieves this by using two helper classes, `TrackingListEncoder` and `TrackingListDecoder`.
 `StorageFile` is called by the main class after the execution of any `Command`.
 
@@ -150,18 +157,18 @@ and packages it into `json` formatted string.
 `loadLogFile` and `saveLogFile` in the `StorageFile` class.
 
 `History` stores a record every time the `Command` `CheckIn` and `CheckOut` are successfully executed.
-It includes information about the `Person` details, `Time` the person checked in, and movement 
+It includes information about the `Person` details, `Time` the person checked in, and movement
 (whether the person was checked in or checked out)
 The data is stored in a `csv` format in `History.txt`.
 
-The program settings for the user is manged by the `ConfigFile` class. 
-Another file, `settingsFile` is read by `ConfigFile` when the program is started, 
-to load the settings into the program memory. 
+The program settings for the user is manged by the `ConfigFile` class.
+Another file, `settingsFile` is read by `ConfigFile` when the program is started,
+to load the settings into the program memory.
 When a change is made by the user, `ConfigFile` will update the `settingsFile` through a save function.
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.cyc.commons` package. 
+Classes used by multiple components are in the `seedu.cyc.commons` package.
 
 ## Implementation
 
@@ -185,10 +192,10 @@ Classes used by multiple components are in the `seedu.cyc.commons` package.
 
 #### Value proposition
 
-A fast and versatile software solution that enables mall management to crowd control 
+A fast and versatile software solution that enables mall management to crowd control
 in the most efficient way possible.
 
-### Appendix B: User Stories 
+### Appendix B: User Stories
 [WIP]
 
 |Priority| As a ... | I want to ... | So that I can ...|
@@ -207,17 +214,17 @@ in the most efficient way possible.
 
 [WIP]
 
-1. The program works on all major modern operating systems (Windows, macOS, Linux) 
+1. The program works on all major modern operating systems (Windows, macOS, Linux)
    without any effort by the user, as long as the system has Java 11 or above installed.
 
 
-2. A user with above average typing speed for regular English text should be able to accomplish most of the 
-tasks faster than using the mouse.
-   
+2. A user with above average typing speed for regular English text should be able to accomplish most of the
+   tasks faster than using the mouse.
+
 
 3. The log files, especially those containing sensitive personal data, are stored locally
-and no wireless transfer is allowed.
-   
+   and no wireless transfer is allowed.
+
 
 4. The software should be portable. So moving from OS to OS does not create any problem.
 
@@ -225,7 +232,7 @@ and no wireless transfer is allowed.
 5. Maintenance to clear the log files should be smooth and fast with no delay.
 
 
-### Appendix E: Glossary 
+### Appendix E: Glossary
 [WIP]
 
 ###A:
@@ -243,8 +250,8 @@ system's  classes,  their  attributes,  operations  (or  methods),  and  the  re
 **Customer**: Current  or  potential  buyer  or  user  of  the  products  or  service  of  an  individual  
 or organization, called the supplier, seller, or vendor.
 ###D:
-**Defect**: A flaw in a component or system that can cause the component or system to fail to 
-perform its required function, e.g. an incorrect  statement or data definition. 
+**Defect**: A flaw in a component or system that can cause the component or system to fail to
+perform its required function, e.g. an incorrect  statement or data definition.
 A defect,  if encountered during execution, may cause a failure of the component or system
 
 **Dependency**:  A  reliance  of  some  kind, of  one  set of components  on  
@@ -253,12 +260,12 @@ another  set  of components, or one set of requirements or other artifacts on an
 **Deployment diagram**: In UML a diagram that shows the execution architecture of systems
 ###E:
 
-**Efficiency**: The capability of the software product 
+**Efficiency**: The capability of the software product
 to provide appropriate performance,relative to the amount of resources used under stated conditions [ISO/IEC 25000].
 
 **Error**: A human action that produces an incorrect result [After IEEE 610].
 
-**Exception handling**: Behavior of a component or system in response to erroneous input, 
+**Exception handling**: Behavior of a component or system in response to erroneous input,
 from either a human user or from another component or system, or to an internal failure.
 ###F:
 
@@ -364,7 +371,7 @@ Sequence  diagram  is  a  kind  of  interaction  diagram  that  shows  how  proc
 
 
 **Stakeholder**: Any  person  who  has  an  interest  in  an  IT  project.  Project  stakeholders  are individuals and  organizations  that  are  actively  involved  in  the  project,  or whose  interests may  be  affected  as  a result  of  project  execution  or  project  completion.
-Stakeholders  can  exercise  control  over  both  the immediate   system   operational   characteristics, as well as   over   long-term   system   lifecycle considerations 
+Stakeholders  can  exercise  control  over  both  the immediate   system   operational   characteristics, as well as   over   long-term   system   lifecycle considerations
 (such     as     portability,     lifecycle     costs,     environmental     considerations,     and decommissioning of the system) [TGilb].
 
 
@@ -417,14 +424,124 @@ class diagrams and many more.
 
 
 
- 
-   
- 
 
-### Appendix F: Instructions for manual testing 
-[WIP]
 
-{Give instructions on how to do a manual product testing e.g., how to load sample data to be used for testing}
-#### Launch and Shutdown
-#### Clearing the list
-#### Saving data
+
+
+### Appendix F: Instructions for manual testing
+
+Given below are instructions to test CYC manually.
+
+> These instructions only provide a starting point for testers to work on;
+> testers are expected to do more *exploratory* testing.
+
+#### Launching CYC
+1. Initial launch
+    1. Download the jar file [here](https://github.com/AY2021S2-CS2113T-T09-1/tp/releases) and copy into an empty folder.
+    2. Open up a command window to that folder with the jar file.
+    3. Run the command `java -jar CYC.jar 3`  
+        
+        **Expected:** CYC will be loaded, and a welcome message will be shown. Ensure that the version number in the
+        welcome matches version of the jar file downloaded.
+
+#### Check in a visitor
+1. Check in a visitor for the first time
+    1. **Prerequisites:** Ensure that the visitor you are trying to check in is not in the `LogFile.txt` file
+       by checking the ID.
+    2. **Test case:** `checkin i/123A n/John p/12345678` (where John with ID 123A is not found in the `LogFile.txt` file)
+    
+        **Expected:** John will be successfully checked in. Details of the current capacity will also be shown.
+
+
+2. Check in a registered visitor
+    1. **Prerequisites:** Ensure that the visitor you are trying to check in is in the `LogFile.txt` file
+       by checking the ID.
+    2. **Test case:** `checkin i/123B` (where a visitor with ID 123B is found in the `LogFile.txt` file)
+       
+        **Expected:** The visitor corresponding to the given ID will be checked in successfully.
+        Details of the current capacity will also be shown.
+       
+
+3. Check in a registered visitor who is already checked in
+    1. **Prerequisites:** The checked in status of a particular visitor with known ID can be obtained using
+    `find i/123A` (where 123A is the ID of the visitor).
+    2. **Test case:** `checkin i/123A` (where the visitor with ID 123A is already checked in)
+    
+        **Expected:** A message with the visitor corresponding to the given ID has already checked in will be shown.
+    
+
+4. Check in a visitor after the maximum capacity is reached
+    1. **Prerequisite:** The current capacity can be obtained using `listcheckedin` command.
+    The current capacity can also be obtained when you have successfully checked in a visitor.
+    Check in visitors until maximum capacity is reached.
+    2. Check in a visitor who has not checked in yet.
+    
+        **Expected:** The visitor will not be checked in. An error message with maximum capacity reached will be shown.
+
+#### Check out a visitor
+1. Check out a visitor who is checked in
+    1. **Prerequisites:** Ensure a particular visitor with known ID is checked in using
+    `find i/123A` (where 123A is the ID of the visitor).
+    2. **Test case:** `checkout i/123A` (where the visitor with ID 123A is checked in)
+    
+        **Expected:** Successfully checks out the visitor corresponding to the given ID.
+        Current capacity is also shown.
+       
+
+2. Check out a visitor who is already checked out
+    1. **Prerequisites:** Ensure a particular visitor with known ID is already checked out using
+    `find i/123B` (where 123B is the ID of the visitor).
+    2. **Test case:** `checkout i/123B` (where the visitor with ID 123B is already checked out)
+    
+        **Expected:** A message with the visitor corresponding to the given ID has already checked out will be shown.
+
+
+3. Check out a visitor who is not registered
+    1. **Prerequisites:** Ensure that the visitor you are trying to check out is not in the `LogFile.txt` file
+        by checking the ID.
+    2. **Test case:** `checkout i/123C` (where a visitor with ID 123C is not found in the `LogFile.txt` file)
+    
+        **Expected:** An error message with no such person found will be shown.
+
+#### Clearing all visitor
+> Note: 
+> * Clear refers to removing all the visitors in the `TrackingList`.
+>   * The data in the `TrackingList.txt` file will also be cleared.
+>   * The data in the `History.txt` and `LogFile.txt` files will be **not** be cleared.
+
+1. Clearing all the visitors
+    1. **Test case:** `clear`
+        
+        **Expected:** A message indicating the number of visitors cleared will be shown.
+    
+#### Editing maximum capacity
+
+#### Finding a visitor
+
+#### Help
+
+1. Getting help from CYC
+    1. **Test case:** `help`
+    
+        **Expected:** A summary of the commands available to use for CYC will be displayed.
+        A link to the User Guide will also be shown.
+
+#### Listing checked in visitors
+
+1. Listing visitors who are currently checked in
+    1. **Test case:** `listcheckedin`
+    
+        **Expected:** A table with the particulars of all the visitors currently checked in will be displayed.
+
+#### Listing all visitors
+> Note:
+> * `listall` command shows a list of all the visitors currently in the `TrackingList`.
+>   * It does not show you the list of all the visitors registered in the `PersonLog`.
+
+1. Listing all the visitors
+    1. **Test case:** `listall`
+    
+        **Expected:** A table with the particulars of all the visitors currently in the `TrackingList`
+        with their checked in status will be displayed.
+       
+#### Moving storage location
