@@ -100,11 +100,11 @@ public class TextUi {
         printDivider();
     }
 
-    private int getMaximumCapacity() {
+    public int getMaximumCapacity() {
         return Main.getInstance().getLocation().getMaxCapacity();
     }
 
-    private int getCurrentCapacity(List<Person> persons) {
+    public int getCurrentCapacity(List<Person> persons) {
         int count = 0;
         for (Person p : persons) {
             if (p.getCheckedIn()) {
