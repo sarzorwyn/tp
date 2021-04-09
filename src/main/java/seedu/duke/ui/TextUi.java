@@ -106,7 +106,7 @@ public class TextUi {
     }
 
     public int getCurrentCapacity(List<Person> persons) {
-        AtomicInteger count = new AtomicInteger();
+        AtomicInteger count = new AtomicInteger(0);
         persons.forEach(
             (person) -> {
                 if (person.getCheckedIn()) {
