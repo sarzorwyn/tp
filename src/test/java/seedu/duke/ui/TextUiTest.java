@@ -16,12 +16,11 @@ import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
 
 public class TextUiTest {
-    private TrackingList trackingList;
     TextUi textUi = new TextUi();
 
     @Test
     public void testGetCurrentCapacity() {
-        int expectedCurrentCapacity = 3;
+        int expectedCurrentCapacity = 2;
         int actualCurrentCapacity = textUi.getCurrentCapacity(SAMPLE_TRACKING_LIST.listPerson());
         assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
     }

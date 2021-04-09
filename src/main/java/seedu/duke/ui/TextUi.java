@@ -108,6 +108,7 @@ public class TextUi {
         int count = 0;
         for (Person p : persons) {
             if (p.getCheckedIn()) {
+                out.println("checked in");
                 count++;
             }
         }
