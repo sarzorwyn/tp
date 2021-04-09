@@ -36,8 +36,7 @@ public class TextUiTest {
 
     @Test
     public void testList() {
-        trackingList.add(ALICE);
-        int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
+        int actualCurrentCapacity = textUi.getCurrentCapacity(SAMPLE_TRACKING_LIST.listPerson());
         assertEquals(1, actualCurrentCapacity);
     }
 
