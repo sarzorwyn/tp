@@ -33,7 +33,7 @@ public class TextUiTest {
     @Test
     public void testList() {
         int actualCurrentCapacity = textUi.getCurrentCapacity(SAMPLE_TRACKING_LIST.listPerson());
-        assertEquals(1, actualCurrentCapacity);
+        assertEquals(2, actualCurrentCapacity);
     }
 
 }
