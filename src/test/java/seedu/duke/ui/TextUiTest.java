@@ -31,7 +31,7 @@ public class TextUiTest {
     @Test
     public void testConstructor() {
         int actualCurrentCapacity = textUi.getCurrentCapacity(constructedList.listPerson());
-        assertEquals(actualCurrentCapacity, 3);
+        assertEquals(3, actualCurrentCapacity);
     }
 
     @AfterEach
