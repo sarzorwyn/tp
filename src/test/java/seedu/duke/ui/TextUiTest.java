@@ -4,14 +4,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import seedu.duke.model.TrackingList;
-import seedu.duke.model.person.Person;
 
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static seedu.duke.testutil.SamplePersons.ALICE;
 import static seedu.duke.testutil.SamplePersons.BOB;
 import static seedu.duke.testutil.SamplePersons.MARY;
@@ -30,11 +25,11 @@ public class TextUiTest {
     public void testGetCurrentCapacity() {
         trackingList.add(ALICE);
         trackingList.add(BOB);
-        int expectedCurrentCapacity = 2;
+        int expectedCurrentCapacity = 1;
 
         TextUi textUi = new TextUi();
         int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
-        // assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
+        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
 
         trackingList.add(MARY);
         expectedCurrentCapacity += 1;
@@ -50,9 +45,9 @@ public class TextUiTest {
         trackingList.add(JOHN);
         expectedCurrentCapacity = 1;
         actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
-        assertFalse(actualCurrentCapacity == 0);
+        assertNotEquals(actualCurrentCapacity, 0);
         assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
-        assertTrue(actualCurrentCapacity == 1);
+        assertEquals(actualCurrentCapacity, 1);
     }
 
     @AfterEach
