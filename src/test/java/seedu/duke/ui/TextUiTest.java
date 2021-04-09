@@ -21,15 +21,11 @@ import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
 
 public class TextUiTest {
     TextUi textUi = new TextUi();
-    private TrackingList trackingList;
 
-    @BeforeEach
-    public void initTrackingList() {
-        trackingList = new TrackingList();
-    }
 
     @Test
     public void testEmptyList() {
+        TrackingList trackingList = new TrackingList();
         int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
         assertEquals(0, actualCurrentCapacity);
     }
