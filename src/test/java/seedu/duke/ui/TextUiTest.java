@@ -33,23 +33,23 @@ public class TextUiTest {
         int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
         assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
 
-        trackingList.add(MARY);
-        expectedCurrentCapacity += 1;
-        actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
-        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
-
-        trackingList.clear();
-        expectedCurrentCapacity = 0;
-        actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
-        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
-        assertFalse(actualCurrentCapacity > 1);
-
-        trackingList.add(JOHN);
-        expectedCurrentCapacity = 1;
-        actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
-        assertNotEquals(actualCurrentCapacity, 0);
-        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
-        assertEquals(actualCurrentCapacity, 1);
+//        trackingList.add(MARY);
+//        expectedCurrentCapacity += 1;
+//        actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
+//        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
+//
+//        trackingList.clear();
+//        expectedCurrentCapacity = 0;
+//        actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
+//        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
+//        assertFalse(actualCurrentCapacity > 1);
+//
+//        trackingList.add(JOHN);
+//        expectedCurrentCapacity = 1;
+//        actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
+//        assertNotEquals(actualCurrentCapacity, 0);
+//        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
+//        assertEquals(actualCurrentCapacity, 1);
     }
 
     @AfterEach
