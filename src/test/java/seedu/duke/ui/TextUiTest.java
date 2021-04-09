@@ -27,7 +27,7 @@ public class TextUiTest {
     public void testGetCurrentCapacity() {
         trackingList.add(ALICE);
         trackingList.add(BOB);
-        int expectedCurrentCapacity = 2;
+        int expectedCurrentCapacity = 1;
 
         TextUi textUi = new TextUi();
         int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
