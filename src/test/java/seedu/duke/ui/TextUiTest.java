@@ -46,6 +46,13 @@ public class TextUiTest {
         actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
         assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
         assertFalse(actualCurrentCapacity > 1);
+
+        trackingList.add(JOHN);
+        expectedCurrentCapacity = 1;
+        actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
+        assertFalse(actualCurrentCapacity == 0);
+        assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
+        assertTrue(actualCurrentCapacity == 1);
     }
 
     @AfterEach
