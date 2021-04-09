@@ -21,6 +21,7 @@ import static seedu.duke.testutil.SamplePersons.MARY;
 public class TextUiTest {
     TextUi textUi = new TextUi();
     private TrackingList trackingList;
+    TrackingList constructedList = new TrackingList(JOHN, MARY, ALICE);
 
     @BeforeEach
     public void initTrackingList() {
@@ -29,9 +30,8 @@ public class TextUiTest {
 
     @Test
     public void testConstructor() {
-        TrackingList constructedList = new TrackingList(JOHN, MARY, ALICE);
         int actualCurrentCapacity = textUi.getCurrentCapacity(constructedList.listPerson());
-        assertTrue(actualCurrentCapacity == 3);
+        assertEquals(actualCurrentCapacity, 3);
     }
 
     @AfterEach
