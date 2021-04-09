@@ -10,6 +10,7 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 public class TextUi {
@@ -105,13 +106,16 @@ public class TextUi {
     }
 
     public int getCurrentCapacity(List<Person> persons) {
-        int count = 0;
-        for (Person p : persons) {
-            if (p.getCheckedIn()) {
-                count++;
+        AtomicInteger count = new AtomicInteger();
+        persons.forEach(
+            (person) -> {
+                if (person.getCheckedIn()) {
+                    count.getAndIncrement();
+                }
+                ;
             }
-        }
-        return count;
+        );
+        return count.get();
     }
 
     private void printPersonsInListWithoutStatus(List<Person> persons) {
