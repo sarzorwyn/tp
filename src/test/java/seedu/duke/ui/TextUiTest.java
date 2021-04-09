@@ -16,6 +16,7 @@ import static seedu.duke.testutil.SamplePersons.JOHN;
 
 public class TextUiTest {
     private TrackingList trackingList;
+    TextUi textUi = new TextUi();
 
 
     @BeforeEach
@@ -25,11 +26,8 @@ public class TextUiTest {
 
     @Test
     public void testGetCurrentCapacity() {
-        trackingList.add(ALICE);
-        trackingList.add(BOB);
-        int expectedCurrentCapacity = 1;
-
-        TextUi textUi = new TextUi();
+        TrackingList trackingList = new TrackingList(JOHN, MARY, ALICE);
+        int expectedCurrentCapacity = 3;
         int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
         assertEquals(expectedCurrentCapacity, actualCurrentCapacity);
     }
