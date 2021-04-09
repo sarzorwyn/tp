@@ -109,7 +109,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 **API** : [`seedu.cyc.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/person) package
 
 
-<img src="images/ModelComponentStructure.png" width="600" height="600" />
+![](images/ModelComponentStructure.png?raw=true "Model Component Structure")
 
 *Figure #. Structure of the Model Component*
 
