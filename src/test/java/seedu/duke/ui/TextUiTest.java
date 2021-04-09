@@ -30,10 +30,8 @@ public class TextUiTest {
     @Test
     public void testConstructor() {
         TrackingList constructedList = new TrackingList(JOHN, MARY, ALICE);
-        assertTrue(constructedList.contains(JOHN));
-        assertTrue(constructedList.contains(MARY));
-        assertTrue(constructedList.contains(ALICE));
-        assertFalse(constructedList.contains(BOB));
+        int actualCurrentCapacity = textUi.getCurrentCapacity(constructedList.listPerson());
+        assertTrue(actualCurrentCapacity == 3);
     }
 
     @AfterEach
