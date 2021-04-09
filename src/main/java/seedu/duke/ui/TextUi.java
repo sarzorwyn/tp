@@ -106,16 +106,15 @@ public class TextUi {
     }
 
     public int getCurrentCapacity(List<Person> persons) {
-        AtomicInteger count = new AtomicInteger(0);
-        persons.forEach(
-            (person) -> {
-                if (person.getCheckedIn()) {
-                    count.getAndIncrement();
-                }
-                ;
+        int count = 0;
+        int iterator = 0;
+        while (iterator < persons.size()) {
+            if (persons.get(iterator).getCheckedIn()) {
+                count++;
             }
-        );
-        return count.get();
+            iterator++;
+        }
+        return count;
     }
 
     private void printPersonsInListWithoutStatus(List<Person> persons) {
