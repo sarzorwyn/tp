@@ -126,10 +126,18 @@ Given below are my contributions to the project.
 
 * **Documentation**:
     * User Guide:
-        1) 
+        * Added documentation for `checkin` command. 
+        * Made functionality tweak descriptions to `checkin` command in V2.0.
+        * Added documentation for 'find' command.
+        * Added documentation for 'checkout' command.
+        * Tweaked command summary.
     
     * Developer Guide:
-        1) 
+        * Added architecture diagram together with description.
+        * Added target user profile to documentation.
+        * Added our product's value proposition.
+        * Added user stories to Appendix B of developer guide.
+        * Added glossary to Appendix E of developer guide.
     
 * **Community**:
     *
