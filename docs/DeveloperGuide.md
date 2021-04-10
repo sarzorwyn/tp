@@ -74,6 +74,11 @@ the command `clear`.
 ### UI component
 
 ![](images/UIComponentStructure.png?raw=true "Logic component Sequence Diagram for clear")
+*Figure #. Component architecture for UI component*
+
+
+**API** : [`seedu.duke.ui`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/ui) package
+
 The UI consists of `TextUi` class. It acts as a middleware between users' input
 and `Parser` class under **Logic Component**.
 
