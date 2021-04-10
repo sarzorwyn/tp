@@ -10,6 +10,7 @@ import java.io.PrintStream;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Logger;
 
 public class TextUi {
@@ -106,10 +107,12 @@ public class TextUi {
 
     public int getCurrentCapacity(List<Person> persons) {
         int count = 0;
-        for (Person p : persons) {
-            if (p.getCheckedIn()) {
+        int iterator = 0;
+        while (iterator < persons.size()) {
+            if (persons.get(iterator).getCheckedIn()) {
                 count++;
             }
+            iterator++;
         }
         return count;
     }
@@ -196,8 +199,6 @@ public class TextUi {
     public void notifyErrorToUser(Exception error) {
         printDivider();
         out.println(error.getMessage());
-
-        out.println(Messages.GENERAL_INPUT_ERROR);
         printDivider();
     }
 
