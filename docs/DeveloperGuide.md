@@ -37,7 +37,7 @@
 ## Design
 
 ### Architecture
-![Architecture](images/architecture.png)
+![Architecture](images/Architecture.png)
 *Figure #. Architecture Diagram*
 
 The ***Architecture Diagram*** shown above explains the high-level design of Control Your Crowd (CYC) application.
