@@ -1,7 +1,8 @@
 # Control Your Crowd - Setting up
 ## Prerequisites
 1. JDK `11` or above
-2. IntelliJ IDEA IDE
+   *  [Amazon Corretto JDK 11](https://docs.aws.amazon.com/corretto/latest/corretto-11-ug/downloads-list.html)
+2. [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) IDE
 
 ## Setting up the project on your device
 1. Fork the github repo at the following [link](https://github.com/AY2021S2-CS2113T-T09-1/tp)
