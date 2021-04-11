@@ -137,9 +137,4 @@ Given below are my contributions to the project.
         * Added user stories to Appendix B of developer guide. (#85)
         * Added glossary to Appendix E of developer guide. (#258)
         * Added non functional requirements to developer guide. (#258)
-    
-* **Community**:
-    *
-    
-* **Tools**:
-    * 
+
