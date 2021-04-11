@@ -13,8 +13,10 @@
    ![img.png](images/SettingUpDropdownMenu.png) 
      
    * Click `Edit` 
+    
   ![img.png](images/ProjectStructureEdit.png) 
    * Click `+` > `Add jdk`
+     
       ![img.png](images/img.png)
       * JDK `11` is recommended for maximum compatibility with the project.
 5. `Windows`: Open the console and run the command `gradlew processResources`
