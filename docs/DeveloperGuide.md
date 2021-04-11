@@ -34,6 +34,8 @@
 
 ## Setting up
 
+The instructions for setting up can be [found here](SettingUp.md).
+
 ## Design
 
 ### Architecture
