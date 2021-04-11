@@ -38,6 +38,7 @@
 
 ### Architecture
 ![Architecture](images/Architecture.png)
+
 *Figure #. Architecture Diagram*
 
 The ***Architecture Diagram*** shown above explains the high-level design of Control Your Crowd (CYC) application.
@@ -171,6 +172,26 @@ When a change is made by the user, `ConfigFile` will update the `settingsFile` t
 Classes used by multiple components are in the `seedu.cyc.commons` package.
 
 ## Implementation
+This section describes some significant details on how certain features are implemented.
+
+### Visitor Log feature
+
+The visitor log feature is implemented using two classes, `PersonLog` class and `LogFile` class. `PersonLog` provides
+a runtime storage while `LogFile` provides a long term storage. Only the `PersonLog` class provides the API for
+the Visitor Log feature. So, other classes should only access the `PersonLog`'s methods.
+
+#### `PersonLog`
+`PersonLog` uses a Java HashMap to store the details of a `Person` object. It uses a visitor's identification number, 
+`Id` object as a key to the HashMap.
+
+Additionally, it implements the following operations:
+* `addPerson(Person object)` - Adds a `Person` object into the HashMap.
+* `findPerson(Id obect)` - Returns a `Person` object if found.
+* `saveAllPersons()` - Saves all the visitor's information into the `LogFile`.
+* `loadAllPersons()` - Load all the visitor's information from the `LogFile`.
+
+
+
 
 ## Documentation
 
