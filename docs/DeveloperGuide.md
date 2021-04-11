@@ -40,6 +40,7 @@ The instructions for setting up can be [found here](SettingUp.md).
 
 ### Architecture
 ![Architecture](images/Architecture.png)
+
 *Figure #. Architecture Diagram*
 
 The ***Architecture Diagram*** shown above explains the high-level design of Control Your Crowd (CYC) application.
@@ -108,7 +109,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ### Model component
 
-**API** : [`seedu.cyc.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/person) package
+**API** : [`seedu.cyc.model`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/model) package
 
 
 ![](images/ModelComponentStructure.png?raw=true "Model Component Structure")
@@ -173,6 +174,49 @@ When a change is made by the user, `ConfigFile` will update the `settingsFile` t
 Classes used by multiple components are in the `seedu.cyc.commons` package.
 
 ## Implementation
+This section describes some significant details on how certain features are implemented.
+
+### Visitor Log feature
+
+The visitor log feature is implemented using two classes, `PersonLog` class and `LogFile` class. `PersonLog` provides
+a runtime storage while `LogFile` provides a long term storage. Only the `PersonLog` class provides the API for
+the Visitor Log feature. So, other classes should only access the `PersonLog`'s methods.
+
+#### PersonLog
+`PersonLog` uses a Java HashMap to store the details of a `Person` object. It uses a visitor's identification number, 
+`Id` object, as a key to the HashMap.
+
+Additionally, it implements the following operations:
+* `addPerson(Person object)` - Adds a `Person` object into the HashMap.
+* `findPerson(Id obect)` - Returns a `Person` object if found.
+* `saveAllPersons()` - Saves all the visitor's information into the `LogFile`.
+* `loadAllPersons()` - Load all the visitor's information from the `LogFile`.
+
+#### LogFile
+`LogFile` uses Google's [`Gson`](https://github.com/google/gson) Java library to convert between a `Person` object and 
+its JSON representation. It then uses a `StorageFile` object to write or load the JSON representation from the disk. 
+All the visitor details are saved in `LogFile.txt`.
+
+Additionally, it implements the following operations to be used by `PersonLog`:
+* `saveAllPersons(ArrayList<Person> object)` - Converts all the `Person` objects given into JSON representation and 
+  saves them into the disk, using a `StorageFile` object.
+* `loadAllPersons()` -  Loads the JSON representation of the `Person` objects in the disk, using a `StorageFile` object.
+  It then converts the JSON representation into `Person` objects.
+
+The following sequence diagram shows how the load all persons functionality works:
+![VisitorLogSequenceDiagram.png](images/VisitorLogSequenceDiagram.png)
+  
+#### Design Considerations
+* Alternative 1 (current choice): Save all the `Person` objects into the disk every time a new 
+  `Person` is added into the HashMap.
+  - Pros: Easy to implement.
+  - Cons: May have performance issues as it is inefficient to rewrite the entire file every time a new `Person` object 
+    is added.
+* Alternative 2: Save only the new `Person` object added into the HashMap, 
+  using append mode when writing into the file.
+  - Pros: Efficient performance
+  - Cons: Before writing a new `Peron` object into the file, need to check if the previous
+    records in the file were not tampered with.
 
 ## Documentation
 
