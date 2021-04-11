@@ -122,22 +122,21 @@ Given below are my contributions to the project.
 
     * Collaborated with the team to manage releases of V1.0, V2.0, as well as the final V2.1.
 
-* **Enhancements to existing features**:
-
 * **Documentation**:
     * User Guide:
-        * Added documentation for `checkin` command. 
-        * Made functionality tweak descriptions to `checkin` command in V2.0.
-        * Added documentation for 'find' command.
-        * Added documentation for 'checkout' command.
-        * Tweaked command summary.
+        * Added documentation for `checkin` command. (#102)
+        * Made functionality tweak descriptions to `checkin` command in V2.0. (#131, #137, #139)
+        * Added documentation for 'find' command. (#102)
+        * Added documentation for 'checkout' command. (#102)
+        * Tweaked command summary. (#102) 
     
     * Developer Guide:
-        * Added architecture diagram together with description.
-        * Added target user profile to documentation.
-        * Added our product's value proposition.
-        * Added user stories to Appendix B of developer guide.
-        * Added glossary to Appendix E of developer guide.
+        * Added architecture diagram together with description. (#182, #265)
+        * Added target user profile to documentation. (#85)
+        * Added our product's value proposition. (#85)
+        * Added user stories to Appendix B of developer guide. (#85)
+        * Added glossary to Appendix E of developer guide. (#258)
+        * Added non functional requirements to developer guide. (#258)
     
 * **Community**:
     *
