@@ -194,7 +194,7 @@ Additionally, it implements the following operations:
 `LogFile` uses Google's [`Gson`](https://github.com/google/gson) Java library to convert between a `Person` object and 
 its JSON representation. It then uses a `StorageFile` object to write or load the JSON representation from the disk. 
 All the visitor details are saved in `LogFile.txt`.
-
+![img.png](images/VisitorLogSequenceDiagram.png)
 Additionally, it implements the following operations to be used by `PersonLog`:
 * `saveAllPersons(ArrayList<Person> object)` - Converts all the `Person` objects given into JSON representation and 
   saves them into the disk, using a `StorageFile` object.
