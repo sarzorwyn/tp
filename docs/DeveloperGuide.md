@@ -107,7 +107,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ### Model component
 
-**API** : [`seedu.cyc.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/person) package
+**API** : [`seedu.cyc.model`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/model) package
 
 
 ![](images/ModelComponentStructure.png?raw=true "Model Component Structure")
@@ -194,12 +194,15 @@ Additionally, it implements the following operations:
 `LogFile` uses Google's [`Gson`](https://github.com/google/gson) Java library to convert between a `Person` object and 
 its JSON representation. It then uses a `StorageFile` object to write or load the JSON representation from the disk. 
 All the visitor details are saved in `LogFile.txt`.
-![img.png](images/VisitorLogSequenceDiagram.png)
+
 Additionally, it implements the following operations to be used by `PersonLog`:
 * `saveAllPersons(ArrayList<Person> object)` - Converts all the `Person` objects given into JSON representation and 
   saves them into the disk, using a `StorageFile` object.
 * `loadAllPersons()` -  Loads the JSON representation of the `Person` objects in the disk, using a `StorageFile` object.
   It then converts the JSON representation into `Person` objects.
+
+The following sequence diagram shows how the load all persons functionality works:
+![VisitorLogSequenceDiagram.png](images/VisitorLogSequenceDiagram.png)
   
 #### Design Considerations
 * Alternative 1 (current choice): Save all the `Person` objects into the disk every time a new 
