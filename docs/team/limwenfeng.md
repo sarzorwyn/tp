@@ -23,13 +23,26 @@ Object-oriented programming (OOP) paradigm.
 
 
 ## Contributions to the User Guide
-* Added the `UI` section's diagram and content
+* Added the `listCheckedIn` and `listall` section's content
+* Added the `History` section's content
+* Contributed towards `FAQ` section
+* Added the 'Introduction' section's content
 
 
 ## Contributions to the Developer Guide
+* Added the `UI` section's content and diagram
+* Added the `Dev Ops` section's content
+* Added the `User Stories` section's content
+* Added the `Non-Functional Requirements` section's content
 
-## Contributions to team-based tasks
+## Project Management
+* Took part in releasing v1.0, v2.0 and v2.1 of CYC
+* Took part in delegating roles in development
+* Follow the workflow cycle of creating issues and linking with pull request
 
 ## Review/mentoring contributions:
+* Reviewed teammates' PR and commented constructively with non-trivial comments
+
+
 
 ## Contributions beyond team project
