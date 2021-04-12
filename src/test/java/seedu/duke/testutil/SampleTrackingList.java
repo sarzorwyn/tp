@@ -16,7 +16,8 @@ public class SampleTrackingList {
     public static TrackingList SAMPLE_TRACKING_LIST = new TrackingList(ALICE, BOB);
     public static TrackingList SAMPLE_STORAGE_TRACKING_LIST = new TrackingList(MARY, JOHN_NO_PHONE);
     public static TrackingList SAMPLE_TRACKING_LIST_UI = new TrackingList(ALI, BALA);
-    public static TrackingList SAMPLE_TRACKING_LIST_UI_ALL_CHECKED_OUT = new TrackingList(MUTHU_CHECKED_OUT
-            ,DAVID_CHECKED_OUT);
-    public static TrackingList SAMPLE_TRACKING_LIST_UI_MIXED = new TrackingList(ALI, BALA, MUTHU_CHECKED_OUT, DAVID_CHECKED_OUT);
+    public static TrackingList SAMPLE_TRACKING_LIST_UI_ALL_CHECKED_OUT = new TrackingList(MUTHU_CHECKED_OUT,
+            DAVID_CHECKED_OUT);
+    public static TrackingList SAMPLE_TRACKING_LIST_UI_MIXED = new TrackingList(ALI, BALA, MUTHU_CHECKED_OUT,
+            DAVID_CHECKED_OUT);
 }
