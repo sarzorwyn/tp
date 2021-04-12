@@ -117,7 +117,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 
 ### 2.4 Model component
 
-![](images/ModelComponentStructure.png?raw=true "Model Component Structure")
+<img src="images/ModelComponentStructure.png" width="600" height="600" alt="Model Component Structure" />
 
 *Figure 6. Structure of the Model Component*
 
