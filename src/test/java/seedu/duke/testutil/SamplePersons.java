@@ -6,6 +6,12 @@ public class SamplePersons {
     public static final Person ALICE = new PersonBuilder().withId("665B")
             .withName("Alice").withPhone("86862540")
             .withCheckedInStatus(true).build();
+    public static final Person ALI = new PersonBuilder().withId("555B")
+            .withName("Ali").withPhone("55862540")
+            .withCheckedInStatus(true).build();
+    public static final Person BALA = new PersonBuilder().withId("888B")
+            .withName("Bala").withPhone("88888888")
+            .withCheckedInStatus(true).build();
     public static final Person BOB = new PersonBuilder().withId("126C")
             .withName("Bob").withPhone("90904040")
             .withCheckedInStatus(true).build();

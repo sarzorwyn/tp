@@ -17,7 +17,7 @@ import static seedu.duke.testutil.SamplePersons.JOHN;
 import static seedu.duke.testutil.SamplePersons.ALICE;
 import static seedu.duke.testutil.SamplePersons.BOB;
 import static seedu.duke.testutil.SamplePersons.MARY;
-import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST;
+import static seedu.duke.testutil.SampleTrackingList.SAMPLE_TRACKING_LIST_UI;
 
 public class TextUiTest {
     TextUi textUi = new TextUi();
@@ -32,9 +32,15 @@ public class TextUiTest {
 
     @Test
     public void testSampleList() {
-        TrackingList trackingList = SAMPLE_TRACKING_LIST;
+        TrackingList trackingList = SAMPLE_TRACKING_LIST_UI;
         int actualCurrentCapacity = textUi.getCurrentCapacity(trackingList.listPerson());
         assertEquals(2, actualCurrentCapacity);
+        assertFalse(actualCurrentCapacity == 1);
+    }
+
+    @AfterEach
+    public void clearList() {
+        TrackingList trackingList = new TrackingList();
     }
 
 }
