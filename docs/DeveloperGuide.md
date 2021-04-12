@@ -5,7 +5,7 @@
     * [2.1 Architecture](DeveloperGuide.md#architecture)
     * [2.2 UI component](DeveloperGuide.md#ui-component)
     * [2.3 Logic component](DeveloperGuide.md#logic-component)
-    * [2.4 Model component](DeveloperGuide.md#2.4-model-component)
+    * [2.4 Model component](DeveloperGuide.md#model-component)
     * [2.5 Storage component](DeveloperGuide.md#storage-component)
     * [2.6 Common classes](DeveloperGuide.md#common-classes)
 * [3. Implementation](DeveloperGuide.md#implementation)
