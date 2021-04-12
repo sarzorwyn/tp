@@ -1,3 +1,5 @@
+![Banner](images/github_ug_photo.png)
+
 # Control Your Crowd - Developer Guide
 
 * [1. Setting up](DeveloperGuide.md#1-setting-up)
