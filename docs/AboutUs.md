@@ -1,8 +1,3 @@
----
-layout: page
-title: About Us
----
-
 # About us
 
 Display | Name | Github Profile | Portfolio 
