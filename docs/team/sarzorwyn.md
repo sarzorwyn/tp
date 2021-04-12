@@ -40,3 +40,5 @@ Object-oriented programming (OOP) paradigm and has about 5 kLoc.
 * Some design patterns like the simpleton pattern that I suggested was adopted by other group mates ([#91](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/91))
 * Helped the team with shadow jar support when making the first release ([#56](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/56))
 * Released the first build, v1.0
+
+<div style="page-break-after: always;"></div>
