@@ -64,7 +64,7 @@ with CYC.
    
    ![QuickStart](images/welcome_message.png)
    
-6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
+6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#3--features)
    for details of each command.
    
 > Tips and Additional Notes: 
@@ -313,7 +313,7 @@ To clear history, please follow the following steps:
 **Q**: How do I transfer my data to another computer? 
 
 **A**: Please follow these steps:
-1. Follow the [Quick Start](UserGuide.md#quick-start) guide and install CYC on the computer
+1. Follow the [Quick Start](UserGuide.md#2-quick-start) guide and install CYC on the computer
 2. Transfer the `/History.txt`,`/LogFile.txt` and `/TrackingList.txt` to the target computer's main CYC folder.
 3. Start CYC and it will automatically load the data.
 
