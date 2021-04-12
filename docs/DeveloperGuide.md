@@ -251,6 +251,18 @@ choose `Run 'ABC'`.
 
 ## 6. Dev Ops
 
+### Build Automation
+
+Crowd Your Control uses Gradle for **build automation and dependency management**.
+
+
+## Continous Integration (CI)
+* Code Coverage
+
+* Repository-wide checks
+
+### Making a release
+
 ## Appendix
 
 ### Appendix A: Product scope
