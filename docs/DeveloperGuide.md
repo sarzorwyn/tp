@@ -186,7 +186,7 @@ When a change is made by the user, `ConfigFile` will update the `settingsFile` t
 
 Classes used by multiple components are in the [`seedu.duke.commons`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/commons) package.
 
-## 3 Implementation
+## 3. Implementation
 This section describes some significant details on how certain features are implemented.
 
 ### 3.1 Visitor Log feature
