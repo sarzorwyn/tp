@@ -1,23 +1,23 @@
 #Control Your Crowd - Documentation
 
 ## Maintaining Documentation
-We use [**Jekyll**](https://jekyllrb.com/) to manage documentation. 
+We use [Jekyll](https://jekyllrb.com/) to manage documentation. 
 To learn how to set it up and maintain the project website, follow the guide 
-[[se-edu/guides] **Using Jekyll for project documentation**](https://se-education.org/guides/tutorials/jekyll.html).
+[[se-edu/guides] Using Jekyll for project documentation](https://se-education.org/guides/tutorials/jekyll.html).
 
 ## Style Guidance
-* Follow the [**Google developer documentation style guide**](https://developers.google.com/style)
+* Follow the [Google developer documentation style guide](https://developers.google.com/style)
 * Also relevant is the [[se-edu/guides] Markdown coding standard](https://se-education.org/guides/conventions/markdown.html)
 
 ## Editing Diagrams
-We used [**Creately**](https://creately.com/) to create UML diagrams for the developer guide.
+We used [Creately](https://creately.com/) to create UML diagrams for the developer guide.
 > Note: Although Creately is not a completely free software, the free version provides the necessary functionalities needed
 > create diagrams for the developer guide. We chose Creately over other diagram tools such as PlantUML because 
 > it is easier to use. The workspace can also be easily shared among team members through email where the entire team
 > can edit the diagram together.
 
 ## Converting Documentation to PDF format
-We use [**Google Chrome**](https://www.google.com/chrome/) for converting documentation to PDF format.
+We use [Google Chrome](https://www.google.com/chrome/) for converting documentation to PDF format.
 > **Reason**: Chrome's PDF engine preserves hyperlinks used in Web pages.
 
 Here are the steps to convert the project documentation files to PDF format.
