@@ -38,9 +38,9 @@ public class LogFile {
     }
 
     /**
-     * saves the current list of visitors in the trackingList into Logfile.
+     * Saves the list of persons into the log file.
      *
-     * @param persons tracking list containing the current list of visitors
+     * @param persons ArrayList of persons from PersonLog containing all the visitors' information
      * @throws StorageOperationException Exception thrown if there is error with storage
      *     operation such as accessing file or creating file
      */
@@ -54,8 +54,7 @@ public class LogFile {
     }
 
     /**
-     * loads the list of visitors stored in the log file into temp tracking list.
-     * via get instance
+     * loads the list of visitors stored in the log file into PersonLog via getInstance().
      *
      * @throws StorageOperationException Exception throw if there is any error with
      *     storage operation such as accessing file or creating file
