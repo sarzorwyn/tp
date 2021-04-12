@@ -9,7 +9,7 @@ Object-oriented programming (OOP) paradigm and has about 5 kLoc.
 
 ## Summary of contributions
 * **New feature**: Added the ability to store the list.
-  * What it does: allow the user to not have to retype all the persons into the
+  * What it does: Allow the user to not have to retype all the persons into the
     program again
   * Justification: This feature improves on the product significantly as a user
     can recover from unexpected crashes without having to input all the data again.
@@ -17,6 +17,15 @@ Object-oriented programming (OOP) paradigm and has about 5 kLoc.
   * Highlights: This enhancement has to be kept up to date with the attributes of other classes.
   * Credits: AB2 address book storage implementation for regex
 * **New feature**: Added the ability to store persistent configurations
+  * What it does: The user can set program settings that will be stored
+  * Justification: The settings should persist to fit the user preferences.
+  * Highlights: Editing the file could lead to severe program malfunction and is hard to recover from.
+* **Enhancement**: Added the command to move storage location
+  * What it does: Allow the user to move the storage to a new location
+  * Justification: This feature allows the user to easily create multiple new nested folder
+  * Highlights: This enhancement does not extend to the config file as the program would not
+  where to read the main storage from
+    
 
 
 
@@ -26,12 +35,13 @@ Object-oriented programming (OOP) paradigm and has about 5 kLoc.
 * Wrote the MoveStorage Command
 * Helped to come up with a few of the user stories
 * Updated the images of the user guide to the latest version v2.1
+* Set up the general title of the guide
 
 
 ## Contributions to the Developer Guide
 * Added the storage section text under implementation
 * Added storage uml diagram, and an illustration of the storage file structure.
-* Added the setting up section
+* Added the setting up section with screenshots to follow the guide easier
 
 ## Community
 * PRs reviewed (with non-trivial review comments): [#99](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/99#discussion_r601073292),
