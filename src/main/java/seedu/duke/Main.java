@@ -28,7 +28,7 @@ import seedu.duke.ui.TextUi;
 
 public class Main {
 
-    private static final String VERSION_NO = "v2.0";
+    private static final String VERSION_NO = "v2.1";
     private static final String EXIT_MESSAGE = "Exiting Control Your Crowd...";
 
     private TextUi ui;
