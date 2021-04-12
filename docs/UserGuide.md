@@ -104,7 +104,7 @@ current venue capacity.
 
 #### Format: 
 `checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]`
-* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be an english alphabet letter in `CAPS`.
 * `NAME` is optional. If the user has checked in before, entering the `LAST_4_CHARS_OF_ID` is sufficient to retrieve the user's `NAME` and `PHONE_NUMBER` 
   from previous check in. **If the user has not checked in before, `NAME` must be entered.**
 * `NAME` must only contain english alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
