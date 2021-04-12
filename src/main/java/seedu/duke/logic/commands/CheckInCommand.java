@@ -73,7 +73,7 @@ public class CheckInCommand extends Command {
         if (nameString == null) {
             return;
         }
-        if (!toCheckin.getName().toString().equals(nameString)) {
+        if (!toCheckin.getName().toString().equalsIgnoreCase(nameString)) {
             throw new PersonNotFoundException(Messages.DIFF_NAME_SAME_ID);
         }
     }
