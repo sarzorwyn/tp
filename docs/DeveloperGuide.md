@@ -2,16 +2,16 @@
 
 * [1. Setting up](DeveloperGuide.md#1-setting-up)
 * [2. Design](DeveloperGuide.md#2-design)
-    * [2.1 Architecture](DeveloperGuide.md#architecture)
-    * [2.2 UI component](DeveloperGuide.md#ui-component)
-    * [2.3 Logic component](DeveloperGuide.md#logic-component)
-    * [2.4 Model component](DeveloperGuide.md#model-component)
-    * [2.5 Storage component](DeveloperGuide.md#storage-component)
-    * [2.6 Common classes](DeveloperGuide.md#common-classes)
-* [3. Implementation](DeveloperGuide.md#implementation)
-* [4. Documentation](DeveloperGuide.md#documentation)
-* [5. Testing](DeveloperGuide.md#testing)
-* [6. Dev Ops](DeveloperGuide.md#dev-ops)
+    * [2.1 Architecture](DeveloperGuide.md#21-architecture)
+    * [2.2 UI component](DeveloperGuide.md#22-ui-component)
+    * [2.3 Logic component](DeveloperGuide.md#23-logic-component)
+    * [2.4 Model component](DeveloperGuide.md#24-model-component)
+    * [2.5 Storage component](DeveloperGuide.md#25-storage-component)
+    * [2.6 Common classes](DeveloperGuide.md#26-common-classes)
+* [3. Implementation](DeveloperGuide.md#3-implementation)
+* [4. Documentation](DeveloperGuide.md#4-documentation)
+* [5. Testing](DeveloperGuide.md#5-testing)
+* [6. Dev Ops](DeveloperGuide.md#6-dev-ops)
 * [Appendix](DeveloperGuide.md#appendix)
     * [Appendix A: Product Scope](DeveloperGuide.md#appendix-a-product-scope)
         * [Target user profile](DeveloperGuide.md#target-user-profile)
@@ -182,20 +182,20 @@ Another file, `settingsFile` is read by `ConfigFile` when the program is started
 to load the settings into the program memory.
 When a change is made by the user, `ConfigFile` will update the `settingsFile` through a save function.
 
-### Common classes
+### 2.6 Common classes
 
 Classes used by multiple components are in the [`seedu.duke.commons`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/commons) package.
 
-## Implementation
+## 3 Implementation
 This section describes some significant details on how certain features are implemented.
 
-### Visitor Log feature
+### 3.1 Visitor Log feature
 
 The visitor log feature is implemented using two classes, `PersonLog` class and `LogFile` class. `PersonLog` provides
 a runtime storage while `LogFile` provides a long term storage. Only the `PersonLog` class provides the API for
 the Visitor Log feature. So, other classes should only access the `PersonLog`'s methods.
 
-#### PersonLog
+#### 3.1.1 PersonLog
 `PersonLog` uses a Java HashMap to store the details of a `Person` object. It uses a visitor's identification number, 
 `Id` object, as a key to the HashMap.
 
@@ -205,7 +205,7 @@ Additionally, it implements the following operations:
 * `saveAllPersons()` - Saves all the visitor's information into the `LogFile`.
 * `loadAllPersons()` - Load all the visitor's information from the `LogFile`.
 
-#### LogFile
+#### 3.1.2 LogFile
 `LogFile` uses Google's [`Gson`](https://github.com/google/gson) Java library to convert between a `Person` object and 
 its JSON representation. It then uses a `StorageFile` object to write or load the JSON representation from the disk. 
 All the visitor details are saved in `LogFile.txt`.
@@ -222,7 +222,7 @@ The following sequence diagram shows how loading all the visitor's information f
 
 *Figure 9. Component interactions for `loadAllPersons()`*
 
-#### Design Considerations
+#### 3.1.3 Design Considerations
 * Alternative 1 (current choice): Save all the `Person` objects into the disk every time a new 
   `Person` is added into the HashMap.
   - Pros: Easy to implement.
@@ -234,11 +234,11 @@ The following sequence diagram shows how loading all the visitor's information f
   - Cons: Before writing a new `Peron` object into the file, need to check if the previous
     records in the file were not tampered with.
 
-## Documentation
+## 4. Documentation
 
-## Testing
+## 5. Testing
 
-## Dev Ops
+## 6. Dev Ops
 
 ## Appendix
 
