@@ -1,17 +1,17 @@
 # Control Your Crowd - Developer Guide
 
-* [Setting up](DeveloperGuide.md#setting-up)
-* [Design](DeveloperGuide.md#design)
-    * [Architecture](DeveloperGuide.md#architecture)
-    * [UI component](DeveloperGuide.md#ui-component)
-    * [Logic component](DeveloperGuide.md#logic-component)
-    * [Model component](DeveloperGuide.md#model-component)
-    * [Storage component](DeveloperGuide.md#storage-component)
-    * [Common classes](DeveloperGuide.md#common-classes)
-* [Implementation](DeveloperGuide.md#implementation)
-* [Documentation](DeveloperGuide.md#documentation)
-* [Testing](DeveloperGuide.md#testing)
-* [Dev Ops](DeveloperGuide.md#dev-ops)
+* [1. Setting up](DeveloperGuide.md#setting-up)
+* [2. Design](DeveloperGuide.md#design)
+    * [2.1 Architecture](DeveloperGuide.md#architecture)
+    * [2.2 UI component](DeveloperGuide.md#ui-component)
+    * [2.3 Logic component](DeveloperGuide.md#logic-component)
+    * [2.4 Model component](DeveloperGuide.md#model-component)
+    * [2.5 Storage component](DeveloperGuide.md#storage-component)
+    * [2.6 Common classes](DeveloperGuide.md#common-classes)
+* [3. Implementation](DeveloperGuide.md#implementation)
+* [4. Documentation](DeveloperGuide.md#documentation)
+* [5. Testing](DeveloperGuide.md#testing)
+* [6. Dev Ops](DeveloperGuide.md#dev-ops)
 * [Appendix](DeveloperGuide.md#appendix)
     * [Appendix A: Product Scope](DeveloperGuide.md#appendix-a-product-scope)
         * [Target user profile](DeveloperGuide.md#target-user-profile)
@@ -32,16 +32,16 @@
         * [Moving storage location](DeveloperGuide.md#moving-storage-location)
         * [Exiting CYC](DeveloperGuide.md#exiting-cyc)
 
-## Setting up
+## 1. Setting up
 
 The instructions for setting up can be [found here](SettingUp.md).
 
-## Design
+## 2. Design
 
-### Architecture
+### 2.1 Architecture
 ![Architecture](images/Architecture.png)
 
-*Figure #. Architecture Diagram*
+*Figure 1. Architecture Diagram*
 
 The ***Architecture Diagram*** shown above explains the high-level design of Control Your Crowd (CYC) application.
 Below is a quick overview of each component.
@@ -72,11 +72,17 @@ The *Sequence Diagram* below shows how the components interact with each other f
 the command `clear`.
 
 ![](images/ComponentsInteractionsDiagram.png?raw=true "Component interactions for clear command")
-*Figure #. Component interactions for `clear` command*
 
-### UI component
+*Figure 2. Component interactions for `clear` command*
+
+### 2.2 UI component
 
 ![](images/UIComponentStructure.png?raw=true "Logic component Sequence Diagram for clear")
+
+*Figure 3. Structure of the UI component*
+
+**API** : [`seedu.duke.ui`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/ui) package
+
 The UI consists of `TextUi` class. It acts as a middleware between users' input
 and `Parser` class under **Logic Component**.
 
@@ -87,10 +93,11 @@ The `UI` component,
 * After the **Logic Component** has executed the function, it will then return `CommandOutput` object
   which contains the outcome of the execution, fail or succeed.
 
-### Logic component
+### 2.3 Logic component
 
 ![](images/LogicComponentStructure.png?raw=true "Structure of Logic Component")
-*Figure #. Structure of the Logic Component*
+
+*Figure 4. Structure of the Logic Component*
 
 **API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package
 
@@ -105,16 +112,16 @@ The Logic component,
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `parseCommand("clear)"` API call.
 
 ![](images/LogicComponentSequenceDiagram.png?raw=true "Logic component Sequence Diagram for clear")
-*Figure #. Interactions Inside the Logic Component for the `clear` Command*
 
-### Model component
+*Figure 5. Interactions Inside the Logic Component for the `clear` Command*
 
-**API** : [`seedu.cyc.model`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/model) package
-
+### 2.4 Model component
 
 ![](images/ModelComponentStructure.png?raw=true "Model Component Structure")
 
-*Figure #. Structure of the Model Component*
+*Figure 6. Structure of the Model Component*
+
+**API** : [`seedu.duke.model`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/model) package
 
 The Model component,
 
@@ -128,9 +135,13 @@ A `Person` object contains:
 * a `Phone` object
 
 
-### Storage component
-**API** : [`seedu.cyc.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/storage) package
+### 2.5 Storage component
+
 ![](images/storage_module.png?raw=true "Storage Module diagram")
+
+*Figure 7. Structure of the Storage Component*
+
+**API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
 
 The `Storage` component,
 * saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
@@ -150,6 +161,8 @@ As the name suggests, `TrackingListDecoder` achieves the reverse by taking the f
 and interprets the file to be loaded into the memory as a `TrackingList`.
 
 ![](images/storage_pathdir.png?raw=true "Storage Module file structure")
+
+*Figure 8. Illustration of Storage Structure*
 
 `StoredTrackingList` is the `.txt` file stored in the same directory as the program.
 The location is determined by the `ConfigFile` class.
@@ -171,7 +184,7 @@ When a change is made by the user, `ConfigFile` will update the `settingsFile` t
 
 ### Common classes
 
-Classes used by multiple components are in the `seedu.cyc.commons` package.
+Classes used by multiple components are in the [`seedu.duke.commons`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/commons) package.
 
 ## Implementation
 This section describes some significant details on how certain features are implemented.
@@ -203,9 +216,12 @@ Additionally, it implements the following operations to be used by `PersonLog`:
 * `loadAllPersons()` -  Loads the JSON representation of the `Person` objects in the disk, using a `StorageFile` object.
   It then converts the JSON representation into `Person` objects.
 
-The following sequence diagram shows how the load all persons functionality works:
+The following sequence diagram shows how loading all the visitor's information from storage functionality works:
+
 ![VisitorLogSequenceDiagram.png](images/VisitorLogSequenceDiagram.png)
-  
+
+*Figure 9. Component interactions for `loadAllPersons()`*
+
 #### Design Considerations
 * Alternative 1 (current choice): Save all the `Person` objects into the disk every time a new 
   `Person` is added into the HashMap.
