@@ -31,6 +31,14 @@ public class Location {
         return maxCapacity;
     }
 
+    /**
+     * Sets the maximum capacity of the current location.
+     *
+     * @param maxCapacity New maximum capacity of the location
+     * @param currentCapacity The number of visitors currently checked in
+     * @throws InvalidMaxCapacityException Exception thrown if maxCapacity is less than
+     *      the number of people currently checked in
+     */
     public void setMaxCapacity(int maxCapacity, int currentCapacity) throws InvalidMaxCapacityException {
 
         if (this.maxCapacity < currentCapacity) { // If max capacity not initialised
