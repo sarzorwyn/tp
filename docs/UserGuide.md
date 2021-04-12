@@ -62,7 +62,7 @@ with CYC.
 5. If the setup is correct, you should see CYC being loaded as shown below (note: your version of CYC would be the 
    latest version).
    
-   ![QuickStart](images/welcomemessage.png)
+   ![QuickStart](images/welcome_message.png)
    
 6. Input the command in the command window and press Enter to execute it. Refer to [Features](UserGuide.md#features)
    for details of each command.
