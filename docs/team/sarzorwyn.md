@@ -33,8 +33,9 @@ Object-oriented programming (OOP) paradigm and has about 5 kLoc.
 * Added the setting up section
 
 ## Community
-* PRs reviewed (with non-trival review comments): [#99](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/99#discussion_r601073292),
+* PRs reviewed (with non-trivial review comments): [#99](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/99#discussion_r601073292),
 [#109](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/109#discussion_r602465244), [#152](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/152#discussion_r602861542),
   [#260](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/260#discussion_r610393352)
 * Some design patterns like the simpleton pattern that I suggested was adopted by other group mates ([#91](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/91))
 * Helped the team with shadow jar support when making the first release ([#56](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/56))
+* Released the first build, v1.0
