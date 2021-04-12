@@ -3,7 +3,7 @@ layout: page
 title: Hussain's CYC Project Portfolio Page
 ---
 
-### Project: Control Your Crowd
+## Project: Control Your Crowd
 
 Control Your Crowd (CYC) is a desktop application used for managing crowd levels at any location or events. 
 The user interacts with it using a Command Line Interface (CLI). It is written in Java using the 
