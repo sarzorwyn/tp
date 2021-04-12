@@ -45,7 +45,7 @@ public class ConfigFile {
     }
 
     /**
-     * Saves the config file to the disk using the properties class
+     * Saves the config file to the disk using the properties class.
      * @throws StorageOperationException If there is an error writing to config file
      */
     private void save() throws StorageOperationException {
