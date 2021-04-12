@@ -30,7 +30,7 @@ Object-oriented programming (OOP) paradigm.
 
 
 ## Contributions to the Developer Guide
-* Added the `UI` section's content and diagram
+* Added the `UI` section's content and uml diagram
 * Added the `Dev Ops` section's content
 * Added the `User Stories` section's content
 * Added the `Non-Functional Requirements` section's content
@@ -40,9 +40,10 @@ Object-oriented programming (OOP) paradigm.
 * Took part in delegating roles in development
 * Follow the workflow cycle of creating issues and linking with pull request
 
-## Review/mentoring contributions:
+## Community:
 * Reviewed teammates' PR and commented constructively with non-trivial comments
+  * [#255](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/255#discussion_r609203974)
+  * [#282](https://github.com/AY2021S2-CS2113T-T09-1/tp/pull/282#discussion_r609203974)
+* Helped the team to integrate Creately: Chart, Diagram & Visual Workspace Software
+* Came up with the product name, CYC, Control Your Crowd
 
-
-
-## Contributions beyond team project
