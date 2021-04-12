@@ -40,7 +40,7 @@ Graphical User Interface (GUI) applications can offer. GUI applications
 allow the user to interact with the application through graphical icons such as buttons and clickable.
 
 
-Jump to [Quick Start](UserGuide.md#quick-start) to learn how to manage your crowd efficiently
+Jump to [Quick Start](UserGuide.md#2-quick-start) to learn how to manage your crowd efficiently
 with CYC.
 
 ## 2. Quick Start
