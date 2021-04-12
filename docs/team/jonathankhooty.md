@@ -71,7 +71,8 @@ Given below are my contributions to the project.
     * Highlights: This search functionality allows for users to pull up the status of the user. Checks has to be
     made, to ensure that the ID entered by the user is a valid ID.
       
-* **New Feature**: Parsing for clearing of log entries.
+* **New Feature**: Parsing for miscellaneous functions such as clearing of log entries,
+editing of maximum venue capacity, help funcion, storage moving function and exit function.
 
     * What it does: Processes and parses user input, to identify if user is entering
       correct details.
@@ -80,39 +81,6 @@ Given below are my contributions to the project.
     that the user's input goes through. Invalid commands must be able to be filtered out, as well as separation
     of usable information, and those that are not.   
 
-* **New Feature**: Parsing for editing of maximum venue capacity.
-
-    * What it does: Processes and parses user input, to set the maximum venue capacity determined by user.
-
-    * Justification: This feature is crucial to the product since it is the first layer of filtering
-      that the user's input goes through. Invalid commands must be able to be filtered out, as well as separation
-      of usable information, and those that are not.
-
-
-* **New Feature**: Parsing for help functionality.
-
-    * What it does: Processes and parses user input, to display the help menu for user.
-
-    * Justification: This feature is crucial to the product since it is the first layer of filtering
-      that the user's input goes through. Invalid commands must be able to be filtered out, as well as separation
-      of usable information, and those that are not.
-
-* **New Feature**: Parsing for storage moving functionality.
-
-    * What it does: Processes and parses user input, to set the local log storage address.
-
-    * Justification: This feature is crucial to the product since it is the first layer of filtering
-      that the user's input goes through. Invalid commands must be able to be filtered out, as well as separation
-      of usable information, and those that are not.
-
-* **New Feature**: Parsing for functionality to exit CYC.
-
-    * What it does: Processes and parses user input, to allow for shutdown and exit of CYC in a safe manner
-    that prevents data loss.
-
-    * Justification: This feature is crucial to the product since it is the first layer of filtering
-      that the user's input goes through. Invalid commands must be able to be filtered out, as well as separation
-      of usable information, and those that are not.
 
 * **Code contributed**:
 
