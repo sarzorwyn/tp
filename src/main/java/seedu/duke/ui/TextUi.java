@@ -110,6 +110,7 @@ public class TextUi {
         int iterator = 0;
         while (iterator < persons.size()) {
             if (persons.get(iterator).getCheckedIn()) {
+                out.println("Checked in.");
                 count++;
             }
             iterator++;
