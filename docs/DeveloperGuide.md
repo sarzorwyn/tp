@@ -241,6 +241,12 @@ Refer to the Documentation Guide [here](DocumentationGuide.md).
 
 ## 5. Testing
 
+### Using IntelliJ JUnit test runner
+* To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`
+* To run a subset of tests, you can right click on a test package, test class, or a test, and
+choose `Run 'ABC'`.
+
+
 ## 6. Dev Ops
 
 ## Appendix
