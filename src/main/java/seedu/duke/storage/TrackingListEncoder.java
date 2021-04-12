@@ -17,6 +17,7 @@ public class TrackingListEncoder {
 
     /**
      * Encodes all Person in given trackingList to a list of encoded string for storage.
+     *
      * @param trackingList List of Persons to be encoded
      * @return Encoded list of Persons
      */

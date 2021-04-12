@@ -54,7 +54,7 @@ public class LogFile {
     }
 
     /**
-     * loads the list of visitors stored in the log file into PersonLog via getInstance().
+     * Loads the list of visitors stored in the log file into PersonLog via getInstance().
      *
      * @throws StorageOperationException Exception throw if there is any error with
      *     storage operation such as accessing file or creating file
