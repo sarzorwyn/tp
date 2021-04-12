@@ -104,10 +104,10 @@ current venue capacity.
 
 #### Format: 
 `checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]`
-* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be an english alphabet letter in `CAPS`.
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be an English alphabet letter.
 * `NAME` is optional. If the user has checked in before, entering the `LAST_4_CHARS_OF_ID` is sufficient to retrieve the user's `NAME` and `PHONE_NUMBER` 
   from previous check in. **If the user has not checked in before, `NAME` must be entered.**
-* `NAME` must only contain english alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
+* `NAME` must only contain English alphabet letters and empty spaces with a maximum character limit of 30. Any other characters will not be accepted.
 * `PHONE_NUMBER` is optional. `PHONE_NUMBER` must consist of 8 integers, as per local (Singapore) phone number format.
 
 Supposedly John is a new visitor and he wants to check in. Since it is his first time visiting, you should check in John using his
@@ -129,11 +129,6 @@ For both new visitor and returning visitor, you should observe the following out
 However, you should expect the following output when the maximum capacity is reached.
 
 ![checkin_fail](images/checkinFail.png)
-
-> Additional Note:
-> * If you attempt to check in a visitor who has already checked in, CYC will display the success message.
->   * If you want to find out if a particular visitor has been checked in, you can use `find i/LAST_4_CHARS_OF_ID`.
->     You can click [here](UserGuide.md#finding-a-person-by-id-number-find) to learn more about that command.
  
 ### 3.3 Listing all persons: listall
 
@@ -175,7 +170,7 @@ Given the person's last 4 characters of ID, we can find the details of the perso
 
 #### Format: `find i/LAST_4_CHARS_OF_ID`
 
-* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be an English alphabet letter.
     
 #### Example input: `find i/123A`
 
@@ -191,7 +186,7 @@ list in CYC. However, person's particulars will be retained for a faster
 check in the following visit.
 
 #### Format: `checkout i/LAST_4_CHARS_OF_ID`
-* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be in `CAPS`.
+* First 3 characters of `LAST_4_CHARS_OF_ID` should be integers.  Last character of `LAST_4_CHARS_OF_ID` must be an English alphabet letter.
 * `checkout` only accepts 1 `i/` flag, with the last 4 characters of ID. 
 
 #### Example input: `checkout i/123A`
@@ -299,10 +294,10 @@ Users, such as event organiser or mall owners, could therefore study these data 
 upgrade of facilities. History data is also stored in CSV format, comma separated values such that it can be 
 extracted and cleaned to use for automatic data analytics.
 
-### Saving history
+#### Saving history
 The program automatically saves the history to 'history.txt' file after each checkin and checkout operation.
 
-### Clearing history
+#### Clearing history
 
 In the unlikely event that, your machine runs out of storage space or you want to reset
 the history. You can follow these steps, to clear history.
