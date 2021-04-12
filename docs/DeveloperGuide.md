@@ -316,10 +316,10 @@ and no wireless transfer is allowed.
 ### Appendix E: Glossary
 [WIP]
 
-###A:
-###B:
+### A:
+### B:
 **Bug**: *See defect*
-###C:
+### C:
 **Change log**: An official document containing the list of all Change Requests submitted.
 
 **Class**: A  class  describes  a set  of  objects  that  share  the  same  specifications  of  features,  
@@ -330,7 +330,7 @@ system's  classes,  their  attributes,  operations  (or  methods),  and  the  re
 
 **Customer**: Current  or  potential  buyer  or  user  of  the  products  or  service  of  an  individual  
 or organization, called the supplier, seller, or vendor.
-###D:
+### D:
 **Defect**: A flaw in a component or system that can cause the component or system to fail to
 perform its required function, e.g. an incorrect  statement or data definition.
 A defect,  if encountered during execution, may cause a failure of the component or system
@@ -339,7 +339,7 @@ A defect,  if encountered during execution, may cause a failure of the component
 another  set  of components, or one set of requirements or other artifacts on another set
 
 **Deployment diagram**: In UML a diagram that shows the execution architecture of systems
-###E:
+### E:
 
 **Efficiency**: The capability of the software product
 to provide appropriate performance,relative to the amount of resources used under stated conditions [ISO/IEC 25000].
@@ -348,32 +348,32 @@ to provide appropriate performance,relative to the amount of resources used unde
 
 **Exception handling**: Behavior of a component or system in response to erroneous input,
 from either a human user or from another component or system, or to an internal failure.
-###F:
+### F:
 
 **Function**: A description  of“what” a system does. A function has a corresponding implied purpose and  is  a  fundamental  part  of  a  system  description:  a  system  consists  of  function  attributes,
 performance  attributes,resource  (cost)  attributes  and  design  attributes.  All  attributes  exist  with respect to defined specified conditions. A function can often be decomposed into a hierarchical set of sub-functions [TGilb].
 
 **Functionality**: The  capability  of  the  software  product  to  provide  functions  which  meet  statedand implied needs when the software is used under specified conditions[ISO/IEC 25000].
-###G:
+### G:
 **Goal**: A desired state or result of an undertaken. Goals should be measurable and defined in time so that the progress can be monitored.
-###H:
+### H:
 
 **High-level**: A  position  in  a hierarchy of  defined  system  components, which  is  closer  to  the  top than the bottom, relative to the total defined set of those components [TGilb]
-###I:
+### I:
 
 **Input**: A variable (whether stored within a component or outside) that is read by a component.
 
 **Input value**: An instance of an input. *See also input.*
-###J:
-###K:
-###L:
-###M:
+### J:
+### K:
+### L:
+### M:
 **Maintenance**: Modification  of  a  software  product  after  delivery  to  correct  defects,
 to  improve performance or other attributes, or to adapt the product to a modified environment [IEEE 1219].
 
 **Milestone**: A  point  in  time  in  a  project  at  which  defined  (intermediate)  deliverables  and  results should be ready.
-###N:
-###O:
+### N:
+### O:
 **Object**: In OOAD an instance of a class.
 
 **Object  diagram**: In  UML  a  diagramthat  depicts  objects  and  their
@@ -393,7 +393,7 @@ OOA applies object-modeling  techniques  to  analyze  the  functional  requireme
 **Output**: A variable (whether stored within a component or outside) that is written by a component.
 
 
-###P:
+### P:
 
 **Performance**: The  degree  to  which  a  system  or  component  accomplishes  its  designated functions within
 given   constraints  regarding   processing   time   and   through put   rate   [IEEE 610].
@@ -419,13 +419,13 @@ They affect quality of the product.
 including the constraints of time, cost and resources [ISO 9000]
 
 
-###Q:
+### Q:
 
 **Quality**: The degree to which a component, system or process meets specified requirements and/or user/customer
 needs and expectations [IEEE 610]
 
 
-###R:
+### R:
 
 **Release**: A version of the solution released for installation and use by the customer/end users.
 
@@ -440,7 +440,7 @@ Examples include management review, informal review, technical review, inspectio
 **Reviewer**: The person involved in the review  that identifies and describes  anomalies  in the product or project under review. Reviewers can be chosen to represent different viewpoints and roles in the review process.
 
 
-###S:
+### S:
 
 **Security**: Attributes  of  software  products  that  bear on  its  ability  to  prevent  unauthorized
 access, whether accidental or deliberate, to programs and data [ISO/IEC 25000].  See also *Functionality.*
@@ -473,7 +473,7 @@ are irrespective  of  time.This  includes  class,  composite  structure,  compon
 **System**: A  collection  of  components  organized  to  accomplish  a  specific  function  or  set  of  functions [IEEE 610].
 
 
-###T:
+### T:
 
 **Testability**: The capability of the software product to enable modified software to be tested [ISO/IEC 25000].
 See also *Maintainability.*
@@ -481,7 +481,7 @@ See also *Maintainability.*
 **Timing diagram**: In  UML  a  diagram  that  depicts  the  change  in  state  or  condition  of  a  classifier instance or role over time.
 
 
-###U:
+### U:
 
 **UML**: see Unified Modeling Language.
 
@@ -492,22 +492,15 @@ class diagrams and many more.
 **User**: A person who uses a software product.
 
 
-###V:
+### V:
 
 **Version**: A specific form or variation of something.
 
 
-###W:
-###X:
-###Y:
-###Z:
-
-
-
-
-
-
-
+### W:
+### X:
+### Y:
+### Z:
 
 ### Appendix F: Instructions for manual testing
 Given below are instructions to test CYC manually.
@@ -692,4 +685,4 @@ Given below are instructions to test CYC manually.
 1. Exit
     1. **Test case:** `exit`
         
-        **Expected** A exit message will be shown.
+        **Expected:** A exit message will be shown.
