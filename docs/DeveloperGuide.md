@@ -236,6 +236,8 @@ The following sequence diagram shows how loading all the visitor's information f
 
 ## 4. Documentation
 
+Refer to the Documentation Guide [here](DocumentationGuide.md).
+
 ## 5. Testing
 
 ## 6. Dev Ops
