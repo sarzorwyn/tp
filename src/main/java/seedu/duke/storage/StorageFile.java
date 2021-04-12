@@ -42,6 +42,7 @@ public class StorageFile {
 
     /**
      * Creates Storage file with given file path.
+     *
      * @param path The path that will be used for storage
      * @throws InvalidPathException If the path specified is invalid
      */
@@ -69,6 +70,7 @@ public class StorageFile {
 
     /**
      * Loads {@code TrackingList} data from this storage file and returns it.
+     *
      * @throws StorageOperationException If there were errors reading the file
      */
     public TrackingList load() throws StorageOperationException {
@@ -90,6 +92,7 @@ public class StorageFile {
 
     /**
      * Loads {@code TrackingList} data to this storage file.
+     *
      * @param trackingList The tracking list being saved to storage
      * @throws StorageOperationException If there is errors storing into file.
      */
@@ -104,6 +107,7 @@ public class StorageFile {
 
     /**
      * Writes the log details into the log file.
+     *
      * @param jsonLog json formatted log strings to be written
      * @throws StorageOperationException If there is error writing to the log file
      */
@@ -117,6 +121,7 @@ public class StorageFile {
 
     /**
      * Reads from the log file, creates it if it does not exist.
+     *
      * @return A list of strings read from the log file
      * @throws StorageOperationException If there is error reading from the log file
      */

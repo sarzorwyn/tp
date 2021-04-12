@@ -34,6 +34,7 @@ public class TrackingList {
 
     /**
      * Constructs a person list with given persons in a collection.
+     *
      * @param persons a collection of persons
      */
     public TrackingList(Collection<Person> persons) {
@@ -42,6 +43,7 @@ public class TrackingList {
 
     /**
      * Checks if a list contains the person in given argument.
+     *
      * @param personToCheck Person to check if contained in personList
      * @return True if personList contains Person, False if personList does not contains Person
      */
@@ -89,6 +91,7 @@ public class TrackingList {
 
     /**
      * Finds Person with exact match as id queried.
+     *
      * @param id id being queried
      * @return Person that exactly matches id
      * @throws PersonNotFoundException if no person has queried id
@@ -110,6 +113,7 @@ public class TrackingList {
 
     /**
      * Finds Person with partial match as phone queried.
+     *
      * @param phone Phone being queried
      * @return Person that partially matches phone
      * @throws PersonNotFoundException if no person has queried id
@@ -130,6 +134,7 @@ public class TrackingList {
 
     /**
      * Finds Person with partial match as name queried.
+     *
      * @param name Name being queried
      * @return Person that partially matches name
      * @throws PersonNotFoundException if no person has queried id
@@ -150,6 +155,7 @@ public class TrackingList {
 
     /**
      * Finds the current capacity at the venue.
+     *
      * @return current capacity
      */
     public int getCurrentCapacity() {
