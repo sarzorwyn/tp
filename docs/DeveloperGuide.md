@@ -1,7 +1,7 @@
 # Control Your Crowd - Developer Guide
 
-* [1. Setting up](DeveloperGuide.md#setting-up)
-* [2. Design](DeveloperGuide.md#design)
+* [1. Setting up](DeveloperGuide.md#1-setting-up)
+* [2. Design](DeveloperGuide.md#2-design)
     * [2.1 Architecture](DeveloperGuide.md#architecture)
     * [2.2 UI component](DeveloperGuide.md#ui-component)
     * [2.3 Logic component](DeveloperGuide.md#logic-component)
