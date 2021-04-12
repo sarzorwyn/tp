@@ -44,6 +44,11 @@ public class ConfigFile {
         }
     }
 
+    /**
+     * Saves the config file to the disk using the properties class.
+     *
+     * @throws StorageOperationException If there is an error writing to config file
+     */
     private void save() throws StorageOperationException {
         File file = new File(configPath);
         try {
@@ -62,6 +67,7 @@ public class ConfigFile {
 
     /**
      * Sets the storage file path and saves it into the config file.
+     *
      * @param storageFilePath The new path which the storage file will be saved at
      * @throws StorageOperationException If there is an error writing to config file
      */

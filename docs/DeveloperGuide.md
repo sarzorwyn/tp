@@ -1,17 +1,17 @@
 # Control Your Crowd - Developer Guide
 
-* [Setting up](DeveloperGuide.md#setting-up)
-* [Design](DeveloperGuide.md#design)
-    * [Architecture](DeveloperGuide.md#architecture)
-    * [UI component](DeveloperGuide.md#ui-component)
-    * [Logic component](DeveloperGuide.md#logic-component)
-    * [Model component](DeveloperGuide.md#model-component)
-    * [Storage component](DeveloperGuide.md#storage-component)
-    * [Common classes](DeveloperGuide.md#common-classes)
-* [Implementation](DeveloperGuide.md#implementation)
-* [Documentation](DeveloperGuide.md#documentation)
-* [Testing](DeveloperGuide.md#testing)
-* [Dev Ops](DeveloperGuide.md#dev-ops)
+* [1. Setting up](DeveloperGuide.md#1-setting-up)
+* [2. Design](DeveloperGuide.md#2-design)
+    * [2.1 Architecture](DeveloperGuide.md#21-architecture)
+    * [2.2 UI component](DeveloperGuide.md#22-ui-component)
+    * [2.3 Logic component](DeveloperGuide.md#23-logic-component)
+    * [2.4 Model component](DeveloperGuide.md#24-model-component)
+    * [2.5 Storage component](DeveloperGuide.md#25-storage-component)
+    * [2.6 Common classes](DeveloperGuide.md#26-common-classes)
+* [3. Implementation](DeveloperGuide.md#3-implementation)
+* [4. Documentation](DeveloperGuide.md#4-documentation)
+* [5. Testing](DeveloperGuide.md#5-testing)
+* [6. Dev Ops](DeveloperGuide.md#6-dev-ops)
 * [Appendix](DeveloperGuide.md#appendix)
     * [Appendix A: Product Scope](DeveloperGuide.md#appendix-a-product-scope)
         * [Target user profile](DeveloperGuide.md#target-user-profile)
@@ -32,15 +32,16 @@
         * [Moving storage location](DeveloperGuide.md#moving-storage-location)
         * [Exiting CYC](DeveloperGuide.md#exiting-cyc)
 
-## Setting up
+## 1. Setting up
 
 The instructions for setting up can be [found here](SettingUp.md).
 
-## Design
+## 2. Design
 
-### Architecture
+### 2.1 Architecture
 ![Architecture](images/Architecture.png)
-*Figure #. Architecture Diagram*
+
+*Figure 1. Architecture Diagram*
 
 The ***Architecture Diagram*** shown above explains the high-level design of Control Your Crowd (CYC) application.
 Below is a quick overview of each component.
@@ -71,11 +72,18 @@ The *Sequence Diagram* below shows how the components interact with each other f
 the command `clear`.
 
 ![](images/ComponentsInteractionsDiagram.png?raw=true "Component interactions for clear command")
-*Figure #. Component interactions for `clear` command*
 
-### UI component
+*Figure 2. Component interactions for `clear` command*
+
+### 2.2 UI component
 
 ![](images/UIComponentStructure.png?raw=true "Logic component Sequence Diagram for clear")
+
+*Figure 3. Structure of UI component*
+
+
+**API** : [`seedu.duke.ui`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/ui) package
+
 The UI consists of `TextUi` class. It acts as a middleware between users' input
 and `Parser` class under **Logic Component**.
 
@@ -86,10 +94,11 @@ The `UI` component,
 * After the **Logic Component** has executed the function, it will then return `CommandOutput` object
   which contains the outcome of the execution, fail or succeed.
 
-### Logic component
+### 2.3 Logic component
 
 ![](images/LogicComponentStructure.png?raw=true "Structure of Logic Component")
-*Figure #. Structure of the Logic Component*
+
+*Figure 4. Structure of the Logic Component*
 
 **API** : [`seedu.duke.logic`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/logic) package
 
@@ -104,16 +113,16 @@ The Logic component,
 Given below is the Sequence Diagram for interactions within the `Logic` component for the `parseCommand("clear)"` API call.
 
 ![](images/LogicComponentSequenceDiagram.png?raw=true "Logic component Sequence Diagram for clear")
-*Figure #. Interactions Inside the Logic Component for the `clear` Command*
 
-### Model component
+*Figure 5. Interactions Inside the Logic Component for the `clear` Command*
 
-**API** : [`seedu.cyc.person`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/person) package
+### 2.4 Model component
 
+<img src="images/ModelComponentStructure.png" width="600" height="600" alt="Model Component Structure" />
 
-![](images/ModelComponentStructure.png?raw=true "Model Component Structure")
+*Figure 6. Structure of the Model Component*
 
-*Figure #. Structure of the Model Component*
+**API** : [`seedu.duke.model`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/model) package
 
 The Model component,
 
@@ -127,9 +136,13 @@ A `Person` object contains:
 * a `Phone` object
 
 
-### Storage component
-**API** : [`seedu.cyc.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/cyc/storage) package
+### 2.5 Storage component
+
 ![](images/storage_module.png?raw=true "Storage Module diagram")
+
+*Figure 7. Structure of the Storage Component*
+
+**API** : [`seedu.duke.storage`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/storage) package
 
 The `Storage` component,
 * saves and encodes `Person` objects in `Tracking List` into a `.txt` file.
@@ -150,6 +163,8 @@ and interprets the file to be loaded into the memory as a `TrackingList`.
 
 ![](images/storage_pathdir.png?raw=true "Storage Module file structure")
 
+*Figure 8. Illustration of Storage Structure*
+
 `StoredTrackingList` is the `.txt` file stored in the same directory as the program.
 The location is determined by the `ConfigFile` class.
 
@@ -168,17 +183,65 @@ Another file, `settingsFile` is read by `ConfigFile` when the program is started
 to load the settings into the program memory.
 When a change is made by the user, `ConfigFile` will update the `settingsFile` through a save function.
 
-### Common classes
+### 2.6 Common classes
 
-Classes used by multiple components are in the `seedu.cyc.commons` package.
+Classes used by multiple components are in the [`seedu.duke.commons`](https://github.com/AY2021S2-CS2113T-T09-1/tp/tree/master/src/main/java/seedu/duke/commons) package.
 
-## Implementation
+## 3. Implementation
+This section describes some significant details on how certain features are implemented.
 
-## Documentation
+### 3.1 Visitor Log feature
 
-## Testing
+The visitor log feature is implemented using two classes, `PersonLog` class and `LogFile` class. `PersonLog` provides
+a runtime storage while `LogFile` provides a long term storage. Only the `PersonLog` class provides the API for
+the Visitor Log feature. So, other classes should only access the `PersonLog`'s methods.
 
-## Dev Ops
+#### 3.1.1 PersonLog
+`PersonLog` uses a Java HashMap to store the details of a `Person` object. It uses a visitor's identification number, 
+`Id` object, as a key to the HashMap.
+
+Additionally, it implements the following operations:
+* `addPerson(Person object)` - Adds a `Person` object into the HashMap.
+* `findPerson(Id obect)` - Returns a `Person` object if found.
+* `saveAllPersons()` - Saves all the visitor's information into the `LogFile`.
+* `loadAllPersons()` - Load all the visitor's information from the `LogFile`.
+
+#### 3.1.2 LogFile
+`LogFile` uses Google's [`Gson`](https://github.com/google/gson) Java library to convert between a `Person` object and 
+its JSON representation. It then uses a `StorageFile` object to write or load the JSON representation from the disk. 
+All the visitor details are saved in `LogFile.txt`.
+
+Additionally, it implements the following operations to be used by `PersonLog`:
+* `saveAllPersons(ArrayList<Person> object)` - Converts all the `Person` objects given into JSON representation and 
+  saves them into the disk, using a `StorageFile` object.
+* `loadAllPersons()` -  Loads the JSON representation of the `Person` objects in the disk, using a `StorageFile` object.
+  It then converts the JSON representation into `Person` objects.
+
+The following sequence diagram shows how loading all the visitor's information from storage functionality works:
+
+![VisitorLogSequenceDiagram.png](images/VisitorLogSequenceDiagram.png)
+
+*Figure 9. Component interactions for `loadAllPersons()`*
+
+#### 3.1.3 Design Considerations
+* Alternative 1 (current choice): Save all the `Person` objects into the disk every time a new 
+  `Person` is added into the HashMap.
+  - Pros: Easy to implement.
+  - Cons: May have performance issues as it is inefficient to rewrite the entire file every time a new `Person` object 
+    is added.
+* Alternative 2: Save only the new `Person` object added into the HashMap, 
+  using append mode when writing into the file.
+  - Pros: Efficient performance
+  - Cons: Before writing a new `Peron` object into the file, need to check if the previous
+    records in the file were not tampered with.
+
+## 4. Documentation
+
+Refer to the Documentation Guide [here](DocumentationGuide.md).
+
+## 5. Testing
+
+## 6. Dev Ops
 
 ## Appendix
 
@@ -256,10 +319,10 @@ and no wireless transfer is allowed.
 ### Appendix E: Glossary
 [WIP]
 
-###A:
-###B:
+### A:
+### B:
 **Bug**: *See defect*
-###C:
+### C:
 **Change log**: An official document containing the list of all Change Requests submitted.
 
 **Class**: A  class  describes  a set  of  objects  that  share  the  same  specifications  of  features,  
@@ -270,7 +333,7 @@ system's  classes,  their  attributes,  operations  (or  methods),  and  the  re
 
 **Customer**: Current  or  potential  buyer  or  user  of  the  products  or  service  of  an  individual  
 or organization, called the supplier, seller, or vendor.
-###D:
+### D:
 **Defect**: A flaw in a component or system that can cause the component or system to fail to
 perform its required function, e.g. an incorrect  statement or data definition.
 A defect,  if encountered during execution, may cause a failure of the component or system
@@ -279,7 +342,7 @@ A defect,  if encountered during execution, may cause a failure of the component
 another  set  of components, or one set of requirements or other artifacts on another set
 
 **Deployment diagram**: In UML a diagram that shows the execution architecture of systems
-###E:
+### E:
 
 **Efficiency**: The capability of the software product
 to provide appropriate performance,relative to the amount of resources used under stated conditions [ISO/IEC 25000].
@@ -288,32 +351,32 @@ to provide appropriate performance,relative to the amount of resources used unde
 
 **Exception handling**: Behavior of a component or system in response to erroneous input,
 from either a human user or from another component or system, or to an internal failure.
-###F:
+### F:
 
 **Function**: A description  of“what” a system does. A function has a corresponding implied purpose and  is  a  fundamental  part  of  a  system  description:  a  system  consists  of  function  attributes,
 performance  attributes,resource  (cost)  attributes  and  design  attributes.  All  attributes  exist  with respect to defined specified conditions. A function can often be decomposed into a hierarchical set of sub-functions [TGilb].
 
 **Functionality**: The  capability  of  the  software  product  to  provide  functions  which  meet  statedand implied needs when the software is used under specified conditions[ISO/IEC 25000].
-###G:
+### G:
 **Goal**: A desired state or result of an undertaken. Goals should be measurable and defined in time so that the progress can be monitored.
-###H:
+### H:
 
 **High-level**: A  position  in  a hierarchy of  defined  system  components, which  is  closer  to  the  top than the bottom, relative to the total defined set of those components [TGilb]
-###I:
+### I:
 
 **Input**: A variable (whether stored within a component or outside) that is read by a component.
 
 **Input value**: An instance of an input. *See also input.*
-###J:
-###K:
-###L:
-###M:
+### J:
+### K:
+### L:
+### M:
 **Maintenance**: Modification  of  a  software  product  after  delivery  to  correct  defects,
 to  improve performance or other attributes, or to adapt the product to a modified environment [IEEE 1219].
 
 **Milestone**: A  point  in  time  in  a  project  at  which  defined  (intermediate)  deliverables  and  results should be ready.
-###N:
-###O:
+### N:
+### O:
 **Object**: In OOAD an instance of a class.
 
 **Object  diagram**: In  UML  a  diagramthat  depicts  objects  and  their
@@ -333,7 +396,7 @@ OOA applies object-modeling  techniques  to  analyze  the  functional  requireme
 **Output**: A variable (whether stored within a component or outside) that is written by a component.
 
 
-###P:
+### P:
 
 **Performance**: The  degree  to  which  a  system  or  component  accomplishes  its  designated functions within
 given   constraints  regarding   processing   time   and   through put   rate   [IEEE 610].
@@ -359,13 +422,13 @@ They affect quality of the product.
 including the constraints of time, cost and resources [ISO 9000]
 
 
-###Q:
+### Q:
 
 **Quality**: The degree to which a component, system or process meets specified requirements and/or user/customer
 needs and expectations [IEEE 610]
 
 
-###R:
+### R:
 
 **Release**: A version of the solution released for installation and use by the customer/end users.
 
@@ -380,7 +443,7 @@ Examples include management review, informal review, technical review, inspectio
 **Reviewer**: The person involved in the review  that identifies and describes  anomalies  in the product or project under review. Reviewers can be chosen to represent different viewpoints and roles in the review process.
 
 
-###S:
+### S:
 
 **Security**: Attributes  of  software  products  that  bear on  its  ability  to  prevent  unauthorized
 access, whether accidental or deliberate, to programs and data [ISO/IEC 25000].  See also *Functionality.*
@@ -413,7 +476,7 @@ are irrespective  of  time.This  includes  class,  composite  structure,  compon
 **System**: A  collection  of  components  organized  to  accomplish  a  specific  function  or  set  of  functions [IEEE 610].
 
 
-###T:
+### T:
 
 **Testability**: The capability of the software product to enable modified software to be tested [ISO/IEC 25000].
 See also *Maintainability.*
@@ -421,7 +484,7 @@ See also *Maintainability.*
 **Timing diagram**: In  UML  a  diagram  that  depicts  the  change  in  state  or  condition  of  a  classifier instance or role over time.
 
 
-###U:
+### U:
 
 **UML**: see Unified Modeling Language.
 
@@ -432,22 +495,15 @@ class diagrams and many more.
 **User**: A person who uses a software product.
 
 
-###V:
+### V:
 
 **Version**: A specific form or variation of something.
 
 
-###W:
-###X:
-###Y:
-###Z:
-
-
-
-
-
-
-
+### W:
+### X:
+### Y:
+### Z:
 
 ### Appendix F: Instructions for manual testing
 Given below are instructions to test CYC manually.
@@ -632,4 +688,4 @@ Given below are instructions to test CYC manually.
 1. Exit
     1. **Test case:** `exit`
         
-        **Expected** A exit message will be shown.
+        **Expected:** A exit message will be shown.
