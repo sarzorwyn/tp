@@ -38,7 +38,7 @@ public class Messages {
     /**
      * Command summary for help command.
      */
-    public static final String CHECKIN_HELP = "Check-in visitor: checkin n/NAME i/LAST_4_CHARS_OF_ID [p/PHONE_NUMBER]";
+    public static final String CHECKIN_HELP = "Check-in visitor: checkin i/LAST_4_CHARS_OF_ID n/NAME [p/PHONE_NUMBER]";
     public static final String LIST_ALL_HELP = "List all visitors: listall";
     public static final String LIST_CHECKED_IN_HELP = "List checked-in visitors only: listcheckedin";
     public static final String FIND_BY_ID_HELP = "Find visitor by ID: find i/LAST_4_CHARS_OF_ID";

@@ -1,3 +1,5 @@
+![Banner](images/github_ug_photo.png)
+
 # Control Your Crowd - Developer Guide
 
 * [1. Setting up](DeveloperGuide.md#1-setting-up)
@@ -241,7 +243,25 @@ Refer to the Documentation Guide [here](DocumentationGuide.md).
 
 ## 5. Testing
 
+### Using IntelliJ JUnit test runner
+* To run all tests, right-click on the `src/test/java` folder and choose `Run 'All Tests'`
+* To run a subset of tests, you can right click on a test package, test class, or a test, and
+choose `Run 'ABC'`.
+
+
 ## 6. Dev Ops
+
+### Build Automation
+
+Crowd Your Control uses Gradle for **build automation and dependency management**.
+
+
+## Continous Integration (CI)
+* Code Coverage
+
+* Repository-wide checks
+
+### Making a release
 
 ## Appendix
 
@@ -261,26 +281,24 @@ A fast and versatile software solution that enables mall management to crowd con
 in the most efficient way possible.
 
 ### Appendix B: User Stories
-[WIP]
+Priorities: High (must have) - `***`, Medium (nice to have) - `**`, Low (unlikely to have) - `*`
 
 |Priority| As a ... | I want to ... | So that I can ...|
 |--------|----------|---------------|------------------|
-|*****|venue/event staff|be able to review the personal particulars of the customer|be aware of who he is|
-|*****|new user|be able to use the program without much training| use the program as soon as possible and easily implement it|
-|****|venue/event staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
-|****|venue/event staff|be able to easily key in a unique personal identifier| check in and find a visitor|
-|****|visitors|be able to check in and check out within a few seconds|enter and leave the mall faster|
-|****|venue/event management|be able to check who came and left|carry out contact tracing efficiently|
-|***|user|be able to move the saved data around|continue using the program on another machine|
-|***|user|be able to encrypt visitors' private details|privacy of the visitors will be not compromised|
-|*****|mall staff|be able to view the current capacity of people in the mall|know when to stop letting people in|
-|****|mall staff|be able to easily key in a unique personal identifier| check in or find a visitor|
-|****|mall staff|be able to easily key in a unique personal identifier|check out a visitor|
+|***|venue/event staff|be able to review the personal particulars of the customer|be aware of who he is|
+|***|new user|be able to use the program without much training| use the program as soon as possible and easily implement it|
+|***|mall staff|be able to view the current capacity of people in the mall|know when to stop letting people in|
+|**|mall staff|be able to easily key in a unique personal identifier| check in or find a visitor|
+|**|mall staff|be able to easily key in a unique personal identifier|check out a visitor|
+|**|venue/event staff|key in personal particulars easily into the application| check in visitors quickly without holding up a line of customers|
+|**|venue/event staff|be able to easily key in a unique personal identifier| check in and find a visitor|
+|**|visitors|be able to check in and check out within a few seconds|enter and leave the mall faster|
+|**|venue/event management|be able to check who came and left|carry out contact tracing efficiently|
+|*|user|be able to move the saved data around|continue using the program on another machine|
+|*|user|be able to encrypt visitors' private details|privacy of the visitors will be not compromised|
 
 
 ### Appendix D: Non-Functional Requirements
-
-[WIP]
 
 1. The program works on all major modern operating systems (Windows, macOS, Linux)
    without any effort by the user, as long as the system has Java 11 or above installed.
@@ -317,193 +335,8 @@ and no wireless transfer is allowed.
 
 
 ### Appendix E: Glossary
-[WIP]
 
-### A:
-### B:
-**Bug**: *See defect*
-### C:
-**Change log**: An official document containing the list of all Change Requests submitted.
-
-**Class**: A  class  describes  a set  of  objects  that  share  the  same  specifications  of  features,  
-constraints, and semantics. Class is a kind of classifier whose features are attributes and operations.
-
-**Class diagram**: A type of static structure diagram that describes the structure of a system by showing the  
-system's  classes,  their  attributes,  operations  (or  methods),  and  the  relationships  among  the classes.
-
-**Customer**: Current  or  potential  buyer  or  user  of  the  products  or  service  of  an  individual  
-or organization, called the supplier, seller, or vendor.
-### D:
-**Defect**: A flaw in a component or system that can cause the component or system to fail to
-perform its required function, e.g. an incorrect  statement or data definition.
-A defect,  if encountered during execution, may cause a failure of the component or system
-
-**Dependency**:  A  reliance  of  some  kind, of  one  set of components  on  
-another  set  of components, or one set of requirements or other artifacts on another set
-
-**Deployment diagram**: In UML a diagram that shows the execution architecture of systems
-### E:
-
-**Efficiency**: The capability of the software product
-to provide appropriate performance,relative to the amount of resources used under stated conditions [ISO/IEC 25000].
-
-**Error**: A human action that produces an incorrect result [After IEEE 610].
-
-**Exception handling**: Behavior of a component or system in response to erroneous input,
-from either a human user or from another component or system, or to an internal failure.
-### F:
-
-**Function**: A description  of“what” a system does. A function has a corresponding implied purpose and  is  a  fundamental  part  of  a  system  description:  a  system  consists  of  function  attributes,
-performance  attributes,resource  (cost)  attributes  and  design  attributes.  All  attributes  exist  with respect to defined specified conditions. A function can often be decomposed into a hierarchical set of sub-functions [TGilb].
-
-**Functionality**: The  capability  of  the  software  product  to  provide  functions  which  meet  statedand implied needs when the software is used under specified conditions[ISO/IEC 25000].
-### G:
-**Goal**: A desired state or result of an undertaken. Goals should be measurable and defined in time so that the progress can be monitored.
-### H:
-
-**High-level**: A  position  in  a hierarchy of  defined  system  components, which  is  closer  to  the  top than the bottom, relative to the total defined set of those components [TGilb]
-### I:
-
-**Input**: A variable (whether stored within a component or outside) that is read by a component.
-
-**Input value**: An instance of an input. *See also input.*
-### J:
-### K:
-### L:
-### M:
-**Maintenance**: Modification  of  a  software  product  after  delivery  to  correct  defects,
-to  improve performance or other attributes, or to adapt the product to a modified environment [IEEE 1219].
-
-**Milestone**: A  point  in  time  in  a  project  at  which  defined  (intermediate)  deliverables  and  results should be ready.
-### N:
-### O:
-**Object**: In OOAD an instance of a class.
-
-**Object  diagram**: In  UML  a  diagramthat  depicts  objects  and  their
-relationships  at  a  point  in  time, typically a special case of either a class diagram or a communication diagram.
-
-**Object-oriented  analysis  and  design**: A  software  engineering  approach  that  models  a  system  as  a group  of  interacting  objects.
-Each  object  represents  some  entity  of  interest  in  the  system  being modeled,  and  is  characterized  by  its  class,
-its  state  (data  elements),  and  its  behavior.  OOAD encompasses Object-oriented analysis (OOA) and Object-oriented design (OOD).
-OOA applies object-modeling  techniques  to  analyze  the  functional  requirements  for  a  system.  OOD  elaborates  the analysis models to produce implementation specifications.
-
-
-**OOAD**: *see Object-oriented analysis and design.*
-
-
-**OS**: Windows, Linux, Unix, OS-X
-
-**Output**: A variable (whether stored within a component or outside) that is written by a component.
-
-
-### P:
-
-**Performance**: The  degree  to  which  a  system  or  component  accomplishes  its  designated functions within
-given   constraints  regarding   processing   time   and   through put   rate   [IEEE 610].
-See also *efficiency.*
-
-
-**Personal data**: Private information pertaining to an individual's ID, and phone number,
-and is not meant to be publicly shared.
-
-
-**Portability**: The  ease  with  which  the  software  product  can  be  transferred  from  one  hardwareor software environment to another [ISO/IEC 25000]
-
-**Priority**: The level of (business) importance assigned to an item, e.g. defect.
-
-**Process**: A set of interrelated activities, which transform inputs into outputs [ISO 12207].
-
-**Product**: An output of a process.
-
-**Product requirement**: A requirement related to the product of the development process.
-They affect quality of the product.
-
-**Project**: A project is a unique  set of coordinated and controlled activities with start  and finish dates undertaken to achieve an objective conforming to specific requirements,
-including the constraints of time, cost and resources [ISO 9000]
-
-
-### Q:
-
-**Quality**: The degree to which a component, system or process meets specified requirements and/or user/customer
-needs and expectations [IEEE 610]
-
-
-### R:
-
-**Release**: A version of the solution released for installation and use by the customer/end users.
-
-**Requirement**:  (1) A  condition  or  capability  needed  by  a  user  to  solve  a  problem  or  achieve  an objective.
-(2)  A  condition  or  capability  that  must  be  met  or  possessed  by  a  system  or  system component to satisfy a contract, standard, specification, or other formally imposed documents.
-(3) A documented representation of a condition or capability as in (1) or (2) [IEEE 610].
-
-
-**Review**: An evaluation of a product or project status to ascertain discrepancies from planned results and to recommend improvements.
-Examples include management review, informal review, technical review, inspection, and walkthrough [IEEE 1028].
-
-**Reviewer**: The person involved in the review  that identifies and describes  anomalies  in the product or project under review. Reviewers can be chosen to represent different viewpoints and roles in the review process.
-
-
-### S:
-
-**Security**: Attributes  of  software  products  that  bear on  its  ability  to  prevent  unauthorized
-access, whether accidental or deliberate, to programs and data [ISO/IEC 25000].  See also *Functionality.*
-
-**Sequence  diagram**: In  UML  it  is  a  structured  representation  of  behavior  as  a  series  of  sequential steps  over  time.
-Sequence  diagram  is  a  kind  of  interaction  diagram  that  shows  how  processes operate with one another and in what order.
-
-**Software**: Computer   programs,   procedures, and   possibly   associated   documentation   and   data pertaining to the operation of a computer system [IEEE 610].
-
-
-**Stakeholder**: Any  person  who  has  an  interest  in  an  IT  project.  Project  stakeholders  are individuals and  organizations  that  are  actively  involved  in  the  project,  or whose  interests may  be  affected  as  a result  of  project  execution  or  project  completion.
-Stakeholders  can  exercise  control  over  both  the immediate   system   operational   characteristics, as well as   over   long-term   system   lifecycle considerations
-(such     as     portability,     lifecycle     costs,     environmental     considerations,     and decommissioning of the system) [TGilb].
-
-
-**Standard**: Formal,  possibly  mandatory,  set  of  requirements  developed  and  used  to  prescribe consistent  approaches  to
-the  way  of  working  or  to  provide  guidelines  (e.g.,  ISO/IEC  standards,  IEEE standards, and organizational standards) [CMMI].
-
-
-**State machine**: A behavior model composed of a finite number of states, transitions between those states, and actions, similar to a flow graph.
-
-
-**State machine diagram**: *see State machine*
-
-**State transition**: A transition between two states of a component or system.
-
-**Structure  diagram**: A  type   of  diagram  that  depicts  the  elements  of  a  specification  that
-are irrespective  of  time.This  includes  class,  composite  structure,  component,  deployment,  object,  and package diagrams.
-
-**System**: A  collection  of  components  organized  to  accomplish  a  specific  function  or  set  of  functions [IEEE 610].
-
-
-### T:
-
-**Testability**: The capability of the software product to enable modified software to be tested [ISO/IEC 25000].
-See also *Maintainability.*
-
-**Timing diagram**: In  UML  a  diagram  that  depicts  the  change  in  state  or  condition  of  a  classifier instance or role over time.
-
-
-### U:
-
-**UML**: see Unified Modeling Language.
-
-**Unified  Modeling  Language**: A  standardized  general-purpose  modeling  language  in  the  field  of software engineering.
-UML includes a set of graphic notation techniques to create visual models of software-intensive systems like use case diagrams, activity diagrams,
-class diagrams and many more.
-
-**User**: A person who uses a software product.
-
-
-### V:
-
-**Version**: A specific form or variation of something.
-
-
-### W:
-### X:
-### Y:
-### Z:
+Refer to Glossary [here](Glossary.md).
 
 ### Appendix F: Instructions for manual testing
 Given below are instructions to test CYC manually.
